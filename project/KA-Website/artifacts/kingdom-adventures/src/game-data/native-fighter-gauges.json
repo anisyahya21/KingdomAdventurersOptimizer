@@ -1,0 +1,71 @@
+{
+  "note": "Recovered native per-fighter HP/MP bars for the battle stage (PASS 13 COMMAND 13.2). Every value here was read from the frozen native code and the original extracted gauge assets; nothing is fitted and nothing is taken from the team member-info HUD or from GaugeSystem world gauges.",
+  "nativePath": "FighterSystem.DrawDynamic 0x1587184 -> AppData.ToScreenPos 0x1671DA8 -> FighterSystem.IsMostFront 0x1585250 -> FighterSystem.DrawGauges 0x1587878 -> Param.GetRate 0x165E91C -> AppData.DrawHorizontalMeter 0x16658E8 -> Graphics.DrawImage 0x2305030",
+  "notThisSystem": {
+    "teamMemberInfoHud": "battle/member_info_bar.png (160x80, two 160x40 rows) is the TEAM SUMMARY PANEL, drawn by BattleSystem.DrawOwnTeamInfoBar 0x14F1564 / DrawOpponentTeamInfoBar 0x14F0F20 / DrawPrizeBar 0x14F1A68 from the battle resource group. It is never a fighter HP/MP gauge and is not used here.",
+    "worldGauges": "ecs.GaugeSystem (DrawDynamic 0x15906BC, DrawParamGaugeInfo 0x15909DC) plus ecs.GaugeComponent and World.CreateGauge 0x1478764 are the world/UI gauge entities (town satisfaction/time/invest/recovery/exp/stamina/equip-exp); all six CreateGauge callers are AISystem. The battle fighter bars do not use them."
+  },
+  "resource": {
+    "manager": "AppData.resGauge_ (+0x158)",
+    "sebId": 2,
+    "sebFile": "gauge/mini_gauge.seb",
+    "sebHeader": { "layers": 2, "maxFrame": 5 },
+    "imageId": 8,
+    "imageFile": "mini_gauge.png",
+    "evidence": "CONFIRMED"
+  },
+  "asset": {
+    "path": "/battle-assets/gauge/mini_gauge.png",
+    "width": 18,
+    "height": 18,
+    "sha256": "e4c31b97b145e01f76deaf07750b7ceafa75b848c1cf036870704f0627e83cc3",
+    "source": "KA_assets/gauge/mini_gauge.png (original extracted APK asset, byte-identical copy)",
+    "evidence": "CONFIRMED"
+  },
+  "records": {
+    "background": { "u": 0, "v": 0, "w": 18, "h": 3, "transX": 0, "transY": 0 },
+    "fill": {
+      "u": 1,
+      "w": 15,
+      "h": 1,
+      "transX": 1,
+      "transY": 1,
+      "rowByFrame": { "0": 4, "1": 7, "2": 10, "3": 13, "4": 16 }
+    },
+    "evidence": "SUPPORTED",
+    "note": "Seb._load 0x234F940 (record branch 0x234FCB0) reads ten big-endian shorts per record in SP_* order: frame, texId, u, v, w, h, transX, transY, reversU, reversV, with SP_BLEND = 0 and SP_COLOR = -1 supplied by the loader. Layer 0 holds one background record per frame at crop (0,0,18,3); layer 1 holds one fill record per frame at (1, 4 + 3*frame, 15, 1) with trans (1,1)."
+  },
+  "meters": {
+    "hp": { "paramId": 10, "frame": 1, "fillRowV": 7, "colour": "green (44,242,97)" },
+    "mp": { "paramId": 11, "frame": 4, "fillRowV": 16, "colour": "pink (242,92,245)" },
+    "readiness": { "frame": 3, "fillRowV": 13, "implemented": false, "note": "Native DrawGauges also draws a third row (Clamp(aiBlackboard[8] * 100 / CalcAttackIntervalFrame(Agility), 0, 100)); COMMAND 13.2 explicitly leaves it out because its blackboard value source is not closed." }
+  },
+  "geometry": {
+    "drawGaugesXOffset": -9,
+    "drawGaugesYFromScreen": -5,
+    "hpYOffset": 1,
+    "mpYOffset": 2,
+    "note": "FighterSystem.DrawDynamic calls DrawGauges(g, screenX, screenY - 5, entity); DrawGauges keeps x - 9 for every row and adds +1 for HP and +2 for MP, so the HP meter origin is (screenX - 9, screenY - 4) and the MP meter origin is (screenX - 9, screenY - 3). Both rows are 18x3 with the fill drawn at origin + (1,1).",
+    "evidence": "CONFIRMED"
+  },
+  "rate": {
+    "rule": "0 when the entity is null/destroyed, has no parameter component, lacks the param id, the record has no max, or max == 0; otherwise clamp(trunc(current * 100 / max), 0, 100) with signed truncating division; when the clamped result is 0 while current > 0 the rate is 1",
+    "evidence": "CONFIRMED",
+    "source": "Param.GetRate 0x165E91C (guards IsNullOrDestroyed 0x147E7E0, get_hasParameter 0x1471288, ParameterComponent.ContainsId 0x14CE638, Parameter.get_hasMaxValue 0x16825F8; values Param.GetValue 0x166070C / Param.GetMaxValue 0x16609EC; AppData.Clamp 0x16657EC)"
+  },
+  "fill": {
+    "rule": "rate < 1 draws no fill at all; otherwise fillW = (w * rate > 99) ? trunc(w * rate / 100) : 1, i.e. any visible rate guarantees at least one pixel (native csinc), and w is the fill record's own width (15)",
+    "evidence": "CONFIRMED",
+    "source": "AppData.DrawHorizontalMeter 0x16658E8 (cmp w19,#1 early-out; signed division by 100 via the 0x51EB851F magic; csinc with the compare against 99)"
+  },
+  "visibility": {
+    "rule": "the whole bar block is drawn only when FighterSystem.IsMostFront(entity) is true; no full-HP hiding, no damaged-only rule, no human/monster/boss branch exists in DrawGauges",
+    "replayEquivalent": "a unit is most front iff its own-team row index is 0: allies cell.row === rowOffset + 1, enemies cell.row === rowOffset (the same predicate the replay's occupancy model already uses as its advance gate)",
+    "evidence": "CONFIRMED",
+    "source": "FighterSystem.IsMostFront 0x15884f8 = (grid + 4) < 9 with grid = rowIndex * 5 + column, i.e. rowIndex === 0; the DrawDynamic call site is gated by a tbz on its result"
+  },
+  "update": {
+    "rule": "no interpolation and no cached display value: Param.GetRate is called from the draw, one draw per rendered frame, so a value change is visible on the next frame",
+    "evidence": "CONFIRMED"
+  }
+}

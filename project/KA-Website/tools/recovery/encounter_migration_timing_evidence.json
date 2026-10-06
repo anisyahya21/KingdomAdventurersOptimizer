@@ -1,0 +1,95 @@
+{
+  "adapterImpactReview": {
+    "battleResultMeaning": "The compact metric fields and digest inputs are unchanged. Native timing fields are written to the separate timing dictionary after the payload has been assembled. Python timing fields are written to the separate dictionary after compact conversion.",
+    "candidateIdentity": "The strategy_optimizer.py hash is identical in saved and current full provenance. identity() hashes canonical scenario JSON after removing only the two seed keys; adapter timing is outside the scenario.",
+    "combatInputs": "Both versions normalize the same scenario and construct the same run_scenario_input with the same mathSeed and libSeed. The current native wrapper receives timing as a separate collector argument; its lib.ka_run_battle arguments remain clone, the same tickLimit, the same policy and the report pointer.",
+    "measurementSemantics": "The battle outcome, censoring, tick, resource, survivor, behavior and digest meanings stay fixed. New stage-duration values are additive tracing. Clock reads add small instrumentation overhead to measured wall time, so raw timings represent the instrumented path.",
+    "provenance": "The adapter file hash changes by design, so the simulator provenance digest changes. The provenance implementation itself is byte-identical; no stored provenance or result evidence is rewritten.",
+    "scenarioConstruction": "validate_scenario, default_scenario and propose are byte-identical between the hash-matched saved adapter and current adapter."
+  },
+  "candidateIdentityImplementationSha256": "60323f187b0f3be6e6187484977592e4091f23c6a15fec5b4463f7285e158bdf",
+  "changedInventoryFiles": [
+    {
+      "classification": "tracing/telemetry-only",
+      "fromSha256": "c73c2f3fe7ca819c599c246d144b91e66b208060d75f816c7da20131dffd7230",
+      "path": "tools/recovery/strategy_optimizer_adapter.py",
+      "summary": "Adds an optional per-call timing collector and forwards it to the native wrapper. Scenario construction, normalized inputs, seeds, proposal generation, compact metrics and the existing digest calculation are unchanged.",
+      "toSha256": "b09cd4e53e0fccea3124cc48b8589a8a285ab10b72d006c8a17eae643b698cf4"
+    }
+  ],
+  "currentProvenanceDigest": "27981785aea215451142328258e3b31a66a6f7b540d77f6c9bbd1656c4e83f55",
+  "inventoryCounts": {
+    "current": 56,
+    "saved": 56
+  },
+  "limitations": [
+    "The runtime-output comparison is one preselected 239-tick fixture for Python and native paths; it is not exhaustive semantic equivalence proof.",
+    "Concurrency completion order can move slightly because instrumentation adds clock reads; candidate IDs and each fixed scenario/seed result remain unchanged."
+  ],
+  "predecessorCertificate": {
+    "path": "tools/recovery/encounter_migration_certificate.json",
+    "sha256": "cf1082d4f6534471f2de81cb023f87d6f639815d4e22c4aff41b0f6e14810678"
+  },
+  "review": "accepted",
+  "reviewedDate": "2026-09-29",
+  "reviewer": "Astra",
+  "savedProvenanceDigest": "3c71e4f64a3fc75cd24eb07c61d10ceef40179db7797de1d0108942d4eb35f1e",
+  "schema": "ka-encounter-migration-review/1",
+  "separatelyPinnedRuntimeAssetReview": {
+    "classification": "tracing/telemetry-only",
+    "fromSha256": "a1c90cb0260ae83e745ff93967a51cc5bb41173d8c6dd8a6bafe4109d0a1a5ff",
+    "path": "tools/recovery/strategy_optimizer_native.py",
+    "summary": "The wrapper change adds perf_counter boundaries and writes stage durations to an optional dictionary. It preserves eligibility, template identity, RNG seeding, follower draws, native call arguments, report conversion, fallback reason and compact payload construction.",
+    "toSha256": "7945d4a4425f6ca9755c5d186c746b98e975267fc8d4a05034183c103e231137"
+  },
+  "timingInvarianceFixture": {
+    "compactDigest": "1fe7cba6b3721cc5dcbf746cf607e9856d8e7fa373112b89368103ac4d0c58d0",
+    "currentNativeTimingOffEqualsOn": true,
+    "currentPythonTimingOffEqualsOn": true,
+    "fixture": "community_enc0",
+    "resolvedTicks": 239,
+    "resultBackendNative": "native",
+    "resultBackendPython": "python",
+    "savedPairEqualsCurrentNative": true,
+    "savedPairPythonEqualsCurrentPython": true,
+    "seeds": [
+      135791,
+      246802
+    ],
+    "tickLimit": 3000,
+    "timingCollectorKeysNative": [
+      "convertBeginAt",
+      "convertEndAt",
+      "convertSeconds",
+      "extractSeconds",
+      "freeSeconds",
+      "nativeBeginAt",
+      "nativeEndAt",
+      "nativePath",
+      "nativeSeconds",
+      "prepareSeconds",
+      "seedSeconds"
+    ],
+    "timingCollectorKeysPython": [
+      "convertBeginAt",
+      "convertEndAt",
+      "convertSeconds",
+      "nativePath",
+      "pythonComputeSeconds"
+    ],
+    "verdict": 1
+  },
+  "transition": "saved c73 adapter inventory to current b09 adapter inventory",
+  "unchangedAdapterFunctions": {
+    "_compact": true,
+    "_digest": true,
+    "_seed_pair": true,
+    "_source_names": true,
+    "default_scenario": true,
+    "propose": true,
+    "provenance": true,
+    "stats": true,
+    "validate_scenario": true
+  },
+  "unchangedRuntimeData": true
+}

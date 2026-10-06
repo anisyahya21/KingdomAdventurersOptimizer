@@ -1,0 +1,33 @@
+{
+  "revision": "r9",
+  "status": "complete-supported-diagnostic-scope",
+  "binary": "revisions/r9/standalone-optimizer/optimizer.exe",
+  "binarySha256": "ebcc51f1d29ece59462660a5253fd7e2d67875021c0f6689c4a3b96f2377c239",
+  "sourceManifest": "revisions/r9/manifest.json",
+  "implementationLanguage": "cpp",
+  "sharedSimulationLanguage": "rust",
+  "runtimePython": false,
+  "testsExecutedBy": "Chat 1",
+  "preparedSnapshotsExact": 20,
+  "nativeEncountersExact": 20,
+  "coreFieldsPerEncounter": 74,
+  "encounterFieldsPerEncounter": 32,
+  "rawReportsAndChecksumsExact": true,
+  "mutationScope": {"strategies": 2, "seedPairs": 2, "durableRecords": 4, "parentLineage": true, "errors": 0},
+  "resumeJournalUnchanged": true,
+  "tornTailRecovery": "pass",
+  "incompatibleProvenanceRejectedWithoutJournalChange": true,
+  "diagnosticClassification": "pass",
+  "evidencePathsRelativeToNativePreparation": [
+    "shared/runs/cpp-r6-preparation-20261004T205938437662Z-0bc47856e9/report.json",
+    "shared/runs/cpp-r8-all20-parity-20261004T212634Z/report.json",
+    "shared/runs/cpp-R9-search-resume-20261004T213124292380Z/report.json",
+    "shared/cpp-r9-classification-audit.json",
+    "shared/runs/cpp-r9-durability-20261004T214651414890Z/report.json"
+  ],
+  "reusedEvidence": "R9 changes pipeline classification metadata only; preparation and execution sources are unchanged from tested R8.",
+  "productionImportEnabled": false,
+  "formationCompliance": "not-yet-attested",
+  "performanceComparison": "pending",
+  "strategyImprovementClaimed": false
+}

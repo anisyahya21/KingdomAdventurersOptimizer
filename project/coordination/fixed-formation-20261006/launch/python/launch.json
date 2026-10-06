@@ -1,0 +1,12 @@
+{
+  "engine": "python",
+  "module": "KA-Website/tools/recovery/fixed_formation.py",
+  "api": {
+    "admit": "admits(scenario) -> (bool, reasons)",
+    "identity": "search_identity(scenario) -> sha256 hex",
+    "canonicalScenario": "canonical_scenario(encounter_id, math_seed=..., lib_seed=...)",
+    "mutate": "mutate_stat(scenario, seed, stat=None, value=None)"
+  },
+  "policyHash": "403a443d931840b23ccc1bad071055422fd6e1f465681fbf2b5a6291fef7382f",
+  "wallEnforcement": "the Python search must call admits()/search_identity()/mutate_stat(); only the Synthetic DPS raw stats inside the walls may change"
+}

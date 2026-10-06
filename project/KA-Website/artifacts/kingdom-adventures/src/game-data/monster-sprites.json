@@ -1,0 +1,1523 @@
+[
+  {
+    "id": 0,
+    "name": "Diamondoom",
+    "img": 6,
+    "source": "all_monster_s_00.png",
+    "src": "/monster-sprites/0.png",
+    "width": 33,
+    "height": 33
+  },
+  {
+    "id": 1,
+    "name": "Creeperbloom",
+    "img": 102,
+    "source": "tuchi_monster_s_00.png",
+    "src": "/monster-sprites/1.png",
+    "width": 25,
+    "height": 25
+  },
+  {
+    "id": 2,
+    "name": "Metabok",
+    "img": 103,
+    "source": "tuchi_monster_s_01.png",
+    "src": "/monster-sprites/2.png",
+    "width": 14,
+    "height": 12
+  },
+  {
+    "id": 3,
+    "name": "Dark Tinkle",
+    "img": 104,
+    "source": "tuchi_monster_s_02.png",
+    "src": "/monster-sprites/3.png",
+    "width": 22,
+    "height": 20
+  },
+  {
+    "id": 4,
+    "name": "Mudchomp",
+    "img": 105,
+    "source": "tuchi_monster_s_03.png",
+    "src": "/monster-sprites/4.png",
+    "width": 23,
+    "height": 19
+  },
+  {
+    "id": 5,
+    "name": "Renegade Chick",
+    "img": 106,
+    "source": "tuchi_monster_s_04.png",
+    "src": "/monster-sprites/5.png",
+    "width": 24,
+    "height": 26
+  },
+  {
+    "id": 6,
+    "name": "Gloom Shroom",
+    "img": 107,
+    "source": "tuchi_monster_s_05.png",
+    "src": "/monster-sprites/6.png",
+    "width": 23,
+    "height": 21
+  },
+  {
+    "id": 7,
+    "name": "Pillbug",
+    "img": 108,
+    "source": "tuchi_monster_s_06.png",
+    "src": "/monster-sprites/7.png",
+    "width": 20,
+    "height": 13
+  },
+  {
+    "id": 8,
+    "name": "Alpacavalier",
+    "img": 97,
+    "source": "tuchi_monster_m_00.png",
+    "src": "/monster-sprites/8.png",
+    "width": 24,
+    "height": 33
+  },
+  {
+    "id": 9,
+    "name": "Earth Dragon",
+    "img": 98,
+    "source": "tuchi_monster_m_01.png",
+    "src": "/monster-sprites/9.png",
+    "width": 29,
+    "height": 32
+  },
+  {
+    "id": 10,
+    "name": "Ironclad Pincher",
+    "img": 99,
+    "source": "tuchi_monster_m_02.png",
+    "src": "/monster-sprites/10.png",
+    "width": 47,
+    "height": 37
+  },
+  {
+    "id": 11,
+    "name": "Mossy Shroom",
+    "img": 100,
+    "source": "tuchi_monster_m_03.png",
+    "src": "/monster-sprites/11.png",
+    "width": 45,
+    "height": 33
+  },
+  {
+    "id": 12,
+    "name": "Gobman",
+    "img": 101,
+    "source": "tuchi_monster_m_04.png",
+    "src": "/monster-sprites/12.png",
+    "width": 30,
+    "height": 25
+  },
+  {
+    "id": 13,
+    "name": "Raging Boar",
+    "img": 96,
+    "source": "tuchi_monster_l_00.png",
+    "src": "/monster-sprites/13.png",
+    "width": 77,
+    "height": 60
+  },
+  {
+    "id": 14,
+    "name": "Go-Go Golem",
+    "img": 109,
+    "source": "tuchi_monster_xl_00.png",
+    "src": "/monster-sprites/14.png",
+    "width": 140,
+    "height": 130
+  },
+  {
+    "id": 15,
+    "name": "Mammoth Caterpillar",
+    "img": 44,
+    "source": "kusa_monster_s_00.png",
+    "src": "/monster-sprites/15.png",
+    "width": 28,
+    "height": 19
+  },
+  {
+    "id": 16,
+    "name": "Wild Grass",
+    "img": 45,
+    "source": "kusa_monster_s_01.png",
+    "src": "/monster-sprites/16.png",
+    "width": 16,
+    "height": 20
+  },
+  {
+    "id": 17,
+    "name": "Mandragora",
+    "img": 46,
+    "source": "kusa_monster_s_02.png",
+    "src": "/monster-sprites/17.png",
+    "width": 15,
+    "height": 24
+  },
+  {
+    "id": 18,
+    "name": "Terror Tree",
+    "img": 47,
+    "source": "kusa_monster_s_03.png",
+    "src": "/monster-sprites/18.png",
+    "width": 25,
+    "height": 23
+  },
+  {
+    "id": 19,
+    "name": "Broccolin",
+    "img": 48,
+    "source": "kusa_monster_s_04.png",
+    "src": "/monster-sprites/19.png",
+    "width": 17,
+    "height": 17
+  },
+  {
+    "id": 20,
+    "name": "Fake Apple",
+    "img": 49,
+    "source": "kusa_monster_s_05.png",
+    "src": "/monster-sprites/20.png",
+    "width": 18,
+    "height": 22
+  },
+  {
+    "id": 21,
+    "name": "Fugitive Egg",
+    "img": 50,
+    "source": "kusa_monster_s_06.png",
+    "src": "/monster-sprites/21.png",
+    "width": 15,
+    "height": 17
+  },
+  {
+    "id": 22,
+    "name": "Wild Shrub",
+    "img": 40,
+    "source": "kusa_monster_m_00.png",
+    "src": "/monster-sprites/22.png",
+    "width": 28,
+    "height": 29
+  },
+  {
+    "id": 23,
+    "name": "Screaming Caterpillar",
+    "img": 41,
+    "source": "kusa_monster_m_01.png",
+    "src": "/monster-sprites/23.png",
+    "width": 34,
+    "height": 44
+  },
+  {
+    "id": 24,
+    "name": "Assault Bee",
+    "img": 42,
+    "source": "kusa_monster_m_02.png",
+    "src": "/monster-sprites/24.png",
+    "width": 21,
+    "height": 38
+  },
+  {
+    "id": 25,
+    "name": "Renegade Bird",
+    "img": 43,
+    "source": "kusa_monster_m_03.png",
+    "src": "/monster-sprites/25.png",
+    "width": 49,
+    "height": 41
+  },
+  {
+    "id": 26,
+    "name": "Human-Faced Tree",
+    "img": 39,
+    "source": "kusa_monster_l_00.png",
+    "src": "/monster-sprites/26.png",
+    "width": 74,
+    "height": 60
+  },
+  {
+    "id": 27,
+    "name": "Dizzy Butterfly",
+    "img": 51,
+    "source": "kusa_monster_xl_00.png",
+    "src": "/monster-sprites/27.png",
+    "width": 110,
+    "height": 85
+  },
+  {
+    "id": 28,
+    "name": "Rockclad Ladybug",
+    "img": 15,
+    "source": "iwa_monster_s_00.png",
+    "src": "/monster-sprites/28.png",
+    "width": 25,
+    "height": 19
+  },
+  {
+    "id": 29,
+    "name": "Triplet Rocks",
+    "img": 16,
+    "source": "iwa_monster_s_01.png",
+    "src": "/monster-sprites/29.png",
+    "width": 30,
+    "height": 19
+  },
+  {
+    "id": 30,
+    "name": "Horned Rock",
+    "img": 17,
+    "source": "iwa_monster_s_02.png",
+    "src": "/monster-sprites/30.png",
+    "width": 20,
+    "height": 30
+  },
+  {
+    "id": 31,
+    "name": "Shaggy Bug",
+    "img": 18,
+    "source": "iwa_monster_s_03.png",
+    "src": "/monster-sprites/31.png",
+    "width": 34,
+    "height": 20
+  },
+  {
+    "id": 32,
+    "name": "Machbat",
+    "img": 19,
+    "source": "iwa_monster_s_04.png",
+    "src": "/monster-sprites/32.png",
+    "width": 28,
+    "height": 17
+  },
+  {
+    "id": 33,
+    "name": "Granitron",
+    "img": 20,
+    "source": "iwa_monster_s_05.png",
+    "src": "/monster-sprites/33.png",
+    "width": 16,
+    "height": 15
+  },
+  {
+    "id": 34,
+    "name": "Flint Rockson",
+    "img": 21,
+    "source": "iwa_monster_s_06.png",
+    "src": "/monster-sprites/34.png",
+    "width": 19,
+    "height": 19
+  },
+  {
+    "id": 35,
+    "name": "Ore Crab",
+    "img": 9,
+    "source": "iwa_monster_m_00.png",
+    "src": "/monster-sprites/35.png",
+    "width": 56,
+    "height": 32
+  },
+  {
+    "id": 36,
+    "name": "Craggy Conepoke",
+    "img": 10,
+    "source": "iwa_monster_m_01.png",
+    "src": "/monster-sprites/36.png",
+    "width": 41,
+    "height": 32
+  },
+  {
+    "id": 37,
+    "name": "One-Eyed Rock",
+    "img": 11,
+    "source": "iwa_monster_m_02.png",
+    "src": "/monster-sprites/37.png",
+    "width": 27,
+    "height": 36
+  },
+  {
+    "id": 38,
+    "name": "Metamorphic Stone",
+    "img": 12,
+    "source": "iwa_monster_m_03.png",
+    "src": "/monster-sprites/38.png",
+    "width": 31,
+    "height": 33
+  },
+  {
+    "id": 39,
+    "name": "Rock Golem",
+    "img": 13,
+    "source": "iwa_monster_m_04.png",
+    "src": "/monster-sprites/39.png",
+    "width": 26,
+    "height": 27
+  },
+  {
+    "id": 40,
+    "name": "Fashion Golem",
+    "img": 14,
+    "source": "iwa_monster_m_05.png",
+    "src": "/monster-sprites/40.png",
+    "width": 25,
+    "height": 28
+  },
+  {
+    "id": 41,
+    "name": "Slurper Z",
+    "img": 7,
+    "source": "iwa_monster_l_00.png",
+    "src": "/monster-sprites/41.png",
+    "width": 75,
+    "height": 57
+  },
+  {
+    "id": 42,
+    "name": "Lococonut",
+    "img": 8,
+    "source": "iwa_monster_l_01.png",
+    "src": "/monster-sprites/42.png",
+    "width": 62,
+    "height": 57
+  },
+  {
+    "id": 43,
+    "name": "Brock Rockson",
+    "img": 22,
+    "source": "iwa_monster_xl_00.png",
+    "src": "/monster-sprites/43.png",
+    "width": 110,
+    "height": 123
+  },
+  {
+    "id": 44,
+    "name": "Drago",
+    "img": 23,
+    "source": "iwa_monster_xl_01.png",
+    "src": "/monster-sprites/44.png",
+    "width": 129,
+    "height": 123
+  },
+  {
+    "id": 45,
+    "name": "Undead Pirate",
+    "img": 76,
+    "source": "suna_monster_s_03.png",
+    "src": "/monster-sprites/45.png",
+    "width": 20,
+    "height": 19
+  },
+  {
+    "id": 46,
+    "name": "Sandworm",
+    "img": 77,
+    "source": "suna_monster_s_04.png",
+    "src": "/monster-sprites/46.png",
+    "width": 23,
+    "height": 18
+  },
+  {
+    "id": 47,
+    "name": "Stinger",
+    "img": 78,
+    "source": "suna_monster_s_05.png",
+    "src": "/monster-sprites/47.png",
+    "width": 20,
+    "height": 16
+  },
+  {
+    "id": 48,
+    "name": "Trapling",
+    "img": 73,
+    "source": "suna_monster_s_00.png",
+    "src": "/monster-sprites/48.png",
+    "width": 33,
+    "height": 21
+  },
+  {
+    "id": 49,
+    "name": "Cactitus",
+    "img": 74,
+    "source": "suna_monster_s_01.png",
+    "src": "/monster-sprites/49.png",
+    "width": 28,
+    "height": 28
+  },
+  {
+    "id": 50,
+    "name": "Lurkeel",
+    "img": 75,
+    "source": "suna_monster_s_02.png",
+    "src": "/monster-sprites/50.png",
+    "width": 17,
+    "height": 34
+  },
+  {
+    "id": 51,
+    "name": "Dragolion",
+    "img": 79,
+    "source": "suna_monster_s_06.png",
+    "src": "/monster-sprites/51.png",
+    "width": 37,
+    "height": 18
+  },
+  {
+    "id": 52,
+    "name": "Desertail",
+    "img": 67,
+    "source": "suna_monster_m_00.png",
+    "src": "/monster-sprites/52.png",
+    "width": 45,
+    "height": 44
+  },
+  {
+    "id": 53,
+    "name": "Dried-Out Fish",
+    "img": 68,
+    "source": "suna_monster_m_01.png",
+    "src": "/monster-sprites/53.png",
+    "width": 24,
+    "height": 20
+  },
+  {
+    "id": 54,
+    "name": "Tutanhop",
+    "img": 69,
+    "source": "suna_monster_m_02.png",
+    "src": "/monster-sprites/54.png",
+    "width": 20,
+    "height": 26
+  },
+  {
+    "id": 55,
+    "name": "Sandbag",
+    "img": 70,
+    "source": "suna_monster_m_03.png",
+    "src": "/monster-sprites/55.png",
+    "width": 27,
+    "height": 39
+  },
+  {
+    "id": 56,
+    "name": "Snappish Turtle",
+    "img": 71,
+    "source": "suna_monster_m_04.png",
+    "src": "/monster-sprites/56.png",
+    "width": 59,
+    "height": 32
+  },
+  {
+    "id": 57,
+    "name": "Mirage Eel",
+    "img": 72,
+    "source": "suna_monster_m_05.png",
+    "src": "/monster-sprites/57.png",
+    "width": 43,
+    "height": 35
+  },
+  {
+    "id": 58,
+    "name": "Thornster",
+    "img": 65,
+    "source": "suna_monster_l_00.png",
+    "src": "/monster-sprites/58.png",
+    "width": 54,
+    "height": 54
+  },
+  {
+    "id": 59,
+    "name": "Queen Cactitus",
+    "img": 66,
+    "source": "suna_monster_l_01.png",
+    "src": "/monster-sprites/59.png",
+    "width": 68,
+    "height": 60
+  },
+  {
+    "id": 60,
+    "name": "Cobrajah",
+    "img": 80,
+    "source": "suna_monster_xl_00.png",
+    "src": "/monster-sprites/60.png",
+    "width": 129,
+    "height": 138
+  },
+  {
+    "id": 61,
+    "name": "Hoppity",
+    "img": 58,
+    "source": "snow_monster_s_00.png",
+    "src": "/monster-sprites/61.png",
+    "width": 17,
+    "height": 16
+  },
+  {
+    "id": 62,
+    "name": "Snowbug",
+    "img": 59,
+    "source": "snow_monster_s_01.png",
+    "src": "/monster-sprites/62.png",
+    "width": 20,
+    "height": 21
+  },
+  {
+    "id": 63,
+    "name": "Fiery Snow",
+    "img": 60,
+    "source": "snow_monster_s_02.png",
+    "src": "/monster-sprites/63.png",
+    "width": 14,
+    "height": 24
+  },
+  {
+    "id": 64,
+    "name": "Icebug",
+    "img": 61,
+    "source": "snow_monster_s_03.png",
+    "src": "/monster-sprites/64.png",
+    "width": 37,
+    "height": 20
+  },
+  {
+    "id": 65,
+    "name": "Icebox",
+    "img": 62,
+    "source": "snow_monster_s_04.png",
+    "src": "/monster-sprites/65.png",
+    "width": 22,
+    "height": 23
+  },
+  {
+    "id": 66,
+    "name": "Polar Pupper",
+    "img": 63,
+    "source": "snow_monster_s_05.png",
+    "src": "/monster-sprites/66.png",
+    "width": 27,
+    "height": 23
+  },
+  {
+    "id": 67,
+    "name": "Falcone",
+    "img": 53,
+    "source": "snow_monster_m_01.png",
+    "src": "/monster-sprites/67.png",
+    "width": 22,
+    "height": 27
+  },
+  {
+    "id": 68,
+    "name": "Glacie",
+    "img": 54,
+    "source": "snow_monster_m_03.png",
+    "src": "/monster-sprites/68.png",
+    "width": 57,
+    "height": 37
+  },
+  {
+    "id": 69,
+    "name": "Igluu",
+    "img": 55,
+    "source": "snow_monster_m_04.png",
+    "src": "/monster-sprites/69.png",
+    "width": 58,
+    "height": 42
+  },
+  {
+    "id": 70,
+    "name": "Howling Wraith",
+    "img": 56,
+    "source": "snow_monster_m_05.png",
+    "src": "/monster-sprites/70.png",
+    "width": 29,
+    "height": 45
+  },
+  {
+    "id": 71,
+    "name": "Freezard",
+    "img": 57,
+    "source": "snow_monster_m_06.png",
+    "src": "/monster-sprites/71.png",
+    "width": 24,
+    "height": 31
+  },
+  {
+    "id": 72,
+    "name": "Snake Ice",
+    "img": 52,
+    "source": "snow_monster_l_00.png",
+    "src": "/monster-sprites/72.png",
+    "width": 79,
+    "height": 53
+  },
+  {
+    "id": 73,
+    "name": "Snow Dragon",
+    "img": 64,
+    "source": "snow_monster_xl_00.png",
+    "src": "/monster-sprites/73.png",
+    "width": 150,
+    "height": 131
+  },
+  {
+    "id": 74,
+    "name": "Swamp Toad",
+    "img": 86,
+    "source": "swamp_monster_s_00.png",
+    "src": "/monster-sprites/74.png",
+    "width": 33,
+    "height": 13
+  },
+  {
+    "id": 75,
+    "name": "Crabella",
+    "img": 87,
+    "source": "swamp_monster_s_01.png",
+    "src": "/monster-sprites/75.png",
+    "width": 24,
+    "height": 22
+  },
+  {
+    "id": 76,
+    "name": "Marshmaid",
+    "img": 88,
+    "source": "swamp_monster_s_02.png",
+    "src": "/monster-sprites/76.png",
+    "width": 25,
+    "height": 27
+  },
+  {
+    "id": 77,
+    "name": "Sneakyfish",
+    "img": 89,
+    "source": "swamp_monster_s_03.png",
+    "src": "/monster-sprites/77.png",
+    "width": 28,
+    "height": 17
+  },
+  {
+    "id": 78,
+    "name": "Skullene",
+    "img": 90,
+    "source": "swamp_monster_s_04.png",
+    "src": "/monster-sprites/78.png",
+    "width": 16,
+    "height": 20
+  },
+  {
+    "id": 79,
+    "name": "Brute-Belly Jackson",
+    "img": 91,
+    "source": "swamp_monster_s_05.png",
+    "src": "/monster-sprites/79.png",
+    "width": 29,
+    "height": 19
+  },
+  {
+    "id": 80,
+    "name": "Kid Slime",
+    "img": 92,
+    "source": "swamp_monster_s_06.png",
+    "src": "/monster-sprites/80.png",
+    "width": 21,
+    "height": 21
+  },
+  {
+    "id": 81,
+    "name": "Dropplet",
+    "img": 93,
+    "source": "swamp_monster_s_07.png",
+    "src": "/monster-sprites/81.png",
+    "width": 18,
+    "height": 18
+  },
+  {
+    "id": 82,
+    "name": "Tinyturt",
+    "img": 94,
+    "source": "swamp_monster_s_08.png",
+    "src": "/monster-sprites/82.png",
+    "width": 24,
+    "height": 15
+  },
+  {
+    "id": 83,
+    "name": "Giant Alraune",
+    "img": 83,
+    "source": "swamp_monster_m_00.png",
+    "src": "/monster-sprites/83.png",
+    "width": 53,
+    "height": 39
+  },
+  {
+    "id": 84,
+    "name": "Steel-Stomach Jackie",
+    "img": 84,
+    "source": "swamp_monster_m_02.png",
+    "src": "/monster-sprites/84.png",
+    "width": 49,
+    "height": 42
+  },
+  {
+    "id": 85,
+    "name": "Skullbug",
+    "img": 85,
+    "source": "swamp_monster_m_03.png",
+    "src": "/monster-sprites/85.png",
+    "width": 25,
+    "height": 43
+  },
+  {
+    "id": 86,
+    "name": "Murderbirb",
+    "img": 81,
+    "source": "swamp_monster_l_00.png",
+    "src": "/monster-sprites/86.png",
+    "width": 62,
+    "height": 57
+  },
+  {
+    "id": 87,
+    "name": "Gelatintin",
+    "img": 82,
+    "source": "swamp_monster_l_01.png",
+    "src": "/monster-sprites/87.png",
+    "width": 78,
+    "height": 55
+  },
+  {
+    "id": 88,
+    "name": "Big-Bellied Frog",
+    "img": 95,
+    "source": "swamp_monster_xl_00.png",
+    "src": "/monster-sprites/88.png",
+    "width": 126,
+    "height": 141
+  },
+  {
+    "id": 89,
+    "name": "Ember",
+    "img": 31,
+    "source": "kazan_monster_s_00.png",
+    "src": "/monster-sprites/89.png",
+    "width": 15,
+    "height": 17
+  },
+  {
+    "id": 90,
+    "name": "Volcanus",
+    "img": 32,
+    "source": "kazan_monster_s_01.png",
+    "src": "/monster-sprites/90.png",
+    "width": 25,
+    "height": 24
+  },
+  {
+    "id": 91,
+    "name": "Mimico",
+    "img": 33,
+    "source": "kazan_monster_s_02.png",
+    "src": "/monster-sprites/91.png",
+    "width": 23,
+    "height": 21
+  },
+  {
+    "id": 92,
+    "name": "Gasper",
+    "img": 34,
+    "source": "kazan_monster_s_03.png",
+    "src": "/monster-sprites/92.png",
+    "width": 29,
+    "height": 27
+  },
+  {
+    "id": 93,
+    "name": "Undead Cap'n",
+    "img": 35,
+    "source": "kazan_monster_s_04.png",
+    "src": "/monster-sprites/93.png",
+    "width": 17,
+    "height": 21
+  },
+  {
+    "id": 94,
+    "name": "Lavallie",
+    "img": 36,
+    "source": "kazan_monster_s_05.png",
+    "src": "/monster-sprites/94.png",
+    "width": 27,
+    "height": 28
+  },
+  {
+    "id": 95,
+    "name": "Lava Bat",
+    "img": 37,
+    "source": "kazan_monster_s_06.png",
+    "src": "/monster-sprites/95.png",
+    "width": 32,
+    "height": 14
+  },
+  {
+    "id": 96,
+    "name": "Axey Lottle",
+    "img": 26,
+    "source": "kazan_monster_m_00.png",
+    "src": "/monster-sprites/96.png",
+    "width": 31,
+    "height": 35
+  },
+  {
+    "id": 97,
+    "name": "Magmafish",
+    "img": 27,
+    "source": "kazan_monster_m_01.png",
+    "src": "/monster-sprites/97.png",
+    "width": 53,
+    "height": 33
+  },
+  {
+    "id": 98,
+    "name": "Hotalot Devil",
+    "img": 28,
+    "source": "kazan_monster_m_02.png",
+    "src": "/monster-sprites/98.png",
+    "width": 25,
+    "height": 26
+  },
+  {
+    "id": 99,
+    "name": "Dark Smoke",
+    "img": 29,
+    "source": "kazan_monster_m_03.png",
+    "src": "/monster-sprites/99.png",
+    "width": 47,
+    "height": 49
+  },
+  {
+    "id": 100,
+    "name": "Flaming Hand",
+    "img": 30,
+    "source": "kazan_monster_m_04.png",
+    "src": "/monster-sprites/100.png",
+    "width": 49,
+    "height": 45
+  },
+  {
+    "id": 101,
+    "name": "Firaj",
+    "img": 24,
+    "source": "kazan_monster_l_00.png",
+    "src": "/monster-sprites/101.png",
+    "width": 47,
+    "height": 50
+  },
+  {
+    "id": 102,
+    "name": "Erupterror",
+    "img": 25,
+    "source": "kazan_monster_l_01.png",
+    "src": "/monster-sprites/102.png",
+    "width": 80,
+    "height": 59
+  },
+  {
+    "id": 103,
+    "name": "Flame Dragon",
+    "img": 38,
+    "source": "kazan_monster_xl_00.png",
+    "src": "/monster-sprites/103.png",
+    "width": 145,
+    "height": 144
+  },
+  {
+    "id": 104,
+    "name": "Ghost",
+    "img": 115,
+    "source": "all_monster_s_01.png",
+    "src": "/monster-sprites/104.png",
+    "width": 29,
+    "height": 26
+  },
+  {
+    "id": 105,
+    "name": "Brawlbunn",
+    "img": 116,
+    "source": "ex_monster_m_00.png",
+    "src": "/monster-sprites/105.png",
+    "width": 17,
+    "height": 24
+  },
+  {
+    "id": 106,
+    "name": "King Ackbar",
+    "img": 117,
+    "source": "ex_monster_m_01.png",
+    "src": "/monster-sprites/106.png",
+    "width": 17,
+    "height": 23
+  },
+  {
+    "id": 107,
+    "name": "Octoman",
+    "img": 118,
+    "source": "ex_monster_m_02.png",
+    "src": "/monster-sprites/107.png",
+    "width": 13,
+    "height": 11
+  },
+  {
+    "id": 108,
+    "name": "Pandah",
+    "img": 119,
+    "source": "ex_monster_m_03.png",
+    "src": "/monster-sprites/108.png",
+    "width": 20,
+    "height": 22
+  },
+  {
+    "id": 109,
+    "name": "Midnight Snack Mervin",
+    "img": 120,
+    "source": "ex_monster_m_04.png",
+    "src": "/monster-sprites/109.png",
+    "width": 15,
+    "height": 22
+  },
+  {
+    "id": 110,
+    "name": "Stacey Ditz",
+    "img": 121,
+    "source": "ex_monster_m_05.png",
+    "src": "/monster-sprites/110.png",
+    "width": 18,
+    "height": 21
+  },
+  {
+    "id": 111,
+    "name": "Poochington",
+    "img": 122,
+    "source": "ex_monster_m_06.png",
+    "src": "/monster-sprites/111.png",
+    "width": 17,
+    "height": 11
+  },
+  {
+    "id": 112,
+    "name": "Flatsy Maxie",
+    "img": 123,
+    "source": "ex_monster_m_07.png",
+    "src": "/monster-sprites/112.png",
+    "width": 15,
+    "height": 13
+  },
+  {
+    "id": 113,
+    "name": "Mochipork",
+    "img": 124,
+    "source": "ex_monster_m_08.png",
+    "src": "/monster-sprites/113.png",
+    "width": 17,
+    "height": 14
+  },
+  {
+    "id": 114,
+    "name": "Chimpan Z",
+    "img": 125,
+    "source": "ex_monster_m_09.png",
+    "src": "/monster-sprites/114.png",
+    "width": 17,
+    "height": 18
+  },
+  {
+    "id": 115,
+    "name": "Grizzly Bearington",
+    "img": 126,
+    "source": "ex_monster_m_10.png",
+    "src": "/monster-sprites/115.png",
+    "width": 18,
+    "height": 23
+  },
+  {
+    "id": 116,
+    "name": "Wairobot",
+    "img": 127,
+    "source": "ex_monster_m_11.png",
+    "src": "/monster-sprites/116.png",
+    "width": 20,
+    "height": 24
+  },
+  {
+    "id": 117,
+    "name": "Ducky Bills",
+    "img": 128,
+    "source": "ex_monster_m_12.png",
+    "src": "/monster-sprites/117.png",
+    "width": 14,
+    "height": 13
+  },
+  {
+    "id": 118,
+    "name": "Sally Prin",
+    "img": 129,
+    "source": "ex_monster_m_13.png",
+    "src": "/monster-sprites/118.png",
+    "width": 15,
+    "height": 25
+  },
+  {
+    "id": 119,
+    "name": "Kairobot",
+    "img": 130,
+    "source": "ex_monster_m_14.png",
+    "src": "/monster-sprites/119.png",
+    "width": 19,
+    "height": 24
+  },
+  {
+    "id": 120,
+    "name": "Vince Balboa",
+    "img": 131,
+    "source": "ex_monster_m_15.png",
+    "src": "/monster-sprites/120.png",
+    "width": 17,
+    "height": 23
+  },
+  {
+    "id": 121,
+    "name": "Tuxy",
+    "img": 132,
+    "source": "ex_monster_m_16.png",
+    "src": "/monster-sprites/121.png",
+    "width": 16,
+    "height": 20
+  },
+  {
+    "id": 122,
+    "name": "Manager Clapperclaw",
+    "img": 133,
+    "source": "ex_monster_m_17.png",
+    "src": "/monster-sprites/122.png",
+    "width": 16,
+    "height": 18
+  },
+  {
+    "id": 123,
+    "name": "Mister X",
+    "img": 134,
+    "source": "ex_monster_m_18.png",
+    "src": "/monster-sprites/123.png",
+    "width": 17,
+    "height": 23
+  },
+  {
+    "id": 124,
+    "name": "Chicken",
+    "img": 110,
+    "source": "all_animal_s_00.png",
+    "src": "/monster-sprites/124.png",
+    "width": 16,
+    "height": 14
+  },
+  {
+    "id": 125,
+    "name": "Pig",
+    "img": 111,
+    "source": "all_animal_s_01.png",
+    "src": "/monster-sprites/125.png",
+    "width": 23,
+    "height": 14
+  },
+  {
+    "id": 126,
+    "name": "Pig",
+    "img": 111,
+    "source": "all_animal_s_01.png",
+    "src": "/monster-sprites/126.png",
+    "width": 23,
+    "height": 14
+  },
+  {
+    "id": 127,
+    "name": "Pig",
+    "img": 111,
+    "source": "all_animal_s_01.png",
+    "src": "/monster-sprites/127.png",
+    "width": 23,
+    "height": 14
+  },
+  {
+    "id": 128,
+    "name": "Pig",
+    "img": 111,
+    "source": "all_animal_s_01.png",
+    "src": "/monster-sprites/128.png",
+    "width": 23,
+    "height": 14
+  },
+  {
+    "id": 129,
+    "name": "Cow",
+    "img": 112,
+    "source": "all_animal_s_02.png",
+    "src": "/monster-sprites/129.png",
+    "width": 35,
+    "height": 21
+  },
+  {
+    "id": 130,
+    "name": "Cow",
+    "img": 112,
+    "source": "all_animal_s_02.png",
+    "src": "/monster-sprites/130.png",
+    "width": 35,
+    "height": 21
+  },
+  {
+    "id": 131,
+    "name": "Shockfish",
+    "img": 113,
+    "source": "all_animal_s_03.png",
+    "src": "/monster-sprites/131.png",
+    "width": 19,
+    "height": 11
+  },
+  {
+    "id": 132,
+    "name": "Telltail Fish",
+    "img": 114,
+    "source": "all_animal_s_04.png",
+    "src": "/monster-sprites/132.png",
+    "width": 28,
+    "height": 15
+  },
+  {
+    "id": 133,
+    "name": "Metalbok",
+    "img": 135,
+    "source": "all_monster_s_02.png",
+    "src": "/monster-sprites/133.png",
+    "width": 33,
+    "height": 18
+  },
+  {
+    "id": 134,
+    "name": "Treasure Sack",
+    "img": 136,
+    "source": "all_monster_l_00.png",
+    "src": "/monster-sprites/134.png",
+    "width": 52,
+    "height": 56
+  },
+  {
+    "id": 135,
+    "name": "Kairobot Knight",
+    "img": 137,
+    "source": "all_monster_l_kairo00.png",
+    "src": "/monster-sprites/135.png",
+    "width": 44,
+    "height": 39
+  },
+  {
+    "id": 136,
+    "name": "Kairobot Mage",
+    "img": 138,
+    "source": "all_monster_l_kairo01.png",
+    "src": "/monster-sprites/136.png",
+    "width": 45,
+    "height": 40
+  },
+  {
+    "id": 137,
+    "name": "Aloha Kairobot",
+    "img": 139,
+    "source": "all_monster_l_kairo02.png",
+    "src": "/monster-sprites/137.png",
+    "width": 32,
+    "height": 36
+  },
+  {
+    "id": 138,
+    "name": "Kairo Kommander",
+    "img": 140,
+    "source": "all_monster_l_kairo03.png",
+    "src": "/monster-sprites/138.png",
+    "width": 38,
+    "height": 40
+  },
+  {
+    "id": 139,
+    "name": "Wairobot Mage",
+    "img": 141,
+    "source": "all_monster_l_wairo00.png",
+    "src": "/monster-sprites/139.png",
+    "width": 45,
+    "height": 35
+  },
+  {
+    "id": 140,
+    "name": "Wairobot Warrior",
+    "img": 142,
+    "source": "all_monster_l_wairo01.png",
+    "src": "/monster-sprites/140.png",
+    "width": 50,
+    "height": 41
+  },
+  {
+    "id": 141,
+    "name": "Demonic Wairobot",
+    "img": 144,
+    "source": "all_monster_l_wairo03.png",
+    "src": "/monster-sprites/141.png",
+    "width": 47,
+    "height": 37
+  },
+  {
+    "id": 142,
+    "name": "Wairo Tank",
+    "img": 143,
+    "source": "all_monster_l_wairo02.png",
+    "src": "/monster-sprites/142.png",
+    "width": 61,
+    "height": 58
+  },
+  {
+    "id": 143,
+    "name": "Wairo Demon King",
+    "img": 145,
+    "source": "all_monster_xl_00.png",
+    "src": "/monster-sprites/143.png",
+    "width": 95,
+    "height": 118
+  },
+  {
+    "id": 144,
+    "name": "Lord of the Frier",
+    "img": 146,
+    "source": "all_monster_xl_01.png",
+    "src": "/monster-sprites/144.png",
+    "width": 141,
+    "height": 74
+  },
+  {
+    "id": 145,
+    "name": "Gifty",
+    "img": 147,
+    "source": "all_monster_s_03.png",
+    "src": "/monster-sprites/145.png",
+    "width": 31,
+    "height": 38
+  },
+  {
+    "id": 146,
+    "name": "Seal",
+    "img": 148,
+    "source": "all_animal_s_05.png",
+    "src": "/monster-sprites/146.png",
+    "width": 33,
+    "height": 14
+  },
+  {
+    "id": 147,
+    "name": "Raccoon",
+    "img": 149,
+    "source": "all_animal_s_06.png",
+    "src": "/monster-sprites/147.png",
+    "width": 21,
+    "height": 17
+  },
+  {
+    "id": 148,
+    "name": "Armadillo",
+    "img": 150,
+    "source": "all_animal_s_07.png",
+    "src": "/monster-sprites/148.png",
+    "width": 28,
+    "height": 16
+  },
+  {
+    "id": 149,
+    "name": "Weasel",
+    "img": 151,
+    "source": "all_animal_s_08.png",
+    "src": "/monster-sprites/149.png",
+    "width": 27,
+    "height": 23
+  },
+  {
+    "id": 150,
+    "name": "Boar",
+    "img": 152,
+    "source": "all_animal_s_09.png",
+    "src": "/monster-sprites/150.png",
+    "width": 27,
+    "height": 15
+  },
+  {
+    "id": 151,
+    "name": "Capybara",
+    "img": 153,
+    "source": "all_animal_s_10.png",
+    "src": "/monster-sprites/151.png",
+    "width": 21,
+    "height": 14
+  },
+  {
+    "id": 152,
+    "name": "Turtle",
+    "img": 154,
+    "source": "all_animal_s_11.png",
+    "src": "/monster-sprites/152.png",
+    "width": 29,
+    "height": 16
+  },
+  {
+    "id": 153,
+    "name": "Fox",
+    "img": 155,
+    "source": "all_animal_s_12.png",
+    "src": "/monster-sprites/153.png",
+    "width": 23,
+    "height": 20
+  },
+  {
+    "id": 154,
+    "name": "Bear",
+    "img": 156,
+    "source": "all_animal_s_13.png",
+    "src": "/monster-sprites/154.png",
+    "width": 31,
+    "height": 20
+  },
+  {
+    "id": 155,
+    "name": "Rhino",
+    "img": 157,
+    "source": "all_animal_s_14.png",
+    "src": "/monster-sprites/155.png",
+    "width": 40,
+    "height": 23
+  },
+  {
+    "id": 156,
+    "name": "Zebra",
+    "img": 158,
+    "source": "all_animal_s_15.png",
+    "src": "/monster-sprites/156.png",
+    "width": 34,
+    "height": 28
+  },
+  {
+    "id": 157,
+    "name": "Elephant",
+    "img": 159,
+    "source": "all_animal_s_16.png",
+    "src": "/monster-sprites/157.png",
+    "width": 42,
+    "height": 25
+  },
+  {
+    "id": 158,
+    "name": "Tanuki",
+    "img": 160,
+    "source": "all_animal_s_17.png",
+    "src": "/monster-sprites/158.png",
+    "width": 19,
+    "height": 18
+  },
+  {
+    "id": 159,
+    "name": "Crane",
+    "img": 161,
+    "source": "all_animal_s_18.png",
+    "src": "/monster-sprites/159.png",
+    "width": 22,
+    "height": 28
+  },
+  {
+    "id": 160,
+    "name": "Tapir",
+    "img": 162,
+    "source": "all_animal_s_19.png",
+    "src": "/monster-sprites/160.png",
+    "width": 28,
+    "height": 20
+  },
+  {
+    "id": 161,
+    "name": "Hamster",
+    "img": 163,
+    "source": "all_animal_s_20.png",
+    "src": "/monster-sprites/161.png",
+    "width": 13,
+    "height": 9
+  },
+  {
+    "id": 162,
+    "name": "Hedgehog",
+    "img": 164,
+    "source": "all_animal_s_21.png",
+    "src": "/monster-sprites/162.png",
+    "width": 19,
+    "height": 13
+  },
+  {
+    "id": 163,
+    "name": "Beaver",
+    "img": 165,
+    "source": "all_animal_s_22.png",
+    "src": "/monster-sprites/163.png",
+    "width": 22,
+    "height": 18
+  },
+  {
+    "id": 164,
+    "name": "Owl",
+    "img": 166,
+    "source": "all_animal_s_23.png",
+    "src": "/monster-sprites/164.png",
+    "width": 16,
+    "height": 17
+  },
+  {
+    "id": 165,
+    "name": "Flying Squirrel",
+    "img": 167,
+    "source": "all_animal_s_24.png",
+    "src": "/monster-sprites/165.png",
+    "width": 19,
+    "height": 17
+  },
+  {
+    "id": 166,
+    "name": "Guinea Pig",
+    "img": 168,
+    "source": "all_animal_s_25.png",
+    "src": "/monster-sprites/166.png",
+    "width": 17,
+    "height": 12
+  },
+  {
+    "id": 167,
+    "name": "Goat",
+    "img": 169,
+    "source": "all_animal_s_26.png",
+    "src": "/monster-sprites/167.png",
+    "width": 29,
+    "height": 22
+  },
+  {
+    "id": 168,
+    "name": "Crocodile",
+    "img": 170,
+    "source": "all_animal_s_27.png",
+    "src": "/monster-sprites/168.png",
+    "width": 41,
+    "height": 17
+  }
+]

@@ -1,0 +1,36 @@
+{
+  "schema": "ka-rust-optimizer-config-v1",
+  "kernel": "coordination/fixed-formation-20261006/kernel/ka_kernel_encounter_v3.dll",
+  "catalog": "coordination/native-preparation/rust/standalone-optimizer/catalog.json",
+  "candidates": "coordination/fixed-formation-20261006/workloads/rust-candidates-fixed-all20.json",
+  "output": "coordination/fixed-formation-20261006/launch/rust/output",
+  "encounterFilter": 0,
+  "candidateLimit": 2,
+  "executors": 2,
+  "generations": 4,
+  "candidatesPerGeneration": 4,
+  "searchSeed": 20261006,
+  "seedPairs": [
+    [
+      100001,
+      100001
+    ],
+    [
+      100002,
+      100002
+    ]
+  ],
+  "mechanicsProvenance": {
+    "engine": "canonical-ka-kernel-encounter-v3",
+    "initialization": "shared-native-rust-ai",
+    "comparisonStatus": "not-compared"
+  },
+  "policyProvenance": {
+    "selection": "mean-Earned",
+    "finish": "explicit-full-candidate-intent",
+    "purpose": "fixed-formation-search",
+    "fixedFormationPolicyHash": "403a443d931840b23ccc1bad071055422fd6e1f465681fbf2b5a6291fef7382f"
+  },
+  "fixedFormation": true,
+  "executionMode": "diagnostic"
+}

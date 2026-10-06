@@ -1,0 +1,93 @@
+{
+  "schema": "ka-fixed-formation-work-status-1",
+  "task": "fixed-formation-20261006",
+  "updatedUtc": "2026-10-05T23:37:07Z",
+  "stage": "complete-with-one-deferred-app-repoint",
+  "policyHash": "403a443d931840b23ccc1bad071055422fd6e1f465681fbf2b5a6291fef7382f",
+  "engines": {
+    "python": {
+      "status": "verified",
+      "evidence": [
+        "coordination/fixed-formation-20261006/python-verification.json"
+      ],
+      "enforcement": [
+        "fixed_formation.py policy module",
+        "strategy_admission_preparation.prepare gate (opt-in)",
+        "strategy_optimizer.Store.add_child gate (opt-in)"
+      ]
+    },
+    "go": {
+      "status": "verified",
+      "evidence": [
+        "coordination/fixed-formation-20261006/go-verification.json",
+        "coordination/fixed-formation-20261006/runs/go-smoke2/status.json"
+      ],
+      "enforcement": [
+        "fixed_formation.go",
+        "search.go admission",
+        "main.go --policy fixed-formation"
+      ]
+    },
+    "rust": {
+      "status": "verified",
+      "evidence": [
+        "coordination/fixed-formation-20261006/rust-verification.json",
+        "coordination/fixed-formation-20261006/runs/rust-smoke/optimizer-output/leaders.json"
+      ],
+      "enforcement": [
+        "src/fixed_formation.rs",
+        "src/main.rs admission + fixed mutation",
+        "src/search.rs mutate_fixed_unique"
+      ]
+    },
+    "cpp": {
+      "status": "verified",
+      "evidence": [
+        "coordination/fixed-formation-20261006/cpp-verification.json"
+      ],
+      "enforcement": [
+        "fixed_formation.cpp/.hpp embedded policy",
+        "admission.cpp admit() gate",
+        "pipeline.cpp identity/fixed-dps-stat/refusal",
+        "main.cpp --prepare-fixed"
+      ]
+    }
+  },
+  "completed": 4,
+  "total": 4,
+  "warnings": [
+    "Original supplied cast (with equipment) is refused under the fixed policy, as required; historical libraries and records are not rewritten.",
+    "Canonical preparation uses five columns; the user's exact 0,1 / 0,2-0,5 / 1,7 notation is preserved unmodified and validated via canonical placement [0,2,3,4,5,1]."
+  ],
+  "blockers": [
+    "Shared desktop app native_optimizer_app.py still pins pre-policy frozen engine revisions (r8/r11/r9); repointing is coordinator-owned and deferred. Policy-activating launch configs are provided and verified."
+  ],
+  "changedFiles": [
+    "tools/embed_cpp_fixed_policy.py",
+    "tools/check_fixed_formation_cpp.py",
+    "tools/build_fixed_launch_configs.py",
+    "tools/check_fixed_formation.py",
+    "tools/verify_fixed_candidates.py",
+    "tools/build_fixed_workloads.py",
+    "KA-Website/tools/recovery/fixed_formation.py",
+    "KA-Website/tools/recovery/strategy_admission_preparation.py",
+    "KA-Website/tools/recovery/strategy_optimizer.py",
+    "coordination/native-preparation/cpp/standalone-optimizer/fixed_formation.hpp",
+    "coordination/native-preparation/cpp/standalone-optimizer/fixed_formation.cpp",
+    "coordination/native-preparation/cpp/standalone-optimizer/fixed_formation_policy.inc",
+    "coordination/native-preparation/cpp/standalone-optimizer/admission.cpp",
+    "coordination/native-preparation/cpp/standalone-optimizer/pipeline.cpp",
+    "coordination/native-preparation/cpp/standalone-optimizer/main.cpp",
+    "coordination/native-preparation/cpp/standalone-optimizer/build.cmd"
+  ],
+  "evidencePaths": [
+    "coordination/fixed-formation-20261006/fixed-formation-policy.json",
+    "coordination/fixed-formation-20261006/python-verification.json",
+    "coordination/fixed-formation-20261006/go-verification.json",
+    "coordination/fixed-formation-20261006/rust-verification.json",
+    "coordination/fixed-formation-20261006/cpp-verification.json",
+    "coordination/fixed-formation-20261006/launch/launch.json",
+    "coordination/fixed-formation-20261006/result.json",
+    "coordination/fixed-formation-20261006/result.md"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "schema": "ka-rust-optimizer-config-v1",
+  "kernel": "../../../../../KA-Website/tools/recovery/native/ka_kernel/target/release/ka_kernel_encounter_v3.dll",
+  "catalog": "../catalog.json",
+  "candidates": "../../../cpp/runs/cpp-kernel-provenance-20261004b/inputs/candidate-only-current-revision.sqlite",
+  "output": "../runs/rust-standalone-smoke-v1",
+  "encounterFilter": 0,
+  "candidateLimit": 2,
+  "executors": 2,
+  "generations": 2,
+  "candidatesPerGeneration": 4,
+  "searchSeed": 20261004,
+  "seedPairs": [[1,2],[3,4]],
+  "mechanicsProvenance": {
+    "engine": "canonical-ka-kernel-encounter-v3",
+    "initialization": "shared-native-rust-ai-with-independent-rust-scenario-preparation",
+    "candidateSourceManifest": "cpp-kernel-provenance-20261004b/snapshot-manifest.json",
+    "comparisonStatus": "not-compared"
+  },
+  "policyProvenance": {
+    "trialSeeds": "nonnegative31bit-fixed-bank",
+    "selection": "mean-Earned-over-complete-resolved-bank",
+    "finish": "explicit-full-candidate-intent",
+    "purpose": "coordinator-correctness-verification-only"
+  }
+}

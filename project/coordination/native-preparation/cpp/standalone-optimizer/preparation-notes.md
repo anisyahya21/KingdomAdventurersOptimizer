@@ -1,0 +1,11 @@
+# C++ raw-intent preparation
+
+`kaopt::prepare(admitted, tables)` builds a `ka_abi.engine_snapshot`-compatible JSON snapshot directly from the admitted raw scenario and recovered table data. The shared battle executor is the canonical Rust `ka_kernel`; this module does not call Python and does not consume an opaque prepared template.
+
+The implemented path covers encounter setup, raw fighter parameter and equipment contribution, EQUIP_MASTER affinity lifting, HP/MP refill, seeded follower selection, enemy parameter generation, formation placement, and the `isolated-scene0` start profile. The start profile derives source cells and monster blackboard keys 19/20, then follows the synchronous team-0 / team-1 InitFighters placement and state-decision ordering. Initial occupancy buckets are created in entity-add order and updated by ordered cell-change callbacks, retaining emptied bucket entries. The result contains the engine snapshot, tick limit, finish policy/code, follower-selection draw count, and reward-scope flag.
+
+`Monster` and `Treasure` catalogs accept either row-object arrays or the canonical decimal-ID map of raw sheet arrays. Map entries are numerically ordered before conversion so catalog iteration is stable. Other catalogs are supplied under their source stem groups (`encounters`, `weapon-skill-profiles`, `formation-rules`, and the resource groups); values must preserve the source ordering used by the canonical path.
+
+This bounded port rejects captured `prePlacement`, non-empty declared starting statuses, household pet expansion, vehicle components, linked parameters, non-empty pre-existing `invokingSkills`, unsupported skill routes, and unsupported single-resident recovery inputs. These are explicit fail-closed limits; the module does not mark a partially built snapshot ready after one of these errors. Empty `startingStatus` is supported and is the form present in the current raw preparation fixture.
+
+The snapshot layout and supported initialization assumptions are documented in code alongside the relevant construction. The coordinator owns runtime parity, native execution, and battle verification. This task ran compilation only; it did not run tests, parity checks, battles, diagnostics, or benchmarks.

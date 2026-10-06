@@ -1,0 +1,35 @@
+{
+  "schema": "ka-go-comparison-test-request-1",
+  "revision": "R11",
+  "sourceRevision": "c6120c459e71287c377184d3586a9679a8ae960cb33e49599dee5aefb4599c8d",
+  "executableSHA256": "574861660dd39e0cfb25f22d8843ff31ea0a43608aa088ee9992d303b447d790",
+  "executable": "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\go\\standalone-optimizer\\revisions\\r11-comparison\\go-optimizer.exe",
+  "seedBankExample": "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\go\\standalone-optimizer\\revisions\\r11-comparison\\comparison-seed-bank-example.json",
+  "seedBankSHA256": "874aba0a97873686dab57ca1bb34b2b0aacc35ded611c563072ffb0f20699baf",
+  "arguments": [
+    "--mode",
+    "baseline-bank",
+    "--input",
+    "ROOT_FROZEN_RAW_WORKLOAD",
+    "--seed-bank",
+    "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\go\\standalone-optimizer\\revisions\\r11-comparison\\comparison-seed-bank-example.json",
+    "--output",
+    "FRESH_ISOLATED_OUTPUT",
+    "--batch",
+    "64",
+    "--executors",
+    "5",
+    "--sync-batch",
+    "1"
+  ],
+  "expected": [
+    "fresh full preparation per candidate and explicit seed pair",
+    "no mutations; candidate-major then bank-minor stream",
+    "true OS journal Sync per record at syncBatch1",
+    "same command resumes without new battles or changed journal",
+    "core74/encounter32/rawbytes/checksum/reward canonical parity",
+    "actual stage boundaries; worker busy sums overlap native batch wall",
+    "diagnostic/unverified/importdisabled outputs; no performance ranking"
+  ],
+  "builderExecutedTests": false
+}

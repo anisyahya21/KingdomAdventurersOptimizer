@@ -1,0 +1,13 @@
+[package]
+name = "ka_shared_engine"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+path = "../../../../../KA-Website/tools/recovery/native/ka_kernel/src/lib.rs"
+crate-type = ["rlib"]
+
+[features]
+profile = []
+large-arena = []

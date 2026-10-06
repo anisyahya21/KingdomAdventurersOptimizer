@@ -1,0 +1,1665 @@
+{
+ "engine": "python",
+ "schema": "ka-fixed-formation-verification-1",
+ "policyHash": "403a443d931840b23ccc1bad071055422fd6e1f465681fbf2b5a6291fef7382f",
+ "encounters": [
+  {
+   "encounterId": 0,
+   "admits": true,
+   "placementRoles": [
+    "dps",
+    "fodder",
+    "fodder",
+    "fodder",
+    "fodder",
+    "healer"
+   ],
+   "placementCells": [
+    [
+     0,
+     4
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     4
+    ],
+    [
+     0,
+     5
+    ]
+   ],
+   "mutations": [
+    {
+     "stat": "atk",
+     "before": 341,
+     "after": 6,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "spd",
+     "before": 142,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "lck",
+     "before": 229,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "def",
+     "before": 1117,
+     "after": 3,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "hp",
+     "before": 4239,
+     "after": 55,
+     "admitted": true,
+     "identityChanged": true
+    }
+   ],
+   "refusals": {
+    "fodderStat": true,
+    "dpsSkill": true,
+    "dpsEquipment": true,
+    "extraUnit": true
+   },
+   "identityStable": true
+  },
+  {
+   "encounterId": 1,
+   "admits": true,
+   "placementRoles": [
+    "dps",
+    "fodder",
+    "fodder",
+    "fodder",
+    "fodder",
+    "healer"
+   ],
+   "placementCells": [
+    [
+     0,
+     4
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     4
+    ],
+    [
+     0,
+     5
+    ]
+   ],
+   "mutations": [
+    {
+     "stat": "atk",
+     "before": 639,
+     "after": 6,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "spd",
+     "before": 142,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "lck",
+     "before": 165,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "def",
+     "before": 1117,
+     "after": 3,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "hp",
+     "before": 4239,
+     "after": 55,
+     "admitted": true,
+     "identityChanged": true
+    }
+   ],
+   "refusals": {
+    "fodderStat": true,
+    "dpsSkill": true,
+    "dpsEquipment": true,
+    "extraUnit": true
+   },
+   "identityStable": true
+  },
+  {
+   "encounterId": 2,
+   "admits": true,
+   "placementRoles": [
+    "dps",
+    "fodder",
+    "fodder",
+    "fodder",
+    "fodder",
+    "healer"
+   ],
+   "placementCells": [
+    [
+     0,
+     5
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "mutations": [
+    {
+     "stat": "atk",
+     "before": 930,
+     "after": 6,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "spd",
+     "before": 67,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "lck",
+     "before": 100,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "def",
+     "before": 1117,
+     "after": 3,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "hp",
+     "before": 4239,
+     "after": 55,
+     "admitted": true,
+     "identityChanged": true
+    }
+   ],
+   "refusals": {
+    "fodderStat": true,
+    "dpsSkill": true,
+    "dpsEquipment": true,
+    "extraUnit": true
+   },
+   "identityStable": true
+  },
+  {
+   "encounterId": 3,
+   "admits": true,
+   "placementRoles": [
+    "dps",
+    "fodder",
+    "fodder",
+    "fodder",
+    "fodder",
+    "healer"
+   ],
+   "placementCells": [
+    [
+     0,
+     6
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     0,
+     7
+    ]
+   ],
+   "mutations": [
+    {
+     "stat": "atk",
+     "before": 364,
+     "after": 6,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "spd",
+     "before": 399,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "lck",
+     "before": 99,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "def",
+     "before": 1117,
+     "after": 3,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "hp",
+     "before": 4239,
+     "after": 55,
+     "admitted": true,
+     "identityChanged": true
+    }
+   ],
+   "refusals": {
+    "fodderStat": true,
+    "dpsSkill": true,
+    "dpsEquipment": true,
+    "extraUnit": true
+   },
+   "identityStable": true
+  },
+  {
+   "encounterId": 4,
+   "admits": true,
+   "placementRoles": [
+    "dps",
+    "fodder",
+    "fodder",
+    "fodder",
+    "fodder",
+    "healer"
+   ],
+   "placementCells": [
+    [
+     0,
+     4
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     4
+    ],
+    [
+     0,
+     5
+    ]
+   ],
+   "mutations": [
+    {
+     "stat": "atk",
+     "before": 309,
+     "after": 6,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "spd",
+     "before": 314,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "lck",
+     "before": 20,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "def",
+     "before": 1117,
+     "after": 3,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "hp",
+     "before": 4239,
+     "after": 55,
+     "admitted": true,
+     "identityChanged": true
+    }
+   ],
+   "refusals": {
+    "fodderStat": true,
+    "dpsSkill": true,
+    "dpsEquipment": true,
+    "extraUnit": true
+   },
+   "identityStable": true
+  },
+  {
+   "encounterId": 5,
+   "admits": true,
+   "placementRoles": [
+    "dps",
+    "fodder",
+    "fodder",
+    "fodder",
+    "fodder",
+    "healer"
+   ],
+   "placementCells": [
+    [
+     0,
+     4
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     4
+    ],
+    [
+     0,
+     5
+    ]
+   ],
+   "mutations": [
+    {
+     "stat": "atk",
+     "before": 343,
+     "after": 6,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "spd",
+     "before": 200,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "lck",
+     "before": 105,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "def",
+     "before": 1117,
+     "after": 3,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "hp",
+     "before": 4239,
+     "after": 55,
+     "admitted": true,
+     "identityChanged": true
+    }
+   ],
+   "refusals": {
+    "fodderStat": true,
+    "dpsSkill": true,
+    "dpsEquipment": true,
+    "extraUnit": true
+   },
+   "identityStable": true
+  },
+  {
+   "encounterId": 6,
+   "admits": true,
+   "placementRoles": [
+    "dps",
+    "fodder",
+    "fodder",
+    "fodder",
+    "fodder",
+    "healer"
+   ],
+   "placementCells": [
+    [
+     0,
+     5
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "mutations": [
+    {
+     "stat": "atk",
+     "before": 795,
+     "after": 6,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "spd",
+     "before": 121,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "lck",
+     "before": 90,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "def",
+     "before": 1117,
+     "after": 3,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "hp",
+     "before": 4239,
+     "after": 55,
+     "admitted": true,
+     "identityChanged": true
+    }
+   ],
+   "refusals": {
+    "fodderStat": true,
+    "dpsSkill": true,
+    "dpsEquipment": true,
+    "extraUnit": true
+   },
+   "identityStable": true
+  },
+  {
+   "encounterId": 7,
+   "admits": true,
+   "placementRoles": [
+    "dps",
+    "fodder",
+    "fodder",
+    "fodder",
+    "fodder",
+    "healer"
+   ],
+   "placementCells": [
+    [
+     0,
+     6
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     0,
+     7
+    ]
+   ],
+   "mutations": [
+    {
+     "stat": "atk",
+     "before": 354,
+     "after": 6,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "spd",
+     "before": 252,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "lck",
+     "before": 80,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "def",
+     "before": 1117,
+     "after": 3,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "hp",
+     "before": 4239,
+     "after": 55,
+     "admitted": true,
+     "identityChanged": true
+    }
+   ],
+   "refusals": {
+    "fodderStat": true,
+    "dpsSkill": true,
+    "dpsEquipment": true,
+    "extraUnit": true
+   },
+   "identityStable": true
+  },
+  {
+   "encounterId": 8,
+   "admits": true,
+   "placementRoles": [
+    "dps",
+    "fodder",
+    "fodder",
+    "fodder",
+    "fodder",
+    "healer"
+   ],
+   "placementCells": [
+    [
+     0,
+     4
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     4
+    ],
+    [
+     0,
+     5
+    ]
+   ],
+   "mutations": [
+    {
+     "stat": "atk",
+     "before": 198,
+     "after": 6,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "spd",
+     "before": 206,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "lck",
+     "before": 229,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "def",
+     "before": 1117,
+     "after": 3,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "hp",
+     "before": 4239,
+     "after": 55,
+     "admitted": true,
+     "identityChanged": true
+    }
+   ],
+   "refusals": {
+    "fodderStat": true,
+    "dpsSkill": true,
+    "dpsEquipment": true,
+    "extraUnit": true
+   },
+   "identityStable": true
+  },
+  {
+   "encounterId": 9,
+   "admits": true,
+   "placementRoles": [
+    "dps",
+    "fodder",
+    "fodder",
+    "fodder",
+    "fodder",
+    "healer"
+   ],
+   "placementCells": [
+    [
+     0,
+     4
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     4
+    ],
+    [
+     0,
+     5
+    ]
+   ],
+   "mutations": [
+    {
+     "stat": "atk",
+     "before": 737,
+     "after": 6,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "spd",
+     "before": 121,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "lck",
+     "before": 230,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "def",
+     "before": 1117,
+     "after": 3,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "hp",
+     "before": 4239,
+     "after": 55,
+     "admitted": true,
+     "identityChanged": true
+    }
+   ],
+   "refusals": {
+    "fodderStat": true,
+    "dpsSkill": true,
+    "dpsEquipment": true,
+    "extraUnit": true
+   },
+   "identityStable": true
+  },
+  {
+   "encounterId": 10,
+   "admits": true,
+   "placementRoles": [
+    "dps",
+    "fodder",
+    "fodder",
+    "fodder",
+    "fodder",
+    "healer"
+   ],
+   "placementCells": [
+    [
+     0,
+     5
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "mutations": [
+    {
+     "stat": "atk",
+     "before": 1450,
+     "after": 6,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "spd",
+     "before": 169,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "lck",
+     "before": 165,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "def",
+     "before": 1117,
+     "after": 3,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "hp",
+     "before": 4239,
+     "after": 55,
+     "admitted": true,
+     "identityChanged": true
+    }
+   ],
+   "refusals": {
+    "fodderStat": true,
+    "dpsSkill": true,
+    "dpsEquipment": true,
+    "extraUnit": true
+   },
+   "identityStable": true
+  },
+  {
+   "encounterId": 11,
+   "admits": true,
+   "placementRoles": [
+    "dps",
+    "fodder",
+    "fodder",
+    "fodder",
+    "fodder",
+    "healer"
+   ],
+   "placementCells": [
+    [
+     0,
+     6
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     0,
+     7
+    ]
+   ],
+   "mutations": [
+    {
+     "stat": "atk",
+     "before": 349,
+     "after": 6,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "spd",
+     "before": 1300,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "lck",
+     "before": 100,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "def",
+     "before": 1117,
+     "after": 3,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "hp",
+     "before": 4239,
+     "after": 55,
+     "admitted": true,
+     "identityChanged": true
+    }
+   ],
+   "refusals": {
+    "fodderStat": true,
+    "dpsSkill": true,
+    "dpsEquipment": true,
+    "extraUnit": true
+   },
+   "identityStable": true
+  },
+  {
+   "encounterId": 12,
+   "admits": true,
+   "placementRoles": [
+    "dps",
+    "fodder",
+    "fodder",
+    "fodder",
+    "fodder",
+    "healer"
+   ],
+   "placementCells": [
+    [
+     0,
+     4
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     4
+    ],
+    [
+     0,
+     5
+    ]
+   ],
+   "mutations": [
+    {
+     "stat": "atk",
+     "before": 672,
+     "after": 6,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "spd",
+     "before": 170,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "lck",
+     "before": 165,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "def",
+     "before": 1117,
+     "after": 3,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "hp",
+     "before": 4239,
+     "after": 55,
+     "admitted": true,
+     "identityChanged": true
+    }
+   ],
+   "refusals": {
+    "fodderStat": true,
+    "dpsSkill": true,
+    "dpsEquipment": true,
+    "extraUnit": true
+   },
+   "identityStable": true
+  },
+  {
+   "encounterId": 13,
+   "admits": true,
+   "placementRoles": [
+    "dps",
+    "fodder",
+    "fodder",
+    "fodder",
+    "fodder",
+    "healer"
+   ],
+   "placementCells": [
+    [
+     0,
+     4
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     4
+    ],
+    [
+     0,
+     5
+    ]
+   ],
+   "mutations": [
+    {
+     "stat": "atk",
+     "before": 600,
+     "after": 6,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "spd",
+     "before": 400,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "lck",
+     "before": 100,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "def",
+     "before": 1117,
+     "after": 3,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "hp",
+     "before": 4239,
+     "after": 55,
+     "admitted": true,
+     "identityChanged": true
+    }
+   ],
+   "refusals": {
+    "fodderStat": true,
+    "dpsSkill": true,
+    "dpsEquipment": true,
+    "extraUnit": true
+   },
+   "identityStable": true
+  },
+  {
+   "encounterId": 14,
+   "admits": true,
+   "placementRoles": [
+    "dps",
+    "fodder",
+    "fodder",
+    "fodder",
+    "fodder",
+    "healer"
+   ],
+   "placementCells": [
+    [
+     0,
+     5
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "mutations": [
+    {
+     "stat": "atk",
+     "before": 360,
+     "after": 6,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "spd",
+     "before": 964,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "lck",
+     "before": 81,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "def",
+     "before": 1117,
+     "after": 3,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "hp",
+     "before": 4239,
+     "after": 55,
+     "admitted": true,
+     "identityChanged": true
+    }
+   ],
+   "refusals": {
+    "fodderStat": true,
+    "dpsSkill": true,
+    "dpsEquipment": true,
+    "extraUnit": true
+   },
+   "identityStable": true
+  },
+  {
+   "encounterId": 15,
+   "admits": true,
+   "placementRoles": [
+    "dps",
+    "fodder",
+    "fodder",
+    "fodder",
+    "fodder",
+    "healer"
+   ],
+   "placementCells": [
+    [
+     0,
+     6
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     0,
+     7
+    ]
+   ],
+   "mutations": [
+    {
+     "stat": "atk",
+     "before": 387,
+     "after": 6,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "spd",
+     "before": 120,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "lck",
+     "before": 71,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "def",
+     "before": 1117,
+     "after": 3,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "hp",
+     "before": 4239,
+     "after": 55,
+     "admitted": true,
+     "identityChanged": true
+    }
+   ],
+   "refusals": {
+    "fodderStat": true,
+    "dpsSkill": true,
+    "dpsEquipment": true,
+    "extraUnit": true
+   },
+   "identityStable": true
+  },
+  {
+   "encounterId": 16,
+   "admits": true,
+   "placementRoles": [
+    "dps",
+    "fodder",
+    "fodder",
+    "fodder",
+    "fodder",
+    "healer"
+   ],
+   "placementCells": [
+    [
+     0,
+     4
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     4
+    ],
+    [
+     0,
+     5
+    ]
+   ],
+   "mutations": [
+    {
+     "stat": "atk",
+     "before": 248,
+     "after": 6,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "spd",
+     "before": 206,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "lck",
+     "before": 229,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "def",
+     "before": 1117,
+     "after": 3,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "hp",
+     "before": 4239,
+     "after": 55,
+     "admitted": true,
+     "identityChanged": true
+    }
+   ],
+   "refusals": {
+    "fodderStat": true,
+    "dpsSkill": true,
+    "dpsEquipment": true,
+    "extraUnit": true
+   },
+   "identityStable": true
+  },
+  {
+   "encounterId": 17,
+   "admits": true,
+   "placementRoles": [
+    "dps",
+    "fodder",
+    "fodder",
+    "fodder",
+    "fodder",
+    "healer"
+   ],
+   "placementCells": [
+    [
+     0,
+     4
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     4
+    ],
+    [
+     0,
+     5
+    ]
+   ],
+   "mutations": [
+    {
+     "stat": "atk",
+     "before": 472,
+     "after": 6,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "spd",
+     "before": 252,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "lck",
+     "before": 99,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "def",
+     "before": 1117,
+     "after": 3,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "hp",
+     "before": 4239,
+     "after": 55,
+     "admitted": true,
+     "identityChanged": true
+    }
+   ],
+   "refusals": {
+    "fodderStat": true,
+    "dpsSkill": true,
+    "dpsEquipment": true,
+    "extraUnit": true
+   },
+   "identityStable": true
+  },
+  {
+   "encounterId": 18,
+   "admits": true,
+   "placementRoles": [
+    "dps",
+    "fodder",
+    "fodder",
+    "fodder",
+    "fodder",
+    "healer"
+   ],
+   "placementCells": [
+    [
+     0,
+     5
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "mutations": [
+    {
+     "stat": "atk",
+     "before": 700,
+     "after": 6,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "spd",
+     "before": 400,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "lck",
+     "before": 100,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "def",
+     "before": 1117,
+     "after": 3,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "hp",
+     "before": 4239,
+     "after": 55,
+     "admitted": true,
+     "identityChanged": true
+    }
+   ],
+   "refusals": {
+    "fodderStat": true,
+    "dpsSkill": true,
+    "dpsEquipment": true,
+    "extraUnit": true
+   },
+   "identityStable": true
+  },
+  {
+   "encounterId": 19,
+   "admits": true,
+   "placementRoles": [
+    "dps",
+    "fodder",
+    "fodder",
+    "fodder",
+    "fodder",
+    "healer"
+   ],
+   "placementCells": [
+    [
+     0,
+     6
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     0,
+     7
+    ]
+   ],
+   "mutations": [
+    {
+     "stat": "atk",
+     "before": 577,
+     "after": 6,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "spd",
+     "before": 314,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "lck",
+     "before": 99,
+     "after": 5,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "def",
+     "before": 1117,
+     "after": 3,
+     "admitted": true,
+     "identityChanged": true
+    },
+    {
+     "stat": "hp",
+     "before": 4239,
+     "after": 55,
+     "admitted": true,
+     "identityChanged": true
+    }
+   ],
+   "refusals": {
+    "fodderStat": true,
+    "dpsSkill": true,
+    "dpsEquipment": true,
+    "extraUnit": true
+   },
+   "identityStable": true
+  }
+ ],
+ "errors": [],
+ "warnings": [],
+ "checks": {
+  "encountersAdmitted": 20,
+  "placementCorrect": 20,
+  "allMutationsAdmitted": true,
+  "allRefusalsEnforced": true,
+  "identityDeterministic": true
+ },
+ "integration": {
+  "defaultOffSilent": true,
+  "enabledAdmitsFixed": true,
+  "enabledRefusesNonFixed": true,
+  "admissionPreparationRefuses": true,
+  "optimizerChildGateWired": true,
+  "activation": "fixed_formation.set_enabled(True)"
+ },
+ "ok": true
+}

@@ -1,0 +1,11 @@
+{
+  "purpose": "raw admission/preparation diagnostics; no field stripping",
+  "candidateCount": 20,
+  "startProfileCount": 20,
+  "workloadPath": "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\shared\\builder-inputs\\go-current-all20-workload.json",
+  "workloadSha256": "ed221ff8c0be1193fdd419b35011d8ae3eb1df46ab0f2c8ba64c1b3c6efc2b4f",
+  "sourceArraySha256": "4bf73b398a17f47cec13a7399bc8771709cc3518b2d3e44d9539c16f202ece56",
+  "tablesSourceSha256": "c1e9fad9efe1e890ac5090a4cde7f355b6c2358d90eb5f16905e70a69654c42c",
+  "expectedOracle": "raw-preparation-oracle/manifest.json",
+  "battleExecutions": 0
+}

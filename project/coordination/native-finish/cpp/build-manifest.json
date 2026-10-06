@@ -1,0 +1,54 @@
+{
+  "schema": "native-finish-build-v1",
+  "language": "cpp",
+  "revision": "r23",
+  "executablePath": "coordination/native-preparation/cpp/standalone-optimizer/revisions/r23/standalone-optimizer/optimizer.exe",
+  "executableSha256": "21889daeec64f7d1fd47d058d1760912c7822c2f06f79bedcca375e551231117",
+  "kernelPath": "coordination/native-preparation/shared/runs/cpp-R9-search-resume-20261004T213124292380Z/inputs/ka_kernel_encounter_v3.dll",
+  "kernelSha256": "07ee7d36e3bd1acc9b431095d241eb6cab04a77ffedd0e011074a77fa1848e19",
+  "sourceSetSha256": "beb5b8c1b52ac8d5fed2e024cc660ed8550899e0c7aeb7bf4d079707314f9565",
+  "sourceSetDigestMapping": "SHA256(sorted relative cpp/hpp name + LF + SHA256 + LF; includes battle ABI and nlohmann header)",
+  "policySemanticsVersion": "native-original-earned-v1",
+  "capabilities": {
+    "evaluate": true,
+    "orderedSeedPairs": true,
+    "search": true,
+    "nativeProposals": true,
+    "productionValidationGate": false,
+    "nativeTuning": true,
+    "effectiveTuningTargets": true,
+    "nativeSkillArms": true,
+    "nativeNamedUnitSkillArms": true,
+    "nativeProbe": true,
+    "replay": true,
+    "replayReason": "Implemented native tick capture; runtime verification pending",
+    "intentFeatures": [
+      "on-verdict",
+      "generated-formation",
+      "explicit-human-equipment",
+      "pets",
+      "household-owners",
+      "captured-placement",
+      "initial-invoking",
+      "starting-status",
+      "scheduled-items-0-2-4"
+    ],
+    "unsupported": [
+      "initial-created-objects"
+    ],
+    "intentParityVerification": "pending",
+    "mixedEncounterScheduling": true,
+    "liveWorkTelemetry": true,
+    "searchStateImport": true
+  },
+  "staticInputs": {
+    "catalog": {
+      "path": "coordination/native-preparation/shared/runs/cpp-R9-search-resume-20261004T213124292380Z/inputs/facts.json",
+      "sha256": "a0c4b637a8d98df86f7c8e18984d6234c999522e424c1a593e4e385c0cb06657"
+    },
+    "statBounds": {
+      "path": "RE-evidence/20260922-search-contract/stat-bounds.json",
+      "sha256": "ed9ef305880a045af30b03a7b728ab3a8eec0a82c6a1c62493cd7f86074fecdb"
+    }
+  }
+}

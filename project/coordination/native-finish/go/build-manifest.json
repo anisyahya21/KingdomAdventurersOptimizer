@@ -1,0 +1,167 @@
+{
+  "schema": "native-finish-build-v1",
+  "language": "go",
+  "revision": "09d6242d59dc48c387180c64634684e0b5ae37c46fe230428c13cfec76228034",
+  "executablePath": "coordination/native-preparation/go/standalone-optimizer/revisions/resume-serialization-index-09d6242d59dc/go-optimizer.exe",
+  "executableSha256": "f0b38a20dd9a18f3b700e336a43387a0ac0fd784973e689e397f2752b8f161cb",
+  "kernelPath": "coordination/native-finish/go/visual-kernel-builds/517922e82afcc36f020fde21f33dfa5ae5b2f883562b9e5a610760e3d489efca/artifact/ka_kernel_encounter_v3-2fb0b5c3b18005381a428b10ea86eef2fa261d7cb5cee78aa63649fa4305fb03.dll",
+  "kernelSha256": "2fb0b5c3b18005381a428b10ea86eef2fa261d7cb5cee78aa63649fa4305fb03",
+  "staticInputs": {
+    "catalog": {
+      "path": "coordination/native-preparation/shared/comparison-inputs/bank2-v3/inputs/catalog.json",
+      "sha256": "d9a634203c9d6cb5e6caff6b4bf0d28f984e3feda3a00ab17502f018d2c41274"
+    },
+    "facts": {
+      "path": "coordination/native-preparation/shared/comparison-inputs/bank2-v3/inputs/facts.json",
+      "sha256": "a0c4b637a8d98df86f7c8e18984d6234c999522e424c1a593e4e385c0cb06657"
+    },
+    "kernel": {
+      "path": "coordination/native-finish/go/visual-kernel-builds/517922e82afcc36f020fde21f33dfa5ae5b2f883562b9e5a610760e3d489efca/artifact/ka_kernel_encounter_v3-2fb0b5c3b18005381a428b10ea86eef2fa261d7cb5cee78aa63649fa4305fb03.dll",
+      "sha256": "2fb0b5c3b18005381a428b10ea86eef2fa261d7cb5cee78aa63649fa4305fb03"
+    },
+    "searchBounds": {
+      "path": "RE-evidence/20260922-search-contract/stat-bounds.json",
+      "sha256": "ed9ef305880a045af30b03a7b728ab3a8eec0a82c6a1c62493cd7f86074fecdb"
+    }
+  },
+  "kernelSource": {
+    "arenaVariant": "primary; large-arena feature disabled to match pinned bank2-v3 DLL",
+    "artifactBytes": 251392,
+    "artifactHashFirst": "2fb0b5c3b18005381a428b10ea86eef2fa261d7cb5cee78aa63649fa4305fb03",
+    "artifactHashSecond": "2fb0b5c3b18005381a428b10ea86eef2fa261d7cb5cee78aa63649fa4305fb03",
+    "artifactStable": true,
+    "baseKernelSha256": "07ee7d36e3bd1acc9b431095d241eb6cab04a77ffedd0e011074a77fa1848e19",
+    "baseSourceHashes": {
+      "Cargo.lock": "8c8a5a21e04c417db923035553972124f7432daca464b3d93f7b496f804ff73a",
+      "Cargo.toml": "219bb9807636a926c88f16b75e997923725db7347ccca91a6e0493b158e83018",
+      "encounter-source-manifest.json": "c2750c00e736853a149745ca4e0b6715924873abec274bdacf8bff8ae861efb6",
+      "src/ai.rs": "03fa073d70ff2fa4a360479ab6383e121de7758ae4696f72a031377fa1a11eb5",
+      "src/battle.rs": "e741f4d57c3421d0e922671601df8f75be96a650cb55749c6c7e07732ea6422d",
+      "src/battle_control.rs": "ae26169c102d4e42d69f3653aed4c0d81953ac78d7b9b8659a946a24016ee2c2",
+      "src/combat.rs": "84d3b343f1eca285833c383e881eb97326216a95b5ed075aec99f1c4d6f92199",
+      "src/lib.rs": "d3e651de11bee9b4bca02c294f86f26ec31f8fddb8b759890a9814124121c26f",
+      "src/params.rs": "d93c7914b7649ec0fdfb0c1f93be957ddc8a2278fc922e350276835a17e88e4c",
+      "src/phases.rs": "9d0801dc82e6e33d5b8d9b7fcacee1440249f6aa2425cc44329bce08b007e6af",
+      "src/profile.rs": "f9186633e289edc2400273177a7b1f0918a4704ddc4fef7e5bfe95610359c6a8",
+      "src/rng.rs": "5f75e5d4e19ac015ce7cec625d499ad13ae12c977f91f987ce710ec985d66976",
+      "src/state.rs": "d2db39a45ee671c5f9cefe7b2d28e33f7b21aa4de1c3c9ba0c13694f73868718",
+      "src/world.rs": "ff130c85e7f2f3914599fee73e27570aa007b7461c5f9623fe5c6d38e9ee8334"
+    },
+    "baseSourceRevision": "ab2086307f2000dfbd55b70f713cee209afc67468e68095e410a7915c0801965",
+    "buildProfile": "release; crate profile uses opt-level=3, LTO, codegen-units=1, panic=abort",
+    "cargoPath": "C:\\Users\\anisb\\.cargo\\bin\\cargo.exe",
+    "command": [
+      "C:\\Users\\anisb\\.cargo\\bin\\cargo.exe",
+      "build",
+      "--release",
+      "--lib",
+      "--locked",
+      "--offline",
+      "--jobs",
+      "6"
+    ],
+    "commandText": "C:\\Users\\anisb\\.cargo\\bin\\cargo.exe build --release --lib --locked --offline --jobs 6",
+    "compileElapsedSeconds": 3.621,
+    "completedUtc": "2026-10-05T05:26:09.031889+02:00",
+    "copyCompleted": true,
+    "createdUtc": "2026-10-05T05:26:05.169121+02:00",
+    "exitCode": 0,
+    "features": [],
+    "goOwnedCopyChangedDuringBuild": false,
+    "inputManifestPath": "coordination/native-preparation/shared/comparison-inputs/bank2-v3/input-set-manifest.json",
+    "jobs": 6,
+    "kernelPath": "coordination/native-finish/go/visual-kernel-builds/517922e82afcc36f020fde21f33dfa5ae5b2f883562b9e5a610760e3d489efca/artifact/ka_kernel_encounter_v3-2fb0b5c3b18005381a428b10ea86eef2fa261d7cb5cee78aa63649fa4305fb03.dll",
+    "kernelSha256": "2fb0b5c3b18005381a428b10ea86eef2fa261d7cb5cee78aa63649fa4305fb03",
+    "logs": {
+      "status": "coordination/native-finish/go/visual-kernel-builds/517922e82afcc36f020fde21f33dfa5ae5b2f883562b9e5a610760e3d489efca/build-status.json",
+      "stderr": "coordination/native-finish/go/visual-kernel-builds/517922e82afcc36f020fde21f33dfa5ae5b2f883562b9e5a610760e3d489efca/cargo.stderr.log",
+      "stdout": "coordination/native-finish/go/visual-kernel-builds/517922e82afcc36f020fde21f33dfa5ae5b2f883562b9e5a610760e3d489efca/cargo.stdout.log"
+    },
+    "parity": "pending: built from exact pinned source plus only two getter exports; no parity run here",
+    "pinnedKernelPath": "coordination/native-preparation/shared/comparison-inputs/bank2-v3/inputs/ka_kernel_encounter_v3.dll",
+    "rustcPath": "C:\\Users\\anisb\\.cargo\\bin\\rustc.exe",
+    "schema": 1,
+    "sourceChangedDuringBuild": false,
+    "sourceHashes": {
+      "Cargo.lock": "8c8a5a21e04c417db923035553972124f7432daca464b3d93f7b496f804ff73a",
+      "Cargo.toml": "219bb9807636a926c88f16b75e997923725db7347ccca91a6e0493b158e83018",
+      "encounter-source-manifest.json": "c2750c00e736853a149745ca4e0b6715924873abec274bdacf8bff8ae861efb6",
+      "src/ai.rs": "03fa073d70ff2fa4a360479ab6383e121de7758ae4696f72a031377fa1a11eb5",
+      "src/battle.rs": "e741f4d57c3421d0e922671601df8f75be96a650cb55749c6c7e07732ea6422d",
+      "src/battle_control.rs": "ae26169c102d4e42d69f3653aed4c0d81953ac78d7b9b8659a946a24016ee2c2",
+      "src/combat.rs": "84d3b343f1eca285833c383e881eb97326216a95b5ed075aec99f1c4d6f92199",
+      "src/lib.rs": "06c986b088de1356d8fcfe86e6ab39cf2fe174d5aebce46441a87acd1e1be61c",
+      "src/params.rs": "d93c7914b7649ec0fdfb0c1f93be957ddc8a2278fc922e350276835a17e88e4c",
+      "src/phases.rs": "9d0801dc82e6e33d5b8d9b7fcacee1440249f6aa2425cc44329bce08b007e6af",
+      "src/profile.rs": "f9186633e289edc2400273177a7b1f0918a4704ddc4fef7e5bfe95610359c6a8",
+      "src/rng.rs": "5f75e5d4e19ac015ce7cec625d499ad13ae12c977f91f987ce710ec985d66976",
+      "src/state.rs": "d2db39a45ee671c5f9cefe7b2d28e33f7b21aa4de1c3c9ba0c13694f73868718",
+      "src/world.rs": "ff130c85e7f2f3914599fee73e27570aa007b7461c5f9623fe5c6d38e9ee8334"
+    },
+    "sourceManifestPath": "KA-Website/tools/recovery/native/ka_kernel/encounter-source-manifest.json",
+    "sourcePath": "coordination/native-finish/go/visual-kernel-builds/517922e82afcc36f020fde21f33dfa5ae5b2f883562b9e5a610760e3d489efca/source",
+    "sourceProvenance": "verified: source hashes and both pinned DLL references match",
+    "sourceRevision": "517922e82afcc36f020fde21f33dfa5ae5b2f883562b9e5a610760e3d489efca",
+    "status": "complete"
+  },
+  "capabilities": {
+    "exactEvaluate": true,
+    "orderedSeedPairs": true,
+    "nativeSearch": true,
+    "nativePreparation": true,
+    "adaptiveStateExport": true,
+    "fineTune": [
+      "atk",
+      "def",
+      "hp",
+      "mp",
+      "spd",
+      "lck",
+      "dex",
+      "int",
+      "vig",
+      "herbs"
+    ],
+    "fineTuneValueMode": "effective",
+    "fineTuneDefaultLadder": true,
+    "probe": true,
+    "probeValueMode": "raw",
+    "probeDefaultLadder": true,
+    "probeCartesianGrid": true,
+    "skillRemoval": [
+      "single-slot",
+      "whole-team"
+    ],
+    "compactReport": [
+      "core",
+      "encounter-v3",
+      "mp",
+      "herb"
+    ],
+    "visualReplay": true,
+    "nativeParameterTelemetry": true,
+    "explicitOrderedHouseholds": true,
+    "householdOrdering": [
+      "selected-owner-order",
+      "declared-pet-list-order",
+      "after-selected-roster"
+    ],
+    "ownerPlayerFormationPriority": true,
+    "consumables": [
+      "herb-stock",
+      "herb-max-uses",
+      "named-human-trigger",
+      "MP-watch",
+      "scheduled-herb",
+      "scheduled-all-resident-items"
+    ],
+    "populationLimit": true,
+    "productionValidated": false,
+    "unsupportedIntentFeatures": [
+      "Finish/EXP/teardown inputs not integrated in canonical sandbox",
+      "single-resident item use unsupported",
+      "canonical preparation rejects unsupported skill routes explicitly"
+    ]
+  },
+  "testsExecutedByBuilder": false
+}

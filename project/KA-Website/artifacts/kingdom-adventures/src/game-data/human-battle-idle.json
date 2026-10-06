@@ -1,0 +1,99 @@
+{
+  "note": "Frozen native-derived human battle idle: EQUIP_WAIT / TYPE_NORMAL row 0 / direction UP / settled post-direction-update state / SEB frame 0. Every value here is read from the intact original SEB and the original tables; nothing is fitted, estimated or taken from a screenshot. This is one frozen idle state, not the complete human animation (walk, attack, hit, knock-down and the runtime-supplied lines are outside this data).",
+  "frozenState": {
+    "clip": "EQUIP_WAIT",
+    "imageSetRow": "TYPE_NORMAL row 0",
+    "direction": "UP",
+    "frame": 0,
+    "seb": {
+      "group": "chara",
+      "file": "equip_wait_up.seb",
+      "source": "RE-evidence/20260912-combat/chara-animation-original/equip_wait_up.seb",
+      "bytes": 980,
+      "sha256": "bbf52a853b598890352dbf9599bd3db87027185806b96dffd3c9d086a01d9971",
+      "layers": 14,
+      "keyRecords": 46,
+      "maxFrame": 14,
+      "serialization": "4-byte global header, then one 4-byte header plus N x 20-byte key records per line; the walk ends exactly at byte 980. The extracted tmp/KA_assets and api-server copies are 976-byte prefixes that drop the last record of line 13, so they are NOT the source of this data."
+    }
+  },
+  "resolution": {
+    "rule": "frontImgIds[line] = SEB record texId >= 0 ? imgIds[texId] : texId; the line draws imgIds value as an image index inside that line's own resource group",
+    "evidence": "SUPPORTED",
+    "note": "The battle setup rewrites imgIds[11] (weapon) and imgIds[12] (shield) and forces imgIds[3] = -2, then calls SetHumanImgs 0x165EA88. Reading each line's SEB texId as the imgIds slot reproduces all fifteen line/image pairs of the two frozen demo inputs, including the Armory-missing shield (Archer imgIds[12] = -2) and the forced shoes skip (imgIds[3] = -2). The alternative reading - an IMG_TABLE row indexed by line number - matches no recorded HumanResourceSet row for the same pairs, so it is not used. imgIds value -2 skips the line and -1 keeps the SEB's own texId (also -1 on these lines), which is why every line the original leaves to the runtime is not drawn here."
+  },
+  "lineResourceGroups": {
+    "row": [18, 25, 12, 15, 19, 16, 14, 17, 13, -2, -2, -2, 25, 16],
+    "source": "HumanResourceSet FRONT_RES_IDS rows (RE-evidence/20260918-battle-visual-replay/human-native-recovery/HUMAN-RESOURCE-TABLES.json); the row whose line order matches the frozen frame-0 geometry is [18,25,12,15,19,16,14,17,13,-2,-2,-2,25,16]",
+    "evidence": "SUPPORTED",
+    "note": "The row pairing of that recovery is SUPPORTED, not CONFIRMED. Only lines 0, 1, 2, 3, 5, 6, 12 and 13 reach a draw in this frozen state; their groups (18, 25, 12, 15, 16, 14) are additionally corroborated by the job/equip records, by each group's own img.inf contents and by the crop matching the OPT cell grid.",
+    "partDirs": {
+      "18": "shadow",
+      "25": "weapon",
+      "12": "body",
+      "15": "foot",
+      "16": "hand",
+      "14": "face"
+    },
+    "partDirsEvidence": "SUPPORTED",
+    "partDirsNote": "Group -> character_sprites directory. Each mapping is fixed by the group's own img.inf: 18 holds only shadow.png at index 0, 25 holds both the shield (index 100) and the weapon (index 270/295) images, 12 body, 15 foot, 16 hand, 14 face, and each drawn SEB crop (u/v/w/h) lands exactly on one cell of that directory's OPT grid (24x30 body/foot/hand/shield/shadow, 24x24 face, 60x60 weapon). Lines 4 and 7-11 are not drawn here, so groups 19 (shoes), 17, 13 and the -2 entries are not resolved."
+  },
+  "lines": [
+    { "line": 0, "part": "shadow", "res": 18, "texId": 0, "u": 0, "v": 30, "w": 24, "h": 30, "transX": -13, "transY": -29, "reversU": 0, "reversV": 0 },
+    { "line": 1, "part": "shield", "res": 25, "texId": 12, "u": 0, "v": 0, "w": 24, "h": 30, "transX": -23, "transY": -30, "reversU": 0, "reversV": 0 },
+    { "line": 2, "part": "body", "res": 12, "texId": 1, "u": 0, "v": 0, "w": 24, "h": 30, "transX": -12, "transY": -29, "reversU": 0, "reversV": 0 },
+    { "line": 3, "part": "foot", "res": 15, "texId": 2, "u": 0, "v": 0, "w": 24, "h": 30, "transX": -13, "transY": -29, "reversU": 0, "reversV": 0 },
+    { "line": 4, "part": "shoes", "res": 19, "texId": 3, "u": 0, "v": 0, "w": 24, "h": 30, "transX": -13, "transY": -29, "reversU": 0, "reversV": 0 },
+    { "line": 5, "part": "hand (back)", "res": 16, "texId": 10, "u": 0, "v": 60, "w": 24, "h": 30, "transX": -13, "transY": -29, "reversU": 0, "reversV": 0 },
+    { "line": 6, "part": "face", "res": 14, "texId": 4, "u": 0, "v": 0, "w": 24, "h": 24, "transX": -12, "transY": -32, "reversU": 0, "reversV": 0 },
+    { "line": 7, "part": "runtime-supplied (hair group 17)", "res": 17, "texId": -1, "u": 0, "v": 0, "w": 24, "h": 24, "transX": 0, "transY": 0, "reversU": 0, "reversV": 0 },
+    { "line": 8, "part": "runtime-supplied (hat/headgear group 13)", "res": 13, "texId": -1, "u": 0, "v": 0, "w": 24, "h": 24, "transX": 0, "transY": 0, "reversU": 0, "reversV": 0 },
+    { "line": 9, "part": "runtime-supplied", "res": -2, "texId": -1, "u": 0, "v": 0, "w": 24, "h": 24, "transX": 0, "transY": 0, "reversU": 0, "reversV": 0 },
+    { "line": 10, "part": "runtime-supplied", "res": -2, "texId": -1, "u": 0, "v": 0, "w": 24, "h": 24, "transX": 0, "transY": 0, "reversU": 0, "reversV": 0 },
+    { "line": 11, "part": "runtime-supplied", "res": -2, "texId": -1, "u": 0, "v": 0, "w": 24, "h": 24, "transX": 0, "transY": 0, "reversU": 0, "reversV": 0 },
+    { "line": 12, "part": "weapon", "res": 25, "texId": 11, "u": 0, "v": 0, "w": 60, "h": 60, "transX": -26, "transY": -50, "reversU": 0, "reversV": 0 },
+    { "line": 13, "part": "hand (front)", "res": 16, "texId": 10, "u": 144, "v": 0, "w": 24, "h": 30, "transX": -13, "transY": -29, "reversU": 0, "reversV": 0 }
+  ],
+  "linesNote": "Frame-0 record of every SEB line, in file order. Lines are drawn in ascending line order; reversU/reversV stay 0 because the UP variant is the un-mirrored asset. Lines 1-6, 12 and 13 carry the character's own image through imgIds; lines 7-11 carry texId -1 (the SEB leaves them to the fighter's ImageComponent) and are therefore never drawn by this path.",
+  "characters": [
+    {
+      "id": "guard-d",
+      "label": "Guard D",
+      "jobSourceId": 65,
+      "genderIndex": 0,
+      "genderIndexNote": "DEMO-SELECTED: the frozen demo uses the job record's first per-gender image entry (native [e0, e1] array; the generated character-rules job rows still carry the source count prefix, so they are deliberately not read here).",
+      "flag": 0,
+      "imgIds": [0, 28, 28, -2, 70, -1, -1, -2, -2, -2, 28, 270, 100, -2, -2, -2, -2],
+      "sources": {
+        "imgIds[1]": "job 65 imgBodys[0] = 28 (m_body_14)",
+        "imgIds[2]": "job 65 imgFoots[0] = 28 (m_foot_14)",
+        "imgIds[4]": "job 65 imgHeads[0] = 70 (m_face_14)",
+        "imgIds[10]": "job 65 imgHands[0] = 28 (m_hand_14)",
+        "imgIds[11]": "EquipData.img of the job's weapon, equip 72 Fisherman's Pike = 270 (weapon_14), written by ChangeWeaponImage",
+        "imgIds[12]": "EquipData.img of the job's shield, equip 177 Wooden Shield = 100 (sheild_00), written by ChangeShieldImage"
+      },
+      "expectedDraws": 8,
+      "expectedLines": [0, 1, 2, 3, 5, 6, 12, 13]
+    },
+    {
+      "id": "archer-c",
+      "label": "Archer C",
+      "jobSourceId": 91,
+      "genderIndex": 0,
+      "genderIndexNote": "DEMO-SELECTED: same rule as Guard D.",
+      "flag": 0,
+      "imgIds": [0, 38, 38, -2, 96, -1, -1, -2, -2, -2, 38, 295, -2, -2, -2, -2, -2],
+      "sources": {
+        "imgIds[1]": "job 91 imgBodys[0] = 38 (m_body_19)",
+        "imgIds[2]": "job 91 imgFoots[0] = 38 (m_foot_19)",
+        "imgIds[4]": "job 91 imgHeads[0] = 96 (m_face_19_1)",
+        "imgIds[10]": "job 91 imgHands[0] = 38 (m_hand_19)",
+        "imgIds[11]": "EquipData.img of the job's weapon, equip 162 Bow = 295 (weapon_19), written by ChangeWeaponImage",
+        "imgIds[12]": "-2: equip 1 'No Equipment' has img -2, so the job has no shield and line 1 must not draw a placeholder"
+      },
+      "expectedDraws": 7,
+      "expectedLines": [0, 2, 3, 5, 6, 12, 13]
+    }
+  ],
+  "charactersNote": "Both configurations are valid demonstration inputs, not a reproduction of any saved character: they are the job record's default weapon/shield plus the first per-gender appearance entry, with the battle-time imgIds rewrites (weapon, shield, shoes skip) applied. The 17-slot layout and the slot rules are the ones already documented in src/lib/battle-replay.ts (HUMAN_IMAGE_SLOTS)."
+}

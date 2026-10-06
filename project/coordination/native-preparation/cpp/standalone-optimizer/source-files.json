@@ -1,0 +1,54 @@
+[
+  {
+    "Path": "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\cpp\\standalone-optimizer\\admission.cpp",
+    "Hash": "4B58C96278391EE04B1FA2FC56018051D10610956091770F96511A167E2A9959"
+  },
+  {
+    "Path": "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\cpp\\standalone-optimizer\\admission.hpp",
+    "Hash": "AFFE9271DF558F7E1C29663EBE19118DD1408914DA5C01D29DC0DE68992BCB36"
+  },
+  {
+    "Path": "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\cpp\\standalone-optimizer\\build.cmd",
+    "Hash": "5FE96B7CA5CCA80FC825CD6CEEC5D40794139E16832E9E40B8CB3CE4BFAA3431"
+  },
+  {
+    "Path": "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\cpp\\standalone-optimizer\\execution.cpp",
+    "Hash": "02E4448AF2FEA443F1BAF4787F52E147B66D1B03610099F49154C6011EA90C6D"
+  },
+  {
+    "Path": "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\cpp\\standalone-optimizer\\generate_abi.py",
+    "Hash": "8B844F8017B5323FBB0F927A9F01A98EA9E7B407FE5759DD7DE6C62874F1E1F4"
+  },
+  {
+    "Path": "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\cpp\\standalone-optimizer\\main.cpp",
+    "Hash": "947967091EB142215CF810ACED2D1AC6CDD84439DFB35C4AD9518FD30AC7B593"
+  },
+  {
+    "Path": "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\cpp\\standalone-optimizer\\monitor.cpp",
+    "Hash": "1A67F22A01542E91D9F134FA86C00CE9720A0B6069CA5D6F7D9B3C167D07CCAE"
+  },
+  {
+    "Path": "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\cpp\\standalone-optimizer\\monitor.hpp",
+    "Hash": "3C1252DB7660FCB9D7D6F47D5EECBD4459ED5BF991A28967333018163445A157"
+  },
+  {
+    "Path": "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\cpp\\standalone-optimizer\\native_abi.hpp",
+    "Hash": "4EA5A1307F9842C6154C3EF4319435E8C64E8410736E5E95E460BD683C6034F8"
+  },
+  {
+    "Path": "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\cpp\\standalone-optimizer\\pipeline.cpp",
+    "Hash": "F3D3B0E0875B4495DDC9CE8F9B7BBD348EC6B8CE9F9EBEEE87DC8C7F90132ACC"
+  },
+  {
+    "Path": "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\cpp\\standalone-optimizer\\pipeline.hpp",
+    "Hash": "69FB533DA0DCA628C6A30D52D475C4205D52A553CD30398F3CBBDC47F2E25C2B"
+  },
+  {
+    "Path": "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\cpp\\standalone-optimizer\\preparation.cpp",
+    "Hash": "608CFE0B22AF7A9C284DB25D696B380926FAEF550DADE6C93AB8621CE57F0E8A"
+  },
+  {
+    "Path": "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\cpp\\standalone-optimizer\\preparation.hpp",
+    "Hash": "0A601F71EA9B164262931B94FC67A531D3ACF2551FB99475F9AC82C1A72D7666"
+  }
+]

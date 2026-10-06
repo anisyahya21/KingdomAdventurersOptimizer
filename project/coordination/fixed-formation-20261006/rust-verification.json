@@ -1,0 +1,13 @@
+{
+ "schema": "ka-fixed-formation-candidate-check-1",
+ "policyHash": "403a443d931840b23ccc1bad071055422fd6e1f465681fbf2b5a6291fef7382f",
+ "inputs": [
+  "coordination/fixed-formation-20261006/runs/rust-smoke/optimizer-output/leaders.json",
+  "coordination/fixed-formation-20261006/runs/rust-smoke/optimizer-output/battles.jsonl"
+ ],
+ "distinct": 5,
+ "checked": 5,
+ "violations": [],
+ "statsVaried": true,
+ "ok": true
+}

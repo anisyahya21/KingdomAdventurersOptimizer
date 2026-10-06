@@ -1,0 +1,2 @@
+# Runtime manifests use byte-level SHA256. Preserve files exactly on all clients.
+* -text

@@ -1,0 +1,447 @@
+{
+ "schema": "ka-search-stat-bounds-2",
+ "searchSpaceVersion": 3,
+ "domain": "synthetic effective values as the canonical runner reports them (battle_value: raw+extra+equipment, or the prepared maximum for HP/MP)",
+ "formula": "native-verified in check_combat_job_parameters.py: value = initValue + raiseValue * (level - 1); the synthetic ceiling evaluates the S-rank curve at parameter level 999 without the row maxLevel clamp",
+ "source": {
+  "jobSheet": "KA-Website\\data\\Sheet csv\\KA GameData - Job.csv",
+  "jobRows": 162,
+  "combatRows": 107,
+  "nonCombatRows": 55,
+  "parameterBlocks": "[maxLevel, needExp, initValue, raiseValue] in param order 10..22",
+  "equipmentLevel": 99,
+  "syntheticParameterLevel": 999
+ },
+ "verification": {
+  "supplied": {
+   "hp": {
+    "minimum": 55,
+    "base": 18369,
+    "equip": 918,
+    "ceiling": 19287,
+    "source": "S Rank Royal"
+   },
+   "mp": {
+    "minimum": 5,
+    "base": 7092,
+    "equip": 894,
+    "ceiling": 7986,
+    "source": "S Rank Royal"
+   },
+   "atk": {
+    "minimum": 6,
+    "base": 5044,
+    "equip": 722,
+    "ceiling": 5766,
+    "source": "S Rank Royal"
+   },
+   "def": {
+    "minimum": 3,
+    "base": 4040,
+    "equip": 936,
+    "ceiling": 4976,
+    "source": "S Rank Royal"
+   },
+   "spd": {
+    "minimum": 5,
+    "base": 4046,
+    "equip": 734,
+    "ceiling": 4780,
+    "source": "S Rank Royal"
+   },
+   "lck": {
+    "minimum": 5,
+    "base": 4154,
+    "equip": 1050,
+    "ceiling": 5204,
+    "source": "S Rank Royal"
+   },
+   "int": {
+    "minimum": 2,
+    "base": 6042,
+    "equip": 1092,
+    "ceiling": 7134,
+    "source": "S Grade Doctor"
+   },
+   "dex": {
+    "minimum": 2,
+    "base": 5999,
+    "equip": 1050,
+    "ceiling": 7049,
+    "source": "S Rank Entertainer"
+   }
+  },
+  "mismatches": [],
+  "verified": true
+ },
+ "stats": [
+  {
+   "stat": "hp",
+   "parameter": 10,
+   "domain": "effective (synthetic human)",
+   "bounded": true,
+   "minimum": 55,
+   "minimumSource": {
+    "sheetName": "D Grade Merchant",
+    "csvId": 5,
+    "level": 1,
+    "initValue": 55
+   },
+   "minimumDRank": 55,
+   "minimumDRankSource": {
+    "sheetName": "D Grade Merchant",
+    "csvId": 5,
+    "level": 1,
+    "initValue": 55
+   },
+   "maximumCurve": 18369,
+   "maximumSource": {
+    "sheetName": "S Rank Royal",
+    "csvId": 170,
+    "level": 999,
+    "value": 18369,
+    "rowMaxLevel": 65,
+    "rank": "S"
+   },
+   "equipmentContribution": 918,
+   "equipmentSource": {
+    "id": 259,
+    "name": "S/ Royal Crown",
+    "level": 99,
+    "category": 1,
+    "type": 13
+   },
+   "maximum": 19287,
+   "expected": {
+    "minimum": 55,
+    "base": 18369,
+    "equip": 918,
+    "ceiling": 19287,
+    "source": "S Rank Royal"
+   },
+   "formula": "value = initValue + raiseValue * (999 - 1) for every S-rank row, unclamped; equipment = base + growth * (equipmentLevel - 1) at affinity 1"
+  },
+  {
+   "stat": "mp",
+   "parameter": 11,
+   "domain": "effective (synthetic human)",
+   "bounded": true,
+   "minimum": 5,
+   "minimumSource": {
+    "sheetName": "D Grade Merchant",
+    "csvId": 5,
+    "level": 1,
+    "initValue": 5
+   },
+   "minimumDRank": 5,
+   "minimumDRankSource": {
+    "sheetName": "D Grade Merchant",
+    "csvId": 5,
+    "level": 1,
+    "initValue": 5
+   },
+   "maximumCurve": 7092,
+   "maximumSource": {
+    "sheetName": "S Rank Royal",
+    "csvId": 170,
+    "level": 999,
+    "value": 7092,
+    "rowMaxLevel": 40,
+    "rank": "S"
+   },
+   "equipmentContribution": 894,
+   "equipmentSource": {
+    "id": 230,
+    "name": "S/ Black Chainmail",
+    "level": 99,
+    "category": 1,
+    "type": 12
+   },
+   "maximum": 7986,
+   "expected": {
+    "minimum": 5,
+    "base": 7092,
+    "equip": 894,
+    "ceiling": 7986,
+    "source": "S Rank Royal"
+   },
+   "formula": "value = initValue + raiseValue * (999 - 1) for every S-rank row, unclamped; equipment = base + growth * (equipmentLevel - 1) at affinity 1"
+  },
+  {
+   "stat": "atk",
+   "parameter": 13,
+   "domain": "effective (synthetic human)",
+   "bounded": false,
+   "minimum": 6,
+   "minimumSource": {
+    "sheetName": "D Rank Mage",
+    "csvId": 75,
+    "level": 1,
+    "initValue": 6
+   },
+   "minimumDRank": 6,
+   "minimumDRankSource": {
+    "sheetName": "D Rank Mage",
+    "csvId": 75,
+    "level": 1,
+    "initValue": 6
+   },
+   "maximumCurve": 5044,
+   "maximumSource": {
+    "sheetName": "S Rank Royal",
+    "csvId": 170,
+    "level": 999,
+    "value": 5044,
+    "rowMaxLevel": 65,
+    "rank": "S"
+   },
+   "equipmentContribution": 722,
+   "equipmentSource": {
+    "id": 276,
+    "name": "S/ Golden Pendant",
+    "level": 99,
+    "category": 2,
+    "type": 14
+   },
+   "maximum": 5766,
+   "expected": {
+    "minimum": 6,
+    "base": 5044,
+    "equip": 722,
+    "ceiling": 5766,
+    "source": "S Rank Royal"
+   },
+   "formula": "value = initValue + raiseValue * (999 - 1) for every S-rank row, unclamped; equipment = base + growth * (equipmentLevel - 1) at affinity 1"
+  },
+  {
+   "stat": "def",
+   "parameter": 14,
+   "domain": "effective (synthetic human)",
+   "bounded": false,
+   "minimum": 3,
+   "minimumSource": {
+    "sheetName": "D Rank Samurai",
+    "csvId": 100,
+    "level": 1,
+    "initValue": 3
+   },
+   "minimumDRank": 3,
+   "minimumDRankSource": {
+    "sheetName": "D Rank Samurai",
+    "csvId": 100,
+    "level": 1,
+    "initValue": 3
+   },
+   "maximumCurve": 4040,
+   "maximumSource": {
+    "sheetName": "S Rank Royal",
+    "csvId": 170,
+    "level": 999,
+    "value": 4040,
+    "rowMaxLevel": 40,
+    "rank": "S"
+   },
+   "equipmentContribution": 936,
+   "equipmentSource": {
+    "id": 230,
+    "name": "S/ Black Chainmail",
+    "level": 99,
+    "category": 1,
+    "type": 12
+   },
+   "maximum": 4976,
+   "expected": {
+    "minimum": 3,
+    "base": 4040,
+    "equip": 936,
+    "ceiling": 4976,
+    "source": "S Rank Royal"
+   },
+   "formula": "value = initValue + raiseValue * (999 - 1) for every S-rank row, unclamped; equipment = base + growth * (equipmentLevel - 1) at affinity 1"
+  },
+  {
+   "stat": "spd",
+   "parameter": 15,
+   "domain": "effective (synthetic human)",
+   "bounded": false,
+   "minimum": 5,
+   "minimumSource": {
+    "sheetName": "D Grade Merchant",
+    "csvId": 5,
+    "level": 1,
+    "initValue": 5
+   },
+   "minimumDRank": 5,
+   "minimumDRankSource": {
+    "sheetName": "D Grade Merchant",
+    "csvId": 5,
+    "level": 1,
+    "initValue": 5
+   },
+   "maximumCurve": 4046,
+   "maximumSource": {
+    "sheetName": "S Rank Royal",
+    "csvId": 170,
+    "level": 999,
+    "value": 4046,
+    "rowMaxLevel": 65,
+    "rank": "S"
+   },
+   "equipmentContribution": 734,
+   "equipmentSource": {
+    "id": 301,
+    "name": "S/ Winged Sandals",
+    "level": 99,
+    "category": 2,
+    "type": 14
+   },
+   "maximum": 4780,
+   "expected": {
+    "minimum": 5,
+    "base": 4046,
+    "equip": 734,
+    "ceiling": 4780,
+    "source": "S Rank Royal"
+   },
+   "formula": "value = initValue + raiseValue * (999 - 1) for every S-rank row, unclamped; equipment = base + growth * (equipmentLevel - 1) at affinity 1"
+  },
+  {
+   "stat": "lck",
+   "parameter": 16,
+   "domain": "effective (synthetic human)",
+   "bounded": false,
+   "minimum": 5,
+   "minimumSource": {
+    "sheetName": "D Grade Merchant",
+    "csvId": 5,
+    "level": 1,
+    "initValue": 5
+   },
+   "minimumDRank": 5,
+   "minimumDRankSource": {
+    "sheetName": "D Grade Merchant",
+    "csvId": 5,
+    "level": 1,
+    "initValue": 5
+   },
+   "maximumCurve": 4154,
+   "maximumSource": {
+    "sheetName": "S Rank Royal",
+    "csvId": 170,
+    "level": 999,
+    "value": 4154,
+    "rowMaxLevel": 65,
+    "rank": "S"
+   },
+   "equipmentContribution": 1050,
+   "equipmentSource": {
+    "id": 310,
+    "name": "S/ Sally Prin Figure",
+    "level": 99,
+    "category": 2,
+    "type": 14
+   },
+   "maximum": 5204,
+   "expected": {
+    "minimum": 5,
+    "base": 4154,
+    "equip": 1050,
+    "ceiling": 5204,
+    "source": "S Rank Royal"
+   },
+   "formula": "value = initValue + raiseValue * (999 - 1) for every S-rank row, unclamped; equipment = base + growth * (equipmentLevel - 1) at affinity 1"
+  },
+  {
+   "stat": "int",
+   "parameter": 18,
+   "domain": "effective (synthetic human)",
+   "bounded": false,
+   "minimum": 2,
+   "minimumSource": {
+    "sheetName": "D Rank Paladin",
+    "csvId": 80,
+    "level": 1,
+    "initValue": 2
+   },
+   "minimumDRank": 2,
+   "minimumDRankSource": {
+    "sheetName": "D Rank Paladin",
+    "csvId": 80,
+    "level": 1,
+    "initValue": 2
+   },
+   "maximumCurve": 6042,
+   "maximumSource": {
+    "sheetName": "S Grade Doctor",
+    "csvId": 54,
+    "level": 999,
+    "value": 6042,
+    "rowMaxLevel": 55,
+    "rank": "S"
+   },
+   "equipmentContribution": 1092,
+   "equipmentSource": {
+    "id": 310,
+    "name": "S/ Sally Prin Figure",
+    "level": 99,
+    "category": 2,
+    "type": 14
+   },
+   "maximum": 7134,
+   "expected": {
+    "minimum": 2,
+    "base": 6042,
+    "equip": 1092,
+    "ceiling": 7134,
+    "source": "S Grade Doctor"
+   },
+   "formula": "value = initValue + raiseValue * (999 - 1) for every S-rank row, unclamped; equipment = base + growth * (equipmentLevel - 1) at affinity 1"
+  },
+  {
+   "stat": "dex",
+   "parameter": 19,
+   "domain": "effective (synthetic human)",
+   "bounded": false,
+   "minimum": 2,
+   "minimumSource": {
+    "sheetName": "D Rank Knight",
+    "csvId": 70,
+    "level": 1,
+    "initValue": 2
+   },
+   "minimumDRank": 2,
+   "minimumDRankSource": {
+    "sheetName": "D Rank Knight",
+    "csvId": 70,
+    "level": 1,
+    "initValue": 2
+   },
+   "maximumCurve": 5999,
+   "maximumSource": {
+    "sheetName": "S Grade Blacksmith",
+    "csvId": 49,
+    "level": 999,
+    "value": 5999,
+    "rowMaxLevel": 55,
+    "rank": "S"
+   },
+   "equipmentContribution": 1050,
+   "equipmentSource": {
+    "id": 310,
+    "name": "S/ Sally Prin Figure",
+    "level": 99,
+    "category": 2,
+    "type": 14
+   },
+   "maximum": 7049,
+   "expected": {
+    "minimum": 2,
+    "base": 5999,
+    "equip": 1050,
+    "ceiling": 7049,
+    "source": "S Rank Entertainer"
+   },
+   "formula": "value = initValue + raiseValue * (999 - 1) for every S-rank row, unclamped; equipment = base + growth * (equipmentLevel - 1) at affinity 1"
+  }
+ ]
+}

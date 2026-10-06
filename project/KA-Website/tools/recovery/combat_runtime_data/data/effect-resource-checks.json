@@ -1,0 +1,601 @@
+{
+  "nativeHeaderChecks": 15,
+  "combatSkillBindings": 52,
+  "resourceId": 28,
+  "archiveSource": "../20260911-building/placement/effect-source.json",
+  "resources": [
+    {
+      "id": 0,
+      "file": "effect_00.seb",
+      "layers": 1,
+      "records": [
+        10
+      ],
+      "maxFrame": 10,
+      "defaultNonLoopLifetime": 9,
+      "sha256": "79199876bc410062c0e371aad6be92719efb958aabc5fa6f17a8a4522bda929b"
+    },
+    {
+      "id": 17,
+      "file": "effect_17.seb",
+      "layers": 1,
+      "records": [
+        16
+      ],
+      "maxFrame": 24,
+      "defaultNonLoopLifetime": 23,
+      "sha256": "eca376285550ac49f4ad498388160a395970a63acd898d0e936d98a92ec8a65f"
+    },
+    {
+      "id": 19,
+      "file": "effect_19.seb",
+      "layers": 1,
+      "records": [
+        8
+      ],
+      "maxFrame": 22,
+      "defaultNonLoopLifetime": 21,
+      "sha256": "e5fb119b2f68af7f5943a597884a6ea2072dbe5a469102b4e1a697bdf9334974"
+    },
+    {
+      "id": 24,
+      "file": "effect_24.seb",
+      "layers": 1,
+      "records": [
+        6
+      ],
+      "maxFrame": 9,
+      "defaultNonLoopLifetime": 8,
+      "sha256": "307b9b8bfbff7bc096301ef70b07c9df59f1ad469865fa90fbfb127271a5e68b"
+    },
+    {
+      "id": 27,
+      "file": "projectile.seb",
+      "layers": 1,
+      "records": [
+        4
+      ],
+      "maxFrame": 4,
+      "defaultNonLoopLifetime": 3,
+      "sha256": "89e1783c0c3fad211ef8d46aa66b57c4f0bac8e468508406b2cc1fbe009a3c76"
+    },
+    {
+      "id": 34,
+      "file": "effect_34.seb",
+      "layers": 1,
+      "records": [
+        4
+      ],
+      "maxFrame": 10,
+      "defaultNonLoopLifetime": 9,
+      "sha256": "00f8e459533ecf76cea502c5a8ff5bd11642b20480f3f4601ae9e0eb9cbe952a"
+    },
+    {
+      "id": 35,
+      "file": "get_coin.seb",
+      "layers": 3,
+      "records": [
+        15,
+        19,
+        13
+      ],
+      "maxFrame": 23,
+      "defaultNonLoopLifetime": 22,
+      "sha256": "b43be8e6372c5c3c83d61719f3c2c13e276ff226062add722ae7be3a34381876"
+    },
+    {
+      "id": 36,
+      "file": "levelup.seb",
+      "layers": 2,
+      "records": [
+        7,
+        9
+      ],
+      "maxFrame": 20,
+      "defaultNonLoopLifetime": 19,
+      "sha256": "ab975c943c65450d3b78ffa29b5aa1a2948ad29818ad36e5f8ad03554aa7ddd6"
+    },
+    {
+      "id": 37,
+      "file": "stamina.seb",
+      "layers": 1,
+      "records": [
+        2
+      ],
+      "maxFrame": 2,
+      "defaultNonLoopLifetime": 1,
+      "sha256": "c13b3775236421e5c4eed0ea3d1d9f1e36ddaf9a6c1fb037494d1e3caa522246"
+    },
+    {
+      "id": 38,
+      "file": "flash.seb",
+      "layers": 1,
+      "records": [
+        1
+      ],
+      "maxFrame": 1,
+      "defaultNonLoopLifetime": 0,
+      "sha256": "c47ada87ba5a81c871458e0e8d95136d7d9d38bff535abcc3561c9cb5105df17"
+    },
+    {
+      "id": 39,
+      "file": "rank_point_star.seb",
+      "layers": 1,
+      "records": [
+        9
+      ],
+      "maxFrame": 9,
+      "defaultNonLoopLifetime": 8,
+      "sha256": "a09c932fa944276bf2b751a61f902114c39aa94035ba8d96771aa6a7b65c065f"
+    },
+    {
+      "id": 40,
+      "file": "light.seb",
+      "layers": 1,
+      "records": [
+        4
+      ],
+      "maxFrame": 1,
+      "defaultNonLoopLifetime": 0,
+      "sha256": "a74dd9bc7aa47f5d980da3912a4f1aafbc010ff5756eef600a876e557cb3dde9"
+    },
+    {
+      "id": 41,
+      "file": "feather_storm.seb",
+      "layers": 3,
+      "records": [
+        15,
+        15,
+        15
+      ],
+      "maxFrame": 8,
+      "defaultNonLoopLifetime": 7,
+      "sha256": "a2afdd16700a339c5956b8ebdf1ac9b4794c5a11df763aadd9345b67a2373137"
+    },
+    {
+      "id": 42,
+      "file": "aura.seb",
+      "layers": 1,
+      "records": [
+        8
+      ],
+      "maxFrame": 8,
+      "defaultNonLoopLifetime": 7,
+      "sha256": "ec33693a8231991abb5644828462b53772331978aff1078a7f8c44ed6a698419"
+    },
+    {
+      "id": 43,
+      "file": "around_effect.seb",
+      "layers": 1,
+      "records": [
+        10
+      ],
+      "maxFrame": 10,
+      "defaultNonLoopLifetime": 9,
+      "sha256": "791d8cbc1a4c31f78b6e5c4229e51d4646c446afbf1ca75aaa843a4106abc87d"
+    }
+  ],
+  "skills": [
+    {
+      "skillId": 0,
+      "impactSeb": 0,
+      "impactImg": -1,
+      "impactLifetime": 9,
+      "projectileSeb": 0,
+      "projectileAnimationLength": 10
+    },
+    {
+      "skillId": 1,
+      "impactSeb": 0,
+      "impactImg": 47,
+      "impactLifetime": 9,
+      "projectileSeb": 27,
+      "projectileAnimationLength": 4
+    },
+    {
+      "skillId": 2,
+      "impactSeb": 0,
+      "impactImg": 0,
+      "impactLifetime": 9,
+      "projectileSeb": 27,
+      "projectileAnimationLength": 4
+    },
+    {
+      "skillId": 3,
+      "impactSeb": 0,
+      "impactImg": -1,
+      "impactLifetime": 9,
+      "projectileSeb": 0,
+      "projectileAnimationLength": 10
+    },
+    {
+      "skillId": 4,
+      "impactSeb": 0,
+      "impactImg": 47,
+      "impactLifetime": 9,
+      "projectileSeb": 27,
+      "projectileAnimationLength": 4
+    },
+    {
+      "skillId": 5,
+      "impactSeb": 0,
+      "impactImg": 20,
+      "impactLifetime": 9,
+      "projectileSeb": 27,
+      "projectileAnimationLength": 4
+    },
+    {
+      "skillId": 6,
+      "impactSeb": 0,
+      "impactImg": 20,
+      "impactLifetime": 9,
+      "projectileSeb": 27,
+      "projectileAnimationLength": 4
+    },
+    {
+      "skillId": 7,
+      "impactSeb": 0,
+      "impactImg": 20,
+      "impactLifetime": 9,
+      "projectileSeb": 27,
+      "projectileAnimationLength": 4
+    },
+    {
+      "skillId": 8,
+      "impactSeb": 0,
+      "impactImg": 20,
+      "impactLifetime": 9,
+      "projectileSeb": 27,
+      "projectileAnimationLength": 4
+    },
+    {
+      "skillId": 9,
+      "impactSeb": 0,
+      "impactImg": 20,
+      "impactLifetime": 9,
+      "projectileSeb": 27,
+      "projectileAnimationLength": 4
+    },
+    {
+      "skillId": 10,
+      "impactSeb": 0,
+      "impactImg": 21,
+      "impactLifetime": 9,
+      "projectileSeb": 27,
+      "projectileAnimationLength": 4
+    },
+    {
+      "skillId": 11,
+      "impactSeb": 0,
+      "impactImg": 21,
+      "impactLifetime": 9,
+      "projectileSeb": 27,
+      "projectileAnimationLength": 4
+    },
+    {
+      "skillId": 12,
+      "impactSeb": 0,
+      "impactImg": 21,
+      "impactLifetime": 9,
+      "projectileSeb": 27,
+      "projectileAnimationLength": 4
+    },
+    {
+      "skillId": 13,
+      "impactSeb": 0,
+      "impactImg": 21,
+      "impactLifetime": 9,
+      "projectileSeb": 27,
+      "projectileAnimationLength": 4
+    },
+    {
+      "skillId": 14,
+      "impactSeb": 0,
+      "impactImg": 21,
+      "impactLifetime": 9,
+      "projectileSeb": 27,
+      "projectileAnimationLength": 4
+    },
+    {
+      "skillId": 15,
+      "impactSeb": 0,
+      "impactImg": 22,
+      "impactLifetime": 9,
+      "projectileSeb": 27,
+      "projectileAnimationLength": 4
+    },
+    {
+      "skillId": 16,
+      "impactSeb": 0,
+      "impactImg": 22,
+      "impactLifetime": 9,
+      "projectileSeb": 27,
+      "projectileAnimationLength": 4
+    },
+    {
+      "skillId": 17,
+      "impactSeb": 0,
+      "impactImg": 22,
+      "impactLifetime": 9,
+      "projectileSeb": 27,
+      "projectileAnimationLength": 4
+    },
+    {
+      "skillId": 18,
+      "impactSeb": 0,
+      "impactImg": 22,
+      "impactLifetime": 9,
+      "projectileSeb": 27,
+      "projectileAnimationLength": 4
+    },
+    {
+      "skillId": 19,
+      "impactSeb": 0,
+      "impactImg": 22,
+      "impactLifetime": 9,
+      "projectileSeb": 27,
+      "projectileAnimationLength": 4
+    },
+    {
+      "skillId": 20,
+      "impactSeb": 0,
+      "impactImg": -1,
+      "impactLifetime": 9,
+      "projectileSeb": 0,
+      "projectileAnimationLength": 10
+    },
+    {
+      "skillId": 21,
+      "impactSeb": 0,
+      "impactImg": -1,
+      "impactLifetime": 9,
+      "projectileSeb": 0,
+      "projectileAnimationLength": 10
+    },
+    {
+      "skillId": 22,
+      "impactSeb": 0,
+      "impactImg": -1,
+      "impactLifetime": 9,
+      "projectileSeb": 0,
+      "projectileAnimationLength": 10
+    },
+    {
+      "skillId": 23,
+      "impactSeb": 0,
+      "impactImg": -1,
+      "impactLifetime": 9,
+      "projectileSeb": 0,
+      "projectileAnimationLength": 10
+    },
+    {
+      "skillId": 24,
+      "impactSeb": 0,
+      "impactImg": -1,
+      "impactLifetime": 9,
+      "projectileSeb": 0,
+      "projectileAnimationLength": 10
+    },
+    {
+      "skillId": 25,
+      "impactSeb": 0,
+      "impactImg": -1,
+      "impactLifetime": 9,
+      "projectileSeb": 0,
+      "projectileAnimationLength": 10
+    },
+    {
+      "skillId": 26,
+      "impactSeb": 0,
+      "impactImg": -1,
+      "impactLifetime": 9,
+      "projectileSeb": 0,
+      "projectileAnimationLength": 10
+    },
+    {
+      "skillId": 27,
+      "impactSeb": 0,
+      "impactImg": -1,
+      "impactLifetime": 9,
+      "projectileSeb": 0,
+      "projectileAnimationLength": 10
+    },
+    {
+      "skillId": 28,
+      "impactSeb": 0,
+      "impactImg": -1,
+      "impactLifetime": 9,
+      "projectileSeb": 0,
+      "projectileAnimationLength": 10
+    },
+    {
+      "skillId": 29,
+      "impactSeb": 0,
+      "impactImg": -1,
+      "impactLifetime": 9,
+      "projectileSeb": 0,
+      "projectileAnimationLength": 10
+    },
+    {
+      "skillId": 30,
+      "impactSeb": 0,
+      "impactImg": -1,
+      "impactLifetime": 9,
+      "projectileSeb": 0,
+      "projectileAnimationLength": 10
+    },
+    {
+      "skillId": 31,
+      "impactSeb": 0,
+      "impactImg": 46,
+      "impactLifetime": 9,
+      "projectileSeb": 0,
+      "projectileAnimationLength": 10
+    },
+    {
+      "skillId": 32,
+      "impactSeb": 0,
+      "impactImg": 46,
+      "impactLifetime": 9,
+      "projectileSeb": 0,
+      "projectileAnimationLength": 10
+    },
+    {
+      "skillId": 33,
+      "impactSeb": 0,
+      "impactImg": 46,
+      "impactLifetime": 9,
+      "projectileSeb": 0,
+      "projectileAnimationLength": 10
+    },
+    {
+      "skillId": 34,
+      "impactSeb": 0,
+      "impactImg": 46,
+      "impactLifetime": 9,
+      "projectileSeb": 0,
+      "projectileAnimationLength": 10
+    },
+    {
+      "skillId": 35,
+      "impactSeb": 0,
+      "impactImg": 46,
+      "impactLifetime": 9,
+      "projectileSeb": 0,
+      "projectileAnimationLength": 10
+    },
+    {
+      "skillId": 36,
+      "impactSeb": 0,
+      "impactImg": 47,
+      "impactLifetime": 9,
+      "projectileSeb": 27,
+      "projectileAnimationLength": 4
+    },
+    {
+      "skillId": 37,
+      "impactSeb": 0,
+      "impactImg": -1,
+      "impactLifetime": 9,
+      "projectileSeb": 27,
+      "projectileAnimationLength": 4
+    },
+    {
+      "skillId": 38,
+      "impactSeb": 0,
+      "impactImg": -1,
+      "impactLifetime": 9,
+      "projectileSeb": 27,
+      "projectileAnimationLength": 4
+    },
+    {
+      "skillId": 39,
+      "impactSeb": 0,
+      "impactImg": -1,
+      "impactLifetime": 9,
+      "projectileSeb": 27,
+      "projectileAnimationLength": 4
+    },
+    {
+      "skillId": 40,
+      "impactSeb": 0,
+      "impactImg": -1,
+      "impactLifetime": 9,
+      "projectileSeb": 27,
+      "projectileAnimationLength": 4
+    },
+    {
+      "skillId": 41,
+      "impactSeb": 0,
+      "impactImg": -1,
+      "impactLifetime": 9,
+      "projectileSeb": 27,
+      "projectileAnimationLength": 4
+    },
+    {
+      "skillId": 108,
+      "impactSeb": 0,
+      "impactImg": -1,
+      "impactLifetime": 9,
+      "projectileSeb": 0,
+      "projectileAnimationLength": 10
+    },
+    {
+      "skillId": 109,
+      "impactSeb": 0,
+      "impactImg": -1,
+      "impactLifetime": 9,
+      "projectileSeb": 0,
+      "projectileAnimationLength": 10
+    },
+    {
+      "skillId": 110,
+      "impactSeb": 0,
+      "impactImg": -1,
+      "impactLifetime": 9,
+      "projectileSeb": 0,
+      "projectileAnimationLength": 10
+    },
+    {
+      "skillId": 113,
+      "impactSeb": 0,
+      "impactImg": 47,
+      "impactLifetime": 9,
+      "projectileSeb": 0,
+      "projectileAnimationLength": 10
+    },
+    {
+      "skillId": 114,
+      "impactSeb": 0,
+      "impactImg": 47,
+      "impactLifetime": 9,
+      "projectileSeb": 0,
+      "projectileAnimationLength": 10
+    },
+    {
+      "skillId": 115,
+      "impactSeb": 0,
+      "impactImg": 47,
+      "impactLifetime": 9,
+      "projectileSeb": 0,
+      "projectileAnimationLength": 10
+    },
+    {
+      "skillId": 116,
+      "impactSeb": 0,
+      "impactImg": 47,
+      "impactLifetime": 9,
+      "projectileSeb": 0,
+      "projectileAnimationLength": 10
+    },
+    {
+      "skillId": 117,
+      "impactSeb": 0,
+      "impactImg": 13,
+      "impactLifetime": 9,
+      "projectileSeb": 0,
+      "projectileAnimationLength": 10
+    },
+    {
+      "skillId": 118,
+      "impactSeb": 0,
+      "impactImg": 13,
+      "impactLifetime": 9,
+      "projectileSeb": 0,
+      "projectileAnimationLength": 10
+    },
+    {
+      "skillId": 119,
+      "impactSeb": 0,
+      "impactImg": 13,
+      "impactLifetime": 9,
+      "projectileSeb": 0,
+      "projectileAnimationLength": 10
+    }
+  ],
+  "limits": [
+    "Native header branch only; stream reads supplied; sprite decoder not executed.",
+    "Projectile animation length does not determine projectile travel or impact timing.",
+    "Table bindings do not imply every skill creates an impact on every dispatch branch."
+  ]
+}

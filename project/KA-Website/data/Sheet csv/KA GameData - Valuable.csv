@@ -1,0 +1,230 @@
+,,,,,,,saleTerm [][],,,,,,,,,,,buyTerm [][],,,,,,,,,,,,,,,,
+id,name,type,sortId,rank,iconU,iconV,,,,,,,,,,,coinPrice,,,,,,,,,,,,explain,bonusCategory,bonusType,bonusMinValue,bonusMaxValue,flag
+0,Water of Life #1,0,0,0,4,0,1,3,100,1,1,,,,,,750,2,4,23,66,4,1,4,23,70,23,1,Increases all residents' HP by 10.,1,7,10,10,3
+1,Water of Life #2,0,0,0,4,0,2,3,15,65,1,4,91,0,1,1,750,2,4,23,66,4,1,4,23,70,24,1,Increases all residents' HP by 10.,1,7,10,10,3
+2,Water of Life #3,0,0,0,4,0,2,3,15,70,1,4,91,1,1,1,750,2,4,23,66,4,1,4,23,70,26,1,Increases all residents' HP by 10.,1,7,10,10,3
+3,Water of Life #4,0,0,0,4,0,2,3,15,75,1,4,91,2,1,1,750,2,4,23,66,4,1,4,23,70,27,1,Increases all residents' HP by 10.,1,7,10,10,3
+4,Water of Life #5,0,0,0,4,0,2,3,15,80,1,4,91,3,1,1,750,2,4,23,66,4,1,4,23,70,29,1,Increases all residents' HP by 10.,1,7,10,10,3
+5,Water of Life #6,0,0,0,4,0,2,3,15,85,1,4,91,4,1,1,750,2,4,23,66,4,1,4,23,70,30,1,Increases all residents' HP by 10.,1,7,10,10,3
+6,Water of Life #7,0,0,0,4,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases all residents' HP by 10.,1,7,10,10,0
+7,Water of Life #8,0,0,0,4,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases all residents' HP by 10.,1,7,10,10,0
+8,Water of Life #9,0,0,0,4,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases all residents' HP by 10.,1,7,10,10,0
+9,Water of Life #10,0,0,0,4,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases all residents' HP by 10.,1,7,10,10,0
+10,Water of Life #11,0,0,0,4,0,1,3,15,1,1,,,,,,750,2,4,23,66,4,1,4,23,70,5,1,Increases all residents' HP by 10.,1,7,10,10,3
+11,Water of Life #12,0,0,0,4,0,2,3,15,3,1,4,91,10,1,1,750,2,4,23,66,4,1,4,23,70,5,1,Increases all residents' HP by 10.,1,7,10,10,3
+12,Water of Life #13,0,0,0,4,0,2,3,15,6,1,4,91,11,1,1,750,2,4,23,66,4,1,4,23,70,6,1,Increases all residents' HP by 10.,1,7,10,10,3
+13,Water of Life #14,0,0,0,4,0,2,3,15,9,1,4,91,12,1,1,750,2,4,23,67,3,1,4,23,70,7,1,Increases all residents' HP by 10.,1,7,10,10,3
+14,Water of Life #15,0,0,0,4,0,2,3,15,15,1,4,91,13,1,1,750,2,4,23,67,3,1,4,23,70,9,1,Increases all residents' HP by 10.,1,7,10,10,3
+15,Water of Life #16,0,0,0,4,0,2,3,15,20,1,4,91,14,1,1,750,2,4,23,67,3,1,4,23,70,11,1,Increases all residents' HP by 10.,1,7,10,10,3
+16,Water of Life #17,0,0,0,4,0,2,3,15,30,1,4,91,15,1,1,750,2,4,23,68,2,1,4,23,70,14,1,Increases all residents' HP by 10.,1,7,10,10,3
+17,Water of Life #18,0,0,0,4,0,2,3,15,45,1,4,91,16,1,1,750,2,4,23,68,2,1,4,23,70,18,1,Increases all residents' HP by 10.,1,7,10,10,3
+18,Water of Life #19,0,0,0,4,0,2,3,15,65,1,4,91,17,1,1,750,2,4,23,69,1,1,4,23,70,24,1,Increases all residents' HP by 10.,1,7,10,10,3
+19,Water of Life #20,0,0,0,4,0,2,3,15,80,1,4,91,18,1,1,750,2,4,23,69,1,1,4,23,70,29,1,Increases all residents' HP by 10.,1,7,10,10,3
+20,Water of Wisdom #1,0,0,0,5,0,1,3,100,1,1,,,,,,750,2,4,23,66,4,1,4,23,70,23,1,Increases all residents' MP by 10.,1,8,10,10,3
+21,Water of Wisdom #2,0,0,0,5,0,2,3,15,65,1,4,91,20,1,1,750,2,4,23,66,4,1,4,23,70,24,1,Increases all residents' MP by 10.,1,8,10,10,3
+22,Water of Wisdom #3,0,0,0,5,0,2,3,15,70,1,4,91,21,1,1,750,2,4,23,66,4,1,4,23,70,26,1,Increases all residents' MP by 10.,1,8,10,10,3
+23,Water of Wisdom #4,0,0,0,5,0,2,3,15,75,1,4,91,22,1,1,750,2,4,23,66,4,1,4,23,70,27,1,Increases all residents' MP by 10.,1,8,10,10,3
+24,Water of Wisdom #5,0,0,0,5,0,2,3,15,80,1,4,91,23,1,1,750,2,4,23,66,4,1,4,23,70,29,1,Increases all residents' MP by 10.,1,8,10,10,3
+25,Water of Wisdom #6,0,0,0,5,0,2,3,15,85,1,4,91,24,1,1,750,2,4,23,66,4,1,4,23,70,30,1,Increases all residents' MP by 10.,1,8,10,10,3
+26,Water of Wisdom #7,0,0,0,5,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases all residents' MP by 10.,1,8,10,10,0
+27,Water of Wisdom #8,0,0,0,5,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases all residents' MP by 10.,1,8,10,10,0
+28,Water of Wisdom #9,0,0,0,5,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases all residents' MP by 10.,1,8,10,10,0
+29,Water of Wisdom #10,0,0,0,5,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases all residents' MP by 10.,1,8,10,10,0
+30,Water of Wisdom #11,0,0,0,5,0,1,3,15,1,1,,,,,,750,2,4,23,66,4,1,4,23,70,5,1,Increases all residents' MP by 10.,1,8,10,10,3
+31,Water of Wisdom #12,0,0,0,5,0,2,3,15,4,1,4,91,30,1,1,750,2,4,23,66,4,1,4,23,70,6,1,Increases all residents' MP by 10.,1,8,10,10,3
+32,Water of Wisdom #13,0,0,0,5,0,2,3,15,9,1,4,91,31,1,1,750,2,4,23,66,4,1,4,23,70,7,1,Increases all residents' MP by 10.,1,8,10,10,3
+33,Water of Wisdom #14,0,0,0,5,0,2,3,15,15,1,4,91,32,1,1,750,2,4,23,67,3,1,4,23,70,9,1,Increases all residents' MP by 10.,1,8,10,10,3
+34,Water of Wisdom #15,0,0,0,5,0,2,3,15,24,1,4,91,33,1,1,750,2,4,23,67,3,1,4,23,70,12,1,Increases all residents' MP by 10.,1,8,10,10,3
+35,Water of Wisdom #16,0,0,0,5,0,2,3,15,32,1,4,91,34,1,1,750,2,4,23,67,3,1,4,23,70,14,1,Increases all residents' MP by 10.,1,8,10,10,3
+36,Water of Wisdom #17,0,0,0,5,0,2,3,15,40,1,4,91,35,1,1,750,2,4,23,68,2,1,4,23,70,17,1,Increases all residents' MP by 10.,1,8,10,10,3
+37,Water of Wisdom #18,0,0,0,5,0,2,3,15,50,1,4,91,36,1,1,750,2,4,23,68,2,1,4,23,70,20,1,Increases all residents' MP by 10.,1,8,10,10,3
+38,Water of Wisdom #19,0,0,0,5,0,2,3,15,65,1,4,91,37,1,1,750,2,4,23,69,1,1,4,23,70,24,1,Increases all residents' MP by 10.,1,8,10,10,3
+39,Water of Wisdom #20,0,0,0,5,0,2,3,15,75,1,4,91,38,1,1,750,2,4,23,69,1,1,4,23,70,27,1,Increases all residents' MP by 10.,1,8,10,10,3
+40,Water of Vitality #1,0,0,0,6,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases all residents' Vigor by 10.,1,9,10,10,0
+41,Water of Vitality #2,0,0,0,6,0,1,3,100,1,1,,,,,,750,2,4,23,66,4,1,4,23,70,23,1,Increases all residents' Vigor by 10.,1,9,10,10,3
+42,Water of Vitality #3,0,0,0,6,0,2,3,15,65,1,4,91,41,1,1,750,2,4,23,66,4,1,4,23,70,24,1,Increases all residents' Vigor by 10.,1,9,10,10,3
+43,Water of Vitality #4,0,0,0,6,0,2,3,15,70,1,4,91,42,1,1,750,2,4,23,66,4,1,4,23,70,26,1,Increases all residents' Vigor by 10.,1,9,10,10,3
+44,Water of Vitality #5,0,0,0,6,0,2,3,15,75,1,4,91,43,1,1,750,2,4,23,66,4,1,4,23,70,27,1,Increases all residents' Vigor by 10.,1,9,10,10,3
+45,Water of Vitality #6,0,0,0,6,0,2,3,15,80,1,4,91,44,1,1,750,2,4,23,66,4,1,4,23,70,29,1,Increases all residents' Vigor by 10.,1,9,10,10,3
+46,Water of Vitality #7,0,0,0,6,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases all residents' Vigor by 10.,1,9,10,10,0
+47,Water of Vitality #8,0,0,0,6,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases all residents' Vigor by 10.,1,9,10,10,0
+48,Water of Vitality #9,0,0,0,6,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases all residents' Vigor by 10.,1,9,10,10,0
+49,Water of Vitality #10,0,0,0,6,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases all residents' Vigor by 10.,1,9,10,10,0
+50,Water of Vitality #11,0,0,0,6,0,1,3,15,8,1,,,,,,750,2,4,23,66,4,1,4,23,70,7,1,Increases all residents' Vigor by 10.,1,9,10,10,3
+51,Water of Vitality #12,0,0,0,6,0,2,3,15,12,1,4,91,50,1,1,750,2,4,23,66,4,1,4,23,70,8,1,Increases all residents' Vigor by 10.,1,9,10,10,3
+52,Water of Vitality #13,0,0,0,6,0,2,3,15,17,1,4,91,51,1,1,750,2,4,23,66,4,1,4,23,70,10,1,Increases all residents' Vigor by 10.,1,9,10,10,3
+53,Water of Vitality #14,0,0,0,6,0,2,3,15,24,1,4,91,52,1,1,750,2,4,23,67,3,1,4,23,70,12,1,Increases all residents' Vigor by 10.,1,9,10,10,3
+54,Water of Vitality #15,0,0,0,6,0,2,3,15,32,1,4,91,53,1,1,750,2,4,23,67,3,1,4,23,70,14,1,Increases all residents' Vigor by 10.,1,9,10,10,3
+55,Water of Vitality #16,0,0,0,6,0,2,3,15,39,1,4,91,54,1,1,750,2,4,23,67,3,1,4,23,70,16,1,Increases all residents' Vigor by 10.,1,9,10,10,3
+56,Water of Vitality #17,0,0,0,6,0,2,3,15,49,1,4,91,55,1,1,750,2,4,23,68,2,1,4,23,70,19,1,Increases all residents' Vigor by 10.,1,9,10,10,3
+57,Water of Vitality #18,0,0,0,6,0,2,3,15,59,1,4,91,56,1,1,750,2,4,23,68,2,1,4,23,70,22,1,Increases all residents' Vigor by 10.,1,9,10,10,3
+58,Water of Vitality #19,0,0,0,6,0,2,3,15,69,1,4,91,57,1,1,750,2,4,23,69,1,1,4,23,70,25,1,Increases all residents' Vigor by 10.,1,9,10,10,3
+59,Water of Vitality #20,0,0,0,6,0,2,3,15,79,1,4,91,58,1,1,750,2,4,23,69,1,1,4,23,70,28,1,Increases all residents' Vigor by 10.,1,9,10,10,3
+60,Water of Might #1,0,0,0,7,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases all residents' ATK by 10.,1,10,10,10,0
+61,Water of Might #2,0,0,0,7,0,1,3,100,1,1,,,,,,750,2,4,23,66,4,1,4,23,70,23,1,Increases all residents' ATK by 10.,1,10,10,10,3
+62,Water of Might #3,0,0,0,7,0,2,3,15,65,1,4,91,61,1,1,750,2,4,23,66,4,1,4,23,70,24,1,Increases all residents' ATK by 10.,1,10,10,10,3
+63,Water of Might #4,0,0,0,7,0,2,3,15,70,1,4,91,62,1,1,750,2,4,23,66,4,1,4,23,70,26,1,Increases all residents' ATK by 10.,1,10,10,10,3
+64,Water of Might #5,0,0,0,7,0,2,3,15,75,1,4,91,63,1,1,750,2,4,23,66,4,1,4,23,70,27,1,Increases all residents' ATK by 10.,1,10,10,10,3
+65,Water of Might #6,0,0,0,7,0,2,3,15,80,1,4,91,64,1,1,750,2,4,23,66,4,1,4,23,70,29,1,Increases all residents' ATK by 10.,1,10,10,10,3
+66,Water of Might #7,0,0,0,7,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases all residents' ATK by 10.,1,10,10,10,0
+67,Water of Might #8,0,0,0,7,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases all residents' ATK by 10.,1,10,10,10,0
+68,Water of Might #9,0,0,0,7,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases all residents' ATK by 10.,1,10,10,10,0
+69,Water of Might #10,0,0,0,7,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases all residents' ATK by 10.,1,10,10,10,0
+70,Water of Might #11,0,0,0,7,0,1,3,15,1,1,,,,,,750,2,4,23,66,4,1,4,23,70,5,1,Increases all residents' ATK by 10.,1,10,10,10,3
+71,Water of Might #12,0,0,0,7,0,2,3,15,8,1,4,91,70,1,1,750,2,4,23,66,4,1,4,23,70,7,1,Increases all residents' ATK by 10.,1,10,10,10,3
+72,Water of Might #13,0,0,0,7,0,2,3,15,16,1,4,91,71,1,1,750,2,4,23,66,4,1,4,23,70,9,1,Increases all residents' ATK by 10.,1,10,10,10,3
+73,Water of Might #14,0,0,0,7,0,2,3,15,24,1,4,91,72,1,1,750,2,4,23,67,3,1,4,23,70,12,1,Increases all residents' ATK by 10.,1,10,10,10,3
+74,Water of Might #15,0,0,0,7,0,2,3,15,32,1,4,91,73,1,1,750,2,4,23,67,3,1,4,23,70,14,1,Increases all residents' ATK by 10.,1,10,10,10,3
+75,Water of Might #16,0,0,0,7,0,2,3,15,48,1,4,91,74,1,1,750,2,4,23,67,3,1,4,23,70,19,1,Increases all residents' ATK by 10.,1,10,10,10,3
+76,Water of Might #17,0,0,0,7,0,2,3,15,56,1,4,91,75,1,1,750,2,4,23,68,2,1,4,23,70,21,1,Increases all residents' ATK by 10.,1,10,10,10,3
+77,Water of Might #18,0,0,0,7,0,2,3,15,72,1,4,91,76,1,1,750,2,4,23,68,2,1,4,23,70,26,1,Increases all residents' ATK by 10.,1,10,10,10,3
+78,Water of Might #19,0,0,0,7,0,2,3,15,88,1,4,91,77,1,1,750,2,4,23,69,1,1,4,23,70,31,1,Increases all residents' ATK by 10.,1,10,10,10,3
+79,Water of Might #20,0,0,0,7,0,2,3,15,95,1,4,91,78,1,1,750,2,4,23,69,1,1,4,23,70,33,1,Increases all residents' ATK by 10.,1,10,10,10,3
+80,Water of Resilience #1,0,0,0,8,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases all residents' DEF by 10.,1,11,10,10,0
+81,Water of Resilience #2,0,0,0,8,0,1,3,100,1,1,,,,,,750,2,4,23,66,4,1,4,23,70,5,1,Increases all residents' DEF by 10.,1,11,10,10,3
+82,Water of Resilience #3,0,0,0,8,0,2,3,15,60,1,4,91,81,1,1,750,2,4,23,66,4,1,4,23,70,23,1,Increases all residents' DEF by 10.,1,11,10,10,3
+83,Water of Resilience #4,0,0,0,8,0,2,3,15,65,1,4,91,82,1,1,750,2,4,23,66,4,1,4,23,70,24,1,Increases all residents' DEF by 10.,1,11,10,10,3
+84,Water of Resilience #5,0,0,0,8,0,2,3,15,70,1,4,91,83,1,1,750,2,4,23,66,4,1,4,23,70,26,1,Increases all residents' DEF by 10.,1,11,10,10,3
+85,Water of Resilience #6,0,0,0,8,0,2,3,15,75,1,4,91,84,1,1,750,2,4,23,66,4,1,4,23,70,27,1,Increases all residents' DEF by 10.,1,11,10,10,3
+86,Water of Resilience #7,0,0,0,8,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases all residents' DEF by 10.,1,11,10,10,0
+87,Water of Resilience #8,0,0,0,8,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases all residents' DEF by 10.,1,11,10,10,0
+88,Water of Resilience #9,0,0,0,8,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases all residents' DEF by 10.,1,11,10,10,0
+89,Water of Resilience #10,0,0,0,8,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases all residents' DEF by 10.,1,11,10,10,0
+90,Water of Resilience #11,0,0,0,8,0,1,3,15,10,1,,,,,,750,2,4,23,66,4,1,4,23,70,8,1,Increases all residents' DEF by 10.,1,11,10,10,3
+91,Water of Resilience #12,0,0,0,8,0,2,3,15,19,1,4,91,90,1,1,750,2,4,23,66,4,1,4,23,70,10,1,Increases all residents' DEF by 10.,1,11,10,10,3
+92,Water of Resilience #13,0,0,0,8,0,2,3,15,28,1,4,91,91,1,1,750,2,4,23,66,4,1,4,23,70,13,1,Increases all residents' DEF by 10.,1,11,10,10,3
+93,Water of Resilience #14,0,0,0,8,0,2,3,15,37,1,4,91,92,1,1,750,2,4,23,67,3,1,4,23,70,16,1,Increases all residents' DEF by 10.,1,11,10,10,3
+94,Water of Resilience #15,0,0,0,8,0,2,3,15,46,1,4,91,93,1,1,750,2,4,23,67,3,1,4,23,70,18,1,Increases all residents' DEF by 10.,1,11,10,10,3
+95,Water of Resilience #16,0,0,0,8,0,2,3,15,55,1,4,91,94,1,1,750,2,4,23,67,3,1,4,23,70,21,1,Increases all residents' DEF by 10.,1,11,10,10,3
+96,Water of Resilience #17,0,0,0,8,0,2,3,15,64,1,4,91,95,1,1,750,2,4,23,68,2,1,4,23,70,24,1,Increases all residents' DEF by 10.,1,11,10,10,3
+97,Water of Resilience #18,0,0,0,8,0,2,3,15,73,1,4,91,96,1,1,750,2,4,23,68,2,1,4,23,70,26,1,Increases all residents' DEF by 10.,1,11,10,10,3
+98,Water of Resilience #19,0,0,0,8,0,2,3,15,80,1,4,91,97,1,1,750,2,4,23,69,1,1,4,23,70,29,1,Increases all residents' DEF by 10.,1,11,10,10,3
+99,Water of Resilience #20,0,0,0,8,0,2,3,15,92,1,4,91,98,1,1,750,2,4,23,69,1,1,4,23,70,32,1,Increases all residents' DEF by 10.,1,11,10,10,3
+100,Ancient Blueprints #1,0,0,0,9,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increase all facilities' Max Durability by 10.,1,12,10,10,0
+101,Ancient Blueprints #2,0,0,0,9,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increase all facilities' Max Durability by 10.,1,12,10,10,0
+102,Ancient Blueprints #3,0,0,0,9,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increase all facilities' Max Durability by 10.,1,12,10,10,0
+103,Ancient Blueprints #4,0,0,0,9,0,1,3,15,1,1,,,,,,750,2,4,23,66,4,1,4,23,70,5,1,Increase all facilities' Max Durability by 10.,1,12,10,10,3
+104,Ancient Blueprints #5,0,0,0,9,0,2,3,15,3,1,4,91,103,1,1,750,2,4,23,66,4,1,4,23,70,5,1,Increase all facilities' Max Durability by 10.,1,12,10,10,3
+105,Ancient Blueprints #6,0,0,0,9,0,2,3,15,6,1,4,91,104,1,1,750,2,4,23,66,4,1,4,23,70,6,1,Increase all facilities' Max Durability by 10.,1,12,10,10,3
+106,Ancient Blueprints #7,0,0,0,9,0,2,3,15,9,1,4,91,105,1,1,750,2,4,23,66,4,1,4,23,70,7,1,Increase all facilities' Max Durability by 10.,1,12,10,10,3
+107,Ancient Blueprints #8,0,0,0,9,0,2,3,15,12,1,4,91,106,1,1,750,2,4,23,66,4,1,4,23,70,8,1,Increase all facilities' Max Durability by 10.,1,12,10,10,3
+108,Ancient Blueprints #9,0,0,0,9,0,2,3,15,15,1,4,91,107,1,1,750,2,4,23,67,3,1,4,23,70,9,1,Increase all facilities' Max Durability by 10.,1,12,10,10,3
+109,Ancient Blueprints #10,0,0,0,9,0,2,3,15,18,1,4,91,108,1,1,750,2,4,23,67,3,1,4,23,70,10,1,Increase all facilities' Max Durability by 10.,1,12,10,10,3
+110,Ancient Blueprints #11,0,0,0,9,0,2,3,15,21,1,4,91,109,1,1,750,2,4,23,67,3,1,4,23,70,11,1,Increase all facilities' Max Durability by 10.,1,12,10,10,3
+111,Ancient Blueprints #12,0,0,0,9,0,2,3,15,24,1,4,91,110,1,1,750,2,4,23,67,3,1,4,23,70,12,1,Increase all facilities' Max Durability by 10.,1,12,10,10,3
+112,Ancient Blueprints #13,0,0,0,9,0,2,3,15,27,1,4,91,111,1,1,750,2,4,23,67,3,1,4,23,70,13,1,Increase all facilities' Max Durability by 10.,1,12,10,10,3
+113,Ancient Blueprints #14,0,0,0,9,0,2,3,15,30,1,4,91,112,1,1,750,2,4,23,67,3,1,4,23,70,14,1,Increase all facilities' Max Durability by 10.,1,12,10,10,3
+114,Ancient Blueprints #15,0,0,0,9,0,2,3,15,33,1,4,91,113,1,1,750,2,4,23,68,2,1,4,23,70,14,1,Increase all facilities' Max Durability by 10.,1,12,10,10,3
+115,Ancient Blueprints #16,0,0,0,9,0,2,3,15,36,1,4,91,114,1,1,750,2,4,23,68,2,1,4,23,70,15,1,Increase all facilities' Max Durability by 10.,1,12,10,10,3
+116,Ancient Blueprints #17,0,0,0,9,0,2,3,15,39,1,4,91,115,1,1,750,2,4,23,68,2,1,4,23,70,16,1,Increase all facilities' Max Durability by 10.,1,12,10,10,3
+117,Ancient Blueprints #18,0,0,0,9,0,2,3,15,42,1,4,91,116,1,1,750,2,4,23,68,2,1,4,23,70,17,1,Increase all facilities' Max Durability by 10.,1,12,10,10,3
+118,Ancient Blueprints #19,0,0,0,9,0,2,3,15,45,1,4,91,117,1,1,750,2,4,23,68,2,1,4,23,70,18,1,Increase all facilities' Max Durability by 10.,1,12,10,10,3
+119,Ancient Blueprints #20,0,0,0,9,0,2,3,15,48,1,4,91,118,1,1,750,2,4,23,69,1,1,4,23,70,19,1,Increase all facilities' Max Durability by 10.,1,12,10,10,3
+120,Ancient Blueprints #21,0,0,0,9,0,2,3,15,51,1,4,91,119,1,1,750,2,4,23,69,1,1,4,23,70,20,1,Increase all facilities' Max Durability by 10.,1,12,10,10,3
+121,Ancient Blueprints #22,0,0,0,9,0,2,3,15,54,1,4,91,120,1,1,750,2,4,23,69,1,1,4,23,70,21,1,Increase all facilities' Max Durability by 10.,1,12,10,10,3
+122,Ancient Blueprints #23,0,0,0,9,0,2,3,15,57,1,4,91,121,1,1,750,2,4,23,69,1,1,4,23,70,22,1,Increase all facilities' Max Durability by 10.,1,12,10,10,3
+123,Pioneer's Map #1,0,0,0,0,1,0,,,,,,,,,,750,0,,,,,,,,,,,Reduces resources used on quests by 5%.,2,13,5,5,0
+124,Pioneer's Map #2,0,0,0,0,1,0,,,,,,,,,,750,0,,,,,,,,,,,Reduces resources used on quests by 5%.,2,13,5,5,0
+125,Pioneer's Map #3,0,0,0,0,1,1,3,15,1,1,,,,,,750,2,4,23,66,4,1,4,23,70,5,1,Reduces resources used on quests by 5%.,2,13,5,5,3
+126,Pioneer's Map #4,0,0,0,0,1,2,3,15,20,1,4,91,125,1,1,750,2,4,23,67,3,1,4,23,70,11,1,Reduces resources used on quests by 5%.,2,13,5,5,3
+127,Pioneer's Map #5,0,0,0,0,1,2,3,15,40,1,4,91,126,1,1,750,2,4,23,68,2,1,4,23,70,17,1,Reduces resources used on quests by 5%.,2,13,5,5,3
+128,Pioneer's Map #6,0,0,0,0,1,2,3,15,70,1,4,91,127,1,1,750,2,4,23,69,1,1,4,23,70,26,1,Reduces resources used on quests by 5%.,2,13,5,5,3
+129,Master Craftsman's Tools #1,0,0,0,1,1,0,,,,,,,,,,750,0,,,,,,,,,,,Reduce resources used when building by 5%.,2,14,5,5,0
+130,Master Craftsman's Tools #2,0,0,0,1,1,0,,,,,,,,,,750,0,,,,,,,,,,,Reduce resources used when building by 5%.,2,14,5,5,0
+131,Master Craftsman's Tools #3,0,0,0,1,1,1,3,15,1,1,,,,,,750,2,4,23,66,4,1,4,23,70,5,1,Reduce resources used when building by 5%.,2,14,5,5,3
+132,Master Craftsman's Tools #4,0,0,0,1,1,2,3,15,12,1,4,91,131,1,1,750,2,4,23,67,3,1,4,23,70,8,1,Reduce resources used when building by 5%.,2,14,5,5,3
+133,Master Craftsman's Tools #5,0,0,0,1,1,2,3,15,40,1,4,91,132,1,1,750,2,4,23,68,2,1,4,23,70,17,1,Reduce resources used when building by 5%.,2,14,5,5,3
+134,Master Craftsman's Tools #6,0,0,0,1,1,2,3,15,75,1,4,91,133,1,1,750,2,4,23,69,1,1,4,23,70,27,1,Reduce resources used when building by 5%.,2,14,5,5,3
+135,Know-How Journal #1,0,0,0,2,1,0,,,,,,,,,,750,0,,,,,,,,,,,Reduces time needed for researching or leveling up by 5%.,3,15,5,5,0
+136,Know-How Journal #2,0,0,0,2,1,0,,,,,,,,,,750,0,,,,,,,,,,,Reduces time needed for researching or leveling up by 5%.,3,15,5,5,0
+137,Know-How Journal #3,0,0,0,2,1,1,3,15,1,1,,,,,,750,2,4,23,66,4,1,4,23,70,5,1,Reduces time needed for researching or leveling up by 5%.,3,15,5,5,3
+138,Know-How Journal #4,0,0,0,2,1,2,3,15,24,1,4,91,137,1,1,750,2,4,23,67,3,1,4,23,70,12,1,Reduces time needed for researching or leveling up by 5%.,3,15,5,5,3
+139,Know-How Journal #5,0,0,0,2,1,2,3,15,56,1,4,91,138,1,1,750,2,4,23,68,2,1,4,23,70,21,1,Reduces time needed for researching or leveling up by 5%.,3,15,5,5,3
+140,Know-How Journal #6,0,0,0,2,1,2,3,15,78,1,4,91,139,1,1,750,2,4,23,69,1,1,4,23,70,28,1,Reduces time needed for researching or leveling up by 5%.,3,15,5,5,3
+141,Diamond Guide #1,0,0,0,3,1,0,,,,,,,,,,750,0,,,,,,,,,,,Reduces Diamond consumption by 2%.,2,16,2,2,0
+142,Diamond Guide #2,0,0,0,3,1,0,,,,,,,,,,750,0,,,,,,,,,,,Reduces Diamond consumption by 2%.,2,16,2,2,0
+143,Diamond Guide #3,0,0,0,3,1,1,3,15,1,1,,,,,,750,2,4,23,66,4,1,4,23,70,5,1,Reduces Diamond consumption by 2%.,2,16,2,2,3
+144,Diamond Guide #4,0,0,0,3,1,2,3,15,30,1,4,91,143,1,1,750,2,4,23,67,3,1,4,23,70,14,1,Reduces Diamond consumption by 2%.,2,16,2,2,3
+145,Diamond Guide #5,0,0,0,3,1,2,3,15,60,1,4,91,144,1,1,750,2,4,23,68,2,1,4,23,70,23,1,Reduces Diamond consumption by 2%.,2,16,2,2,3
+146,Book of Awakening #1,0,0,0,4,1,0,,,,,,,,,,750,0,,,,,,,,,,,Increases all residents' Awakening Limit by 5.,1,3,5,5,0
+147,Book of Awakening #2,0,0,0,4,1,0,,,,,,,,,,750,0,,,,,,,,,,,Increases all residents' Awakening Limit by 5.,1,3,5,5,0
+148,Book of Awakening #3,0,0,0,4,1,1,3,15,1,1,,,,,,750,2,4,23,66,4,1,4,23,70,5,1,Increases all residents' Awakening Limit by 5.,1,3,5,5,3
+149,Book of Awakening #4,0,0,0,4,1,2,3,15,36,1,4,91,148,1,1,750,2,4,23,67,3,1,4,23,70,15,1,Increases all residents' Awakening Limit by 5.,1,3,5,5,3
+150,Book of Awakening #5,0,0,0,4,1,2,3,15,62,1,4,91,149,1,1,750,2,4,23,68,2,1,4,23,70,23,1,Increases all residents' Awakening Limit by 5.,1,3,5,5,3
+151,Town Building Textbook #1,0,0,0,0,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases max town rank by 5.,1,1,5,5,0
+152,Town Building Textbook #2,0,0,0,0,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases max town rank by 5.,1,1,5,5,0
+153,Town Building Textbook #3,0,0,0,0,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases max town rank by 5.,1,1,5,5,0
+154,Town Building Textbook #4,0,0,0,0,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases max town rank by 5.,1,1,5,5,0
+155,Town Building Textbook #5,0,0,0,0,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases max town rank by 5.,1,1,5,5,0
+156,Town Building Textbook #6,0,0,0,0,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases max town rank by 5.,1,1,5,5,0
+157,Town Building Textbook #7,0,0,0,0,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases max town rank by 5.,1,1,5,5,0
+158,Town Building Textbook #8,0,0,0,0,0,1,3,15,15,1,,,,,,750,2,4,23,66,4,1,4,23,70,9,1,Increases max town rank by 5.,1,1,5,5,3
+159,Town Building Textbook #9,0,0,0,0,0,2,3,15,25,1,4,91,158,1,1,750,2,4,23,66,4,1,4,23,70,12,1,Increases max town rank by 5.,1,1,5,5,3
+160,Town Building Textbook #10,0,0,0,0,0,2,3,15,35,1,4,91,159,1,1,750,2,4,23,66,4,1,4,23,70,15,1,Increases max town rank by 5.,1,1,5,5,3
+161,Town Building Textbook #11,0,0,0,0,0,2,3,15,45,1,4,91,160,1,1,750,2,4,23,67,3,1,4,23,70,18,1,Increases max town rank by 5.,1,1,5,5,3
+162,Town Building Textbook #12,0,0,0,0,0,2,3,15,55,1,4,91,161,1,1,750,2,4,23,67,3,1,4,23,70,21,1,Increases max town rank by 5.,1,1,5,5,3
+163,Town Building Textbook #13,0,0,0,0,0,2,3,15,65,1,4,91,162,1,1,750,2,4,23,68,2,1,4,23,70,24,1,Increases max town rank by 5.,1,1,5,5,3
+164,Town Building Textbook #14,0,0,0,0,0,2,3,15,75,1,4,91,163,1,1,750,2,4,23,69,1,1,4,23,70,27,1,Increases max town rank by 5.,1,1,5,5,3
+165,Military Training Manual #1,0,0,0,1,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases party size for boss battles and online conquests.,1,4,1,1,0
+166,Military Training Manual #2,0,0,0,1,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases party size for boss battles and online conquests.,1,4,1,1,0
+167,Military Training Manual #3,0,0,0,1,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases party size for boss battles and online conquests.,1,4,1,1,0
+168,Military Training Manual #4,0,0,0,1,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases party size for boss battles and online conquests.,1,4,1,1,0
+169,Military Training Manual #5,0,0,0,1,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases party size for boss battles and online conquests.,1,4,1,1,0
+170,Military Training Manual #6,0,0,0,1,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases party size for boss battles and online conquests.,1,4,1,1,0
+171,Military Training Manual #7,0,0,0,1,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases party size for boss battles and online conquests.,1,4,1,1,0
+172,Military Training Manual #8,0,0,0,1,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases party size for boss battles and online conquests.,1,4,1,1,0
+173,Military Training Manual #9,0,0,0,1,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases party size for boss battles and online conquests.,1,4,1,1,0
+174,Military Training Manual #10,0,0,0,1,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases party size for boss battles and online conquests.,1,4,1,1,0
+175,Military Training Manual #11,0,0,0,1,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases party size for boss battles and online conquests.,1,4,1,1,0
+176,Military Training Manual #12,0,0,0,1,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases party size for boss battles and online conquests.,1,4,1,1,0
+177,Military Training Manual #13,0,0,0,1,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases party size for boss battles and online conquests.,1,4,1,1,0
+178,Military Training Manual #14,0,0,0,1,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases party size for boss battles and online conquests.,1,4,1,1,0
+179,Military Training Manual #15,0,0,0,1,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases party size for boss battles and online conquests.,1,4,1,1,0
+180,Military Training Manual #16,0,0,0,1,0,1,3,15,3,1,,,,,,750,2,4,23,66,4,1,4,23,70,5,1,Increases party size for boss battles and online conquests.,1,4,1,1,3
+181,Military Training Manual #17,0,0,0,1,0,2,3,15,8,1,4,91,180,1,1,750,2,4,23,66,4,1,4,23,70,7,1,Increases party size for boss battles and online conquests.,1,4,1,1,3
+182,Military Training Manual #18,0,0,0,1,0,2,3,15,12,1,4,91,181,1,1,750,2,4,23,66,4,1,4,23,70,8,1,Increases party size for boss battles and online conquests.,1,4,1,1,3
+183,Military Training Manual #19,0,0,0,1,0,2,3,15,16,1,4,91,182,1,1,750,2,4,23,66,4,1,4,23,70,9,1,Increases party size for boss battles and online conquests.,1,4,1,1,3
+184,Military Training Manual #20,0,0,0,1,0,2,3,15,20,1,4,91,183,1,1,750,2,4,23,67,3,1,4,23,70,11,1,Increases party size for boss battles and online conquests.,1,4,1,1,3
+185,Military Training Manual #21,0,0,0,1,0,2,3,15,24,1,4,91,184,1,1,750,2,4,23,67,3,1,4,23,70,12,1,Increases party size for boss battles and online conquests.,1,4,1,1,3
+186,Military Training Manual #22,0,0,0,1,0,2,3,15,28,1,4,91,185,1,1,750,2,4,23,67,3,1,4,23,70,13,1,Increases party size for boss battles and online conquests.,1,4,1,1,3
+187,Military Training Manual #23,0,0,0,1,0,2,3,15,32,1,4,91,186,1,1,750,2,4,23,67,3,1,4,23,70,14,1,Increases party size for boss battles and online conquests.,1,4,1,1,3
+188,Military Training Manual #24,0,0,0,1,0,2,3,15,36,1,4,91,187,1,1,750,2,4,23,68,2,1,4,23,70,15,1,Increases party size for boss battles and online conquests.,1,4,1,1,3
+189,Military Training Manual #25,0,0,0,1,0,2,3,15,40,1,4,91,188,1,1,750,2,4,23,68,2,1,4,23,70,17,1,Increases party size for boss battles and online conquests.,1,4,1,1,3
+190,Military Training Manual #26,0,0,0,1,0,2,3,15,60,1,4,91,189,1,1,750,2,4,23,68,2,1,4,23,70,23,1,Increases party size for boss battles and online conquests.,1,4,1,1,3
+191,Military Training Manual #27,0,0,0,1,0,2,3,15,75,1,4,91,190,1,1,750,2,4,23,69,1,1,4,23,70,27,1,Increases party size for boss battles and online conquests.,1,4,1,1,3
+192,Military Training Manual #28,0,0,0,1,0,2,3,15,80,1,4,91,191,1,1,750,2,4,23,69,1,1,4,23,70,29,1,Increases party size for boss battles and online conquests.,1,4,1,1,3
+193,Legendary Expedition Map #1,0,0,0,2,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases party size for cave conquests.,1,5,1,1,0
+194,Legendary Expedition Map #2,0,0,0,2,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases party size for cave conquests.,1,5,1,1,0
+195,Legendary Expedition Map #3,0,0,0,2,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases party size for cave conquests.,1,5,1,1,0
+196,Legendary Expedition Map #4,0,0,0,2,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases party size for cave conquests.,1,5,1,1,0
+197,Legendary Expedition Map #5,0,0,0,2,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases party size for cave conquests.,1,5,1,1,0
+198,Legendary Expedition Map #6,0,0,0,2,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases party size for cave conquests.,1,5,1,1,0
+199,Legendary Expedition Map #7,0,0,0,2,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increases party size for cave conquests.,1,5,1,1,0
+200,Legendary Expedition Map #8,0,0,0,2,0,1,3,15,1,1,,,,,,750,2,4,23,66,4,1,4,23,70,5,1,Increases party size for cave conquests.,1,5,1,1,3
+201,Legendary Expedition Map #9,0,0,0,2,0,2,3,15,7,1,4,91,200,1,1,750,2,4,23,66,4,1,4,23,70,7,1,Increases party size for cave conquests.,1,5,1,1,3
+202,Legendary Expedition Map #10,0,0,0,2,0,2,3,15,12,1,4,91,201,1,1,750,2,4,23,66,4,1,4,23,70,8,1,Increases party size for cave conquests.,1,5,1,1,3
+203,Legendary Expedition Map #11,0,0,0,2,0,2,3,15,17,1,4,91,202,1,1,750,2,4,23,66,4,1,4,23,70,10,1,Increases party size for cave conquests.,1,5,1,1,3
+204,Legendary Expedition Map #12,0,0,0,2,0,2,3,15,22,1,4,91,203,1,1,750,2,4,23,67,3,1,4,23,70,11,1,Increases party size for cave conquests.,1,5,1,1,3
+205,Legendary Expedition Map #13,0,0,0,2,0,2,3,15,27,1,4,91,204,1,1,750,2,4,23,67,3,1,4,23,70,13,1,Increases party size for cave conquests.,1,5,1,1,3
+206,Legendary Expedition Map #14,0,0,0,2,0,2,3,15,32,1,4,91,205,1,1,750,2,4,23,67,3,1,4,23,70,14,1,Increases party size for cave conquests.,1,5,1,1,3
+207,Legendary Expedition Map #15,0,0,0,2,0,2,3,15,37,1,4,91,206,1,1,750,2,4,23,68,2,1,4,23,70,16,1,Increases party size for cave conquests.,1,5,1,1,3
+208,Legendary Expedition Map #16,0,0,0,2,0,2,3,15,42,1,4,91,207,1,1,750,2,4,23,68,2,1,4,23,70,17,1,Increases party size for cave conquests.,1,5,1,1,3
+209,Legendary Expedition Map #17,0,0,0,2,0,2,3,15,50,1,4,91,208,1,1,750,2,4,23,69,1,1,4,23,70,20,1,Increases party size for cave conquests.,1,5,1,1,3
+210,Legendary Expedition Map #18,0,0,0,2,0,2,3,15,60,1,4,91,209,1,1,750,2,4,23,69,1,1,4,23,70,23,1,Increases party size for cave conquests.,1,5,1,1,3
+211,Construction Hints #1,0,0,0,3,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increase the number of facilities you can build at the same time.,1,6,1,1,0
+212,Construction Hints #2,0,0,0,3,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increase the number of facilities you can build at the same time.,1,6,1,1,0
+213,Construction Hints #3,0,0,0,3,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increase the number of facilities you can build at the same time.,1,6,1,1,0
+214,Construction Hints #4,0,0,0,3,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increase the number of facilities you can build at the same time.,1,6,1,1,0
+215,Construction Hints #5,0,0,0,3,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increase the number of facilities you can build at the same time.,1,6,1,1,0
+216,Construction Hints #6,0,0,0,3,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increase the number of facilities you can build at the same time.,1,6,1,1,0
+217,Construction Hints #7,0,0,0,3,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increase the number of facilities you can build at the same time.,1,6,1,1,0
+218,Construction Hints #8,0,0,0,3,0,0,,,,,,,,,,750,0,,,,,,,,,,,Increase the number of facilities you can build at the same time.,1,6,1,1,0
+219,Construction Hints #9,0,0,0,3,0,1,3,15,5,1,,,,,,750,2,4,23,66,4,1,4,23,70,6,1,Increase the number of facilities you can build at the same time.,1,6,1,1,3
+220,Construction Hints #10,0,0,0,3,0,2,3,15,8,1,4,91,219,1,1,750,2,4,23,66,4,1,4,23,70,7,1,Increase the number of facilities you can build at the same time.,1,6,1,1,3
+221,Construction Hints #11,0,0,0,3,0,2,3,15,12,1,4,91,220,1,1,750,2,4,23,67,3,1,4,23,70,8,1,Increase the number of facilities you can build at the same time.,1,6,1,1,3
+222,Construction Hints #12,0,0,0,3,0,2,3,15,16,1,4,91,221,1,1,750,2,4,23,67,3,1,4,23,70,9,1,Increase the number of facilities you can build at the same time.,1,6,1,1,3
+223,Construction Hints #13,0,0,0,3,0,2,3,15,20,1,4,91,222,1,1,750,2,4,23,68,2,1,4,23,70,11,1,Increase the number of facilities you can build at the same time.,1,6,1,1,3
+224,Construction Hints #14,0,0,0,3,0,2,3,15,24,1,4,91,223,1,1,750,2,4,23,68,2,1,4,23,70,12,1,Increase the number of facilities you can build at the same time.,1,6,1,1,3
+225,Construction Hints #15,0,0,0,3,0,2,3,15,28,1,4,91,224,1,1,750,2,4,23,69,1,1,4,23,70,13,1,Increase the number of facilities you can build at the same time.,1,6,1,1,3
+226,Construction Hints #16,0,0,0,3,0,2,3,15,32,1,4,91,225,1,1,750,2,4,23,69,1,1,4,23,70,14,1,Increase the number of facilities you can build at the same time.,1,6,1,1,3
+227,Book of Awakening #6,0,0,0,4,1,2,3,15,999,1,3,100,1,1,,750,2,4,23,66,4,1,4,23,70,30,1,Increases all residents' Awakening Limit by 1.,1,3,1,1,3

@@ -1,0 +1,34 @@
+{
+  "rawCandidates": "coordination/fixed-formation-20261006/workloads/rust-candidates-fixed-all20.json",
+  "tables": "coordination/native-preparation/shared/builder-inputs/facts.json",
+  "kernelPath": "coordination/fixed-formation-20261006/kernel/ka_kernel_encounter_v3.dll",
+  "outputDir": "coordination/fixed-formation-20261006/launch/cpp/output",
+  "executors": 2,
+  "generations": 4,
+  "seedCount": 2,
+  "seedStart": 100001,
+  "seedPointers": [
+    "/mathSeed",
+    "/libSeed"
+  ],
+  "headless": true,
+  "mutations": [],
+  "searchProfile": "adaptive-native",
+  "searchScheduling": "encounter-wave",
+  "focusEncounterIds": [
+    0
+  ],
+  "fixedFormation": true,
+  "executionMode": "diagnostic",
+  "purpose": "diagnostic",
+  "provenance": {
+    "engineSha256": "07ee7d36e3bd1acc9b431095d241eb6cab04a77ffedd0e011074a77fa1848e19",
+    "mechanicsSha256": "32338978751a75c0e9fd099be2c82f7512030c1cd1800319250288b9c035edb2",
+    "policySha256": "403a443d931840b23ccc1bad071055422fd6e1f465681fbf2b5a6291fef7382f",
+    "abiSha256": "4ea5a1307f9842c6154c3ef4319435e8c64e8410736e5e95e460bd683c6034f8",
+    "arenaSha256": "51d7ccf31674459f136af28969e1f2b40f0b40c95894112d086cd2d7a51db169",
+    "rawCandidatesSha256": "7b0aae360043a2f7aeac09e6d5db06492a107ce2fb6d5ee9a6a5b30bc25f2416",
+    "tablesSha256": "a0c4b637a8d98df86f7c8e18984d6234c999522e424c1a593e4e385c0cb06657",
+    "currentKernelSha256": "07ee7d36e3bd1acc9b431095d241eb6cab04a77ffedd0e011074a77fa1848e19"
+  }
+}

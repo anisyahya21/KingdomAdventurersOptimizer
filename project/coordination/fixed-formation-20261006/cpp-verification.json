@@ -1,0 +1,115 @@
+{
+  "schema": "ka-fixed-formation-cpp-verification-1",
+  "engine": "cpp",
+  "policyHash": "403a443d931840b23ccc1bad071055422fd6e1f465681fbf2b5a6291fef7382f",
+  "checkedUtc": "2026-10-05T23:33:39Z",
+  "executable": {
+    "path": "coordination/native-preparation/cpp/standalone-optimizer/optimizer.exe",
+    "sha256": "2bd4fe930e5f5e643c5d772a28c81009c7b7e8035ad7a5c3b1e000b1deb500a9"
+  },
+  "dpsBounds": {
+    "10": [
+      55,
+      19287
+    ],
+    "11": [
+      5,
+      7986
+    ],
+    "13": [
+      6,
+      5766
+    ],
+    "14": [
+      3,
+      4976
+    ],
+    "15": [
+      5,
+      4780
+    ],
+    "16": [
+      5,
+      5204
+    ],
+    "19": [
+      2,
+      7049
+    ]
+  },
+  "dpsSkills": [
+    26,
+    110,
+    25,
+    24,
+    23,
+    22
+  ],
+  "healerSkills": [
+    37,
+    107
+  ],
+  "fodderSkills": [],
+  "checks": {
+    "canonicalPreparationPositive": {
+      "exit": 0,
+      "snapshotPresent": true,
+      "ownFormationOrder": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        1
+      ],
+      "placementRolesMatched": true,
+      "stderr": ""
+    },
+    "canonicalPreparationNegativeEquippedCast": {
+      "exit": 2,
+      "error": "C++ optimizer: fixed formation unit 0 must carry no weapon"
+    },
+    "fixedProposal": {
+      "exit": 0,
+      "generated": 7,
+      "requested": 7,
+      "operators": [
+        "fixed-dps-stat"
+      ],
+      "allFixedStatOp": true,
+      "validation": {
+        "schema": "ka-fixed-formation-candidate-check-1",
+        "policyHash": "403a443d931840b23ccc1bad071055422fd6e1f465681fbf2b5a6291fef7382f",
+        "distinct": 7,
+        "checked": 7,
+        "violations": [],
+        "statsVaried": true,
+        "ok": true
+      },
+      "stderr": ""
+    },
+    "fixedProposalNegativeEquippedCast": {
+      "exit": 2,
+      "ok": false,
+      "error": "fixed formation unit 0 must carry no weapon"
+    },
+    "headlessSearch": {
+      "exit": 0,
+      "savedRows": 10,
+      "executionErrors": 0,
+      "invalidCandidates": 0,
+      "state": "complete",
+      "validation": {
+        "schema": "ka-fixed-formation-candidate-check-1",
+        "policyHash": "403a443d931840b23ccc1bad071055422fd6e1f465681fbf2b5a6291fef7382f",
+        "distinct": 5,
+        "checked": 5,
+        "violations": [],
+        "statsVaried": true,
+        "ok": true
+      },
+      "stderr": "kaopt summary: saved=10 invalid=0 execution_errors=0 successful=10 scored=10"
+    }
+  },
+  "ok": true
+}

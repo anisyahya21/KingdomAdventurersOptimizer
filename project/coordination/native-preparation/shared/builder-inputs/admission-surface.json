@@ -1,0 +1,12 @@
+{
+  "candidates": 4194,
+  "startProfilePresent": 4194,
+  "prePlacementPresent": 0,
+  "housePetsPresent": 0,
+  "householdOwnersPresent": 0,
+  "defaultStartGateCandidates": 0,
+  "sourceDatabase": "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\cpp\\runs\\cpp-kernel-provenance-20261004b\\inputs\\candidate-only-current-revision.sqlite",
+  "sourceDatabaseSha256": "55b8cb3bbf0059a209cf7fdb09542ef90620da2af78435d0abd86e9c7a11459d",
+  "purpose": "admission coverage only",
+  "battleExecutions": 0
+}

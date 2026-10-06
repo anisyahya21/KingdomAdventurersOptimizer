@@ -1,0 +1,53 @@
+{
+  "status": "Static native recovery; full battle runtime unvalidated",
+  "priorities": [
+    0,
+    3,
+    6,
+    9,
+    10,
+    13
+  ],
+  "priorityFieldHash": "28CBA7A75FF2C938ABB19128CC8A2599CBE86407C74A5C1F5E8B4BC0B35D386D",
+  "metadataOffset": "0x4e5fd8",
+  "priorityFieldReference": {
+    "got": "0x2f64c98",
+    "metadataAddress": "0x304bcc0",
+    "name": "Field$<PrivateImplementationDetails>.28CBA7A75FF2C938ABB19128CC8A2599CBE86407C74A5C1F5E8B4BC0B35D386D"
+  },
+  "sortKeys": [
+    "priority ascending",
+    "Param.GetValue(entity, Defense14, 0) descending",
+    "incoming index ascending"
+  ],
+  "formationSkills": [
+    {
+      "id": 105,
+      "type": 60,
+      "value": 0,
+      "name": "Leading the Charge"
+    },
+    {
+      "id": 106,
+      "type": 60,
+      "value": 1,
+      "name": "Daring Charge"
+    },
+    {
+      "id": 107,
+      "type": 60,
+      "value": 4,
+      "name": "Backup"
+    }
+  ],
+  "categoryOverrides": [
+    "first possessed type60 skill value, else2",
+    "visitor overrides with3",
+    "entity identity equal to TeamMember.Leader overrides with5"
+  ],
+  "offsets": {
+    "hasMonster": 1,
+    "hasOwnerPlayer": 2
+  },
+  "grid": "column=index%5; row=index//5; offset=max(3,opponentCount//5+1); ownCell=(column,offset+1+row); opponentCell=(column,offset-row)"
+}

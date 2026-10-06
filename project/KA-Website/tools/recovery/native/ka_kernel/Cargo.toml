@@ -1,0 +1,25 @@
+[package]
+name = "ka_kernel"
+version = "0.0.1"
+edition = "2021"
+publish = false
+
+# A C-ABI shared library, deliberately not a Python extension module.
+#
+# The optimiser's bulk workers run under PyPy, and PyO3/maturin target the CPython C API, so a
+# PyO3 extension would be unusable from the runtime that actually matters here. A plain `cdylib`
+# loaded through ctypes/cffi works identically from PyPy and CPython, needs no Python headers, and
+# keeps the toolchain decoupled from the interpreter. That is the boundary this prototype tests.
+[lib]
+name = "ka_kernel"
+crate-type = ["cdylib"]
+
+[features]
+profile = []
+large-arena = []
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"

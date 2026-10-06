@@ -1,0 +1,3630 @@
+{
+  "source": "RE-evidence/20260911-treasure/xls-original/English.lproj/SpecialBoss.txt",
+  "variants": [
+    {
+      "id": 0,
+      "title": "Vs. Kairobot Knight (Easy)",
+      "familyId": "saturday-kairobot-knight",
+      "familyName": "Saturday - Kairobot Knight's Challenge",
+      "dayOfWeek": 7,
+      "difficulty": 0,
+      "difficultyName": "Easy",
+      "levelField": 35,
+      "bossLevelField": 70,
+      "boss": {
+        "monsterId": 135,
+        "slotField": 1,
+        "role": "boss",
+        "battleArtRecovered": false
+      },
+      "followers": [
+        {
+          "selectionIndex": 0,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 1,
+          "entryType": 2,
+          "monsterId": 111,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 2,
+          "entryType": 2,
+          "monsterId": 109,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 3,
+          "entryType": 2,
+          "monsterId": 117,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 4,
+          "entryType": 2,
+          "monsterId": 112,
+          "checkRate": 100,
+          "role": "follower"
+        }
+      ],
+      "followersGrouped": [
+        {
+          "monsterId": 119,
+          "count": 1,
+          "selectionIndices": [
+            0
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 111,
+          "count": 1,
+          "selectionIndices": [
+            1
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 109,
+          "count": 1,
+          "selectionIndices": [
+            2
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 117,
+          "count": 1,
+          "selectionIndices": [
+            3
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 112,
+          "count": 1,
+          "selectionIndices": [
+            4
+          ],
+          "role": "follower"
+        }
+      ],
+      "enemyTotal": 6,
+      "rewardGroupId": 1000,
+      "appearanceTerms": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          7
+        ]
+      ],
+      "chipId": 261,
+      "comment": "Defeat me to get treasure!",
+      "distinctMonsterIds": [
+        109,
+        111,
+        112,
+        117,
+        119,
+        135
+      ],
+      "battleArtCoveredIds": [],
+      "battleArtCoverage": {
+        "covered": 0,
+        "total": 6,
+        "allCovered": false
+      },
+      "confidence": "CONFIRMED source record; native formation ordering recovered separately"
+    },
+    {
+      "id": 1,
+      "title": "Vs. Kairobot Knight (Normal)",
+      "familyId": "saturday-kairobot-knight",
+      "familyName": "Saturday - Kairobot Knight's Challenge",
+      "dayOfWeek": 7,
+      "difficulty": 1,
+      "difficultyName": "Normal",
+      "levelField": 65,
+      "bossLevelField": 130,
+      "boss": {
+        "monsterId": 135,
+        "slotField": 1,
+        "role": "boss",
+        "battleArtRecovered": false
+      },
+      "followers": [
+        {
+          "selectionIndex": 0,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 1,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 2,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 3,
+          "entryType": 2,
+          "monsterId": 113,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 4,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 5,
+          "entryType": 2,
+          "monsterId": 105,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 6,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 7,
+          "entryType": 2,
+          "monsterId": 107,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 8,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 9,
+          "entryType": 2,
+          "monsterId": 108,
+          "checkRate": 100,
+          "role": "follower"
+        }
+      ],
+      "followersGrouped": [
+        {
+          "monsterId": 119,
+          "count": 6,
+          "selectionIndices": [
+            0,
+            1,
+            2,
+            4,
+            6,
+            8
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 113,
+          "count": 1,
+          "selectionIndices": [
+            3
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 105,
+          "count": 1,
+          "selectionIndices": [
+            5
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 107,
+          "count": 1,
+          "selectionIndices": [
+            7
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 108,
+          "count": 1,
+          "selectionIndices": [
+            9
+          ],
+          "role": "follower"
+        }
+      ],
+      "enemyTotal": 11,
+      "rewardGroupId": 1001,
+      "appearanceTerms": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          7
+        ]
+      ],
+      "chipId": 261,
+      "comment": "Defeat me to get treasure!",
+      "distinctMonsterIds": [
+        105,
+        107,
+        108,
+        113,
+        119,
+        135
+      ],
+      "battleArtCoveredIds": [],
+      "battleArtCoverage": {
+        "covered": 0,
+        "total": 6,
+        "allCovered": false
+      },
+      "confidence": "CONFIRMED source record; native formation ordering recovered separately"
+    },
+    {
+      "id": 2,
+      "title": "Vs. Kairobot Knight (Hard)",
+      "familyId": "saturday-kairobot-knight",
+      "familyName": "Saturday - Kairobot Knight's Challenge",
+      "dayOfWeek": 7,
+      "difficulty": 2,
+      "difficultyName": "Hard",
+      "levelField": 120,
+      "bossLevelField": 240,
+      "boss": {
+        "monsterId": 135,
+        "slotField": 1,
+        "role": "boss",
+        "battleArtRecovered": false
+      },
+      "followers": [
+        {
+          "selectionIndex": 0,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 1,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 2,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 3,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 4,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 5,
+          "entryType": 2,
+          "monsterId": 110,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 6,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 7,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 8,
+          "entryType": 2,
+          "monsterId": 115,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 9,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 10,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 11,
+          "entryType": 2,
+          "monsterId": 120,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 12,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 13,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 14,
+          "entryType": 2,
+          "monsterId": 123,
+          "checkRate": 100,
+          "role": "follower"
+        }
+      ],
+      "followersGrouped": [
+        {
+          "monsterId": 119,
+          "count": 11,
+          "selectionIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            6,
+            7,
+            9,
+            10,
+            12,
+            13
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 110,
+          "count": 1,
+          "selectionIndices": [
+            5
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 115,
+          "count": 1,
+          "selectionIndices": [
+            8
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 120,
+          "count": 1,
+          "selectionIndices": [
+            11
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 123,
+          "count": 1,
+          "selectionIndices": [
+            14
+          ],
+          "role": "follower"
+        }
+      ],
+      "enemyTotal": 16,
+      "rewardGroupId": 1002,
+      "appearanceTerms": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          7
+        ]
+      ],
+      "chipId": 261,
+      "comment": "Defeat me to get treasure!",
+      "distinctMonsterIds": [
+        110,
+        115,
+        119,
+        120,
+        123,
+        135
+      ],
+      "battleArtCoveredIds": [],
+      "battleArtCoverage": {
+        "covered": 0,
+        "total": 6,
+        "allCovered": false
+      },
+      "confidence": "CONFIRMED source record; native formation ordering recovered separately"
+    },
+    {
+      "id": 3,
+      "title": "Vs. Kairobot Knight (Extreme)",
+      "familyId": "saturday-kairobot-knight",
+      "familyName": "Saturday - Kairobot Knight's Challenge",
+      "dayOfWeek": 7,
+      "difficulty": 3,
+      "difficultyName": "Extreme",
+      "levelField": 250,
+      "bossLevelField": 500,
+      "boss": {
+        "monsterId": 135,
+        "slotField": 1,
+        "role": "boss",
+        "battleArtRecovered": false
+      },
+      "followers": [
+        {
+          "selectionIndex": 0,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 1,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 2,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 3,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 4,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 5,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 6,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 7,
+          "entryType": 2,
+          "monsterId": 121,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 8,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 9,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 10,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 11,
+          "entryType": 2,
+          "monsterId": 122,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 12,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 13,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 14,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 15,
+          "entryType": 2,
+          "monsterId": 114,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 16,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 17,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 18,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 19,
+          "entryType": 2,
+          "monsterId": 106,
+          "checkRate": 100,
+          "role": "follower"
+        }
+      ],
+      "followersGrouped": [
+        {
+          "monsterId": 119,
+          "count": 16,
+          "selectionIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            9,
+            10,
+            12,
+            13,
+            14,
+            16,
+            17,
+            18
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 121,
+          "count": 1,
+          "selectionIndices": [
+            7
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 122,
+          "count": 1,
+          "selectionIndices": [
+            11
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 114,
+          "count": 1,
+          "selectionIndices": [
+            15
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 106,
+          "count": 1,
+          "selectionIndices": [
+            19
+          ],
+          "role": "follower"
+        }
+      ],
+      "enemyTotal": 21,
+      "rewardGroupId": 1003,
+      "appearanceTerms": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          7
+        ]
+      ],
+      "chipId": 261,
+      "comment": "Defeat me to get treasure!",
+      "distinctMonsterIds": [
+        106,
+        114,
+        119,
+        121,
+        122,
+        135
+      ],
+      "battleArtCoveredIds": [
+        106,
+        114,
+        121,
+        122
+      ],
+      "battleArtCoverage": {
+        "covered": 4,
+        "total": 6,
+        "allCovered": false
+      },
+      "confidence": "CONFIRMED source record; native formation ordering recovered separately"
+    },
+    {
+      "id": 4,
+      "title": "Vs. Kairobot Mage (Easy)",
+      "familyId": "tuesday-kairobot-mage",
+      "familyName": "Tuesday - Kairobot Mage's Challenge",
+      "dayOfWeek": 3,
+      "difficulty": 0,
+      "difficultyName": "Easy",
+      "levelField": 25,
+      "bossLevelField": 50,
+      "boss": {
+        "monsterId": 136,
+        "slotField": 1,
+        "role": "boss",
+        "battleArtRecovered": false
+      },
+      "followers": [
+        {
+          "selectionIndex": 0,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 1,
+          "entryType": 2,
+          "monsterId": 111,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 2,
+          "entryType": 2,
+          "monsterId": 109,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 3,
+          "entryType": 2,
+          "monsterId": 117,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 4,
+          "entryType": 2,
+          "monsterId": 112,
+          "checkRate": 100,
+          "role": "follower"
+        }
+      ],
+      "followersGrouped": [
+        {
+          "monsterId": 119,
+          "count": 1,
+          "selectionIndices": [
+            0
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 111,
+          "count": 1,
+          "selectionIndices": [
+            1
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 109,
+          "count": 1,
+          "selectionIndices": [
+            2
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 117,
+          "count": 1,
+          "selectionIndices": [
+            3
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 112,
+          "count": 1,
+          "selectionIndices": [
+            4
+          ],
+          "role": "follower"
+        }
+      ],
+      "enemyTotal": 6,
+      "rewardGroupId": 1100,
+      "appearanceTerms": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          3
+        ]
+      ],
+      "chipId": 261,
+      "comment": "Defeat me to get treasure!",
+      "distinctMonsterIds": [
+        109,
+        111,
+        112,
+        117,
+        119,
+        136
+      ],
+      "battleArtCoveredIds": [],
+      "battleArtCoverage": {
+        "covered": 0,
+        "total": 6,
+        "allCovered": false
+      },
+      "confidence": "CONFIRMED source record; native formation ordering recovered separately"
+    },
+    {
+      "id": 5,
+      "title": "Vs. Kairobot Mage (Normal)",
+      "familyId": "tuesday-kairobot-mage",
+      "familyName": "Tuesday - Kairobot Mage's Challenge",
+      "dayOfWeek": 3,
+      "difficulty": 1,
+      "difficultyName": "Normal",
+      "levelField": 55,
+      "bossLevelField": 110,
+      "boss": {
+        "monsterId": 136,
+        "slotField": 1,
+        "role": "boss",
+        "battleArtRecovered": false
+      },
+      "followers": [
+        {
+          "selectionIndex": 0,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 1,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 2,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 3,
+          "entryType": 2,
+          "monsterId": 113,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 4,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 5,
+          "entryType": 2,
+          "monsterId": 105,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 6,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 7,
+          "entryType": 2,
+          "monsterId": 107,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 8,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 9,
+          "entryType": 2,
+          "monsterId": 108,
+          "checkRate": 100,
+          "role": "follower"
+        }
+      ],
+      "followersGrouped": [
+        {
+          "monsterId": 119,
+          "count": 6,
+          "selectionIndices": [
+            0,
+            1,
+            2,
+            4,
+            6,
+            8
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 113,
+          "count": 1,
+          "selectionIndices": [
+            3
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 105,
+          "count": 1,
+          "selectionIndices": [
+            5
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 107,
+          "count": 1,
+          "selectionIndices": [
+            7
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 108,
+          "count": 1,
+          "selectionIndices": [
+            9
+          ],
+          "role": "follower"
+        }
+      ],
+      "enemyTotal": 11,
+      "rewardGroupId": 1101,
+      "appearanceTerms": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          3
+        ]
+      ],
+      "chipId": 261,
+      "comment": "Defeat me to get treasure!",
+      "distinctMonsterIds": [
+        105,
+        107,
+        108,
+        113,
+        119,
+        136
+      ],
+      "battleArtCoveredIds": [],
+      "battleArtCoverage": {
+        "covered": 0,
+        "total": 6,
+        "allCovered": false
+      },
+      "confidence": "CONFIRMED source record; native formation ordering recovered separately"
+    },
+    {
+      "id": 6,
+      "title": "Vs. Kairobot Mage (Hard)",
+      "familyId": "tuesday-kairobot-mage",
+      "familyName": "Tuesday - Kairobot Mage's Challenge",
+      "dayOfWeek": 3,
+      "difficulty": 2,
+      "difficultyName": "Hard",
+      "levelField": 100,
+      "bossLevelField": 200,
+      "boss": {
+        "monsterId": 136,
+        "slotField": 1,
+        "role": "boss",
+        "battleArtRecovered": false
+      },
+      "followers": [
+        {
+          "selectionIndex": 0,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 1,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 2,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 3,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 4,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 5,
+          "entryType": 2,
+          "monsterId": 110,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 6,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 7,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 8,
+          "entryType": 2,
+          "monsterId": 115,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 9,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 10,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 11,
+          "entryType": 2,
+          "monsterId": 120,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 12,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 13,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 14,
+          "entryType": 2,
+          "monsterId": 123,
+          "checkRate": 100,
+          "role": "follower"
+        }
+      ],
+      "followersGrouped": [
+        {
+          "monsterId": 119,
+          "count": 11,
+          "selectionIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            6,
+            7,
+            9,
+            10,
+            12,
+            13
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 110,
+          "count": 1,
+          "selectionIndices": [
+            5
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 115,
+          "count": 1,
+          "selectionIndices": [
+            8
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 120,
+          "count": 1,
+          "selectionIndices": [
+            11
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 123,
+          "count": 1,
+          "selectionIndices": [
+            14
+          ],
+          "role": "follower"
+        }
+      ],
+      "enemyTotal": 16,
+      "rewardGroupId": 1102,
+      "appearanceTerms": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          3
+        ]
+      ],
+      "chipId": 261,
+      "comment": "Defeat me to get treasure!",
+      "distinctMonsterIds": [
+        110,
+        115,
+        119,
+        120,
+        123,
+        136
+      ],
+      "battleArtCoveredIds": [],
+      "battleArtCoverage": {
+        "covered": 0,
+        "total": 6,
+        "allCovered": false
+      },
+      "confidence": "CONFIRMED source record; native formation ordering recovered separately"
+    },
+    {
+      "id": 7,
+      "title": "Vs. Kairobot Mage (Extreme)",
+      "familyId": "tuesday-kairobot-mage",
+      "familyName": "Tuesday - Kairobot Mage's Challenge",
+      "dayOfWeek": 3,
+      "difficulty": 3,
+      "difficultyName": "Extreme",
+      "levelField": 200,
+      "bossLevelField": 400,
+      "boss": {
+        "monsterId": 136,
+        "slotField": 1,
+        "role": "boss",
+        "battleArtRecovered": false
+      },
+      "followers": [
+        {
+          "selectionIndex": 0,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 1,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 2,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 3,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 4,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 5,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 6,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 7,
+          "entryType": 2,
+          "monsterId": 121,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 8,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 9,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 10,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 11,
+          "entryType": 2,
+          "monsterId": 122,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 12,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 13,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 14,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 15,
+          "entryType": 2,
+          "monsterId": 114,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 16,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 17,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 18,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 19,
+          "entryType": 2,
+          "monsterId": 106,
+          "checkRate": 100,
+          "role": "follower"
+        }
+      ],
+      "followersGrouped": [
+        {
+          "monsterId": 119,
+          "count": 16,
+          "selectionIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            9,
+            10,
+            12,
+            13,
+            14,
+            16,
+            17,
+            18
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 121,
+          "count": 1,
+          "selectionIndices": [
+            7
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 122,
+          "count": 1,
+          "selectionIndices": [
+            11
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 114,
+          "count": 1,
+          "selectionIndices": [
+            15
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 106,
+          "count": 1,
+          "selectionIndices": [
+            19
+          ],
+          "role": "follower"
+        }
+      ],
+      "enemyTotal": 21,
+      "rewardGroupId": 1203,
+      "appearanceTerms": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          3
+        ]
+      ],
+      "chipId": 261,
+      "comment": "Defeat me to get treasure!",
+      "distinctMonsterIds": [
+        106,
+        114,
+        119,
+        121,
+        122,
+        136
+      ],
+      "battleArtCoveredIds": [
+        106,
+        114,
+        121,
+        122
+      ],
+      "battleArtCoverage": {
+        "covered": 4,
+        "total": 6,
+        "allCovered": false
+      },
+      "confidence": "CONFIRMED source record; native formation ordering recovered separately"
+    },
+    {
+      "id": 8,
+      "title": "Vs. Aloha Kairobot (Easy)",
+      "familyId": "thursday-aloha-kairobot",
+      "familyName": "Thursday - Aloha Kairobot's Challenge",
+      "dayOfWeek": 5,
+      "difficulty": 0,
+      "difficultyName": "Easy",
+      "levelField": 30,
+      "bossLevelField": 60,
+      "boss": {
+        "monsterId": 137,
+        "slotField": 1,
+        "role": "boss",
+        "battleArtRecovered": false
+      },
+      "followers": [
+        {
+          "selectionIndex": 0,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 1,
+          "entryType": 2,
+          "monsterId": 111,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 2,
+          "entryType": 2,
+          "monsterId": 109,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 3,
+          "entryType": 2,
+          "monsterId": 117,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 4,
+          "entryType": 2,
+          "monsterId": 112,
+          "checkRate": 100,
+          "role": "follower"
+        }
+      ],
+      "followersGrouped": [
+        {
+          "monsterId": 119,
+          "count": 1,
+          "selectionIndices": [
+            0
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 111,
+          "count": 1,
+          "selectionIndices": [
+            1
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 109,
+          "count": 1,
+          "selectionIndices": [
+            2
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 117,
+          "count": 1,
+          "selectionIndices": [
+            3
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 112,
+          "count": 1,
+          "selectionIndices": [
+            4
+          ],
+          "role": "follower"
+        }
+      ],
+      "enemyTotal": 6,
+      "rewardGroupId": 1300,
+      "appearanceTerms": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "chipId": 261,
+      "comment": "Defeat me to get treasure!",
+      "distinctMonsterIds": [
+        109,
+        111,
+        112,
+        117,
+        119,
+        137
+      ],
+      "battleArtCoveredIds": [],
+      "battleArtCoverage": {
+        "covered": 0,
+        "total": 6,
+        "allCovered": false
+      },
+      "confidence": "CONFIRMED source record; native formation ordering recovered separately"
+    },
+    {
+      "id": 9,
+      "title": "Vs. Aloha Kairobot (Normal)",
+      "familyId": "thursday-aloha-kairobot",
+      "familyName": "Thursday - Aloha Kairobot's Challenge",
+      "dayOfWeek": 5,
+      "difficulty": 1,
+      "difficultyName": "Normal",
+      "levelField": 60,
+      "bossLevelField": 120,
+      "boss": {
+        "monsterId": 137,
+        "slotField": 1,
+        "role": "boss",
+        "battleArtRecovered": false
+      },
+      "followers": [
+        {
+          "selectionIndex": 0,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 1,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 2,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 3,
+          "entryType": 2,
+          "monsterId": 113,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 4,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 5,
+          "entryType": 2,
+          "monsterId": 105,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 6,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 7,
+          "entryType": 2,
+          "monsterId": 107,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 8,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 9,
+          "entryType": 2,
+          "monsterId": 108,
+          "checkRate": 100,
+          "role": "follower"
+        }
+      ],
+      "followersGrouped": [
+        {
+          "monsterId": 119,
+          "count": 6,
+          "selectionIndices": [
+            0,
+            1,
+            2,
+            4,
+            6,
+            8
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 113,
+          "count": 1,
+          "selectionIndices": [
+            3
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 105,
+          "count": 1,
+          "selectionIndices": [
+            5
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 107,
+          "count": 1,
+          "selectionIndices": [
+            7
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 108,
+          "count": 1,
+          "selectionIndices": [
+            9
+          ],
+          "role": "follower"
+        }
+      ],
+      "enemyTotal": 11,
+      "rewardGroupId": 1301,
+      "appearanceTerms": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "chipId": 261,
+      "comment": "Defeat me to get treasure!",
+      "distinctMonsterIds": [
+        105,
+        107,
+        108,
+        113,
+        119,
+        137
+      ],
+      "battleArtCoveredIds": [],
+      "battleArtCoverage": {
+        "covered": 0,
+        "total": 6,
+        "allCovered": false
+      },
+      "confidence": "CONFIRMED source record; native formation ordering recovered separately"
+    },
+    {
+      "id": 10,
+      "title": "Vs. Aloha Kairobot (Hard)",
+      "familyId": "thursday-aloha-kairobot",
+      "familyName": "Thursday - Aloha Kairobot's Challenge",
+      "dayOfWeek": 5,
+      "difficulty": 2,
+      "difficultyName": "Hard",
+      "levelField": 110,
+      "bossLevelField": 220,
+      "boss": {
+        "monsterId": 137,
+        "slotField": 1,
+        "role": "boss",
+        "battleArtRecovered": false
+      },
+      "followers": [
+        {
+          "selectionIndex": 0,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 1,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 2,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 3,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 4,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 5,
+          "entryType": 2,
+          "monsterId": 110,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 6,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 7,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 8,
+          "entryType": 2,
+          "monsterId": 115,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 9,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 10,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 11,
+          "entryType": 2,
+          "monsterId": 120,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 12,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 13,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 14,
+          "entryType": 2,
+          "monsterId": 123,
+          "checkRate": 100,
+          "role": "follower"
+        }
+      ],
+      "followersGrouped": [
+        {
+          "monsterId": 119,
+          "count": 11,
+          "selectionIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            6,
+            7,
+            9,
+            10,
+            12,
+            13
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 110,
+          "count": 1,
+          "selectionIndices": [
+            5
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 115,
+          "count": 1,
+          "selectionIndices": [
+            8
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 120,
+          "count": 1,
+          "selectionIndices": [
+            11
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 123,
+          "count": 1,
+          "selectionIndices": [
+            14
+          ],
+          "role": "follower"
+        }
+      ],
+      "enemyTotal": 16,
+      "rewardGroupId": 1302,
+      "appearanceTerms": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "chipId": 261,
+      "comment": "Defeat me to get treasure!",
+      "distinctMonsterIds": [
+        110,
+        115,
+        119,
+        120,
+        123,
+        137
+      ],
+      "battleArtCoveredIds": [],
+      "battleArtCoverage": {
+        "covered": 0,
+        "total": 6,
+        "allCovered": false
+      },
+      "confidence": "CONFIRMED source record; native formation ordering recovered separately"
+    },
+    {
+      "id": 11,
+      "title": "Vs. Aloha Kairobot (Extreme)",
+      "familyId": "thursday-aloha-kairobot",
+      "familyName": "Thursday - Aloha Kairobot's Challenge",
+      "dayOfWeek": 5,
+      "difficulty": 3,
+      "difficultyName": "Extreme",
+      "levelField": 220,
+      "bossLevelField": 440,
+      "boss": {
+        "monsterId": 137,
+        "slotField": 1,
+        "role": "boss",
+        "battleArtRecovered": false
+      },
+      "followers": [
+        {
+          "selectionIndex": 0,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 1,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 2,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 3,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 4,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 5,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 6,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 7,
+          "entryType": 2,
+          "monsterId": 121,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 8,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 9,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 10,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 11,
+          "entryType": 2,
+          "monsterId": 122,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 12,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 13,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 14,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 15,
+          "entryType": 2,
+          "monsterId": 114,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 16,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 17,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 18,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 19,
+          "entryType": 2,
+          "monsterId": 106,
+          "checkRate": 100,
+          "role": "follower"
+        }
+      ],
+      "followersGrouped": [
+        {
+          "monsterId": 119,
+          "count": 16,
+          "selectionIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            9,
+            10,
+            12,
+            13,
+            14,
+            16,
+            17,
+            18
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 121,
+          "count": 1,
+          "selectionIndices": [
+            7
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 122,
+          "count": 1,
+          "selectionIndices": [
+            11
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 114,
+          "count": 1,
+          "selectionIndices": [
+            15
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 106,
+          "count": 1,
+          "selectionIndices": [
+            19
+          ],
+          "role": "follower"
+        }
+      ],
+      "enemyTotal": 21,
+      "rewardGroupId": 1303,
+      "appearanceTerms": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "chipId": 261,
+      "comment": "Defeat me to get treasure!",
+      "distinctMonsterIds": [
+        106,
+        114,
+        119,
+        121,
+        122,
+        137
+      ],
+      "battleArtCoveredIds": [
+        106,
+        114,
+        121,
+        122
+      ],
+      "battleArtCoverage": {
+        "covered": 4,
+        "total": 6,
+        "allCovered": false
+      },
+      "confidence": "CONFIRMED source record; native formation ordering recovered separately"
+    },
+    {
+      "id": 12,
+      "title": "Vs. Kairo Kommander (Easy)",
+      "familyId": "sunday-kairo-kommander",
+      "familyName": "Sunday - Kairo Kommander's Challenge",
+      "dayOfWeek": 1,
+      "difficulty": 0,
+      "difficultyName": "Easy",
+      "levelField": 45,
+      "bossLevelField": 90,
+      "boss": {
+        "monsterId": 138,
+        "slotField": 1,
+        "role": "boss",
+        "battleArtRecovered": false
+      },
+      "followers": [
+        {
+          "selectionIndex": 0,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 1,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 2,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 3,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 4,
+          "entryType": 2,
+          "monsterId": 118,
+          "checkRate": 100,
+          "role": "follower"
+        }
+      ],
+      "followersGrouped": [
+        {
+          "monsterId": 119,
+          "count": 4,
+          "selectionIndices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 118,
+          "count": 1,
+          "selectionIndices": [
+            4
+          ],
+          "role": "follower"
+        }
+      ],
+      "enemyTotal": 6,
+      "rewardGroupId": 1400,
+      "appearanceTerms": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "chipId": 261,
+      "comment": "Defeat me to get treasure!",
+      "distinctMonsterIds": [
+        118,
+        119,
+        138
+      ],
+      "battleArtCoveredIds": [],
+      "battleArtCoverage": {
+        "covered": 0,
+        "total": 3,
+        "allCovered": false
+      },
+      "confidence": "CONFIRMED source record; native formation ordering recovered separately"
+    },
+    {
+      "id": 13,
+      "title": "Vs. Kairo Kommander (Normal)",
+      "familyId": "sunday-kairo-kommander",
+      "familyName": "Sunday - Kairo Kommander's Challenge",
+      "dayOfWeek": 1,
+      "difficulty": 1,
+      "difficultyName": "Normal",
+      "levelField": 75,
+      "bossLevelField": 150,
+      "boss": {
+        "monsterId": 138,
+        "slotField": 1,
+        "role": "boss",
+        "battleArtRecovered": false
+      },
+      "followers": [
+        {
+          "selectionIndex": 0,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 1,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 2,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 3,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 4,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 5,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 6,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 7,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 8,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 9,
+          "entryType": 2,
+          "monsterId": 118,
+          "checkRate": 100,
+          "role": "follower"
+        }
+      ],
+      "followersGrouped": [
+        {
+          "monsterId": 119,
+          "count": 9,
+          "selectionIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 118,
+          "count": 1,
+          "selectionIndices": [
+            9
+          ],
+          "role": "follower"
+        }
+      ],
+      "enemyTotal": 11,
+      "rewardGroupId": 1401,
+      "appearanceTerms": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "chipId": 261,
+      "comment": "Defeat me to get treasure!",
+      "distinctMonsterIds": [
+        118,
+        119,
+        138
+      ],
+      "battleArtCoveredIds": [],
+      "battleArtCoverage": {
+        "covered": 0,
+        "total": 3,
+        "allCovered": false
+      },
+      "confidence": "CONFIRMED source record; native formation ordering recovered separately"
+    },
+    {
+      "id": 14,
+      "title": "Vs. Kairo Kommander (Hard)",
+      "familyId": "sunday-kairo-kommander",
+      "familyName": "Sunday - Kairo Kommander's Challenge",
+      "dayOfWeek": 1,
+      "difficulty": 2,
+      "difficultyName": "Hard",
+      "levelField": 160,
+      "bossLevelField": 320,
+      "boss": {
+        "monsterId": 138,
+        "slotField": 1,
+        "role": "boss",
+        "battleArtRecovered": false
+      },
+      "followers": [
+        {
+          "selectionIndex": 0,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 1,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 2,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 3,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 4,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 5,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 6,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 7,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 8,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 9,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 10,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 11,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 12,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 13,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 14,
+          "entryType": 2,
+          "monsterId": 118,
+          "checkRate": 100,
+          "role": "follower"
+        }
+      ],
+      "followersGrouped": [
+        {
+          "monsterId": 119,
+          "count": 14,
+          "selectionIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 118,
+          "count": 1,
+          "selectionIndices": [
+            14
+          ],
+          "role": "follower"
+        }
+      ],
+      "enemyTotal": 16,
+      "rewardGroupId": 1402,
+      "appearanceTerms": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "chipId": 261,
+      "comment": "Defeat me to get treasure!",
+      "distinctMonsterIds": [
+        118,
+        119,
+        138
+      ],
+      "battleArtCoveredIds": [],
+      "battleArtCoverage": {
+        "covered": 0,
+        "total": 3,
+        "allCovered": false
+      },
+      "confidence": "CONFIRMED source record; native formation ordering recovered separately"
+    },
+    {
+      "id": 15,
+      "title": "Vs. Kairo Kommander (Extreme)",
+      "familyId": "sunday-kairo-kommander",
+      "familyName": "Sunday - Kairo Kommander's Challenge",
+      "dayOfWeek": 1,
+      "difficulty": 3,
+      "difficultyName": "Extreme",
+      "levelField": 300,
+      "bossLevelField": 600,
+      "boss": {
+        "monsterId": 138,
+        "slotField": 1,
+        "role": "boss",
+        "battleArtRecovered": false
+      },
+      "followers": [
+        {
+          "selectionIndex": 0,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 1,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 2,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 3,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 4,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 5,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 6,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 7,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 8,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 9,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 10,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 11,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 12,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 13,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 14,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 15,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 16,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 17,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 18,
+          "entryType": 2,
+          "monsterId": 119,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 19,
+          "entryType": 2,
+          "monsterId": 118,
+          "checkRate": 100,
+          "role": "follower"
+        }
+      ],
+      "followersGrouped": [
+        {
+          "monsterId": 119,
+          "count": 19,
+          "selectionIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 118,
+          "count": 1,
+          "selectionIndices": [
+            19
+          ],
+          "role": "follower"
+        }
+      ],
+      "enemyTotal": 21,
+      "rewardGroupId": 1403,
+      "appearanceTerms": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "chipId": 261,
+      "comment": "Defeat me to get treasure!",
+      "distinctMonsterIds": [
+        118,
+        119,
+        138
+      ],
+      "battleArtCoveredIds": [],
+      "battleArtCoverage": {
+        "covered": 0,
+        "total": 3,
+        "allCovered": false
+      },
+      "confidence": "CONFIRMED source record; native formation ordering recovered separately"
+    },
+    {
+      "id": 16,
+      "title": "Wairo Raid Dungeon appeared!",
+      "familyId": "wairo-dungeon",
+      "familyName": "Wairo Dungeon",
+      "dayOfWeek": null,
+      "difficulty": 0,
+      "difficultyName": "Easy",
+      "levelField": 15,
+      "bossLevelField": 30,
+      "boss": {
+        "monsterId": 139,
+        "slotField": 1,
+        "role": "boss",
+        "battleArtRecovered": false
+      },
+      "followers": [
+        {
+          "selectionIndex": 0,
+          "entryType": 2,
+          "monsterId": 116,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 1,
+          "entryType": 2,
+          "monsterId": 111,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 2,
+          "entryType": 2,
+          "monsterId": 109,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 3,
+          "entryType": 2,
+          "monsterId": 117,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 4,
+          "entryType": 2,
+          "monsterId": 112,
+          "checkRate": 100,
+          "role": "follower"
+        }
+      ],
+      "followersGrouped": [
+        {
+          "monsterId": 116,
+          "count": 1,
+          "selectionIndices": [
+            0
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 111,
+          "count": 1,
+          "selectionIndices": [
+            1
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 109,
+          "count": 1,
+          "selectionIndices": [
+            2
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 117,
+          "count": 1,
+          "selectionIndices": [
+            3
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 112,
+          "count": 1,
+          "selectionIndices": [
+            4
+          ],
+          "role": "follower"
+        }
+      ],
+      "enemyTotal": 6,
+      "rewardGroupId": 400,
+      "appearanceTerms": [
+        [
+          0
+        ]
+      ],
+      "chipId": 223,
+      "comment": "Heh heh. Think you can take me?",
+      "distinctMonsterIds": [
+        109,
+        111,
+        112,
+        116,
+        117,
+        139
+      ],
+      "battleArtCoveredIds": [
+        116
+      ],
+      "battleArtCoverage": {
+        "covered": 1,
+        "total": 6,
+        "allCovered": false
+      },
+      "confidence": "CONFIRMED source record; native formation ordering recovered separately"
+    },
+    {
+      "id": 17,
+      "title": "Wairobot Rebel",
+      "familyId": "wairo-dungeon",
+      "familyName": "Wairo Dungeon",
+      "dayOfWeek": null,
+      "difficulty": 1,
+      "difficultyName": "Normal",
+      "levelField": 40,
+      "bossLevelField": 80,
+      "boss": {
+        "monsterId": 140,
+        "slotField": 1,
+        "role": "boss",
+        "battleArtRecovered": false
+      },
+      "followers": [
+        {
+          "selectionIndex": 0,
+          "entryType": 2,
+          "monsterId": 116,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 1,
+          "entryType": 2,
+          "monsterId": 116,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 2,
+          "entryType": 2,
+          "monsterId": 116,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 3,
+          "entryType": 2,
+          "monsterId": 113,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 4,
+          "entryType": 2,
+          "monsterId": 116,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 5,
+          "entryType": 2,
+          "monsterId": 105,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 6,
+          "entryType": 2,
+          "monsterId": 116,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 7,
+          "entryType": 2,
+          "monsterId": 107,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 8,
+          "entryType": 2,
+          "monsterId": 116,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 9,
+          "entryType": 2,
+          "monsterId": 108,
+          "checkRate": 100,
+          "role": "follower"
+        }
+      ],
+      "followersGrouped": [
+        {
+          "monsterId": 116,
+          "count": 6,
+          "selectionIndices": [
+            0,
+            1,
+            2,
+            4,
+            6,
+            8
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 113,
+          "count": 1,
+          "selectionIndices": [
+            3
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 105,
+          "count": 1,
+          "selectionIndices": [
+            5
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 107,
+          "count": 1,
+          "selectionIndices": [
+            7
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 108,
+          "count": 1,
+          "selectionIndices": [
+            9
+          ],
+          "role": "follower"
+        }
+      ],
+      "enemyTotal": 11,
+      "rewardGroupId": 401,
+      "appearanceTerms": [
+        [
+          0
+        ]
+      ],
+      "chipId": 223,
+      "comment": "Heh heh. Think you can take me?",
+      "distinctMonsterIds": [
+        105,
+        107,
+        108,
+        113,
+        116,
+        140
+      ],
+      "battleArtCoveredIds": [
+        116
+      ],
+      "battleArtCoverage": {
+        "covered": 1,
+        "total": 6,
+        "allCovered": false
+      },
+      "confidence": "CONFIRMED source record; native formation ordering recovered separately"
+    },
+    {
+      "id": 18,
+      "title": "Nightmare Demonic Wairobot",
+      "familyId": "wairo-dungeon",
+      "familyName": "Wairo Dungeon",
+      "dayOfWeek": null,
+      "difficulty": 2,
+      "difficultyName": "Hard",
+      "levelField": 60,
+      "bossLevelField": 120,
+      "boss": {
+        "monsterId": 141,
+        "slotField": 1,
+        "role": "boss",
+        "battleArtRecovered": false
+      },
+      "followers": [
+        {
+          "selectionIndex": 0,
+          "entryType": 2,
+          "monsterId": 116,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 1,
+          "entryType": 2,
+          "monsterId": 116,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 2,
+          "entryType": 2,
+          "monsterId": 116,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 3,
+          "entryType": 2,
+          "monsterId": 116,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 4,
+          "entryType": 2,
+          "monsterId": 116,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 5,
+          "entryType": 2,
+          "monsterId": 110,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 6,
+          "entryType": 2,
+          "monsterId": 116,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 7,
+          "entryType": 2,
+          "monsterId": 116,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 8,
+          "entryType": 2,
+          "monsterId": 115,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 9,
+          "entryType": 2,
+          "monsterId": 116,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 10,
+          "entryType": 2,
+          "monsterId": 116,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 11,
+          "entryType": 2,
+          "monsterId": 120,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 12,
+          "entryType": 2,
+          "monsterId": 116,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 13,
+          "entryType": 2,
+          "monsterId": 116,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 14,
+          "entryType": 2,
+          "monsterId": 123,
+          "checkRate": 100,
+          "role": "follower"
+        }
+      ],
+      "followersGrouped": [
+        {
+          "monsterId": 116,
+          "count": 11,
+          "selectionIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            6,
+            7,
+            9,
+            10,
+            12,
+            13
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 110,
+          "count": 1,
+          "selectionIndices": [
+            5
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 115,
+          "count": 1,
+          "selectionIndices": [
+            8
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 120,
+          "count": 1,
+          "selectionIndices": [
+            11
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 123,
+          "count": 1,
+          "selectionIndices": [
+            14
+          ],
+          "role": "follower"
+        }
+      ],
+      "enemyTotal": 16,
+      "rewardGroupId": 402,
+      "appearanceTerms": [
+        [
+          0
+        ]
+      ],
+      "chipId": 223,
+      "comment": "Heh heh. Think you can take me?",
+      "distinctMonsterIds": [
+        110,
+        115,
+        116,
+        120,
+        123,
+        141
+      ],
+      "battleArtCoveredIds": [
+        116
+      ],
+      "battleArtCoverage": {
+        "covered": 1,
+        "total": 6,
+        "allCovered": false
+      },
+      "confidence": "CONFIRMED source record; native formation ordering recovered separately"
+    },
+    {
+      "id": 19,
+      "title": "Take out the Wairo Tank!",
+      "familyId": "wairo-dungeon",
+      "familyName": "Wairo Dungeon",
+      "dayOfWeek": null,
+      "difficulty": 3,
+      "difficultyName": "Extreme",
+      "levelField": 80,
+      "bossLevelField": 160,
+      "boss": {
+        "monsterId": 142,
+        "slotField": 1,
+        "role": "boss",
+        "battleArtRecovered": true
+      },
+      "followers": [
+        {
+          "selectionIndex": 0,
+          "entryType": 2,
+          "monsterId": 116,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 1,
+          "entryType": 2,
+          "monsterId": 116,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 2,
+          "entryType": 2,
+          "monsterId": 116,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 3,
+          "entryType": 2,
+          "monsterId": 116,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 4,
+          "entryType": 2,
+          "monsterId": 116,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 5,
+          "entryType": 2,
+          "monsterId": 116,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 6,
+          "entryType": 2,
+          "monsterId": 116,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 7,
+          "entryType": 2,
+          "monsterId": 121,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 8,
+          "entryType": 2,
+          "monsterId": 116,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 9,
+          "entryType": 2,
+          "monsterId": 116,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 10,
+          "entryType": 2,
+          "monsterId": 116,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 11,
+          "entryType": 2,
+          "monsterId": 122,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 12,
+          "entryType": 2,
+          "monsterId": 116,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 13,
+          "entryType": 2,
+          "monsterId": 116,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 14,
+          "entryType": 2,
+          "monsterId": 116,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 15,
+          "entryType": 2,
+          "monsterId": 114,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 16,
+          "entryType": 2,
+          "monsterId": 116,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 17,
+          "entryType": 2,
+          "monsterId": 116,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 18,
+          "entryType": 2,
+          "monsterId": 116,
+          "checkRate": 100,
+          "role": "follower"
+        },
+        {
+          "selectionIndex": 19,
+          "entryType": 2,
+          "monsterId": 106,
+          "checkRate": 100,
+          "role": "follower"
+        }
+      ],
+      "followersGrouped": [
+        {
+          "monsterId": 116,
+          "count": 16,
+          "selectionIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            9,
+            10,
+            12,
+            13,
+            14,
+            16,
+            17,
+            18
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 121,
+          "count": 1,
+          "selectionIndices": [
+            7
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 122,
+          "count": 1,
+          "selectionIndices": [
+            11
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 114,
+          "count": 1,
+          "selectionIndices": [
+            15
+          ],
+          "role": "follower"
+        },
+        {
+          "monsterId": 106,
+          "count": 1,
+          "selectionIndices": [
+            19
+          ],
+          "role": "follower"
+        }
+      ],
+      "enemyTotal": 21,
+      "rewardGroupId": 403,
+      "appearanceTerms": [
+        [
+          0
+        ]
+      ],
+      "chipId": 223,
+      "comment": "Heh heh. Think you can take me?",
+      "distinctMonsterIds": [
+        106,
+        114,
+        116,
+        121,
+        122,
+        142
+      ],
+      "battleArtCoveredIds": [
+        106,
+        114,
+        116,
+        121,
+        122,
+        142
+      ],
+      "battleArtCoverage": {
+        "covered": 6,
+        "total": 6,
+        "allCovered": true
+      },
+      "confidence": "CONFIRMED source record; native formation ordering recovered separately"
+    }
+  ],
+  "battleArtIds": [
+    106,
+    114,
+    116,
+    121,
+    122,
+    142
+  ],
+  "limits": [
+    "Roster fields come from the original SpecialBoss.txt table.",
+    "Battle-art coverage is the current recovered MonsterData sheet set in native-body.ts.",
+    "Skill and player-unit fields are represented by the existing simulator schema, not by this table."
+  ]
+}

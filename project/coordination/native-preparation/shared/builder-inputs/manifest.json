@@ -1,0 +1,136 @@
+{
+  "battle_executions": 0,
+  "candidate_database": "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\cpp\\runs\\cpp-kernel-provenance-20261004b\\inputs\\candidate-only-current-revision.sqlite",
+  "candidate_database_sha256": "55b8cb3bbf0059a209cf7fdb09542ef90620da2af78435d0abd86e9c7a11459d",
+  "inputs": {
+    "candidate_db_sha256": "55b8cb3bbf0059a209cf7fdb09542ef90620da2af78435d0abd86e9c7a11459d",
+    "exporter_sha256": "3a7a2822f0ffe5c326a8fd48d0c4423149d253a3097c82bb83b45f6b71b3c769",
+    "kernel_sha256": "07ee7d36e3bd1acc9b431095d241eb6cab04a77ffedd0e011074a77fa1848e19",
+    "mechanics_identity": "32338978751a75c0e9fd099be2c82f7512030c1cd1800319250288b9c035edb2",
+    "runtime": {
+      "catalog_sha256": "cb36899fd8b31d59f05b8a95e3783ed8dd3f9849c052e8f83b590787b14ddb94",
+      "facts_sha256": {
+        "Monster": "3cbaef91baf96549b73d1ee58661158098bb00922de6e901dc23f015b72036c6",
+        "Treasure": "900cd2600364d29bbebcb7ab11840fcdcad4a9057cdaa9103d5571bda725b702",
+        "animation-resources": "87dca3ffaa6b7517e30f01c8fcedf9ef937551ab1e96c478c04f7b826131d3a0",
+        "effect-resource-checks": "35b2640a906f53fe02a8b1f5d6ed37076eafd98adc829d8a8420d41af1c5f090",
+        "encounters": "22d06e48953f3d225b0463b1fafca151debe2906039082da94f17eb7de5c041b",
+        "formation-rules": "ba0f9b1ad84d64c5e36ac2a7b47b371f913a4d1227c17bbc42fee1e9d99269f8",
+        "skill-combat-constants": "ff74f354db8c2d294d16aae6a5f1d1aee31aabff3a30cc9ff2177a49f1905fe3",
+        "weapon-skill-profiles": "ddc2a55f129f31df94d84f84ecdaf8b3985cb4a3c490bccc43c01d67e42e4a91"
+      },
+      "mode": "recovery-workspace",
+      "runtime_code_sha256": {
+        "combat_prizes.py": "16e487fa6cd88944bd55e41ed549207774a8532e7fd5b62c6789632b0bc10d83",
+        "combat_runtime_data.py": "24dbc5a96ef2019b1f8c0ea15cf0c912c5f50ba59b9fe60d02e4fc89dc590271"
+      },
+      "source_files": {
+        "data/animation-resources.json": "e656f0c848cfc088e26640a474e76f67536bee87969524e3f8c2fcc2ff3c7afd",
+        "data/effect-resource-checks.json": "a5cf5fafcdc6e06d992c193a736a2cecd10b894ed078dea6ac0d584633854393",
+        "data/encounters.json": "a7552baa206226c585bae6cec3a887728920ace488b782b9315e3a8b1865b06c",
+        "data/formation-rules.json": "22364a15457edfae585fe4391f38045cef2190cf13c96456e4b8159d85366717",
+        "data/skill-combat-constants.json": "190890b0160f8c164fe47114c9b7849471c3da768a287a54a6369c9f8c41b8bd",
+        "data/weapon-skill-profiles.json": "857639f5fb880e4acfa1ff925c9e69b63bfa28057c0a331e835d99bcb4886fc3",
+        "table/Monster": "66147f0b2b2fe707e2d248245029277beff27205ffb1a1e5d24f907fc2402aeb",
+        "table/Treasure": "921925caa170f775ba000ced9dc25c993976cd2effdcf7b5c9c8e1478285adaa"
+      }
+    }
+  },
+  "note": "No raw candidate fields were removed; absent eligible encounters remain explicitly unsupported.",
+  "outcomes": 0,
+  "output_sha256": {
+    "candidate-metadata.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "canonical-snapshots.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "cpp-tables.json": "a0c4b637a8d98df86f7c8e18984d6234c999522e424c1a593e4e385c0cb06657",
+    "facts.json": "a0c4b637a8d98df86f7c8e18984d6234c999522e424c1a593e4e385c0cb06657",
+    "go-workload.json": "c1e9fad9efe1e890ac5090a4cde7f355b6c2358d90eb5f16905e70a69654c42c",
+    "original-raw-scenarios.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "scenarios.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+  },
+  "purpose": "raw preparation parity fixtures only",
+  "scenario_count": 0,
+  "schema": "ka-builder-inputs-1",
+  "supported_encounters": [],
+  "unsupported_encounters": {
+    "0": {
+      "candidate_id": "0455142653ee190f68f0c469f63d1e5b1c5e09ec6037d0bba13d639ae499d470",
+      "reason": "unsupported top-level fields present: startProfile"
+    },
+    "1": {
+      "candidate_id": "018d3b9031296995a1f819a4c51e28499c472fb89d922f298080f28c62c2424f",
+      "reason": "unsupported top-level fields present: startProfile"
+    },
+    "10": {
+      "candidate_id": "01a8504f66e4a6c1576dd8d3800b3bf7488ae7803996b0ea43cc7521ca9f23ce",
+      "reason": "unsupported top-level fields present: startProfile"
+    },
+    "11": {
+      "candidate_id": "03ec3d9877f67317ac11bc7f6d0b417c71e5e4ad668b2f68cd5717b1afed4082",
+      "reason": "unsupported top-level fields present: startProfile"
+    },
+    "12": {
+      "candidate_id": "014a6aba5b2c9aaafe811a93ada8990bac187745572cf389a057b47071181be1",
+      "reason": "unsupported top-level fields present: startProfile"
+    },
+    "13": {
+      "candidate_id": "00278031dfbca0e5629128c5bfc661a4cac141ca524c97e6161f94e8ad7d3fd6",
+      "reason": "unsupported top-level fields present: startProfile"
+    },
+    "14": {
+      "candidate_id": "00a9262b521ec8b2362738c9a485cd9f4cb260458df61d4d7433747996450507",
+      "reason": "unsupported top-level fields present: startProfile"
+    },
+    "15": {
+      "candidate_id": "01b133ef4e765d215dc289da3133877ccfbbadb29b71e3f04cf07c847d92cfdd",
+      "reason": "unsupported top-level fields present: startProfile"
+    },
+    "16": {
+      "candidate_id": "002fb0fbc8387e7d61f0151333230f36eebd8829ed8a8735d78fae8ecbfed3e5",
+      "reason": "unsupported top-level fields present: startProfile"
+    },
+    "17": {
+      "candidate_id": "00780a5468421b4a7ef68c92bc09dac86c2895b9e6fcad89d570b8cd7c31a222",
+      "reason": "unsupported top-level fields present: startProfile"
+    },
+    "18": {
+      "candidate_id": "00879bd0be3834b96d960b5210c3dee5ef1544c3498a949c82aca3015a55216c",
+      "reason": "unsupported top-level fields present: startProfile"
+    },
+    "19": {
+      "candidate_id": "00e408dd0a0a1a2ae04cdd0e2ec9f4f22b187f8189a9b4b54ea2a6dbe1e0b3dd",
+      "reason": "unsupported top-level fields present: startProfile"
+    },
+    "2": {
+      "candidate_id": "038abb4270e33c6d927f62b4d8c3a0103c331427f6e061d8f5dee9c2c2d574e7",
+      "reason": "unsupported top-level fields present: startProfile"
+    },
+    "3": {
+      "candidate_id": "00a60ab2f43e4151377a26c53b7a43991cb96ab3c2a2f7a71c7a323797706cef",
+      "reason": "unsupported top-level fields present: startProfile"
+    },
+    "4": {
+      "candidate_id": "02893ded1b78a3277fac90c5750f7ea8d2954a01f3dddf2442a975fb22c39d07",
+      "reason": "unsupported top-level fields present: startProfile"
+    },
+    "5": {
+      "candidate_id": "010a990d9e385968e5b2a2391b676829b587bdf1cf6a02aff142b4daf3b13ae0",
+      "reason": "unsupported top-level fields present: startProfile"
+    },
+    "6": {
+      "candidate_id": "02c82a0253a09cbf6a0aa1d86cb92c1235268a9f4e3ff1a87a2d0c2d3cea5986",
+      "reason": "unsupported top-level fields present: startProfile"
+    },
+    "7": {
+      "candidate_id": "0019b201fe0f724c499fccbe3cf29154ce057b209de604c9e245da8b41c721f4",
+      "reason": "unsupported top-level fields present: startProfile"
+    },
+    "8": {
+      "candidate_id": "00d8f507ac11466e2f8ec53feaca0f9d74a8f27155fc4b4ff72c68986438a9fd",
+      "reason": "unsupported top-level fields present: startProfile"
+    },
+    "9": {
+      "candidate_id": "024251f6b70b76501888833548a4db89e29922fbd7718ff9d5e1fd1b4fa32109",
+      "reason": "unsupported top-level fields present: startProfile"
+    }
+  }
+}

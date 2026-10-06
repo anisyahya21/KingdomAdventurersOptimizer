@@ -1,0 +1,67 @@
+{
+ "schema": "ka-fixed-formation-launch-1",
+ "policyHash": "403a443d931840b23ccc1bad071055422fd6e1f465681fbf2b5a6291fef7382f",
+ "policyDocument": "coordination\\fixed-formation-20261006\\fixed-formation-policy.json",
+ "dpsBounds": {
+  "10": [
+   55,
+   19287
+  ],
+  "11": [
+   5,
+   7986
+  ],
+  "13": [
+   6,
+   5766
+  ],
+  "14": [
+   3,
+   4976
+  ],
+  "15": [
+   5,
+   4780
+  ],
+  "16": [
+   5,
+   5204
+  ],
+  "19": [
+   2,
+   7049
+  ]
+ },
+ "dpsSkills": [
+  26,
+  110,
+  25,
+  24,
+  23,
+  22
+ ],
+ "healerSkills": [
+  37,
+  107
+ ],
+ "fodderSkills": [],
+ "engines": {
+  "go": {
+   "activation": "CLI flag --policy fixed-formation",
+   "artifact": "coordination\\fixed-formation-20261006\\launch\\go\\launch.json"
+  },
+  "rust": {
+   "activation": "config key fixedFormation=true",
+   "artifact": "coordination\\fixed-formation-20261006\\launch\\rust\\config.json"
+  },
+  "cpp": {
+   "activation": "config key fixedFormation=true",
+   "artifact": "coordination\\fixed-formation-20261006\\launch\\cpp\\config.json"
+  },
+  "python": {
+   "activation": "fixed_formation reference API",
+   "artifact": "coordination\\fixed-formation-20261006\\launch\\python\\launch.json"
+  }
+ },
+ "note": "Config-path engines must receive the generated artifact unchanged; the Go launcher must pass --policy fixed-formation. A search started without these is not the fixed policy."
+}

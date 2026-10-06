@@ -1,0 +1,76 @@
+{
+  "schema": "native-finish-build-v1",
+  "language": "rust",
+  "revision": "r16",
+  "executablePath": "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\rust\\standalone-optimizer\\builds\\r16\\ka-rust-standalone-optimizer.exe",
+  "executableSha256": "a205ec23d4b0c7ebd32c52af744ddc29283b8ddd523005e961519c9633e05c7a",
+  "kernelPath": "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\shared\\comparison-inputs\\bank2-v3\\inputs\\ka_kernel_encounter_v3.dll",
+  "kernelSha256": "07ee7d36e3bd1acc9b431095d241eb6cab04a77ffedd0e011074a77fa1848e19",
+  "capabilities": {
+    "tuningKnobs": [
+      "json-pointer-scalar",
+      "remove-skills",
+      "stat-axis",
+      "two-axis-stat-interaction",
+      "probe"
+    ],
+    "arbitrarySeedEvaluation": true,
+    "nativeBoundedSearchAndMutation": true,
+    "exactReplay": true,
+    "checkpointResume": true,
+    "nativeTrace": "implemented-parity-guarded; coordinator verification pending",
+    "unsupportedIntentFeatures": [
+      "parameterLinks",
+      "vehicle-state"
+    ],
+    "householdAndOwnMonsters": "implemented; coordinator verification pending",
+    "nativeProbe": "original raw-input apply_axis/default_ladder; coordinator verification pending",
+    "nativeEffectiveParameters": "present native parameter getter values/maxima at initialized and trace boundaries; coordinator verification pending",
+    "nativeSourceMapping": "prepared identity to expanded-own/enemy source indexes; raw own index only for original entries; coordinator verification pending",
+    "nativeTracePayloadLimitBytes": 31457280,
+    "nativeMixedEncounterPool": "one bounded executor pool; encounter-local learning and retained focus pools; coordinator verification pending",
+    "nativeLiveWorkCounters": "accepted outstanding, uncommitted completed, durable fresh rates and elapsed; CPU utilization not inferred",
+    "nativeControlPath": "focus/pause/stop admission drain and pending-generation checkpoint; coordinator verification pending",
+    "nativeScheduledRecoveryItems": "original all-resident recovery item timeline/stock semantics; coordinator verification pending",
+    "nativeCapturedPlacement": "original prePlacement preparation; coordinator verification pending",
+    "ordinaryRunRequiresCoordinatorApproval": false
+  },
+  "staticInputs": {
+    "catalog": {
+      "sha256": "d9a634203c9d6cb5e6caff6b4bf0d28f984e3feda3a00ab17502f018d2c41274",
+      "path": "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\shared\\comparison-inputs\\bank2-v3\\inputs\\catalog.json"
+    },
+    "facts": {
+      "sha256": "a0c4b637a8d98df86f7c8e18984d6234c999522e424c1a593e4e385c0cb06657",
+      "path": "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\shared\\comparison-inputs\\bank2-v3\\inputs\\facts.json"
+    }
+  },
+  "sourceSetSha256": "a4af02818050b2ba129168440e03f31cd2bbda9010a2667df945ead7699c06db",
+  "sourceSetSha256Semantics": "SHA256 of serde compact sorted source dictionary; computed from frozen optimizer source/static include files, independently readable via --source-info.",
+  "sourceSha256": {
+    "optimizer/Cargo.toml": "502412de5a50d58c0c8bd16047e249da98355ba4cb420ca3b6af15e02f5097ee",
+    "optimizer/Cargo.lock": "ce3522120778a57949a3775cac66e8e652b3f800f906a56d0be849daeb215af0",
+    "optimizer/shared-kernel/Cargo.toml": "cec025476cf3615e5958ea96ae6a92c0afd22af88f7b3a3fafaf556a1ba543fa",
+    "optimizer/src/main.rs": "36e3c4e1b54fbc31aeba77fff6241f5441f8266c6153741e5672997b8782b7eb",
+    "optimizer/src/input.rs": "9f24e74728e3824dbc8b2cd6b96caeab56e388cc8247910dd0e47eeb69c6c17b",
+    "optimizer/src/prepare.rs": "ff3e96df9cd13bbe6daa25d3ccde743fd326055930d11fe66e1252bae7f8ff2f",
+    "optimizer/src/search.rs": "79ec74cb59e0fbca8f56d4eca06b4b91538fc65dc316d2cfee6e43aa4e1d98d8",
+    "optimizer/src/store.rs": "84808c1ecb795f53bfdea896f1b649d0071a871b474f6c74ea31de3f413925a0",
+    "optimizer/src/engine.rs": "71b8f0f6ed27c7882ad1ec02ab5f4ceeb5486e596bf047f1c01271414be0d4ae",
+    "optimizer/src/tuning.rs": "8722c0d1adaf00aadd39872a7571c1fbf50c34761a505f41694adcee088a2807",
+    "canonical/stat-bounds.json": "ed9ef305880a045af30b03a7b728ab3a8eec0a82c6a1c62493cd7f86074fecdb",
+    "shared-engine/Cargo.toml": "219bb9807636a926c88f16b75e997923725db7347ccca91a6e0493b158e83018",
+    "shared-engine/Cargo.lock": "8c8a5a21e04c417db923035553972124f7432daca464b3d93f7b496f804ff73a",
+    "shared-engine/src/ai.rs": "03fa073d70ff2fa4a360479ab6383e121de7758ae4696f72a031377fa1a11eb5",
+    "shared-engine/src/battle.rs": "e741f4d57c3421d0e922671601df8f75be96a650cb55749c6c7e07732ea6422d",
+    "shared-engine/src/battle_control.rs": "ae26169c102d4e42d69f3653aed4c0d81953ac78d7b9b8659a946a24016ee2c2",
+    "shared-engine/src/combat.rs": "84d3b343f1eca285833c383e881eb97326216a95b5ed075aec99f1c4d6f92199",
+    "shared-engine/src/lib.rs": "d3e651de11bee9b4bca02c294f86f26ec31f8fddb8b759890a9814124121c26f",
+    "shared-engine/src/params.rs": "d93c7914b7649ec0fdfb0c1f93be957ddc8a2278fc922e350276835a17e88e4c",
+    "shared-engine/src/phases.rs": "9d0801dc82e6e33d5b8d9b7fcacee1440249f6aa2425cc44329bce08b007e6af",
+    "shared-engine/src/profile.rs": "f9186633e289edc2400273177a7b1f0918a4704ddc4fef7e5bfe95610359c6a8",
+    "shared-engine/src/rng.rs": "5f75e5d4e19ac015ce7cec625d499ad13ae12c977f91f987ce710ec985d66976",
+    "shared-engine/src/state.rs": "d2db39a45ee671c5f9cefe7b2d28e33f7b21aa4de1c3c9ba0c13694f73868718",
+    "shared-engine/src/world.rs": "ff130c85e7f2f3914599fee73e27570aa007b7461c5f9623fe5c6d38e9ee8334"
+  }
+}

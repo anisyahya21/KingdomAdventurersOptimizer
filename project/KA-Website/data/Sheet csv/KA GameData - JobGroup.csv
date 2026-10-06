@@ -1,0 +1,36 @@
+,,equipAffinity [],,,,,,,,,,,,,,,,,
+,name,,,,,,,,,,,,,,,,,flag,flag
+0,Royal,15,1,0,1,0,0,0,1,1,1,1,1,0,1,1,1,23,"Can equip attack magic skill, Can equip Recovery magic skill, Can equip Attack skill, cannot select parent job"
+1,Merchant,15,1,0,0,-1,-1,-1,1,-1,-1,0,-1,0,1,1,1,3,"Can equip attack magic skill, Can equip Recovery magic skill"
+2,Farmer,15,1,0,-1,1,0,1,1,-1,-1,-1,-1,0,1,1,1,2,Can equip Recovery magic skill
+3,Carpenter,15,1,0,-1,1,-1,1,1,-1,-1,-1,-1,0,1,1,1,0,
+4,Porter,15,1,0,-1,-1,-1,-1,1,-1,1,-1,-1,0,1,1,1,4,Can equip Attack skill
+5,Trader,15,1,0,0,-1,-1,-1,1,1,-1,1,-1,0,1,1,1,0,
+6,Researcher,15,1,0,0,-1,-1,-1,1,-1,-1,1,-1,0,1,1,1,2,Can equip Recovery magic skill
+7,Cook,15,1,1,-1,-1,-1,-1,1,-1,-1,1,-1,0,1,1,1,2,Can equip Recovery magic skill
+8,Artisan,15,1,0,-1,-1,-1,1,1,0,-1,0,-1,0,1,1,1,4,Can equip Attack skill
+9,Blacksmith,15,1,0,-1,-1,-1,1,1,-1,-1,0,-1,0,1,1,1,4,Can equip Attack skill
+10,Doctor,15,1,1,0,-1,-1,-1,0,-1,-1,1,-1,0,1,1,1,2,Can equip Recovery magic skill
+11,Monk,15,1,0,1,-1,-1,-1,0,-1,-1,1,-1,0,1,1,1,2,Can equip Recovery magic skill
+12,Rancher,15,1,0,-1,-1,-1,-1,1,-1,-1,0,-1,0,1,1,1,4,Can equip Attack skill
+13,Guard,15,1,1,0,0,1,0,1,-1,0,0,0,1,1,1,1,12,"Can equip Attack skill, Can set lookout"
+14,Knight,15,1,1,0,1,1,0,1,-1,0,0,0,1,1,1,1,12,"Can equip Attack skill, Can set lookout"
+15,Mage,15,1,-1,1,-1,-1,-1,0,-1,-1,-1,-1,-1,1,1,1,11,"Can equip attack magic skill, Can equip Recovery magic skill, Can set lookout"
+16,Paladin,15,1,1,0,1,1,1,1,0,-1,1,1,1,1,1,1,12,"Can equip Attack skill, Can set lookout"
+17,Gunner,15,1,-1,-1,-1,-1,-1,1,1,0,0,0,1,1,1,1,12,"Can equip Attack skill, Can set lookout"
+18,Archer,15,1,0,0,0,0,0,0,0,1,0,0,-1,1,1,1,12,"Can equip Attack skill, Can set lookout"
+19,Ninja,15,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,14,"Can equip Recovery magic skill, Can equip Attack skill, Can set lookout"
+20,Samurai,15,1,1,0,0,0,0,1,0,0,0,0,0,1,1,1,12,"Can equip Attack skill, Can set lookout"
+21,Viking,15,1,0,0,1,0,1,1,1,1,0,0,1,1,1,1,12,"Can equip Attack skill, Can set lookout"
+22,Pirate,15,1,1,-1,1,1,1,1,1,1,0,0,1,1,1,1,12,"Can equip Attack skill, Can set lookout"
+23,Champion,15,1,1,-1,0,0,0,1,-1,0,0,0,1,1,1,1,15,"Can equip attack magic skill, Can equip Recovery magic skill, Can equip Attack skill, Can set lookout"
+24,Wizard,15,1,0,1,-1,-1,-1,0,-1,-1,-1,-1,-1,1,1,1,11,"Can equip attack magic skill, Can equip Recovery magic skill, Can set lookout"
+25,Scholar,15,1,0,0,-1,-1,-1,1,-1,-1,0,-1,0,1,1,1,24,"Can set lookout, cannot select parent job"
+26,Santa Claus,15,1,-1,1,-1,-1,-1,-1,-1,-1,0,-1,1,1,1,1,27,"Can equip attack magic skill, Can equip Recovery magic skill, Can set lookout, cannot select parent job"
+27,Guerilla,15,1,1,-1,0,0,0,1,-1,0,0,0,0,1,1,1,13,"Can equip attack magic skill, Can equip Attack skill, Can set lookout"
+28,Magic Knight,15,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,15,"Can equip attack magic skill, Can equip Recovery magic skill, Can equip Attack skill, Can set lookout"
+29,Berserker,15,1,0,0,1,0,1,1,1,1,0,0,1,1,1,1,14,"Can equip Recovery magic skill, Can equip Attack skill, Can set lookout"
+30,Artist,15,1,0,0,-1,-1,-1,1,1,-1,1,-1,0,1,1,1,0,
+31,Entertainer,15,1,1,0,-1,-1,-1,1,1,-1,1,-1,0,1,1,1,0,
+32,Beast Tamer,15,1,0,-1,-1,-1,-1,1,-1,-1,0,-1,0,1,1,1,7,"Can equip attack magic skill, Can equip Recovery magic skill, Can equip Attack skill"
+33,Royal,15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,31,"Can equip attack magic skill, Can equip Recovery magic skill, Can equip Attack skill, Can set lookout, cannot select parent job"

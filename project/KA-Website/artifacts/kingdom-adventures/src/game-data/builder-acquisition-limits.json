@@ -1,0 +1,32 @@
+{
+  "191": {
+    "maxPlaced": 7,
+    "basis": "Supported normal acquisition sources: three surveys with two rewards each, plus one area-clear reward.",
+    "sources": [
+      {
+        "kind": "survey",
+        "id": 10,
+        "treasureId": 765,
+        "quantity": 2
+      },
+      {
+        "kind": "survey",
+        "id": 21,
+        "treasureId": 765,
+        "quantity": 2
+      },
+      {
+        "kind": "survey",
+        "id": 32,
+        "treasureId": 765,
+        "quantity": 2
+      },
+      {
+        "kind": "area",
+        "id": 94,
+        "treasureId": 352,
+        "quantity": 1
+      }
+    ]
+  }
+}

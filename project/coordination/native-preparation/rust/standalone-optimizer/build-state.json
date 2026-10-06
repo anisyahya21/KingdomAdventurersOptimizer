@@ -1,0 +1,28 @@
+{
+  "strategyImprovementClaim": false,
+  "speedComparison": "deferred to serialized matched comparisons",
+  "coordinatorThreadId": "01a10860-97c5-77f2-8b45-630a99c9ce73",
+  "builderExecutedTests": false,
+  "all20Evidence": "shared/runs/rust-r8-all20-20261004T220159046436Z/canonical-parity.json",
+  "scope": "R9 adapter pending coordinator verification; R8 diagnostic parity evidence preserved",
+  "binarySha256": "2d269a1254829dbf971413c7c12ae77a3157f97d018eec0b442d579832cc0731",
+  "contract": "OPTIMIZER-CONTRACT.md",
+  "binary": "builds/r9/ka-rust-standalone-optimizer.exe",
+  "mutationResumeEvidence": "shared/runs/rust-R8-native-cli-20261004T220218Z/report.json and canonical-parity.json:12distinct6candidates, restart journal unchanged",
+  "importDisabled": true,
+  "schema": "ka-rust-build-state-v1",
+  "buildStage": "R9-comparison-adapter-compiled-awaiting-Chat1",
+  "byteEvidence": "shared/runs/rust-R8-diagnostic-native-cli-20261004T220126Z:17272024bytes before/after zero differences",
+  "sharedComponent": "canonical native Rust combat engine and initialization AI; independently migrated raw preparation, resident coordination, mutation, ranking, persistence",
+  "remaining": [
+    "Chat1 R9 small-bank canonical/save/resume and sync-counter verification",
+    "exclusive matched all20 comparisons at 5/10/12 workers",
+    "nondiagnostic production eligibility is separate"
+  ],
+  "validatedPreviousRevision": {
+    "revision": "r8",
+    "binary": "builds/r8/ka-rust-standalone-optimizer.exe",
+    "sha256": "99133754795fd345ae5616099b47244d933f1ec79105bbd8f7adb4e4bcbaa718",
+    "scope": "supplied diagnostic on-verdict; all74core/all32encounter/Earned/basis/initializedstate/seeds/rawchecksums exact"
+  }
+}

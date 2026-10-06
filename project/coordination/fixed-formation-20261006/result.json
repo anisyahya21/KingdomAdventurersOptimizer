@@ -1,0 +1,394 @@
+{
+ "schema": "ka-fixed-formation-result-1",
+ "task": "fixed-formation-20261006",
+ "generatedUtc": "2026-10-05T23:36:53Z",
+ "policyHash": "403a443d931840b23ccc1bad071055422fd6e1f465681fbf2b5a6291fef7382f",
+ "policyDocument": "coordination/fixed-formation-20261006/fixed-formation-policy.json",
+ "fixedFormation": {
+  "unitCount": 6,
+  "fodderCount": 4,
+  "rosterOrder": [
+   "Synthetic DPS",
+   "Healer (representative Wizard S, assumed/editable)",
+   "Scholar Fodder 1",
+   "Scholar Fodder 2",
+   "Scholar Fodder 3",
+   "Scholar Fodder 4"
+  ],
+  "placementRoles": [
+   "dps",
+   "fodder",
+   "fodder",
+   "fodder",
+   "fodder",
+   "healer"
+  ],
+  "placementEvidence": "C++ canonical preparation ownFormationOrder [0,2,3,4,5,1] == dps/fodder x4/healer (verified)",
+  "notationNote": "Exact user notation DPS 0,1; fodders 0,2-0,5; healer 1,7 preserved unmodified; canonical preparation currently uses five columns, so the coordinate/slot mapping is validated through canonical placement, not inferred from names.",
+  "userFormationNotation": {
+   "dps": "0,1",
+   "fodders": "0,2-0,5",
+   "healer": "1,7"
+  }
+ },
+ "dps": {
+  "name": "Synthetic DPS",
+  "isRealClass": false,
+  "label": "Synthetic DPS (neutral synthetic unit, raw stat numbers only)",
+  "equipment": [],
+  "weaponId": 0,
+  "jobOrAwakening": null,
+  "skills": [
+   26,
+   110,
+   25,
+   24,
+   23,
+   22
+  ],
+  "skillLabels": [
+   "Counterattack",
+   "7 consecutive attacks",
+   "5 consecutive attacks",
+   "4 consecutive attacks",
+   "3 consecutive attacks",
+   "2 consecutive attacks"
+  ],
+  "invocationLevels": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "invocationNote": "invocationLevel 0 == player-facing High (confirmed in KA-Website battle-team-draft.ts)",
+  "searchableParameters": {
+   "10": [
+    55,
+    19287
+   ],
+   "11": [
+    5,
+    7986
+   ],
+   "13": [
+    6,
+    5766
+   ],
+   "14": [
+    3,
+    4976
+   ],
+   "15": [
+    5,
+    4780
+   ],
+   "16": [
+    5,
+    5204
+   ],
+   "19": [
+    2,
+    7049
+   ]
+  },
+  "pinnedParameters": [
+   12,
+   18,
+   20,
+   21,
+   22
+  ],
+  "searchVariable": "only these seven raw stats of the Synthetic DPS may change"
+ },
+ "healer": {
+  "name": "Healer (representative Wizard S, assumed/editable)",
+  "weaponId": 0,
+  "equipment": [],
+  "skills": [
+   37,
+   107
+  ],
+  "skillLabels": [
+   "Recover HP (Heal Maddy)",
+   "Backup (stays at the back in boss battles)"
+  ],
+  "invocationLevels": [
+   0,
+   0
+  ],
+  "parameters": {
+   "10": {
+    "extraMax": 0,
+    "extraValue": 0,
+    "rawMax": 4077,
+    "rawValue": 4077,
+    "trainingLevel": 300
+   },
+   "11": {
+    "extraMax": 0,
+    "extraValue": 0,
+    "rawMax": 1539,
+    "rawValue": 1539,
+    "trainingLevel": 300
+   },
+   "12": {
+    "extraMax": 0,
+    "extraValue": 0,
+    "rawMax": 110,
+    "rawValue": 110,
+    "trainingLevel": 1
+   },
+   "13": {
+    "extraMax": 0,
+    "extraValue": 0,
+    "rawMax": 2147483647,
+    "rawValue": 14,
+    "trainingLevel": 1
+   },
+   "14": {
+    "extraMax": 0,
+    "extraValue": 0,
+    "rawMax": 2147483647,
+    "rawValue": 9,
+    "trainingLevel": 1
+   },
+   "15": {
+    "extraMax": 0,
+    "extraValue": 0,
+    "rawMax": 2147483647,
+    "rawValue": 32,
+    "trainingLevel": 1
+   },
+   "16": {
+    "extraMax": 0,
+    "extraValue": 0,
+    "rawMax": 2147483647,
+    "rawValue": 44,
+    "trainingLevel": 1
+   },
+   "18": {
+    "extraMax": 0,
+    "extraValue": 0,
+    "rawMax": 2147483647,
+    "rawValue": 59,
+    "trainingLevel": 1
+   },
+   "19": {
+    "extraMax": 0,
+    "extraValue": 0,
+    "rawMax": 2147483647,
+    "rawValue": 48,
+    "trainingLevel": 1
+   },
+   "20": {
+    "extraMax": 0,
+    "extraValue": 0,
+    "rawMax": 2147483647,
+    "rawValue": 3,
+    "trainingLevel": 1
+   },
+   "21": {
+    "extraMax": 0,
+    "extraValue": 0,
+    "rawMax": 2147483647,
+    "rawValue": 18,
+    "trainingLevel": 1
+   },
+   "22": {
+    "extraMax": 0,
+    "extraValue": 0,
+    "rawMax": 2147483647,
+    "rawValue": 11,
+    "trainingLevel": 1
+   }
+  }
+ },
+ "fodder": {
+  "count": 4,
+  "identical": true,
+  "names": [
+   "Scholar Fodder 1",
+   "Scholar Fodder 2",
+   "Scholar Fodder 3",
+   "Scholar Fodder 4"
+  ],
+  "skills": [],
+  "weaponId": 0,
+  "equipment": [],
+  "parameters": {
+   "10": {
+    "extraMax": 0,
+    "extraValue": 0,
+    "rawMax": 150,
+    "rawValue": 150,
+    "trainingLevel": 20
+   },
+   "11": {
+    "extraMax": 0,
+    "extraValue": 0,
+    "rawMax": 43,
+    "rawValue": 43,
+    "trainingLevel": 20
+   },
+   "12": {
+    "extraMax": 0,
+    "extraValue": 0,
+    "rawMax": 176,
+    "rawValue": 176,
+    "trainingLevel": 20
+   },
+   "13": {
+    "extraMax": 0,
+    "extraValue": 0,
+    "rawMax": 2147483647,
+    "rawValue": 46,
+    "trainingLevel": 20
+   },
+   "14": {
+    "extraMax": 0,
+    "extraValue": 0,
+    "rawMax": 2147483647,
+    "rawValue": 42,
+    "trainingLevel": 20
+   },
+   "15": {
+    "extraMax": 0,
+    "extraValue": 0,
+    "rawMax": 2147483647,
+    "rawValue": 43,
+    "trainingLevel": 20
+   },
+   "16": {
+    "extraMax": 0,
+    "extraValue": 0,
+    "rawMax": 2147483647,
+    "rawValue": 43,
+    "trainingLevel": 20
+   },
+   "18": {
+    "extraMax": 0,
+    "extraValue": 0,
+    "rawMax": 2147483647,
+    "rawValue": 43,
+    "trainingLevel": 20
+   },
+   "19": {
+    "extraMax": 0,
+    "extraValue": 0,
+    "rawMax": 2147483647,
+    "rawValue": 91,
+    "trainingLevel": 20
+   },
+   "20": {
+    "extraMax": 0,
+    "extraValue": 0,
+    "rawMax": 2147483647,
+    "rawValue": 67,
+    "trainingLevel": 20
+   },
+   "21": {
+    "extraMax": 0,
+    "extraValue": 0,
+    "rawMax": 2147483647,
+    "rawValue": 72,
+    "trainingLevel": 20
+   },
+   "22": {
+    "extraMax": 0,
+    "extraValue": 0,
+    "rawMax": 2147483647,
+    "rawValue": 77,
+    "trainingLevel": 20
+   }
+  },
+  "note": "Four identical fodders; reordering them adds no strategy and is refused."
+ },
+ "engines": {
+  "python": {
+   "enforcement": [
+    "KA-Website/tools/recovery/fixed_formation.py canonical admission/identity/mutation/canonical-scenario",
+    "strategy_admission_preparation.prepare refuses non-fixed scenarios when enabled",
+    "strategy_optimizer.Store.add_child refuses non-fixed generated children when enabled (opt-in, default off)"
+   ],
+   "activation": "fixed_formation.set_enabled(True)",
+   "verification": "coordination/fixed-formation-20261006/python-verification.json",
+   "ok": true
+  },
+  "go": {
+   "enforcement": [
+    "fixed_formation.go validate/identity/mutate policy",
+    "search.go admission in NewSearch/MergeSeeds/Next",
+    "main.go --policy search-contract|fixed-formation"
+   ],
+   "activation": "--policy fixed-formation",
+   "verification": "coordination/fixed-formation-20261006/go-verification.json",
+   "ok": true,
+   "executable": "coordination/fixed-formation-20261006/go/go-optimizer-fixed.exe",
+   "executableSha256": "d4e790d300438ceb707d6b2ebf4f2a16a660fd070906e270c7cc1eb67787eb5d"
+  },
+  "rust": {
+   "enforcement": [
+    "src/fixed_formation.rs validate/identity/mutate/policy_hash",
+    "src/main.rs candidate admission + fixed mutation branch",
+    "src/search.rs mutate_fixed_unique"
+   ],
+   "activation": "config key fixedFormation=true",
+   "verification": "coordination/fixed-formation-20261006/rust-verification.json",
+   "ok": true,
+   "executable": "coordination/native-preparation/rust/standalone-optimizer/target/release/ka-rust-standalone-optimizer.exe",
+   "executableSha256": "160c883e4fcd852ad69e30e2f2229f7cbfe21f302401856454bd094c94ab3876"
+  },
+  "cpp": {
+   "enforcement": [
+    "fixed_formation.cpp validate/identity/mutate + embedded policy",
+    "admission.cpp admit() gate",
+    "pipeline.cpp identity(), fixed mutation branch, propose() and run() flags, input refusal before search",
+    "main.cpp --prepare-fixed"
+   ],
+   "activation": "config key fixedFormation=true",
+   "verification": "coordination/fixed-formation-20261006/cpp-verification.json",
+   "ok": true,
+   "executable": "coordination/native-preparation/cpp/standalone-optimizer/optimizer.exe",
+   "executableSha256": "2bd4fe930e5f5e643c5d772a28c81009c7b7e8035ad7a5c3b1e000b1deb500a9"
+  }
+ },
+ "launch": {
+  "index": "coordination/fixed-formation-20261006/launch/launch.json",
+  "verified": [
+   "launch/cpp/config.json ran headless search (5 distinct compliant candidates, statsVaried)",
+   "launch/rust/config.json ran (scope.json fixedFormation=true, policy hash; 9 distinct compliant)",
+   "launch/go/launch.json command ran (20 distinct compliant candidates)"
+  ]
+ },
+ "filesChanged": [
+  "tools/embed_cpp_fixed_policy.py",
+  "tools/check_fixed_formation_cpp.py",
+  "tools/build_fixed_launch_configs.py",
+  "tools/check_fixed_formation.py",
+  "tools/verify_fixed_candidates.py",
+  "KA-Website/tools/recovery/fixed_formation.py",
+  "KA-Website/tools/recovery/strategy_admission_preparation.py",
+  "KA-Website/tools/recovery/strategy_optimizer.py",
+  "coordination/native-preparation/cpp/standalone-optimizer/fixed_formation.hpp",
+  "coordination/native-preparation/cpp/standalone-optimizer/fixed_formation.cpp",
+  "coordination/native-preparation/cpp/standalone-optimizer/fixed_formation_policy.inc",
+  "coordination/native-preparation/cpp/standalone-optimizer/admission.cpp",
+  "coordination/native-preparation/cpp/standalone-optimizer/pipeline.cpp",
+  "coordination/native-preparation/cpp/standalone-optimizer/main.cpp",
+  "coordination/native-preparation/cpp/standalone-optimizer/build.cmd"
+ ],
+ "evidencePaths": [
+  "coordination/fixed-formation-20261006/python-verification.json",
+  "coordination/fixed-formation-20261006/go-verification.json",
+  "coordination/fixed-formation-20261006/rust-verification.json",
+  "coordination/fixed-formation-20261006/cpp-verification.json",
+  "coordination/fixed-formation-20261006/fixed-formation-policy.json",
+  "coordination/fixed-formation-20261006/launch/launch.json"
+ ],
+ "blockers": [
+  "The shared desktop app (coordination/native-preparation/shared/native_optimizer_app.py) still pins frozen engine revisions (r8/r11/r9) that predate the policy; repointing it to policy-aware builds is coordinator-owned frozen-artifact work and was not done. Launch configs that DO activate the policy are provided and verified."
+ ],
+ "status": "complete-with-one-deferred-app-repoint"
+}

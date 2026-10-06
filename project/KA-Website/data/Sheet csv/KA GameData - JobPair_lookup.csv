@@ -1,0 +1,561 @@
+id,group1,group1,group1,group2,resultGroup,resultGroup,affinity,affinity
+0,0,Monarch,1,Merchant,33,Royal,80,C
+1,0,Monarch,2,Farmer,33,Royal,80,C
+2,0,Monarch,3,Carpenter,33,Royal,65,E
+3,0,Monarch,4,Mover,33,Royal,65,E
+4,0,Monarch,5,Trader,33,Royal,65,E
+5,0,Monarch,6,Researcher,33,Royal,95,B
+6,0,Monarch,7,Cook,33,Royal,80,C
+7,0,Monarch,8,Artisan,33,Royal,90,B
+8,0,Monarch,9,Blacksmith,33,Royal,100,A
+9,0,Monarch,10,Doctor,33,Royal,100,A
+10,0,Monarch,11,Monk,33,Royal,75,D
+11,0,Monarch,12,Rancher,33,Royal,95,B
+12,0,Monarch,13,Guard,33,Royal,100,A
+13,0,Monarch,14,Knight,33,Royal,90,B
+14,0,Monarch,15,Mage,33,Royal,65,E
+15,0,Monarch,16,Paladin,33,Royal,70,D
+16,0,Monarch,17,Gunner,33,Royal,100,A
+17,0,Monarch,18,Archer,33,Royal,90,B
+18,0,Monarch,19,Ninja,33,Royal,65,E
+19,0,Monarch,20,Samurai,33,Royal,60,E
+20,0,Monarch,21,Viking,33,Royal,90,B
+21,0,Monarch,22,Pirate,33,Royal,65,E
+22,0,Monarch,23,Champion,33,Royal,100,A
+23,0,Monarch,24,Wizard,33,Royal,100,A
+24,0,Monarch,25,Scholar,33,Royal,65,E
+25,0,Monarch,26,Santa Claus,33,Royal,100,A
+26,0,Monarch,27,Guerilla,33,Royal,65,E
+27,0,Monarch,28,Magic Knight,33,Royal,100,A
+28,0,Monarch,29,Berserker,33,Royal,65,E
+29,0,Monarch,30,Artist,33,Royal,65,E
+30,0,Monarch,31,Entertainer,33,Royal,100,A
+31,0,Monarch,32,Beast Tamer,33,Royal,95,B
+32,1,Merchant,1,Merchant,20,Samurai,80,C
+33,1,Merchant,2,Farmer,30,Artist,60,E
+34,1,Merchant,3,Carpenter,12,Rancher,65,E
+35,1,Merchant,4,Mover,31,Entertainer,80,C
+36,1,Merchant,5,Trader,10,Doctor,95,B
+37,1,Merchant,6,Researcher,27,Guerilla,90,B
+38,1,Merchant,7,Cook,3,Carpenter,70,D
+39,1,Merchant,8,Artisan,29,Berserker,95,B
+40,1,Merchant,9,Blacksmith,10,Doctor,90,B
+41,1,Merchant,10,Doctor,28,Magic Knight,70,D
+42,1,Merchant,11,Monk,18,Archer,75,D
+43,1,Merchant,12,Rancher,30,Artist,80,C
+44,1,Merchant,13,Guard,6,Researcher,70,D
+45,1,Merchant,14,Knight,31,Entertainer,95,B
+46,1,Merchant,15,Mage,17,Gunner,90,B
+47,1,Merchant,16,Paladin,32,Beast Tamer,65,E
+48,1,Merchant,17,Gunner,24,Wizard,80,C
+49,1,Merchant,18,Archer,30,Artist,60,E
+50,1,Merchant,19,Ninja,7,Cook,100,A
+51,1,Merchant,20,Samurai,27,Guerilla,90,B
+52,1,Merchant,21,Viking,16,Paladin,65,E
+53,1,Merchant,22,Pirate,28,Magic Knight,70,D
+54,1,Merchant,23,Champion,22,Pirate,100,A
+55,1,Merchant,24,Wizard,31,Entertainer,90,B
+56,1,Merchant,25,Scholar,21,Viking,65,E
+57,1,Merchant,26,Santa Claus,28,Magic Knight,60,E
+58,1,Merchant,27,Guerilla,5,Trader,90,B
+59,1,Merchant,28,Magic Knight,32,Beast Tamer,100,A
+60,1,Merchant,29,Berserker,4,Mover,90,B
+61,1,Merchant,30,Artist,27,Guerilla,100,A
+62,1,Merchant,31,Entertainer,2,Farmer,65,E
+63,1,Merchant,32,Beast Tamer,29,Berserker,100,A
+64,2,Farmer,2,Farmer,11,Monk,65,E
+65,2,Farmer,3,Carpenter,31,Entertainer,100,A
+66,2,Farmer,4,Mover,13,Guard,65,E
+67,2,Farmer,5,Trader,29,Berserker,65,E
+68,2,Farmer,6,Researcher,9,Blacksmith,100,A
+69,2,Farmer,7,Cook,32,Beast Tamer,95,B
+70,2,Farmer,8,Artisan,19,Ninja,80,C
+71,2,Farmer,9,Blacksmith,30,Artist,60,E
+72,2,Farmer,10,Doctor,23,Champion,65,E
+73,2,Farmer,11,Monk,27,Guerilla,80,C
+74,2,Farmer,12,Rancher,14,Knight,95,B
+75,2,Farmer,13,Guard,32,Beast Tamer,90,B
+76,2,Farmer,14,Knight,15,Mage,70,D
+77,2,Farmer,15,Mage,28,Magic Knight,95,B
+78,2,Farmer,16,Paladin,8,Artisan,90,B
+79,2,Farmer,17,Gunner,29,Berserker,70,D
+80,2,Farmer,18,Archer,20,Samurai,75,D
+81,2,Farmer,19,Ninja,30,Artist,80,C
+82,2,Farmer,20,Samurai,1,Merchant,70,D
+83,2,Farmer,21,Viking,31,Entertainer,95,B
+84,2,Farmer,22,Pirate,3,Carpenter,90,B
+85,2,Farmer,23,Champion,27,Guerilla,65,E
+86,2,Farmer,24,Wizard,12,Rancher,80,C
+87,2,Farmer,25,Scholar,29,Berserker,60,E
+88,2,Farmer,26,Santa Claus,10,Doctor,70,D
+89,2,Farmer,27,Guerilla,28,Magic Knight,90,B
+90,2,Farmer,28,Magic Knight,18,Archer,75,D
+91,2,Farmer,29,Berserker,31,Entertainer,100,A
+92,2,Farmer,30,Artist,6,Researcher,65,E
+93,2,Farmer,31,Entertainer,30,Artist,100,A
+94,2,Farmer,32,Beast Tamer,17,Gunner,80,C
+95,3,Carpenter,3,Carpenter,32,Beast Tamer,70,D
+96,3,Carpenter,4,Mover,24,Wizard,80,C
+97,3,Carpenter,5,Trader,30,Artist,95,B
+98,3,Carpenter,6,Researcher,7,Cook,65,E
+99,3,Carpenter,7,Cook,27,Guerilla,65,E
+100,3,Carpenter,8,Artisan,16,Paladin,65,E
+101,3,Carpenter,9,Blacksmith,28,Magic Knight,100,A
+102,3,Carpenter,10,Doctor,22,Pirate,80,C
+103,3,Carpenter,11,Monk,31,Entertainer,70,D
+104,3,Carpenter,12,Rancher,21,Viking,65,E
+105,3,Carpenter,13,Guard,32,Beast Tamer,95,B
+106,3,Carpenter,14,Knight,5,Trader,70,D
+107,3,Carpenter,15,Mage,28,Magic Knight,100,A
+108,3,Carpenter,16,Paladin,4,Mover,70,D
+109,3,Carpenter,17,Gunner,27,Guerilla,65,E
+110,3,Carpenter,18,Archer,2,Farmer,75,D
+111,3,Carpenter,19,Ninja,29,Berserker,80,C
+112,3,Carpenter,20,Samurai,11,Monk,90,B
+113,3,Carpenter,21,Viking,31,Entertainer,60,E
+114,3,Carpenter,22,Pirate,13,Guard,100,A
+115,3,Carpenter,23,Champion,29,Berserker,75,D
+116,3,Carpenter,24,Wizard,9,Blacksmith,70,D
+117,3,Carpenter,25,Scholar,32,Beast Tamer,65,E
+118,3,Carpenter,26,Santa Claus,19,Ninja,80,C
+119,3,Carpenter,27,Guerilla,30,Artist,80,C
+120,3,Carpenter,28,Magic Knight,23,Champion,80,C
+121,3,Carpenter,29,Berserker,27,Guerilla,70,D
+122,3,Carpenter,30,Artist,14,Knight,90,B
+123,3,Carpenter,31,Entertainer,32,Beast Tamer,95,B
+124,3,Carpenter,32,Beast Tamer,15,Mage,100,A
+125,4,Mover,4,Mover,28,Magic Knight,75,D
+126,4,Mover,5,Trader,8,Artisan,70,D
+127,4,Mover,6,Researcher,29,Berserker,100,A
+128,4,Mover,7,Cook,20,Samurai,95,B
+129,4,Mover,8,Artisan,30,Artist,80,C
+130,4,Mover,9,Blacksmith,1,Merchant,65,E
+131,4,Mover,10,Doctor,31,Entertainer,60,E
+132,4,Mover,11,Monk,3,Carpenter,100,A
+133,4,Mover,12,Rancher,27,Guerilla,100,A
+134,4,Mover,13,Guard,12,Rancher,90,B
+135,4,Mover,14,Knight,29,Berserker,70,D
+136,4,Mover,15,Mage,10,Doctor,75,D
+137,4,Mover,16,Paladin,28,Magic Knight,65,E
+138,4,Mover,17,Gunner,18,Archer,60,E
+139,4,Mover,18,Archer,30,Artist,100,A
+140,4,Mover,19,Ninja,6,Researcher,65,E
+141,4,Mover,20,Samurai,31,Entertainer,60,E
+142,4,Mover,21,Viking,17,Gunner,60,E
+143,4,Mover,22,Pirate,32,Beast Tamer,70,D
+144,4,Mover,23,Champion,24,Wizard,100,A
+145,4,Mover,24,Wizard,28,Magic Knight,90,B
+146,4,Mover,25,Scholar,7,Cook,80,C
+147,4,Mover,26,Santa Claus,27,Guerilla,100,A
+148,4,Mover,27,Guerilla,16,Paladin,100,A
+149,4,Mover,28,Magic Knight,30,Artist,80,C
+150,4,Mover,29,Berserker,22,Pirate,90,B
+151,4,Mover,30,Artist,32,Beast Tamer,80,C
+152,4,Mover,31,Entertainer,5,Trader,75,D
+153,4,Mover,32,Beast Tamer,31,Entertainer,75,D
+154,5,Trader,5,Trader,13,Guard,70,D
+155,5,Trader,6,Researcher,28,Magic Knight,70,D
+156,5,Trader,7,Cook,4,Mover,90,B
+157,5,Trader,8,Artisan,27,Guerilla,75,D
+158,5,Trader,9,Blacksmith,11,Monk,80,C
+159,5,Trader,10,Doctor,29,Berserker,65,E
+160,5,Trader,11,Monk,2,Farmer,95,B
+161,5,Trader,12,Rancher,31,Entertainer,95,B
+162,5,Trader,13,Guard,21,Viking,65,E
+163,5,Trader,14,Knight,29,Berserker,90,B
+164,5,Trader,15,Mage,9,Blacksmith,95,B
+165,5,Trader,16,Paladin,32,Beast Tamer,90,B
+166,5,Trader,17,Gunner,19,Ninja,100,A
+167,5,Trader,18,Archer,30,Artist,95,B
+168,5,Trader,19,Ninja,23,Champion,90,B
+169,5,Trader,20,Samurai,27,Guerilla,95,B
+170,5,Trader,21,Viking,14,Knight,65,E
+171,5,Trader,22,Pirate,32,Beast Tamer,95,B
+172,5,Trader,23,Champion,15,Mage,65,E
+173,5,Trader,24,Wizard,28,Magic Knight,90,B
+174,5,Trader,25,Scholar,8,Artisan,70,D
+175,5,Trader,26,Santa Claus,29,Berserker,95,B
+176,5,Trader,27,Guerilla,20,Samurai,65,E
+177,5,Trader,28,Magic Knight,30,Artist,70,D
+178,5,Trader,29,Berserker,1,Merchant,95,B
+179,5,Trader,30,Artist,31,Entertainer,100,A
+180,5,Trader,31,Entertainer,6,Researcher,70,D
+181,5,Trader,32,Beast Tamer,27,Guerilla,60,E
+182,6,Researcher,6,Researcher,12,Rancher,70,D
+183,6,Researcher,7,Cook,29,Berserker,95,B
+184,6,Researcher,8,Artisan,10,Doctor,70,D
+185,6,Researcher,9,Blacksmith,28,Magic Knight,75,D
+186,6,Researcher,10,Doctor,18,Archer,75,D
+187,6,Researcher,11,Monk,30,Artist,70,D
+188,6,Researcher,12,Rancher,3,Carpenter,75,D
+189,6,Researcher,13,Guard,31,Entertainer,75,D
+190,6,Researcher,14,Knight,17,Gunner,90,B
+191,6,Researcher,15,Mage,32,Beast Tamer,90,B
+192,6,Researcher,16,Paladin,24,Wizard,60,E
+193,6,Researcher,17,Gunner,30,Artist,65,E
+194,6,Researcher,18,Archer,7,Cook,95,B
+195,6,Researcher,19,Ninja,27,Guerilla,95,B
+196,6,Researcher,20,Samurai,22,Pirate,95,B
+197,6,Researcher,21,Viking,28,Magic Knight,65,E
+198,6,Researcher,22,Pirate,16,Paladin,60,E
+199,6,Researcher,23,Champion,31,Entertainer,65,E
+200,6,Researcher,24,Wizard,21,Viking,80,C
+201,6,Researcher,25,Scholar,32,Beast Tamer,70,D
+202,6,Researcher,26,Santa Claus,5,Trader,90,B
+203,6,Researcher,27,Guerilla,28,Magic Knight,70,D
+204,6,Researcher,28,Magic Knight,4,Mover,60,E
+205,6,Researcher,29,Berserker,27,Guerilla,75,D
+206,6,Researcher,30,Artist,2,Farmer,65,E
+207,6,Researcher,31,Entertainer,29,Berserker,95,B
+208,6,Researcher,32,Beast Tamer,11,Monk,65,E
+209,7,Cook,7,Cook,31,Entertainer,65,E
+210,7,Cook,8,Artisan,13,Guard,95,B
+211,7,Cook,9,Blacksmith,29,Berserker,70,D
+212,7,Cook,10,Doctor,9,Blacksmith,65,E
+213,7,Cook,11,Monk,32,Beast Tamer,90,B
+214,7,Cook,12,Rancher,19,Ninja,90,B
+215,7,Cook,13,Guard,30,Artist,100,A
+216,7,Cook,14,Knight,23,Champion,90,B
+217,7,Cook,15,Mage,27,Guerilla,80,C
+218,7,Cook,16,Paladin,14,Knight,70,D
+219,7,Cook,17,Gunner,32,Beast Tamer,65,E
+220,7,Cook,18,Archer,15,Mage,80,C
+221,7,Cook,19,Ninja,28,Magic Knight,70,D
+222,7,Cook,20,Samurai,8,Artisan,75,D
+223,7,Cook,21,Viking,29,Berserker,70,D
+224,7,Cook,22,Pirate,20,Samurai,70,D
+225,7,Cook,23,Champion,29,Berserker,65,E
+226,7,Cook,24,Wizard,1,Merchant,80,C
+227,7,Cook,25,Scholar,27,Guerilla,100,A
+228,7,Cook,26,Santa Claus,3,Carpenter,65,E
+229,7,Cook,27,Guerilla,31,Entertainer,90,B
+230,7,Cook,28,Magic Knight,12,Rancher,70,D
+231,7,Cook,29,Berserker,30,Artist,90,B
+232,7,Cook,30,Artist,10,Doctor,95,B
+233,7,Cook,31,Entertainer,28,Magic Knight,60,E
+234,7,Cook,32,Beast Tamer,18,Archer,90,B
+235,8,Artisan,8,Artisan,30,Artist,60,E
+236,8,Artisan,9,Blacksmith,6,Researcher,95,B
+237,8,Artisan,10,Doctor,31,Entertainer,95,B
+238,8,Artisan,11,Monk,17,Gunner,75,D
+239,8,Artisan,12,Rancher,32,Beast Tamer,70,D
+240,8,Artisan,13,Guard,24,Wizard,100,A
+241,8,Artisan,14,Knight,30,Artist,75,D
+242,8,Artisan,15,Mage,7,Cook,95,B
+243,8,Artisan,16,Paladin,27,Guerilla,65,E
+244,8,Artisan,17,Gunner,16,Paladin,95,B
+245,8,Artisan,18,Archer,28,Magic Knight,95,B
+246,8,Artisan,19,Ninja,21,Viking,100,A
+247,8,Artisan,20,Samurai,31,Entertainer,75,D
+248,8,Artisan,21,Viking,22,Pirate,90,B
+249,8,Artisan,22,Pirate,32,Beast Tamer,90,B
+250,8,Artisan,23,Champion,5,Trader,100,A
+251,8,Artisan,24,Wizard,28,Magic Knight,65,E
+252,8,Artisan,25,Scholar,4,Mover,60,E
+253,8,Artisan,26,Santa Claus,27,Guerilla,80,C
+254,8,Artisan,27,Guerilla,2,Farmer,95,B
+255,8,Artisan,28,Magic Knight,29,Berserker,65,E
+256,8,Artisan,29,Berserker,11,Monk,60,E
+257,8,Artisan,30,Artist,31,Entertainer,65,E
+258,8,Artisan,31,Entertainer,13,Guard,100,A
+259,8,Artisan,32,Beast Tamer,29,Berserker,65,E
+260,9,Blacksmith,9,Blacksmith,9,Blacksmith,80,C
+261,9,Blacksmith,10,Doctor,32,Beast Tamer,100,A
+262,9,Blacksmith,11,Monk,19,Ninja,100,A
+263,9,Blacksmith,12,Rancher,30,Artist,90,B
+264,9,Blacksmith,13,Guard,23,Champion,70,D
+265,9,Blacksmith,14,Knight,27,Guerilla,80,C
+266,9,Blacksmith,15,Mage,14,Knight,100,A
+267,9,Blacksmith,16,Paladin,32,Beast Tamer,90,B
+268,9,Blacksmith,17,Gunner,15,Mage,70,D
+269,9,Blacksmith,18,Archer,28,Magic Knight,80,C
+270,9,Blacksmith,19,Ninja,8,Artisan,75,D
+271,9,Blacksmith,20,Samurai,29,Berserker,95,B
+272,9,Blacksmith,21,Viking,20,Samurai,90,B
+273,9,Blacksmith,22,Pirate,30,Artist,65,E
+274,9,Blacksmith,23,Champion,1,Merchant,95,B
+275,9,Blacksmith,24,Wizard,31,Entertainer,100,A
+276,9,Blacksmith,25,Scholar,3,Carpenter,100,A
+277,9,Blacksmith,26,Santa Claus,27,Guerilla,100,A
+278,9,Blacksmith,27,Guerilla,12,Rancher,100,A
+279,9,Blacksmith,28,Magic Knight,29,Berserker,80,C
+280,9,Blacksmith,29,Berserker,10,Doctor,100,A
+281,9,Blacksmith,30,Artist,28,Magic Knight,95,B
+282,9,Blacksmith,31,Entertainer,18,Archer,70,D
+283,9,Blacksmith,32,Beast Tamer,30,Artist,95,B
+284,10,Doctor,10,Doctor,6,Researcher,60,E
+285,10,Doctor,11,Monk,31,Entertainer,70,D
+286,10,Doctor,12,Rancher,17,Gunner,95,B
+287,10,Doctor,13,Guard,32,Beast Tamer,70,D
+288,10,Doctor,14,Knight,24,Wizard,65,E
+289,10,Doctor,15,Mage,30,Artist,75,D
+290,10,Doctor,16,Paladin,7,Cook,75,D
+291,10,Doctor,17,Gunner,27,Guerilla,80,C
+292,10,Doctor,18,Archer,16,Paladin,95,B
+293,10,Doctor,19,Ninja,28,Magic Knight,70,D
+294,10,Doctor,20,Samurai,22,Pirate,60,E
+295,10,Doctor,21,Viking,31,Entertainer,95,B
+296,10,Doctor,22,Pirate,21,Viking,70,D
+297,10,Doctor,23,Champion,32,Beast Tamer,100,A
+298,10,Doctor,24,Wizard,5,Trader,70,D
+299,10,Doctor,25,Scholar,31,Entertainer,80,C
+300,10,Doctor,26,Santa Claus,4,Mover,80,C
+301,10,Doctor,27,Guerilla,29,Berserker,95,B
+302,10,Doctor,28,Magic Knight,2,Farmer,100,A
+303,10,Doctor,29,Berserker,27,Guerilla,95,B
+304,10,Doctor,30,Artist,11,Monk,95,B
+305,10,Doctor,31,Entertainer,28,Magic Knight,75,D
+306,10,Doctor,32,Beast Tamer,13,Guard,80,C
+307,11,Monk,11,Monk,29,Berserker,90,B
+308,11,Monk,12,Rancher,9,Blacksmith,70,D
+309,11,Monk,13,Guard,32,Beast Tamer,100,A
+310,11,Monk,14,Knight,19,Ninja,90,B
+311,11,Monk,15,Mage,30,Artist,100,A
+312,11,Monk,16,Paladin,23,Champion,90,B
+313,11,Monk,17,Gunner,27,Guerilla,100,A
+314,11,Monk,18,Archer,14,Knight,60,E
+315,11,Monk,19,Ninja,32,Beast Tamer,80,C
+316,11,Monk,20,Samurai,15,Mage,75,D
+317,11,Monk,21,Viking,28,Magic Knight,65,E
+318,11,Monk,22,Pirate,8,Artisan,75,D
+319,11,Monk,23,Champion,29,Berserker,100,A
+320,11,Monk,24,Wizard,20,Samurai,70,D
+321,11,Monk,25,Scholar,30,Artist,95,B
+322,11,Monk,26,Santa Claus,1,Merchant,80,C
+323,11,Monk,27,Guerilla,31,Entertainer,100,A
+324,11,Monk,28,Magic Knight,3,Carpenter,95,B
+325,11,Monk,29,Berserker,27,Guerilla,60,E
+326,11,Monk,30,Artist,12,Rancher,65,E
+327,11,Monk,31,Entertainer,29,Berserker,75,D
+328,11,Monk,32,Beast Tamer,10,Doctor,70,D
+329,12,Rancher,12,Rancher,28,Magic Knight,65,E
+330,12,Rancher,13,Guard,17,Gunner,90,B
+331,12,Rancher,14,Knight,30,Artist,100,A
+332,12,Rancher,15,Mage,6,Researcher,70,D
+333,12,Rancher,16,Paladin,31,Entertainer,70,D
+334,12,Rancher,17,Gunner,18,Archer,80,C
+335,12,Rancher,18,Archer,32,Beast Tamer,90,B
+336,12,Rancher,19,Ninja,24,Wizard,95,B
+337,12,Rancher,20,Samurai,30,Artist,60,E
+338,12,Rancher,21,Viking,7,Cook,90,B
+339,12,Rancher,22,Pirate,27,Guerilla,95,B
+340,12,Rancher,23,Champion,16,Paladin,70,D
+341,12,Rancher,24,Wizard,28,Magic Knight,65,E
+342,12,Rancher,25,Scholar,22,Pirate,65,E
+343,12,Rancher,26,Santa Claus,31,Entertainer,95,B
+344,12,Rancher,27,Guerilla,21,Viking,75,D
+345,12,Rancher,28,Magic Knight,32,Beast Tamer,80,C
+346,12,Rancher,29,Berserker,5,Trader,60,E
+347,12,Rancher,30,Artist,28,Magic Knight,75,D
+348,12,Rancher,31,Entertainer,13,Guard,95,B
+349,12,Rancher,32,Beast Tamer,27,Guerilla,100,A
+350,13,Guard,13,Guard,2,Farmer,100,A
+351,13,Guard,14,Knight,29,Berserker,65,E
+352,13,Guard,15,Mage,11,Monk,75,D
+353,13,Guard,16,Paladin,31,Entertainer,100,A
+354,13,Guard,17,Gunner,4,Mover,95,B
+355,13,Guard,18,Archer,29,Berserker,100,A
+356,13,Guard,19,Ninja,9,Blacksmith,100,A
+357,13,Guard,20,Samurai,32,Beast Tamer,70,D
+358,13,Guard,21,Viking,19,Ninja,70,D
+359,13,Guard,22,Pirate,30,Artist,75,D
+360,13,Guard,23,Champion,1,Merchant,100,A
+361,13,Guard,24,Wizard,27,Guerilla,60,E
+362,13,Guard,25,Scholar,14,Knight,100,A
+363,13,Guard,26,Santa Claus,28,Magic Knight,90,B
+364,13,Guard,27,Guerilla,15,Mage,70,D
+365,13,Guard,28,Magic Knight,32,Beast Tamer,90,B
+366,13,Guard,29,Berserker,8,Artisan,60,E
+367,13,Guard,30,Artist,29,Berserker,70,D
+368,13,Guard,31,Entertainer,20,Samurai,65,E
+369,13,Guard,32,Beast Tamer,30,Artist,65,E
+370,14,Knight,14,Knight,23,Champion,65,E
+371,14,Knight,15,Mage,31,Entertainer,65,E
+372,14,Knight,16,Paladin,3,Carpenter,80,C
+373,14,Knight,17,Gunner,27,Guerilla,80,C
+374,14,Knight,18,Archer,12,Rancher,90,B
+375,14,Knight,19,Ninja,29,Berserker,75,D
+376,14,Knight,20,Samurai,10,Doctor,90,B
+377,14,Knight,21,Viking,28,Magic Knight,95,B
+378,14,Knight,22,Pirate,18,Archer,100,A
+379,14,Knight,23,Champion,30,Artist,75,D
+380,14,Knight,24,Wizard,6,Researcher,90,B
+381,14,Knight,25,Scholar,31,Entertainer,90,B
+382,14,Knight,26,Santa Claus,17,Gunner,65,E
+383,14,Knight,27,Guerilla,32,Beast Tamer,80,C
+384,14,Knight,28,Magic Knight,24,Wizard,70,D
+385,14,Knight,29,Berserker,30,Artist,100,A
+386,14,Knight,30,Artist,7,Cook,80,C
+387,14,Knight,31,Entertainer,27,Guerilla,100,A
+388,14,Knight,32,Beast Tamer,16,Paladin,65,E
+389,15,Mage,15,Mage,28,Magic Knight,100,A
+390,15,Mage,16,Paladin,22,Pirate,80,C
+391,15,Mage,17,Gunner,31,Entertainer,95,B
+392,15,Mage,18,Archer,21,Viking,65,E
+393,15,Mage,19,Ninja,32,Beast Tamer,80,C
+394,15,Mage,20,Samurai,5,Trader,100,A
+395,15,Mage,21,Viking,28,Magic Knight,90,B
+396,15,Mage,22,Pirate,4,Mover,95,B
+397,15,Mage,23,Champion,27,Guerilla,65,E
+398,15,Mage,24,Wizard,2,Farmer,65,E
+399,15,Mage,25,Scholar,29,Berserker,90,B
+400,15,Mage,26,Santa Claus,11,Monk,90,B
+401,15,Mage,27,Guerilla,29,Berserker,100,A
+402,15,Mage,28,Magic Knight,13,Guard,75,D
+403,15,Mage,29,Berserker,31,Entertainer,90,B
+404,15,Mage,30,Artist,9,Blacksmith,70,D
+405,15,Mage,31,Entertainer,32,Beast Tamer,65,E
+406,15,Mage,32,Beast Tamer,19,Ninja,95,B
+407,16,Paladin,16,Paladin,30,Artist,75,D
+408,16,Paladin,17,Gunner,23,Champion,80,C
+409,16,Paladin,18,Archer,27,Guerilla,70,D
+410,16,Paladin,19,Ninja,14,Knight,90,B
+411,16,Paladin,20,Samurai,32,Beast Tamer,95,B
+412,16,Paladin,21,Viking,15,Mage,65,E
+413,16,Paladin,22,Pirate,28,Magic Knight,80,C
+414,16,Paladin,23,Champion,8,Artisan,70,D
+415,16,Paladin,24,Wizard,29,Berserker,80,C
+416,16,Paladin,25,Scholar,20,Samurai,100,A
+417,16,Paladin,26,Santa Claus,30,Artist,75,D
+418,16,Paladin,27,Guerilla,1,Merchant,65,E
+419,16,Paladin,28,Magic Knight,31,Entertainer,80,C
+420,16,Paladin,29,Berserker,3,Carpenter,65,E
+421,16,Paladin,30,Artist,27,Guerilla,95,B
+422,16,Paladin,31,Entertainer,17,Gunner,75,D
+423,16,Paladin,32,Beast Tamer,29,Berserker,95,B
+424,17,Gunner,17,Gunner,10,Doctor,65,E
+425,17,Gunner,18,Archer,28,Magic Knight,80,C
+426,17,Gunner,19,Ninja,18,Archer,65,E
+427,17,Gunner,20,Samurai,30,Artist,80,C
+428,17,Gunner,21,Viking,6,Researcher,60,E
+429,17,Gunner,22,Pirate,31,Entertainer,65,E
+430,17,Gunner,23,Champion,12,Rancher,80,C
+431,17,Gunner,24,Wizard,32,Beast Tamer,80,C
+432,17,Gunner,25,Scholar,24,Wizard,80,C
+433,17,Gunner,26,Santa Claus,30,Artist,65,E
+434,17,Gunner,27,Guerilla,7,Cook,90,B
+435,17,Gunner,28,Magic Knight,27,Guerilla,65,E
+436,17,Gunner,29,Berserker,16,Paladin,70,D
+437,17,Gunner,30,Artist,28,Magic Knight,90,B
+438,17,Gunner,31,Entertainer,22,Pirate,80,C
+439,17,Gunner,32,Beast Tamer,31,Entertainer,80,C
+440,18,Archer,18,Archer,21,Viking,70,D
+441,18,Archer,19,Ninja,32,Beast Tamer,95,B
+442,18,Archer,20,Samurai,5,Trader,70,D
+443,18,Archer,21,Viking,28,Magic Knight,80,C
+444,18,Archer,22,Pirate,4,Mover,80,C
+445,18,Archer,23,Champion,27,Guerilla,80,C
+446,18,Archer,24,Wizard,2,Farmer,60,E
+447,18,Archer,25,Scholar,29,Berserker,70,D
+448,18,Archer,26,Santa Claus,11,Monk,90,B
+449,18,Archer,27,Guerilla,29,Berserker,75,D
+450,18,Archer,28,Magic Knight,13,Guard,90,B
+451,18,Archer,29,Berserker,31,Entertainer,80,C
+452,18,Archer,30,Artist,9,Blacksmith,65,E
+453,18,Archer,31,Entertainer,32,Beast Tamer,95,B
+454,18,Archer,32,Beast Tamer,19,Ninja,95,B
+455,19,Ninja,19,Ninja,30,Artist,65,E
+456,19,Ninja,20,Samurai,23,Champion,100,A
+457,19,Ninja,21,Viking,27,Guerilla,90,B
+458,19,Ninja,22,Pirate,14,Knight,75,D
+459,19,Ninja,23,Champion,32,Beast Tamer,65,E
+460,19,Ninja,24,Wizard,15,Mage,90,B
+461,19,Ninja,25,Scholar,28,Magic Knight,65,E
+462,19,Ninja,26,Santa Claus,8,Artisan,70,D
+463,19,Ninja,27,Guerilla,29,Berserker,65,E
+464,19,Ninja,28,Magic Knight,20,Samurai,95,B
+465,19,Ninja,29,Berserker,30,Artist,100,A
+466,19,Ninja,30,Artist,1,Merchant,70,D
+467,19,Ninja,31,Entertainer,27,Guerilla,65,E
+468,19,Ninja,32,Beast Tamer,3,Carpenter,60,E
+469,20,Samurai,20,Samurai,31,Entertainer,70,D
+470,20,Samurai,21,Viking,12,Rancher,70,D
+471,20,Samurai,22,Pirate,29,Berserker,90,B
+472,20,Samurai,23,Champion,10,Doctor,95,B
+473,20,Samurai,24,Wizard,28,Magic Knight,65,E
+474,20,Samurai,25,Scholar,18,Archer,70,D
+475,20,Samurai,26,Santa Claus,30,Artist,80,C
+476,20,Samurai,27,Guerilla,21,Viking,70,D
+477,20,Samurai,28,Magic Knight,31,Entertainer,95,B
+478,20,Samurai,29,Berserker,17,Gunner,75,D
+479,20,Samurai,30,Artist,32,Beast Tamer,80,C
+480,20,Samurai,31,Entertainer,24,Wizard,65,E
+481,20,Samurai,32,Beast Tamer,30,Artist,65,E
+482,21,Viking,21,Viking,7,Cook,75,D
+483,21,Viking,22,Pirate,27,Guerilla,75,D
+484,21,Viking,23,Champion,16,Paladin,80,C
+485,21,Viking,24,Wizard,28,Magic Knight,70,D
+486,21,Viking,25,Scholar,22,Pirate,70,D
+487,21,Viking,26,Santa Claus,31,Entertainer,95,B
+488,21,Viking,27,Guerilla,6,Researcher,80,C
+489,21,Viking,28,Magic Knight,32,Beast Tamer,80,C
+490,21,Viking,29,Berserker,5,Trader,100,A
+491,21,Viking,30,Artist,28,Magic Knight,65,E
+492,21,Viking,31,Entertainer,4,Mover,65,E
+493,21,Viking,32,Beast Tamer,27,Guerilla,70,D
+494,22,Pirate,22,Pirate,2,Farmer,100,A
+495,22,Pirate,23,Champion,29,Berserker,90,B
+496,22,Pirate,24,Wizard,11,Monk,90,B
+497,22,Pirate,25,Scholar,31,Entertainer,65,E
+498,22,Pirate,26,Santa Claus,13,Guard,65,E
+499,22,Pirate,27,Guerilla,29,Berserker,100,A
+500,22,Pirate,28,Magic Knight,9,Blacksmith,95,B
+501,22,Pirate,29,Berserker,32,Beast Tamer,80,C
+502,22,Pirate,30,Artist,19,Ninja,80,C
+503,22,Pirate,31,Entertainer,30,Artist,80,C
+504,22,Pirate,32,Beast Tamer,23,Champion,80,C
+505,23,Champion,23,Champion,27,Guerilla,95,B
+506,23,Champion,24,Wizard,14,Knight,75,D
+507,23,Champion,25,Scholar,32,Beast Tamer,80,C
+508,23,Champion,26,Santa Claus,15,Mage,70,D
+509,23,Champion,27,Guerilla,29,Berserker,95,B
+510,23,Champion,28,Magic Knight,8,Artisan,70,D
+511,23,Champion,29,Berserker,28,Magic Knight,90,B
+512,23,Champion,30,Artist,20,Samurai,70,D
+513,23,Champion,31,Entertainer,30,Artist,80,C
+514,23,Champion,32,Beast Tamer,1,Merchant,65,E
+515,24,Wizard,24,Wizard,31,Entertainer,100,A
+516,24,Wizard,25,Scholar,3,Carpenter,70,D
+517,24,Wizard,26,Santa Claus,27,Guerilla,80,C
+518,24,Wizard,27,Guerilla,12,Rancher,100,A
+519,24,Wizard,28,Magic Knight,29,Berserker,75,D
+520,24,Wizard,29,Berserker,10,Doctor,95,B
+521,24,Wizard,30,Artist,28,Magic Knight,100,A
+522,24,Wizard,31,Entertainer,18,Archer,100,A
+523,24,Wizard,32,Beast Tamer,30,Artist,80,C
+524,25,Scholar,25,Scholar,6,Researcher,65,E
+525,25,Scholar,26,Santa Claus,31,Entertainer,75,D
+526,25,Scholar,27,Guerilla,17,Gunner,95,B
+527,25,Scholar,28,Magic Knight,30,Artist,100,A
+528,25,Scholar,29,Berserker,24,Wizard,95,B
+529,25,Scholar,30,Artist,32,Beast Tamer,65,E
+530,25,Scholar,31,Entertainer,7,Cook,65,E
+531,25,Scholar,32,Beast Tamer,27,Guerilla,100,A
+532,26,Santa Claus,26,Santa Claus,16,Paladin,75,D
+533,26,Santa Claus,27,Guerilla,28,Magic Knight,65,E
+534,26,Santa Claus,28,Magic Knight,22,Pirate,90,B
+535,26,Santa Claus,29,Berserker,31,Entertainer,65,E
+536,26,Santa Claus,30,Artist,21,Viking,95,B
+537,26,Santa Claus,31,Entertainer,32,Beast Tamer,100,A
+538,26,Santa Claus,32,Beast Tamer,5,Trader,65,E
+539,27,Guerilla,27,Guerilla,28,Magic Knight,70,D
+540,27,Guerilla,28,Magic Knight,4,Mover,65,E
+541,27,Guerilla,29,Berserker,30,Artist,80,C
+542,27,Guerilla,30,Artist,2,Farmer,95,B
+543,27,Guerilla,31,Entertainer,29,Berserker,95,B
+544,27,Guerilla,32,Beast Tamer,11,Monk,90,B
+545,28,Magic Knight,28,Magic Knight,31,Entertainer,60,E
+546,28,Magic Knight,29,Berserker,13,Guard,70,D
+547,28,Magic Knight,30,Artist,29,Berserker,90,B
+548,28,Magic Knight,31,Entertainer,9,Blacksmith,70,D
+549,28,Magic Knight,32,Beast Tamer,31,Entertainer,95,B
+550,29,Berserker,29,Berserker,19,Ninja,80,C
+551,29,Berserker,30,Artist,32,Beast Tamer,90,B
+552,29,Berserker,31,Entertainer,23,Champion,75,D
+553,29,Berserker,32,Beast Tamer,27,Guerilla,65,E
+554,30,Artist,30,Artist,14,Knight,70,D
+555,30,Artist,31,Entertainer,32,Beast Tamer,80,C
+556,30,Artist,32,Beast Tamer,15,Mage,90,B
+557,31,Entertainer,31,Entertainer,28,Magic Knight,75,D
+558,31,Entertainer,32,Beast Tamer,8,Artisan,65,E
+559,32,Beast Tamer,32,Beast Tamer,29,Berserker,65,E

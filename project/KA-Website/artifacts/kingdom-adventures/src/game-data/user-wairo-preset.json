@@ -1,0 +1,254 @@
+{
+ "schema": "ka-user-wairo-preset-1",
+ "note": "Reproducible LEGAL preset for the USER's Wairo Extreme (encounter 19) reference: Ninja rank A awakening 20 + labelled representative healer (Heal Maddy + Backup) + Scholar fodder. Two named cases differ only in fodder training: BASELINE (maxed 0-awakening Scholar, each parameter at its Job.csv base cap 20) and COMMUNITY RECIPE (four weak fodder, training level 1). Editable; every unstated value is labelled.",
+ "provenance": {
+  "source": "user-reference-build.txt + strategy-target-correction.txt + priority-correction.txt (TEMP/ka-combat-completion)",
+  "invocationEvidence": "RE-evidence/20260920-user-wairo-reference/invocation-semantics.json (native GetInvocationRate: highest activation = index 0)",
+  "converter": "battleSetupFromLoadouts (src/lib/battle-legality.ts) -> battleSetupToCombatScenario (src/lib/battle-setup-adapter.ts)",
+  "finishEvidence": "automatic-finish-correction.txt (user: native Ending->Finish is AUTOMATIC, no click). The exact native policy NAME is owned by the automatic-finish worker and is NOT yet chosen, so finishPolicy is omitted.",
+  "owners": "KA-Website/artifacts/api-server/data/ka_shared.json jobs/overrides/skills + src/game-data/native-job-identity.json + recovered combat catalogs"
+ },
+ "assumptions": [
+  "Every supplied Ninja number is a per-stat TRAINING level (user-confirmed); displayed value = round(base + (level-1)*inc) from the shared job curve.",
+  "Unstated stats (Vigor/INT/Gather/Move/Heart) use the stated default level 1.",
+  "Awakening 20 = +30 max level per awakening step (native ResidentGrowLevelLimit -> Parameter.AddMaxLevel), so Ninja A HP cap 645 / DEF 630 / DEX 630; the supplied 314/173/1 are legal. Progression is attached by the existing shared converter.",
+  "Ninja \"high trigger\" = native invocation index 0, the HIGHEST activation chance. The old high=2 mapping is retracted.",
+  "Fodder job is Scholar (Job.csv csvId 132). The canonical converter now admits the literal Scholar key via native-job-identity.json, so there is NO Merchant stand-in.",
+  "Fodder training: BASELINE = 20 (a 0-awakening Scholar is already at its Job.csv per-parameter base cap, so \"maxed\" is 20 - NOT 300); COMMUNITY RECIPE = 1 (weak low-HP fodder that dies fast). The old 300-maxed claim is retracted.",
+  "Healer is a REPRESENTATIVE ASSUMPTION, editable: the source does not name the job. Doctor has no canonical Job.csv rank (absent from native-job-identity.json -> PROGRESSION_CAP_UNVERIFIED), so the healer is a canonical caster with a known base profile - Wizard rank S (csvId 124), awakening 20, modest legal HP/MP training 300 (cap 55+600) - with ONLY Heal Maddy + Backup.",
+  "Ninja Green Shield access is 'weak' -> native affinity-0 halving (max(1,value//2)). Native effective Speed is 200 = raw 80 + 240//2; the 320 displayed total is the un-halved owner value and is NOT an effective stat.",
+  "Displayed owner totals omit affinity halving; use the native effective values. This is disclosed, not a best-build claim.",
+  "Learned-skill ownership and actual per-character slot upgrades are declared inputs (slot ceiling 9, SKILL_SLOT_CAP_PER_CHARACTER_DECLARED). Ownership is NOT guaranteed by the shared catalog.",
+  "Runner inputs (seeds, tickLimit, finish policy, defeatCount, source profile, item schedule) are declared simulation conditions, not player data.",
+  "Optional item policy (Holy Herb / Large Potion finite schedule) is a disclosed EXAMPLE timing, not automatic item AI.",
+  "Resident-wide 'Water of ...' valuables are NOT stated in the source: no ownership is fabricated. The converter reports RESIDENT_VALUABLES_NOT_CAPTURED, and the numerical fixtures use the declared-input zero (a labelled assumption for the scenario, not a captured zero-ownership claim)."
+ ],
+ "loadouts": {
+  "Ninja (A aw20)": {
+   "jobName": "Ninja",
+   "rank": "A",
+   "awakening": 20,
+   "statLevels": {
+    "hp": 314,
+    "mp": 330,
+    "atk": 5,
+    "def": 173,
+    "spd": 3,
+    "lck": 1,
+    "dex": 1,
+    "vig": 1,
+    "int": 1,
+    "gth": 1,
+    "mov": 1,
+    "hrt": 1
+   },
+   "equipment": [
+    {
+     "name": "A/ Legendary Hat",
+     "level": 99
+    },
+    {
+     "name": "A/ Legendary Staff",
+     "level": 76
+    },
+    {
+     "name": "B/ Green Shield",
+     "level": 57
+    },
+    {
+     "name": "A/ Verdant Armor",
+     "level": 1
+    }
+   ],
+   "skills": [
+    "Counter",
+    "7-Hit Attack",
+    "5-Hit Attack",
+    "4-Hit Attack",
+    "3-Hit Attack",
+    "2-Hit Attack"
+   ],
+   "triggerLevel": 0
+  },
+  "Healer (representative Wizard S, assumed/editable)": {
+   "jobName": "Wizard",
+   "rank": "S",
+   "awakening": 20,
+   "statLevels": {
+    "hp": 300,
+    "mp": 300,
+    "vig": 1,
+    "atk": 1,
+    "def": 1,
+    "spd": 1,
+    "lck": 1,
+    "int": 1,
+    "dex": 1,
+    "gth": 1,
+    "mov": 1,
+    "hrt": 1
+   },
+   "equipment": [],
+   "skills": [
+    "Heal Maddy",
+    "Backup"
+   ],
+   "triggerLevel": 0,
+   "note": "REPRESENTATIVE ASSUMPTION (editable): canonical Wizard S (Job.csv csvId 124) is the healer stand-in because Doctor lacks a canonical Job.csv rank. Only Heal Maddy + Backup; awakening 20; HP/MP training 300 (modest, cap 55+600)."
+  },
+  "Scholar Fodder 1-4": {
+   "jobName": "Scholar",
+   "rank": "D",
+   "awakening": 0,
+   "count": 4,
+   "statLevels": {
+    "hp": 20,
+    "mp": 20,
+    "vig": 20,
+    "atk": 20,
+    "def": 20,
+    "spd": 20,
+    "lck": 20,
+    "int": 20,
+    "dex": 20,
+    "gth": 20,
+    "mov": 20,
+    "hrt": 20
+   },
+   "equipment": [],
+   "skills": [],
+   "note": "BASELINE case: maxed 0-awakening Scholar = each parameter at its Job.csv base cap 20 (NOT 300). COMMUNITY RECIPE case: training level 1 low-HP fodder. Literal Scholar, no stand-in."
+  }
+ },
+ "runner": {
+  "encounterId": 19,
+  "defeatCount": 0,
+  "level": 80,
+  "title": "Take out the Wairo Tank!",
+  "seeds": [
+   [
+    7,
+    8
+   ],
+   [
+    9,
+    10
+   ],
+   [
+    11,
+    12
+   ],
+   [
+    13,
+    14
+   ]
+  ],
+  "tickLimit": 3000,
+  "tickLimitCrossCheck": 5000,
+  "finishPolicy": "automatic",
+  "finishPolicyNote": "OMITTED pending the automatic-finish worker's exact native policy name (automatic-finish-result.md absent). The user-confirmed behaviour is AUTOMATIC native Ending->Finish (no click). on-verdict is DIAGNOSTIC ONLY.",
+  "holyHerbStock": 0,
+  "inputs": [],
+  "itemPolicy": "item-policy.json (finite periodic schedule; declared input, baseline uses none)",
+  "sourceProfile": "isolated-scene0 (converter default createDefaultStartProfile)"
+ },
+ "derivedOwnerTotals": [
+  {
+   "id": "Ninja-REF",
+   "displayNote": "shared job curve + SHARED-equipment overrides, NO affinity halving; the Speed display 320 is NOT an effective stat",
+   "totals": {
+    "hp": 4239,
+    "mp": 1959,
+    "vig": 319,
+    "atk": 343,
+    "def": 1242,
+    "spd": 320,
+    "lck": 105,
+    "int": 376,
+    "dex": 11,
+    "gth": 16,
+    "mov": 65,
+    "hrt": 9
+   },
+   "nativeEffective": {
+    "spd": 200,
+    "note": "raw 80 + Green Shield 240//2 (affinity 0)"
+   }
+  },
+  {
+   "id": "Healer-REPRESENTATIVE",
+   "displayNote": "labelled representative Wizard S build",
+   "totals": {
+    "hp": 4077,
+    "mp": 1539,
+    "vig": 110,
+    "atk": 14,
+    "def": 9,
+    "spd": 32,
+    "lck": 44,
+    "int": 59,
+    "dex": 48,
+    "gth": 3,
+    "mov": 18,
+    "hrt": 11
+   }
+  },
+  {
+   "id": "Fodder-MAXED",
+   "displayNote": "Scholar training level 20 (0-awakening base cap)",
+   "totals": {
+    "hp": 150,
+    "mp": 43,
+    "vig": 176,
+    "atk": 46,
+    "def": 42,
+    "spd": 43,
+    "lck": 43,
+    "int": 43,
+    "dex": 91,
+    "gth": 67,
+    "mov": 72,
+    "hrt": 77
+   }
+  },
+  {
+   "id": "Fodder-LOW",
+   "displayNote": "Scholar training level 1 (community recipe)",
+   "totals": {
+    "hp": 55,
+    "mp": 5,
+    "vig": 100,
+    "atk": 8,
+    "def": 4,
+    "spd": 5,
+    "lck": 5,
+    "int": 5,
+    "dex": 15,
+    "gth": 10,
+    "mov": 15,
+    "hrt": 20
+   }
+  }
+ ],
+ "legality": {
+  "errors": 0,
+  "errorCodes": [],
+  "fodderJob": {
+   "requested": "Scholar",
+   "used": "Scholar",
+   "scholarConverts": true,
+   "blocker": null
+  },
+  "unknownCodes": [
+   "RESIDENT_VALUABLES_NOT_CAPTURED",
+   "AFFINITY_HALVING_FROM_WEAKNESS",
+   "ARMOR_EQUIPMENT_ACCESS_UNKNOWN",
+   "SKILL_RANK_MISMATCH",
+   "INVOCATION_LEVEL_NOT_CAPTURED",
+   "JOB_CATALOG_IDENTITY_ALIAS",
+   "JOB_EQUIPMENT_COMPATIBILITY_UNKNOWN",
+   "SKILL_SLOT_CAP_PER_CHARACTER_DECLARED"
+  ],
+  "note": "Legality from build-report.json; all configs CONVERTED with 0 ERROR and no PROGRESSION_CAP_UNVERIFIED. unknownCodes are DECLARED unverifiable ownership/affinity inputs, not errors; RESIDENT_VALUABLES_NOT_CAPTURED records that the source does not state valuable ownership (declared-input zero, not an owned zero)."
+ }
+}

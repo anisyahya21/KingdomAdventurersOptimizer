@@ -1,0 +1,13 @@
+{
+  "source": "Original MapChip.txt rows 71-78 (category 34) joined to Terrain.txt rows 95-102 through MapChip.relatedDataType 2 / relatedDataId; see RE-evidence/20260917-map-monster-spawn/FINDINGS.md",
+  "caves": [
+    { "terrainType": 1, "terrainRow": 95, "chipId": 72, "name": "Ground Cave", "icon": "/world-assets/builder/menu-dungeon-72.png" },
+    { "terrainType": 2, "terrainRow": 96, "chipId": 71, "name": "Grass Cave", "icon": "/world-assets/builder/menu-dungeon-71.png" },
+    { "terrainType": 3, "terrainRow": 99, "chipId": 75, "name": "Sand Cave", "icon": "/world-assets/builder/menu-dungeon-75.png" },
+    { "terrainType": 4, "terrainRow": 98, "chipId": 74, "name": "Rock Cave", "icon": "/world-assets/builder/menu-dungeon-74.png" },
+    { "terrainType": 5, "terrainRow": 97, "chipId": 73, "name": "Volcano Cave", "icon": "/world-assets/builder/menu-dungeon-73.png" },
+    { "terrainType": 6, "terrainRow": 101, "chipId": 77, "name": "Snow Cave", "icon": "/world-assets/builder/menu-dungeon-77.png" },
+    { "terrainType": 7, "terrainRow": 100, "chipId": 76, "name": "Swamp Cave", "icon": "/world-assets/builder/menu-dungeon-76.png" },
+    { "terrainType": 15, "terrainRow": 102, "chipId": 78, "name": "Cave", "icon": "/world-assets/builder/menu-dungeon-78.png" }
+  ]
+}

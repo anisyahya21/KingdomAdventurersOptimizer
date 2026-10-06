@@ -1,0 +1,46 @@
+{
+  "schema": "ka-rust-comparison-adapter-brief-v1",
+  "revision": "r9",
+  "builderExecutedTests": false,
+  "verificationStatus": "awaiting-Chat1",
+  "configAdditions": {
+    "resultSyncBatchSize": 1,
+    "stageTimingTelemetry": true
+  },
+  "defaultBatch": "min(executors,8), lower bound 1; explicit range 1..64",
+  "durability": "effective batch 1 commits each complete received record via write_all+File.sync_all before worker refill; journal timings exclude status/checkpoint sync",
+  "outputs": [
+    "battles.jsonl",
+    "stage-timings.json",
+    "status.json",
+    "checkpoint.json",
+    "leaders.json",
+    "scope.json"
+  ],
+  "scope": "effective batch size and telemetry setting are bound; R9 sources differ from R8, fresh output required",
+  "baselineConfig": {
+    "encounterFilter": "one ID 0..19 per process",
+    "candidateLimit": 1,
+    "candidatesPerGeneration": 1,
+    "generations": 1,
+    "executors": [
+      5,
+      10,
+      12
+    ],
+    "seedPairs": "exact explicit coordinator bank, 1..4096 distinct nonnegative31-bit pairs"
+  },
+  "seedSemantics": "raw trial receives exact math/lib pair before preparation; native initialization and canonical follower skip remain unchanged",
+  "inputIdentity": "SQLite preserves original source candidate ID. Raw JSON arrays without id retain null source identity; provenance must name original oracle identity separately.",
+  "timingInterpretation": "coordinator wall, summed worker operations, inclusive trial totals and journal operation durations overlap; do not add/subtract them to infer stages. Process start-to-exit measured externally.",
+  "checksRequested": [
+    "small fixed bank exact canonical parity",
+    "new records have successfulSyncs and successfulBatches equal acceptedRecords with histogram 1 only",
+    "restart new records/syncs zero and unchanged battle journal",
+    "then exclusive matched all20 5/10/12 worker comparisons"
+  ],
+  "eligibility": "supplied on-verdict source policies remain diagnostic, verification-only and import-disabled",
+  "sharedEngine": "canonical native Rust combat simulation and initialization AI",
+  "binary": "builds/r9/ka-rust-standalone-optimizer.exe",
+  "binarySha256": "2d269a1254829dbf971413c7c12ae77a3157f97d018eec0b442d579832cc0731"
+}

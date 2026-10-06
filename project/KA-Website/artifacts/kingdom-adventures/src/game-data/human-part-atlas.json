@@ -1,0 +1,129 @@
+{
+  "note": "Pixel size of every human part sheet that has no baked OPT entry in character-rules.json. These originals ship without an .opt because they are untrimmed cell atlases (one SEB cell per direction), so their OPT is the identity grid; the resolution rule that turns this size into cells lives in humanIdleResolution.",
+  "source": "public/character_sprites/<dir>/<file>.png IHDR, compared against the baked character-rules.json opts keys",
+  "rule": "cellW/cellH = the SEB record's crop (w,h); the sheet is a cell grid iff pngW % cellW == 0 and pngH % cellH == 0; slot(row,col) = src(col*cellW, row*cellH, cellW, cellH), dest(0,0)",
+  "sheets": {
+    "face": {
+      "m_face_32_0.png": [
+        24,
+        96
+      ],
+      "m_face_32_2.png": [
+        24,
+        96
+      ],
+      "m_face_32_3.png": [
+        24,
+        96
+      ],
+      "m_face_32_4.png": [
+        24,
+        96
+      ],
+      "w_face_32_0.png": [
+        24,
+        96
+      ],
+      "w_face_32_1.png": [
+        24,
+        96
+      ],
+      "w_face_32_2.png": [
+        24,
+        96
+      ],
+      "w_face_32_3.png": [
+        24,
+        96
+      ],
+      "w_face_32_4.png": [
+        24,
+        96
+      ]
+    },
+    "hair": {
+      "hair_m_00.png": [
+        24,
+        72
+      ]
+    },
+    "weapon": {
+      "weapon_03_4.png": [
+        240,
+        60
+      ],
+      "weapon_10.png": [
+        240,
+        60
+      ],
+      "weapon_10_1.png": [
+        240,
+        60
+      ],
+      "weapon_10_2.png": [
+        240,
+        60
+      ],
+      "weapon_10_3.png": [
+        240,
+        60
+      ],
+      "weapon_10_4.png": [
+        240,
+        60
+      ],
+      "weapon_20.png": [
+        240,
+        60
+      ],
+      "weapon_20_1.png": [
+        240,
+        60
+      ],
+      "weapon_20_2.png": [
+        240,
+        60
+      ],
+      "weapon_28_2.png": [
+        240,
+        60
+      ],
+      "weapon_28_3.png": [
+        240,
+        60
+      ],
+      "weapon_28_4.png": [
+        240,
+        60
+      ],
+      "weapon_29.png": [
+        240,
+        60
+      ],
+      "weapon_29_1.png": [
+        240,
+        60
+      ],
+      "weapon_29_2.png": [
+        240,
+        60
+      ],
+      "weapon_29_3.png": [
+        240,
+        60
+      ],
+      "work_09.png": [
+        240,
+        60
+      ],
+      "work_10.png": [
+        240,
+        60
+      ],
+      "work_11.png": [
+        240,
+        60
+      ]
+    }
+  }
+}

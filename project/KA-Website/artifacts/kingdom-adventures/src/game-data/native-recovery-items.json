@@ -1,0 +1,68 @@
+{
+  "$comment": "Canonical battle recovery items recovered from the original Item.txt table. Rows are copied from the source, not inferred; do not add entries without a recovered Item.txt row.",
+  "source": {
+    "table": "Item.txt",
+    "route": "RE-evidence/20260911-treasure/xls-original/English.lproj/Item.txt",
+    "sha256": "e64004fdad22dd441bac3ae3afda46ec0ed4b428f89b6f1dcc3f8305c093cea1",
+    "rowCount": 173,
+    "columns": ["id","name","category","type","sortId","group","craftGroup","rank","requireLevel","iconU","iconV","currency","p12","p13","p14","copperCoinExchangeRateNum","explain","explain2","bonusCategory","bonusType","bonusMinValue","bonusMaxValue","eggBonusType","eggBonusValue","eggBonusExp","eggBonusTime","relatedDataId","billingId","craftTermStudioLevel","craftTermIntelligence","craftTimeSeconds","initNum","flag"]
+  },
+  "native": {
+    "executeItem": "0x167b834",
+    "recoverySwitchCategory3": "0x167bb84",
+    "recoveryAllResidents": "0x167aea0",
+    "recoverySingleResident": "0x167acac",
+    "getRandomBonusValue": "0x162b344",
+    "recoveryParameterByBonusType": { "0": 10, "1": 10, "2": 11, "3": 11, "4": 12, "5": 12 },
+    "scopeByBonusType": { "0": "all", "1": "single", "2": "all", "3": "single", "4": "all", "5": "single" }
+  },
+  "items": [
+    {
+      "id": 27,
+      "name": "Recovery Potion (L)",
+      "aliases": ["Large Potion", "LargePotion", "Recovery Potion L"],
+      "category": 4,
+      "type": 0,
+      "bonusCategory": 3,
+      "bonusType": 0,
+      "bonusMinValue": 50,
+      "bonusMaxValue": 50,
+      "parameter": 10,
+      "scope": "all",
+      "effect": "Restores 50% of all residents' HP."
+    },
+    {
+      "id": 28,
+      "name": "Recovery Potion (S)",
+      "aliases": ["Small Potion", "SmallPotion", "Recovery Potion S"],
+      "category": 4,
+      "type": 0,
+      "bonusCategory": 3,
+      "bonusType": 1,
+      "bonusMinValue": 50,
+      "bonusMaxValue": 50,
+      "parameter": 10,
+      "scope": "single",
+      "effect": "Restores 50% of one resident's HP."
+    },
+    {
+      "id": 31,
+      "name": "Holy Herb",
+      "aliases": ["Holy Herbs"],
+      "category": 4,
+      "type": 0,
+      "bonusCategory": 3,
+      "bonusType": 2,
+      "bonusMinValue": 100,
+      "bonusMaxValue": 100,
+      "parameter": 11,
+      "scope": "all",
+      "effect": "Restores 100% of all residents' MP."
+    }
+  ],
+  "sizes": {
+    "recoveryPotion": ["S", "L"],
+    "note": "Only two Recovery Potion sizes exist in Item.txt (S id28, L id27); there is no (M) row."
+  }
+}
+

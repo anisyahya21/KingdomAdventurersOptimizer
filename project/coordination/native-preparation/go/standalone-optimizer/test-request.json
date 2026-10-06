@@ -1,0 +1,50 @@
+{
+  "schema": "go-builder-test-request-1",
+  "coordinatorThreadId": "01a10860-97c5-77f2-8b45-630a99c9ce73",
+  "sourceRevision": "2264780f6be7882d22d6286c4cfe6ca463b8501d13943175e32b0c38cfdddba7",
+  "executableSHA256": "d50ab861d80c10f184a502f9248c848aad86b636aac142fc7a0d7af58a07265f",
+  "executable": "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\go\\standalone-optimizer\\go-optimizer.exe",
+  "workload": "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\shared\\builder-inputs\\go-current-all20-workload.json",
+  "workloadSHA256": "ed221ff8c0be1193fdd419b35011d8ae3eb1df46ab0f2c8ba64c1b3c6efc2b4f",
+  "commands": [
+    {
+      "stage": "preparation",
+      "arguments": [
+        "--mode",
+        "prepare",
+        "--input",
+        "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\shared\\builder-inputs\\go-current-all20-workload.json",
+        "--output",
+        "FRESH_ISOLATED_OUTPUT"
+      ]
+    },
+    {
+      "stage": "native-and-search",
+      "arguments": [
+        "--input",
+        "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\shared\\builder-inputs\\go-current-all20-workload.json",
+        "--output",
+        "FRESH_ISOLATED_OUTPUT",
+        "--budget",
+        "20",
+        "--batch",
+        "20",
+        "--executors",
+        "5",
+        "--seed",
+        "1"
+      ]
+    }
+  ],
+  "expected": [
+    "20 unchanged raw baseline intents prepared exactly against canonical oracle",
+    "Native core report, encounter-v3 telemetry, RNG and derived chest-count parity under identical positive31-bit seed pairs",
+    "Full exact intent/prepared/result/provenance durably saved; on-verdict diagnostic=true and validDurable=0",
+    "Resume/dedup avoids rerunning committed evaluations; single writer exclusion; no duplicate identity evidence"
+  ],
+  "builderExecutedTests": false,
+  "performanceComparison": "deferred",
+  "reusePreparationEvidence": "R6 preparation exact20/20; same snapshot builder; hydration allows nine known descriptive catalog fields",
+  "revision": "R10",
+  "delta": "Per-record execution provenance and actual selected-parent lineage; engine-wide metadata only; SearchSchema3; no preparation/native changes"
+}

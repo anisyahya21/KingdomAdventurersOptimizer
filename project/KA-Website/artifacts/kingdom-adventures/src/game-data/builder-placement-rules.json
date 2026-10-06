@@ -1,0 +1,1415 @@
+{
+  "source": "Original MapChip.txt; ChipPlaceSystem.CheckPlace 0x1508238",
+  "facilities": {
+    "0": {
+      "chipId": 23,
+      "flags": 33564160,
+      "category": 24,
+      "townCoverage": "inside"
+    },
+    "1": {
+      "chipId": 22,
+      "flags": 34604032,
+      "category": 64,
+      "townCoverage": "inside"
+    },
+    "2": {
+      "chipId": 20,
+      "flags": 33554432,
+      "category": 15,
+      "townCoverage": "inside"
+    },
+    "3": {
+      "chipId": 33,
+      "flags": 3735729,
+      "category": 19,
+      "townCoverage": "anywhere"
+    },
+    "4": {
+      "chipId": 34,
+      "flags": 3735729,
+      "category": 19,
+      "townCoverage": "anywhere"
+    },
+    "5": {
+      "chipId": 35,
+      "flags": 33636356,
+      "category": 6,
+      "townCoverage": "anywhere"
+    },
+    "6": {
+      "chipId": 36,
+      "flags": 606261,
+      "category": 6,
+      "townCoverage": "anywhere"
+    },
+    "7": {
+      "chipId": 67,
+      "flags": 105906176,
+      "category": 33,
+      "townCoverage": "inside"
+    },
+    "8": {
+      "chipId": 68,
+      "flags": 105906176,
+      "category": 33,
+      "townCoverage": "inside"
+    },
+    "9": {
+      "chipId": 69,
+      "flags": 105906176,
+      "category": 33,
+      "townCoverage": "inside"
+    },
+    "10": {
+      "chipId": 70,
+      "flags": 105906176,
+      "category": 33,
+      "townCoverage": "inside"
+    },
+    "15": {
+      "chipId": 56,
+      "flags": 33571328,
+      "category": 2,
+      "townCoverage": "inside"
+    },
+    "17": {
+      "chipId": 58,
+      "flags": 124978177,
+      "category": 35,
+      "townCoverage": "outside"
+    },
+    "18": {
+      "chipId": 59,
+      "flags": 100664320,
+      "category": 42,
+      "townCoverage": "inside"
+    },
+    "19": {
+      "chipId": 60,
+      "flags": 100664576,
+      "category": 40,
+      "townCoverage": "inside"
+    },
+    "20": {
+      "chipId": 62,
+      "flags": 103810048,
+      "category": 36,
+      "townCoverage": "inside"
+    },
+    "21": {
+      "chipId": 63,
+      "flags": 100664320,
+      "category": 43,
+      "townCoverage": "inside"
+    },
+    "22": {
+      "chipId": 64,
+      "flags": 100664576,
+      "category": 40,
+      "townCoverage": "inside"
+    },
+    "23": {
+      "chipId": 99,
+      "flags": 15892529,
+      "category": 21,
+      "townCoverage": "inside"
+    },
+    "24": {
+      "chipId": 100,
+      "flags": 7471153,
+      "category": 21,
+      "townCoverage": "inside"
+    },
+    "25": {
+      "chipId": 101,
+      "flags": 7471153,
+      "category": 21,
+      "townCoverage": "inside"
+    },
+    "26": {
+      "chipId": 102,
+      "flags": 7471153,
+      "category": 21,
+      "townCoverage": "inside"
+    },
+    "27": {
+      "chipId": 104,
+      "flags": 36700208,
+      "category": 58,
+      "townCoverage": "inside"
+    },
+    "28": {
+      "chipId": 103,
+      "flags": 6438913,
+      "category": 41,
+      "townCoverage": "inside"
+    },
+    "29": {
+      "chipId": 79,
+      "flags": 6423169,
+      "category": 53,
+      "townCoverage": "inside"
+    },
+    "30": {
+      "chipId": 80,
+      "flags": 6422657,
+      "category": 59,
+      "townCoverage": "inside"
+    },
+    "31": {
+      "chipId": 81,
+      "flags": 6422657,
+      "category": 16,
+      "townCoverage": "inside"
+    },
+    "32": {
+      "chipId": 82,
+      "flags": 6422657,
+      "category": 16,
+      "townCoverage": "inside"
+    },
+    "33": {
+      "chipId": 84,
+      "flags": 7489665,
+      "category": 17,
+      "townCoverage": "inside"
+    },
+    "34": {
+      "chipId": 86,
+      "flags": 7489665,
+      "category": 17,
+      "townCoverage": "inside"
+    },
+    "35": {
+      "chipId": 85,
+      "flags": 7489665,
+      "category": 17,
+      "townCoverage": "inside"
+    },
+    "36": {
+      "chipId": 87,
+      "flags": 7489665,
+      "category": 17,
+      "townCoverage": "inside"
+    },
+    "37": {
+      "chipId": 88,
+      "flags": 7489665,
+      "category": 17,
+      "townCoverage": "inside"
+    },
+    "38": {
+      "chipId": 89,
+      "flags": 7489665,
+      "category": 17,
+      "townCoverage": "inside"
+    },
+    "39": {
+      "chipId": 90,
+      "flags": 7489665,
+      "category": 17,
+      "townCoverage": "inside"
+    },
+    "40": {
+      "chipId": 91,
+      "flags": 7489665,
+      "category": 17,
+      "townCoverage": "inside"
+    },
+    "41": {
+      "chipId": 94,
+      "flags": 7358913,
+      "category": 22,
+      "townCoverage": "inside"
+    },
+    "42": {
+      "chipId": 92,
+      "flags": 7489665,
+      "category": 18,
+      "townCoverage": "inside"
+    },
+    "43": {
+      "chipId": 93,
+      "flags": 7489665,
+      "category": 18,
+      "townCoverage": "inside"
+    },
+    "44": {
+      "chipId": 95,
+      "flags": 7358593,
+      "category": 25,
+      "townCoverage": "inside"
+    },
+    "45": {
+      "chipId": 96,
+      "flags": 74449025,
+      "category": 62,
+      "townCoverage": "inside"
+    },
+    "46": {
+      "chipId": 97,
+      "flags": 74449025,
+      "category": 62,
+      "townCoverage": "inside"
+    },
+    "47": {
+      "chipId": 98,
+      "flags": 91357313,
+      "category": 60,
+      "townCoverage": "inside"
+    },
+    "48": {
+      "chipId": 37,
+      "flags": 34101842,
+      "category": 3,
+      "townCoverage": "inside"
+    },
+    "49": {
+      "chipId": 38,
+      "flags": 34097746,
+      "category": 3,
+      "townCoverage": "inside"
+    },
+    "50": {
+      "chipId": 39,
+      "flags": 34097746,
+      "category": 3,
+      "townCoverage": "inside"
+    },
+    "51": {
+      "chipId": 40,
+      "flags": 34097746,
+      "category": 3,
+      "townCoverage": "inside"
+    },
+    "52": {
+      "chipId": 41,
+      "flags": 34097746,
+      "category": 3,
+      "townCoverage": "inside"
+    },
+    "53": {
+      "chipId": 42,
+      "flags": 34097746,
+      "category": 3,
+      "townCoverage": "inside"
+    },
+    "54": {
+      "chipId": 43,
+      "flags": 34097746,
+      "category": 3,
+      "townCoverage": "inside"
+    },
+    "55": {
+      "chipId": 44,
+      "flags": 34097746,
+      "category": 3,
+      "townCoverage": "inside"
+    },
+    "56": {
+      "chipId": 45,
+      "flags": 34097746,
+      "category": 3,
+      "townCoverage": "inside"
+    },
+    "57": {
+      "chipId": 46,
+      "flags": 34097746,
+      "category": 3,
+      "townCoverage": "inside"
+    },
+    "58": {
+      "chipId": 47,
+      "flags": 34097746,
+      "category": 3,
+      "townCoverage": "inside"
+    },
+    "59": {
+      "chipId": 48,
+      "flags": 34097746,
+      "category": 3,
+      "townCoverage": "inside"
+    },
+    "60": {
+      "chipId": 49,
+      "flags": 34097746,
+      "category": 3,
+      "townCoverage": "inside"
+    },
+    "61": {
+      "chipId": 51,
+      "flags": 34097746,
+      "category": 3,
+      "townCoverage": "inside"
+    },
+    "62": {
+      "chipId": 50,
+      "flags": 34097746,
+      "category": 3,
+      "townCoverage": "inside"
+    },
+    "63": {
+      "chipId": 55,
+      "flags": 33571328,
+      "category": 2,
+      "townCoverage": "inside"
+    },
+    "66": {
+      "chipId": 66,
+      "flags": 6422533,
+      "category": 48,
+      "townCoverage": "inside"
+    },
+    "67": {
+      "chipId": 112,
+      "flags": 7471233,
+      "category": 38,
+      "townCoverage": "inside"
+    },
+    "68": {
+      "chipId": 105,
+      "flags": 7405569,
+      "category": 54,
+      "townCoverage": "anywhere"
+    },
+    "69": {
+      "chipId": 111,
+      "flags": 7405697,
+      "category": 93,
+      "townCoverage": "anywhere"
+    },
+    "70": {
+      "chipId": 110,
+      "flags": 7340161,
+      "category": 45,
+      "townCoverage": "inside"
+    },
+    "71": {
+      "chipId": 109,
+      "flags": 7340161,
+      "category": 46,
+      "townCoverage": "inside"
+    },
+    "72": {
+      "chipId": 107,
+      "flags": 7340161,
+      "category": 63,
+      "townCoverage": "inside"
+    },
+    "73": {
+      "chipId": 106,
+      "flags": 7340161,
+      "category": 29,
+      "townCoverage": "inside"
+    },
+    "74": {
+      "chipId": 108,
+      "flags": 7340161,
+      "category": 66,
+      "townCoverage": "inside"
+    },
+    "75": {
+      "chipId": 126,
+      "flags": 7471233,
+      "category": 65,
+      "townCoverage": "inside"
+    },
+    "76": {
+      "chipId": 120,
+      "flags": 6423169,
+      "category": 38,
+      "townCoverage": "inside"
+    },
+    "77": {
+      "chipId": 121,
+      "flags": 6423169,
+      "category": 38,
+      "townCoverage": "inside"
+    },
+    "78": {
+      "chipId": 129,
+      "flags": 6488193,
+      "category": 38,
+      "townCoverage": "anywhere"
+    },
+    "79": {
+      "chipId": 123,
+      "flags": 6422657,
+      "category": 38,
+      "townCoverage": "inside"
+    },
+    "80": {
+      "chipId": 124,
+      "flags": 6422657,
+      "category": 38,
+      "townCoverage": "inside"
+    },
+    "81": {
+      "chipId": 125,
+      "flags": 6422657,
+      "category": 38,
+      "townCoverage": "inside"
+    },
+    "82": {
+      "chipId": 122,
+      "flags": 6422657,
+      "category": 38,
+      "townCoverage": "inside"
+    },
+    "83": {
+      "chipId": 119,
+      "flags": 6422657,
+      "category": 38,
+      "townCoverage": "inside"
+    },
+    "84": {
+      "chipId": 113,
+      "flags": 7471233,
+      "category": 38,
+      "townCoverage": "inside"
+    },
+    "85": {
+      "chipId": 114,
+      "flags": 7471233,
+      "category": 30,
+      "townCoverage": "inside"
+    },
+    "86": {
+      "chipId": 115,
+      "flags": 7471233,
+      "category": 32,
+      "townCoverage": "inside"
+    },
+    "87": {
+      "chipId": 116,
+      "flags": 7471233,
+      "category": 32,
+      "townCoverage": "inside"
+    },
+    "88": {
+      "chipId": 117,
+      "flags": 7471233,
+      "category": 32,
+      "townCoverage": "inside"
+    },
+    "89": {
+      "chipId": 118,
+      "flags": 7471489,
+      "category": 38,
+      "townCoverage": "inside"
+    },
+    "90": {
+      "chipId": 128,
+      "flags": 7406593,
+      "category": 61,
+      "townCoverage": "anywhere"
+    },
+    "91": {
+      "chipId": 130,
+      "flags": 7471233,
+      "category": 38,
+      "townCoverage": "inside"
+    },
+    "92": {
+      "chipId": 127,
+      "flags": 7405569,
+      "category": 94,
+      "townCoverage": "anywhere"
+    },
+    "93": {
+      "chipId": 138,
+      "flags": 39847433,
+      "category": 57,
+      "townCoverage": "inside"
+    },
+    "94": {
+      "chipId": 139,
+      "flags": 39847433,
+      "category": 57,
+      "townCoverage": "inside"
+    },
+    "95": {
+      "chipId": 140,
+      "flags": 39847433,
+      "category": 57,
+      "townCoverage": "inside"
+    },
+    "96": {
+      "chipId": 141,
+      "flags": 39847433,
+      "category": 57,
+      "townCoverage": "inside"
+    },
+    "97": {
+      "chipId": 142,
+      "flags": 39847433,
+      "category": 57,
+      "townCoverage": "inside"
+    },
+    "98": {
+      "chipId": 131,
+      "flags": 39847433,
+      "category": 29,
+      "townCoverage": "inside"
+    },
+    "99": {
+      "chipId": 132,
+      "flags": 39847433,
+      "category": 29,
+      "townCoverage": "inside"
+    },
+    "100": {
+      "chipId": 133,
+      "flags": 39847433,
+      "category": 29,
+      "townCoverage": "inside"
+    },
+    "101": {
+      "chipId": 134,
+      "flags": 6293001,
+      "category": 29,
+      "townCoverage": "inside"
+    },
+    "102": {
+      "chipId": 143,
+      "flags": 39847433,
+      "category": 55,
+      "townCoverage": "inside"
+    },
+    "103": {
+      "chipId": 144,
+      "flags": 6293001,
+      "category": 31,
+      "townCoverage": "inside"
+    },
+    "104": {
+      "chipId": 145,
+      "flags": 6293001,
+      "category": 31,
+      "townCoverage": "inside"
+    },
+    "105": {
+      "chipId": 146,
+      "flags": 6293001,
+      "category": 31,
+      "townCoverage": "inside"
+    },
+    "106": {
+      "chipId": 166,
+      "flags": 6293001,
+      "category": 4,
+      "townCoverage": "inside"
+    },
+    "107": {
+      "chipId": 158,
+      "flags": 39847433,
+      "category": 56,
+      "townCoverage": "inside"
+    },
+    "108": {
+      "chipId": 148,
+      "flags": 39847433,
+      "category": 56,
+      "townCoverage": "inside"
+    },
+    "109": {
+      "chipId": 149,
+      "flags": 39847433,
+      "category": 56,
+      "townCoverage": "inside"
+    },
+    "110": {
+      "chipId": 150,
+      "flags": 39847433,
+      "category": 56,
+      "townCoverage": "inside"
+    },
+    "111": {
+      "chipId": 151,
+      "flags": 39847433,
+      "category": 56,
+      "townCoverage": "inside"
+    },
+    "112": {
+      "chipId": 152,
+      "flags": 39847433,
+      "category": 56,
+      "townCoverage": "inside"
+    },
+    "113": {
+      "chipId": 147,
+      "flags": 39847433,
+      "category": 56,
+      "townCoverage": "inside"
+    },
+    "114": {
+      "chipId": 153,
+      "flags": 39847433,
+      "category": 56,
+      "townCoverage": "inside"
+    },
+    "115": {
+      "chipId": 154,
+      "flags": 39847433,
+      "category": 56,
+      "townCoverage": "inside"
+    },
+    "116": {
+      "chipId": 155,
+      "flags": 39847433,
+      "category": 56,
+      "townCoverage": "inside"
+    },
+    "117": {
+      "chipId": 156,
+      "flags": 39847433,
+      "category": 56,
+      "townCoverage": "inside"
+    },
+    "118": {
+      "chipId": 157,
+      "flags": 39847433,
+      "category": 56,
+      "townCoverage": "inside"
+    },
+    "119": {
+      "chipId": 187,
+      "flags": 6293001,
+      "category": 4,
+      "townCoverage": "inside"
+    },
+    "120": {
+      "chipId": 188,
+      "flags": 6293001,
+      "category": 4,
+      "townCoverage": "inside"
+    },
+    "121": {
+      "chipId": 189,
+      "flags": 6293001,
+      "category": 4,
+      "townCoverage": "inside"
+    },
+    "122": {
+      "chipId": 190,
+      "flags": 6293001,
+      "category": 4,
+      "townCoverage": "inside"
+    },
+    "123": {
+      "chipId": 186,
+      "flags": 6293001,
+      "category": 4,
+      "townCoverage": "inside"
+    },
+    "124": {
+      "chipId": 164,
+      "flags": 6293001,
+      "category": 4,
+      "townCoverage": "inside"
+    },
+    "125": {
+      "chipId": 165,
+      "flags": 6293001,
+      "category": 4,
+      "townCoverage": "inside"
+    },
+    "126": {
+      "chipId": 169,
+      "flags": 6293001,
+      "category": 4,
+      "townCoverage": "inside"
+    },
+    "127": {
+      "chipId": 170,
+      "flags": 6293001,
+      "category": 4,
+      "townCoverage": "inside"
+    },
+    "128": {
+      "chipId": 171,
+      "flags": 6293001,
+      "category": 4,
+      "townCoverage": "inside"
+    },
+    "129": {
+      "chipId": 135,
+      "flags": 6293033,
+      "category": 5,
+      "townCoverage": "inside"
+    },
+    "130": {
+      "chipId": 136,
+      "flags": 6293033,
+      "category": 5,
+      "townCoverage": "inside"
+    },
+    "131": {
+      "chipId": 137,
+      "flags": 6293033,
+      "category": 5,
+      "townCoverage": "inside"
+    },
+    "132": {
+      "chipId": 159,
+      "flags": 6293001,
+      "category": 47,
+      "townCoverage": "inside"
+    },
+    "133": {
+      "chipId": 160,
+      "flags": 6293001,
+      "category": 47,
+      "townCoverage": "inside"
+    },
+    "134": {
+      "chipId": 161,
+      "flags": 6293001,
+      "category": 47,
+      "townCoverage": "inside"
+    },
+    "135": {
+      "chipId": 185,
+      "flags": 6293001,
+      "category": 4,
+      "townCoverage": "inside"
+    },
+    "136": {
+      "chipId": 167,
+      "flags": 6293001,
+      "category": 4,
+      "townCoverage": "inside"
+    },
+    "137": {
+      "chipId": 182,
+      "flags": 6293001,
+      "category": 4,
+      "townCoverage": "inside"
+    },
+    "138": {
+      "chipId": 168,
+      "flags": 6293001,
+      "category": 4,
+      "townCoverage": "inside"
+    },
+    "139": {
+      "chipId": 177,
+      "flags": 6293001,
+      "category": 4,
+      "townCoverage": "inside"
+    },
+    "140": {
+      "chipId": 184,
+      "flags": 6293001,
+      "category": 4,
+      "townCoverage": "inside"
+    },
+    "141": {
+      "chipId": 176,
+      "flags": 6293001,
+      "category": 4,
+      "townCoverage": "inside"
+    },
+    "142": {
+      "chipId": 181,
+      "flags": 6293001,
+      "category": 88,
+      "townCoverage": "inside"
+    },
+    "143": {
+      "chipId": 178,
+      "flags": 6293001,
+      "category": 4,
+      "townCoverage": "inside"
+    },
+    "144": {
+      "chipId": 179,
+      "flags": 6293001,
+      "category": 4,
+      "townCoverage": "inside"
+    },
+    "145": {
+      "chipId": 180,
+      "flags": 6293001,
+      "category": 4,
+      "townCoverage": "inside"
+    },
+    "146": {
+      "chipId": 173,
+      "flags": 6293001,
+      "category": 88,
+      "townCoverage": "inside"
+    },
+    "147": {
+      "chipId": 174,
+      "flags": 6293001,
+      "category": 4,
+      "townCoverage": "inside"
+    },
+    "148": {
+      "chipId": 163,
+      "flags": 6293001,
+      "category": 4,
+      "townCoverage": "inside"
+    },
+    "149": {
+      "chipId": 183,
+      "flags": 6293001,
+      "category": 4,
+      "townCoverage": "inside"
+    },
+    "150": {
+      "chipId": 175,
+      "flags": 6293001,
+      "category": 4,
+      "townCoverage": "inside"
+    },
+    "151": {
+      "chipId": 172,
+      "flags": 6293001,
+      "category": 4,
+      "townCoverage": "inside"
+    },
+    "152": {
+      "chipId": 162,
+      "flags": 6293001,
+      "category": 4,
+      "townCoverage": "inside"
+    },
+    "153": {
+      "chipId": 191,
+      "flags": 6293001,
+      "category": 4,
+      "townCoverage": "inside"
+    },
+    "154": {
+      "chipId": 243,
+      "flags": 6293001,
+      "category": 29,
+      "townCoverage": "inside"
+    },
+    "155": {
+      "chipId": 244,
+      "flags": 6293001,
+      "category": 29,
+      "townCoverage": "inside"
+    },
+    "156": {
+      "chipId": 245,
+      "flags": 6293001,
+      "category": 106,
+      "townCoverage": "inside"
+    },
+    "157": {
+      "chipId": 246,
+      "flags": 6293001,
+      "category": 83,
+      "townCoverage": "inside"
+    },
+    "158": {
+      "chipId": 242,
+      "flags": 39847433,
+      "category": 56,
+      "townCoverage": "inside"
+    },
+    "159": {
+      "chipId": 215,
+      "flags": 37814528,
+      "category": 38,
+      "townCoverage": "anywhere"
+    },
+    "160": {
+      "chipId": 216,
+      "flags": 7340161,
+      "category": 45,
+      "townCoverage": "inside"
+    },
+    "161": {
+      "chipId": 217,
+      "flags": 6488193,
+      "category": 38,
+      "townCoverage": "anywhere"
+    },
+    "162": {
+      "chipId": 218,
+      "flags": 7340161,
+      "category": 84,
+      "townCoverage": "inside"
+    },
+    "163": {
+      "chipId": 222,
+      "flags": 644940800,
+      "category": 38,
+      "townCoverage": "anywhere"
+    },
+    "164": {
+      "chipId": 224,
+      "flags": 7405569,
+      "category": 38,
+      "townCoverage": "anywhere"
+    },
+    "165": {
+      "chipId": 225,
+      "flags": 772867073,
+      "category": 73,
+      "townCoverage": "anywhere"
+    },
+    "166": {
+      "chipId": 226,
+      "flags": 772867073,
+      "category": 68,
+      "townCoverage": "anywhere"
+    },
+    "167": {
+      "chipId": 227,
+      "flags": 772867073,
+      "category": 72,
+      "townCoverage": "anywhere"
+    },
+    "168": {
+      "chipId": 228,
+      "flags": 772867073,
+      "category": 74,
+      "townCoverage": "anywhere"
+    },
+    "169": {
+      "chipId": 229,
+      "flags": 772867073,
+      "category": 67,
+      "townCoverage": "anywhere"
+    },
+    "170": {
+      "chipId": 230,
+      "flags": 772867073,
+      "category": 82,
+      "townCoverage": "anywhere"
+    },
+    "171": {
+      "chipId": 231,
+      "flags": 772867073,
+      "category": 71,
+      "townCoverage": "anywhere"
+    },
+    "172": {
+      "chipId": 232,
+      "flags": 772867073,
+      "category": 70,
+      "townCoverage": "anywhere"
+    },
+    "173": {
+      "chipId": 233,
+      "flags": 772867073,
+      "category": 77,
+      "townCoverage": "anywhere"
+    },
+    "174": {
+      "chipId": 234,
+      "flags": 772867073,
+      "category": 75,
+      "townCoverage": "anywhere"
+    },
+    "175": {
+      "chipId": 235,
+      "flags": 772867073,
+      "category": 76,
+      "townCoverage": "anywhere"
+    },
+    "176": {
+      "chipId": 236,
+      "flags": 772867073,
+      "category": 85,
+      "townCoverage": "anywhere"
+    },
+    "177": {
+      "chipId": 237,
+      "flags": 772867073,
+      "category": 81,
+      "townCoverage": "anywhere"
+    },
+    "178": {
+      "chipId": 238,
+      "flags": 772867073,
+      "category": 86,
+      "townCoverage": "anywhere"
+    },
+    "179": {
+      "chipId": 239,
+      "flags": 772867073,
+      "category": 87,
+      "townCoverage": "anywhere"
+    },
+    "180": {
+      "chipId": 261,
+      "flags": 772867073,
+      "category": 90,
+      "townCoverage": "anywhere"
+    },
+    "181": {
+      "chipId": 241,
+      "flags": 772867073,
+      "category": 80,
+      "townCoverage": "anywhere"
+    },
+    "182": {
+      "chipId": 247,
+      "flags": 6293001,
+      "category": 4,
+      "townCoverage": "inside"
+    },
+    "183": {
+      "chipId": 248,
+      "flags": 6422657,
+      "category": 79,
+      "townCoverage": "inside"
+    },
+    "184": {
+      "chipId": 249,
+      "flags": 6422657,
+      "category": 79,
+      "townCoverage": "inside"
+    },
+    "185": {
+      "chipId": 250,
+      "flags": 6422657,
+      "category": 79,
+      "townCoverage": "inside"
+    },
+    "186": {
+      "chipId": 251,
+      "flags": 6422657,
+      "category": 38,
+      "townCoverage": "inside"
+    },
+    "187": {
+      "chipId": 252,
+      "flags": 306315264,
+      "category": 17,
+      "townCoverage": "inside"
+    },
+    "188": {
+      "chipId": 253,
+      "flags": 306315264,
+      "category": 17,
+      "townCoverage": "inside"
+    },
+    "189": {
+      "chipId": 219,
+      "flags": 772867073,
+      "category": 105,
+      "townCoverage": "anywhere"
+    },
+    "190": {
+      "chipId": 220,
+      "flags": 644940800,
+      "category": 66,
+      "townCoverage": "anywhere"
+    },
+    "191": {
+      "chipId": 221,
+      "flags": 74515457,
+      "category": 99,
+      "townCoverage": "anywhere"
+    },
+    "192": {
+      "chipId": 254,
+      "flags": 7406593,
+      "category": 61,
+      "townCoverage": "anywhere"
+    },
+    "193": {
+      "chipId": 255,
+      "flags": 6293001,
+      "category": 31,
+      "townCoverage": "inside"
+    },
+    "194": {
+      "chipId": 256,
+      "flags": 7489665,
+      "category": 17,
+      "townCoverage": "inside"
+    },
+    "195": {
+      "chipId": 257,
+      "flags": 772867073,
+      "category": 92,
+      "townCoverage": "anywhere"
+    },
+    "196": {
+      "chipId": 258,
+      "flags": 235996161,
+      "category": 91,
+      "townCoverage": "anywhere"
+    },
+    "197": {
+      "chipId": 259,
+      "flags": 638649344,
+      "category": 66,
+      "townCoverage": "anywhere"
+    },
+    "198": {
+      "chipId": 260,
+      "flags": 772867072,
+      "category": 95,
+      "townCoverage": "anywhere"
+    },
+    "199": {
+      "chipId": 240,
+      "flags": 638649344,
+      "category": 66,
+      "townCoverage": "anywhere"
+    },
+    "200": {
+      "chipId": 262,
+      "flags": 772867073,
+      "category": 96,
+      "townCoverage": "anywhere"
+    },
+    "201": {
+      "chipId": 263,
+      "flags": 772867073,
+      "category": 97,
+      "townCoverage": "anywhere"
+    },
+    "202": {
+      "chipId": 264,
+      "flags": 772867073,
+      "category": 107,
+      "townCoverage": "anywhere"
+    },
+    "203": {
+      "chipId": 265,
+      "flags": 638649344,
+      "category": 66,
+      "townCoverage": "anywhere"
+    },
+    "204": {
+      "chipId": 266,
+      "flags": 638649344,
+      "category": 66,
+      "townCoverage": "anywhere"
+    },
+    "205": {
+      "chipId": 267,
+      "flags": 638649344,
+      "category": 66,
+      "townCoverage": "anywhere"
+    },
+    "206": {
+      "chipId": 268,
+      "flags": 74580097,
+      "category": 17,
+      "townCoverage": "inside"
+    },
+    "207": {
+      "chipId": 269,
+      "flags": 74580097,
+      "category": 17,
+      "townCoverage": "inside"
+    },
+    "208": {
+      "chipId": 270,
+      "flags": 74580097,
+      "category": 17,
+      "townCoverage": "inside"
+    },
+    "209": {
+      "chipId": 271,
+      "flags": 74580097,
+      "category": 17,
+      "townCoverage": "inside"
+    },
+    "210": {
+      "chipId": 272,
+      "flags": 74580097,
+      "category": 17,
+      "townCoverage": "inside"
+    },
+    "211": {
+      "chipId": 273,
+      "flags": 74580097,
+      "category": 17,
+      "townCoverage": "inside"
+    },
+    "212": {
+      "chipId": 274,
+      "flags": 74580097,
+      "category": 17,
+      "townCoverage": "inside"
+    },
+    "213": {
+      "chipId": 275,
+      "flags": 74580097,
+      "category": 17,
+      "townCoverage": "inside"
+    },
+    "214": {
+      "chipId": 276,
+      "flags": 74580097,
+      "category": 17,
+      "townCoverage": "inside"
+    },
+    "216": {
+      "chipId": 278,
+      "flags": 34097746,
+      "category": 3,
+      "townCoverage": "inside"
+    },
+    "217": {
+      "chipId": 279,
+      "flags": 34097746,
+      "category": 3,
+      "townCoverage": "inside"
+    },
+    "218": {
+      "chipId": 280,
+      "flags": 34097746,
+      "category": 3,
+      "townCoverage": "inside"
+    },
+    "219": {
+      "chipId": 281,
+      "flags": 34097746,
+      "category": 3,
+      "townCoverage": "inside"
+    },
+    "220": {
+      "chipId": 282,
+      "flags": 34097746,
+      "category": 3,
+      "townCoverage": "inside"
+    },
+    "221": {
+      "chipId": 283,
+      "flags": 34097746,
+      "category": 3,
+      "townCoverage": "inside"
+    },
+    "222": {
+      "chipId": 284,
+      "flags": 34097746,
+      "category": 3,
+      "townCoverage": "inside"
+    },
+    "223": {
+      "chipId": 285,
+      "flags": 39847433,
+      "category": 4,
+      "townCoverage": "inside"
+    },
+    "224": {
+      "chipId": 286,
+      "flags": 39847433,
+      "category": 56,
+      "townCoverage": "inside"
+    },
+    "225": {
+      "chipId": 287,
+      "flags": 39847433,
+      "category": 56,
+      "townCoverage": "inside"
+    },
+    "226": {
+      "chipId": 288,
+      "flags": 7405569,
+      "category": 102,
+      "townCoverage": "anywhere"
+    },
+    "227": {
+      "chipId": 289,
+      "flags": 7405569,
+      "category": 103,
+      "townCoverage": "anywhere"
+    },
+    "228": {
+      "chipId": 290,
+      "flags": 7405697,
+      "category": 38,
+      "townCoverage": "anywhere"
+    },
+    "229": {
+      "chipId": 291,
+      "flags": 39847433,
+      "category": 4,
+      "townCoverage": "inside"
+    },
+    "230": {
+      "chipId": 292,
+      "flags": 6293001,
+      "category": 104,
+      "townCoverage": "inside"
+    },
+    "231": {
+      "chipId": 293,
+      "flags": 6293001,
+      "category": 104,
+      "townCoverage": "inside"
+    },
+    "232": {
+      "chipId": 294,
+      "flags": 6293001,
+      "category": 104,
+      "townCoverage": "inside"
+    },
+    "233": {
+      "chipId": 295,
+      "flags": 6293001,
+      "category": 104,
+      "townCoverage": "inside"
+    },
+    "234": {
+      "chipId": 296,
+      "flags": 39847433,
+      "category": 55,
+      "townCoverage": "inside"
+    },
+    "235": {
+      "chipId": 297,
+      "flags": 34097746,
+      "category": 3,
+      "townCoverage": "inside"
+    },
+    "236": {
+      "chipId": 298,
+      "flags": 39847433,
+      "category": 4,
+      "townCoverage": "inside"
+    },
+    "237": {
+      "chipId": 299,
+      "flags": 39847433,
+      "category": 4,
+      "townCoverage": "inside"
+    },
+    "238": {
+      "chipId": 300,
+      "flags": 7340161,
+      "category": 45,
+      "townCoverage": "inside"
+    },
+    "239": {
+      "chipId": 301,
+      "flags": 642843649,
+      "category": 100,
+      "townCoverage": "anywhere"
+    },
+    "240": {
+      "chipId": 302,
+      "flags": 772867073,
+      "category": 101,
+      "townCoverage": "anywhere"
+    },
+    "241": {
+      "chipId": 303,
+      "flags": 7405569,
+      "category": 103,
+      "townCoverage": "anywhere"
+    },
+    "242": {
+      "chipId": 304,
+      "flags": 734,
+      "category": 45,
+      "townCoverage": "inside"
+    }
+  }
+}

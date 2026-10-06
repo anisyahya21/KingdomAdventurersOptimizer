@@ -1,0 +1,20 @@
+{
+  "binarySha256": "a205ec23d4b0c7ebd32c52af744ddc29283b8ddd523005e961519c9633e05c7a",
+  "schema": "ka-rust-frozen-build-v1",
+  "optimizerSourceSha256": {
+    "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\rust\\standalone-optimizer\\src\\main.rs": "36e3c4e1b54fbc31aeba77fff6241f5441f8266c6153741e5672997b8782b7eb",
+    "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\rust\\standalone-optimizer\\src\\prepare.rs": "ff3e96df9cd13bbe6daa25d3ccde743fd326055930d11fe66e1252bae7f8ff2f",
+    "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\rust\\standalone-optimizer\\src\\store.rs": "84808c1ecb795f53bfdea896f1b649d0071a871b474f6c74ea31de3f413925a0",
+    "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\rust\\standalone-optimizer\\src\\engine.rs": "71b8f0f6ed27c7882ad1ec02ab5f4ceeb5486e596bf047f1c01271414be0d4ae",
+    "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\rust\\standalone-optimizer\\Cargo.lock": "ce3522120778a57949a3775cac66e8e652b3f800f906a56d0be849daeb215af0",
+    "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\rust\\standalone-optimizer\\src\\search.rs": "79ec74cb59e0fbca8f56d4eca06b4b91538fc65dc316d2cfee6e43aa4e1d98d8",
+    "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\rust\\standalone-optimizer\\src\\input.rs": "9f24e74728e3824dbc8b2cd6b96caeab56e388cc8247910dd0e47eeb69c6c17b",
+    "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\rust\\standalone-optimizer\\shared-kernel\\Cargo.toml": "cec025476cf3615e5958ea96ae6a92c0afd22af88f7b3a3fafaf556a1ba543fa",
+    "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\rust\\standalone-optimizer\\Cargo.toml": "502412de5a50d58c0c8bd16047e249da98355ba4cb420ca3b6af15e02f5097ee",
+    "C:\\Users\\anisb\\OneDrive\\Desktop\\replit kingdom adventures - Copy\\coordination\\native-preparation\\rust\\standalone-optimizer\\src\\tuning.rs": "8722c0d1adaf00aadd39872a7571c1fbf50c34761a505f41694adcee088a2807"
+  },
+  "testCoordinatorThreadId": "01a10995-cbcc-79e0-8d8b-e35a40b2f4f2",
+  "contract": "OPTIMIZER-CONTRACT.md",
+  "revision": "r16",
+  "builderExecutedTests": false
+}

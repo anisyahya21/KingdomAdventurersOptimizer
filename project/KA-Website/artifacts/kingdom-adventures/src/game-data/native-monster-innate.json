@@ -1,0 +1,866 @@
+{
+  "$comment": "Canonical per-species first (innate) monster skill copied from the original Monster table column read by tools/recovery/recover_special_combat.py (skillId = row[pos+14] after the parameters/exps/sale blocks); not inferred. skillId null means the row declares no innate skill (-1). This is the skill native CreateMonster 0x147780c loads into the entity initial skill list, so it must stay FIRST in the exported pet skills.",
+  "source": {
+    "table": "Monster",
+    "route": "RE-evidence/20260911-treasure/xls-original/English.lproj/Monster.txt",
+    "sha256": "66147f0b2b2fe707e2d248245029277beff27205ffb1a1e5d24f907fc2402aeb",
+    "rowCount": 169,
+    "reader": "KA-Website/tools/recovery/export_monster_innate.py"
+  },
+  "crossCheck": {
+    "against": "RE-evidence/20260912-combat/encounters.json monsters[].skillId",
+    "rows": 27,
+    "mismatches": []
+  },
+  "monsters": [
+    {
+      "id": 0,
+      "name": "Diamondoom",
+      "skillId": 28
+    },
+    {
+      "id": 1,
+      "name": "Creeperbloom",
+      "skillId": 27
+    },
+    {
+      "id": 2,
+      "name": "Metabok",
+      "skillId": 26
+    },
+    {
+      "id": 3,
+      "name": "Dark Tinkle",
+      "skillId": 15
+    },
+    {
+      "id": 4,
+      "name": "Mudchomp",
+      "skillId": 29
+    },
+    {
+      "id": 5,
+      "name": "Renegade Chick",
+      "skillId": 26
+    },
+    {
+      "id": 6,
+      "name": "Gloom Shroom",
+      "skillId": 30
+    },
+    {
+      "id": 7,
+      "name": "Pillbug",
+      "skillId": 28
+    },
+    {
+      "id": 8,
+      "name": "Alpacavalier",
+      "skillId": 22
+    },
+    {
+      "id": 9,
+      "name": "Earth Dragon",
+      "skillId": 5
+    },
+    {
+      "id": 10,
+      "name": "Ironclad Pincher",
+      "skillId": 30
+    },
+    {
+      "id": 11,
+      "name": "Mossy Shroom",
+      "skillId": 33
+    },
+    {
+      "id": 12,
+      "name": "Gobman",
+      "skillId": 30
+    },
+    {
+      "id": 13,
+      "name": "Raging Boar",
+      "skillId": 31
+    },
+    {
+      "id": 14,
+      "name": "Go-Go Golem",
+      "skillId": 33
+    },
+    {
+      "id": 15,
+      "name": "Mammoth Caterpillar",
+      "skillId": 20
+    },
+    {
+      "id": 16,
+      "name": "Wild Grass",
+      "skillId": 29
+    },
+    {
+      "id": 17,
+      "name": "Mandragora",
+      "skillId": 31
+    },
+    {
+      "id": 18,
+      "name": "Terror Tree",
+      "skillId": 27
+    },
+    {
+      "id": 19,
+      "name": "Broccolin",
+      "skillId": 29
+    },
+    {
+      "id": 20,
+      "name": "Fake Apple",
+      "skillId": 30
+    },
+    {
+      "id": 21,
+      "name": "Fugitive Egg",
+      "skillId": 28
+    },
+    {
+      "id": 22,
+      "name": "Wild Shrub",
+      "skillId": 29
+    },
+    {
+      "id": 23,
+      "name": "Screaming Caterpillar",
+      "skillId": 28
+    },
+    {
+      "id": 24,
+      "name": "Assault Bee",
+      "skillId": 26
+    },
+    {
+      "id": 25,
+      "name": "Renegade Bird",
+      "skillId": 22
+    },
+    {
+      "id": 26,
+      "name": "Human-Faced Tree",
+      "skillId": 20
+    },
+    {
+      "id": 27,
+      "name": "Dizzy Butterfly",
+      "skillId": 33
+    },
+    {
+      "id": 28,
+      "name": "Rockclad Ladybug",
+      "skillId": 28
+    },
+    {
+      "id": 29,
+      "name": "Triplet Rocks",
+      "skillId": 23
+    },
+    {
+      "id": 30,
+      "name": "Horned Rock",
+      "skillId": 30
+    },
+    {
+      "id": 31,
+      "name": "Shaggy Bug",
+      "skillId": 27
+    },
+    {
+      "id": 32,
+      "name": "Machbat",
+      "skillId": 22
+    },
+    {
+      "id": 33,
+      "name": "Granitron",
+      "skillId": 20
+    },
+    {
+      "id": 34,
+      "name": "Flint Rockson",
+      "skillId": 31
+    },
+    {
+      "id": 35,
+      "name": "Ore Crab",
+      "skillId": 22
+    },
+    {
+      "id": 36,
+      "name": "Craggy Conepoke",
+      "skillId": 26
+    },
+    {
+      "id": 37,
+      "name": "One-Eyed Rock",
+      "skillId": 15
+    },
+    {
+      "id": 38,
+      "name": "Metamorphic Stone",
+      "skillId": 5
+    },
+    {
+      "id": 39,
+      "name": "Rock Golem",
+      "skillId": 30
+    },
+    {
+      "id": 40,
+      "name": "Fashion Golem",
+      "skillId": 31
+    },
+    {
+      "id": 41,
+      "name": "Slurper Z",
+      "skillId": 33
+    },
+    {
+      "id": 42,
+      "name": "Lococonut",
+      "skillId": 26
+    },
+    {
+      "id": 43,
+      "name": "Brock Rockson",
+      "skillId": 31
+    },
+    {
+      "id": 44,
+      "name": "Drago",
+      "skillId": 7
+    },
+    {
+      "id": 45,
+      "name": "Undead Pirate",
+      "skillId": 22
+    },
+    {
+      "id": 46,
+      "name": "Sandworm",
+      "skillId": 27
+    },
+    {
+      "id": 47,
+      "name": "Stinger",
+      "skillId": 30
+    },
+    {
+      "id": 48,
+      "name": "Trapling",
+      "skillId": 26
+    },
+    {
+      "id": 49,
+      "name": "Cactitus",
+      "skillId": 22
+    },
+    {
+      "id": 50,
+      "name": "Lurkeel",
+      "skillId": 31
+    },
+    {
+      "id": 51,
+      "name": "Dragolion",
+      "skillId": 20
+    },
+    {
+      "id": 52,
+      "name": "Desertail",
+      "skillId": 31
+    },
+    {
+      "id": 53,
+      "name": "Dried-Out Fish",
+      "skillId": 10
+    },
+    {
+      "id": 54,
+      "name": "Tutanhop",
+      "skillId": 5
+    },
+    {
+      "id": 55,
+      "name": "Sandbag",
+      "skillId": 22
+    },
+    {
+      "id": 56,
+      "name": "Snappish Turtle",
+      "skillId": 28
+    },
+    {
+      "id": 57,
+      "name": "Mirage Eel",
+      "skillId": 21
+    },
+    {
+      "id": 58,
+      "name": "Thornster",
+      "skillId": 33
+    },
+    {
+      "id": 59,
+      "name": "Queen Cactitus",
+      "skillId": 23
+    },
+    {
+      "id": 60,
+      "name": "Cobrajah",
+      "skillId": 30
+    },
+    {
+      "id": 61,
+      "name": "Hoppity",
+      "skillId": 29
+    },
+    {
+      "id": 62,
+      "name": "Snowbug",
+      "skillId": 10
+    },
+    {
+      "id": 63,
+      "name": "Fiery Snow",
+      "skillId": 10
+    },
+    {
+      "id": 64,
+      "name": "Icebug",
+      "skillId": 20
+    },
+    {
+      "id": 65,
+      "name": "Icebox",
+      "skillId": 10
+    },
+    {
+      "id": 66,
+      "name": "Polar Pupper",
+      "skillId": 22
+    },
+    {
+      "id": 67,
+      "name": "Falcone",
+      "skillId": 15
+    },
+    {
+      "id": 68,
+      "name": "Glacie",
+      "skillId": 20
+    },
+    {
+      "id": 69,
+      "name": "Igluu",
+      "skillId": 26
+    },
+    {
+      "id": 70,
+      "name": "Howling Wraith",
+      "skillId": 17
+    },
+    {
+      "id": 71,
+      "name": "Freezard",
+      "skillId": 30
+    },
+    {
+      "id": 72,
+      "name": "Snake Ice",
+      "skillId": 12
+    },
+    {
+      "id": 73,
+      "name": "Snow Dragon",
+      "skillId": 34
+    },
+    {
+      "id": 74,
+      "name": "Swamp Toad",
+      "skillId": 27
+    },
+    {
+      "id": 75,
+      "name": "Crabella",
+      "skillId": 28
+    },
+    {
+      "id": 76,
+      "name": "Marshmaid",
+      "skillId": 30
+    },
+    {
+      "id": 77,
+      "name": "Sneakyfish",
+      "skillId": 21
+    },
+    {
+      "id": 78,
+      "name": "Skullene",
+      "skillId": 16
+    },
+    {
+      "id": 79,
+      "name": "Brute-Belly Jackson",
+      "skillId": 11
+    },
+    {
+      "id": 80,
+      "name": "Kid Slime",
+      "skillId": 28
+    },
+    {
+      "id": 81,
+      "name": "Dropplet",
+      "skillId": 22
+    },
+    {
+      "id": 82,
+      "name": "Tinyturt",
+      "skillId": 16
+    },
+    {
+      "id": 83,
+      "name": "Giant Alraune",
+      "skillId": 33
+    },
+    {
+      "id": 84,
+      "name": "Steel-Stomach Jackie",
+      "skillId": 17
+    },
+    {
+      "id": 85,
+      "name": "Skullbug",
+      "skillId": 24
+    },
+    {
+      "id": 86,
+      "name": "Murderbirb",
+      "skillId": 32
+    },
+    {
+      "id": 87,
+      "name": "Gelatintin",
+      "skillId": 34
+    },
+    {
+      "id": 88,
+      "name": "Big-Bellied Frog",
+      "skillId": 8
+    },
+    {
+      "id": 89,
+      "name": "Ember",
+      "skillId": 5
+    },
+    {
+      "id": 90,
+      "name": "Volcanus",
+      "skillId": 28
+    },
+    {
+      "id": 91,
+      "name": "Mimico",
+      "skillId": 22
+    },
+    {
+      "id": 92,
+      "name": "Gasper",
+      "skillId": 16
+    },
+    {
+      "id": 93,
+      "name": "Undead Cap'n",
+      "skillId": 26
+    },
+    {
+      "id": 94,
+      "name": "Lavallie",
+      "skillId": 6
+    },
+    {
+      "id": 95,
+      "name": "Lava Bat",
+      "skillId": 5
+    },
+    {
+      "id": 96,
+      "name": "Axey Lottle",
+      "skillId": 23
+    },
+    {
+      "id": 97,
+      "name": "Magmafish",
+      "skillId": 6
+    },
+    {
+      "id": 98,
+      "name": "Hotalot Devil",
+      "skillId": 7
+    },
+    {
+      "id": 99,
+      "name": "Dark Smoke",
+      "skillId": 33
+    },
+    {
+      "id": 100,
+      "name": "Flaming Hand",
+      "skillId": 7
+    },
+    {
+      "id": 101,
+      "name": "Firaj",
+      "skillId": 8
+    },
+    {
+      "id": 102,
+      "name": "Erupterror",
+      "skillId": 9
+    },
+    {
+      "id": 103,
+      "name": "Flame Dragon",
+      "skillId": 24
+    },
+    {
+      "id": 104,
+      "name": "Ghost",
+      "skillId": 29
+    },
+    {
+      "id": 105,
+      "name": "Brawlbunn",
+      "skillId": 26
+    },
+    {
+      "id": 106,
+      "name": "King Ackbar",
+      "skillId": 18
+    },
+    {
+      "id": 107,
+      "name": "Octoman",
+      "skillId": 23
+    },
+    {
+      "id": 108,
+      "name": "Pandah",
+      "skillId": 21
+    },
+    {
+      "id": 109,
+      "name": "Midnight Snack Mervin",
+      "skillId": 29
+    },
+    {
+      "id": 110,
+      "name": "Stacey Ditz",
+      "skillId": 26
+    },
+    {
+      "id": 111,
+      "name": "Poochington",
+      "skillId": 29
+    },
+    {
+      "id": 112,
+      "name": "Flatsy Maxie",
+      "skillId": 29
+    },
+    {
+      "id": 113,
+      "name": "Mochipork",
+      "skillId": 23
+    },
+    {
+      "id": 114,
+      "name": "Chimpan Z",
+      "skillId": 31
+    },
+    {
+      "id": 115,
+      "name": "Grizzly Bearington",
+      "skillId": 34
+    },
+    {
+      "id": 116,
+      "name": "Wairobot",
+      "skillId": 24
+    },
+    {
+      "id": 117,
+      "name": "Ducky Bills",
+      "skillId": 18
+    },
+    {
+      "id": 118,
+      "name": "Sally Prin",
+      "skillId": 25
+    },
+    {
+      "id": 119,
+      "name": "Kairobot",
+      "skillId": 37
+    },
+    {
+      "id": 120,
+      "name": "Vince Balboa",
+      "skillId": 26
+    },
+    {
+      "id": 121,
+      "name": "Tuxy",
+      "skillId": 20
+    },
+    {
+      "id": 122,
+      "name": "Manager Clapperclaw",
+      "skillId": 8
+    },
+    {
+      "id": 123,
+      "name": "Mister X",
+      "skillId": 18
+    },
+    {
+      "id": 124,
+      "name": "Chicken",
+      "skillId": null
+    },
+    {
+      "id": 125,
+      "name": "Pig",
+      "skillId": null
+    },
+    {
+      "id": 126,
+      "name": "Pig",
+      "skillId": null
+    },
+    {
+      "id": 127,
+      "name": "Pig",
+      "skillId": null
+    },
+    {
+      "id": 128,
+      "name": "Pig",
+      "skillId": null
+    },
+    {
+      "id": 129,
+      "name": "Cow",
+      "skillId": null
+    },
+    {
+      "id": 130,
+      "name": "Cow",
+      "skillId": null
+    },
+    {
+      "id": 131,
+      "name": "Shockfish",
+      "skillId": 11
+    },
+    {
+      "id": 132,
+      "name": "Telltail Fish",
+      "skillId": 35
+    },
+    {
+      "id": 133,
+      "name": "Metalbok",
+      "skillId": 28
+    },
+    {
+      "id": 134,
+      "name": "Treasure Sack",
+      "skillId": 21
+    },
+    {
+      "id": 135,
+      "name": "Kairobot Knight",
+      "skillId": 24
+    },
+    {
+      "id": 136,
+      "name": "Kairobot Mage",
+      "skillId": 17
+    },
+    {
+      "id": 137,
+      "name": "Aloha Kairobot",
+      "skillId": 9
+    },
+    {
+      "id": 138,
+      "name": "Kairo Kommander",
+      "skillId": 35
+    },
+    {
+      "id": 139,
+      "name": "Wairobot Mage",
+      "skillId": 11
+    },
+    {
+      "id": 140,
+      "name": "Wairobot Warrior",
+      "skillId": 32
+    },
+    {
+      "id": 141,
+      "name": "Demonic Wairobot",
+      "skillId": 34
+    },
+    {
+      "id": 142,
+      "name": "Wairo Tank",
+      "skillId": 35
+    },
+    {
+      "id": 143,
+      "name": "Wairo Demon King",
+      "skillId": 9
+    },
+    {
+      "id": 144,
+      "name": "Lord of the Frier",
+      "skillId": 21
+    },
+    {
+      "id": 145,
+      "name": "Gifty",
+      "skillId": 28
+    },
+    {
+      "id": 146,
+      "name": "Seal",
+      "skillId": null
+    },
+    {
+      "id": 147,
+      "name": "Raccoon",
+      "skillId": null
+    },
+    {
+      "id": 148,
+      "name": "Armadillo",
+      "skillId": null
+    },
+    {
+      "id": 149,
+      "name": "Weasel",
+      "skillId": null
+    },
+    {
+      "id": 150,
+      "name": "Boar",
+      "skillId": null
+    },
+    {
+      "id": 151,
+      "name": "Capybara",
+      "skillId": null
+    },
+    {
+      "id": 152,
+      "name": "Turtle",
+      "skillId": null
+    },
+    {
+      "id": 153,
+      "name": "Fox",
+      "skillId": null
+    },
+    {
+      "id": 154,
+      "name": "Bear",
+      "skillId": null
+    },
+    {
+      "id": 155,
+      "name": "Rhino",
+      "skillId": null
+    },
+    {
+      "id": 156,
+      "name": "Zebra",
+      "skillId": null
+    },
+    {
+      "id": 157,
+      "name": "Elephant",
+      "skillId": null
+    },
+    {
+      "id": 158,
+      "name": "Tanuki",
+      "skillId": null
+    },
+    {
+      "id": 159,
+      "name": "Crane",
+      "skillId": null
+    },
+    {
+      "id": 160,
+      "name": "Tapir",
+      "skillId": null
+    },
+    {
+      "id": 161,
+      "name": "Hamster",
+      "skillId": null
+    },
+    {
+      "id": 162,
+      "name": "Hedgehog",
+      "skillId": null
+    },
+    {
+      "id": 163,
+      "name": "Beaver",
+      "skillId": null
+    },
+    {
+      "id": 164,
+      "name": "Owl",
+      "skillId": null
+    },
+    {
+      "id": 165,
+      "name": "Flying Squirrel",
+      "skillId": null
+    },
+    {
+      "id": 166,
+      "name": "Guinea Pig",
+      "skillId": null
+    },
+    {
+      "id": 167,
+      "name": "Goat",
+      "skillId": null
+    },
+    {
+      "id": 168,
+      "name": "Crocodile",
+      "skillId": null
+    }
+  ],
+  "limits": [
+    "Only the single first skill column is recovered; monster additional skill slots and their activation rules stay unmodelled.",
+    "skillId null is a table value (-1: no innate skill), never a missing lookup."
+  ]
+}

@@ -1,0 +1,229 @@
+{
+  "mode": "baseline",
+  "runtime": "CPython 3.14.4",
+  "provenanceDigest": "a749304003a7c3a6f5495f6a3c04659b68ff33eab1550c8f405b8056bbd5f64f",
+  "engineDigest": "e3fd9dc98c54606df43289858a7ad1027286c18c0870b5b4f7bde2d191fe4b50",
+  "runs": [
+    {
+      "case": {
+        "encounterId": 0,
+        "tickLimit": 1000,
+        "mathSeed": 7,
+        "libSeed": 8
+      },
+      "seconds": 0.15905049996217713,
+      "digest": "b436600a2d24f9c436cb6af7e68d8fa78d9120d30e87f8decbad7e3eb118e60f"
+    },
+    {
+      "case": {
+        "encounterId": 1,
+        "tickLimit": 1000,
+        "mathSeed": 8,
+        "libSeed": 9
+      },
+      "seconds": 0.500752400024794,
+      "digest": "d56bbca4f79006e0631aa34f0925b7551d844cad600dae496e94a84bb07c87d7"
+    },
+    {
+      "case": {
+        "encounterId": 2,
+        "tickLimit": 1000,
+        "mathSeed": 9,
+        "libSeed": 10
+      },
+      "seconds": 0.8686082999920473,
+      "digest": "9f7c8f2ad4e4a8effcf750107c76d098cf9422a16c4182677acee12e00c0c1e0"
+    },
+    {
+      "case": {
+        "encounterId": 3,
+        "tickLimit": 1000,
+        "mathSeed": 10,
+        "libSeed": 11
+      },
+      "seconds": 0.5101690000155941,
+      "digest": "d16db6d5312f611386df06a8649c2190795930ea4c22a0e2b94b05ee09d572d0"
+    },
+    {
+      "case": {
+        "encounterId": 4,
+        "tickLimit": 1000,
+        "mathSeed": 11,
+        "libSeed": 12
+      },
+      "seconds": 0.1501884000026621,
+      "digest": "9cbfe05c775a77600e04ca31343dae80272cb954d1708de5c2a2ca9f44e82802"
+    },
+    {
+      "case": {
+        "encounterId": 5,
+        "tickLimit": 1000,
+        "mathSeed": 12,
+        "libSeed": 13
+      },
+      "seconds": 0.46924000000581145,
+      "digest": "f79acd6c553765b86f6e66e106cc4afe174d8e102b7aa060d3cd6d03835f35a5"
+    },
+    {
+      "case": {
+        "encounterId": 6,
+        "tickLimit": 1000,
+        "mathSeed": 13,
+        "libSeed": 14
+      },
+      "seconds": 0.8430794000159949,
+      "digest": "f0265732b88ba750859b00394785e3f36e9b481888acd9757ac212377174c18a"
+    },
+    {
+      "case": {
+        "encounterId": 7,
+        "tickLimit": 1000,
+        "mathSeed": 14,
+        "libSeed": 15
+      },
+      "seconds": 1.051002399995923,
+      "digest": "27efdb35091f010040ffdcbb0a6b8a245ce3db4b21ba787030afc42220235242"
+    },
+    {
+      "case": {
+        "encounterId": 8,
+        "tickLimit": 1000,
+        "mathSeed": 15,
+        "libSeed": 16
+      },
+      "seconds": 0.19569279998540878,
+      "digest": "93058a96f2ac9ddc5369e798c00e79bdeb572bfbd876f8821d1095a5cea50b90"
+    },
+    {
+      "case": {
+        "encounterId": 9,
+        "tickLimit": 1000,
+        "mathSeed": 16,
+        "libSeed": 17
+      },
+      "seconds": 0.5414251000038348,
+      "digest": "53bd93b96194f567c7d385b871af2a135fda1c04a83fb47151e02826300b5d47"
+    },
+    {
+      "case": {
+        "encounterId": 10,
+        "tickLimit": 1000,
+        "mathSeed": 17,
+        "libSeed": 18
+      },
+      "seconds": 0.897807199973613,
+      "digest": "4c69346dab87ff1f6b56eb0c044996dff0cfc22437e8b64086dddbc96e0cd5db"
+    },
+    {
+      "case": {
+        "encounterId": 11,
+        "tickLimit": 1000,
+        "mathSeed": 18,
+        "libSeed": 19
+      },
+      "seconds": 1.02061850001337,
+      "digest": "565e9f3066710545471ac0928748d9338c440255d81f55c5ab55063a1cfd5094"
+    },
+    {
+      "case": {
+        "encounterId": 12,
+        "tickLimit": 1000,
+        "mathSeed": 19,
+        "libSeed": 20
+      },
+      "seconds": 0.2574880000320263,
+      "digest": "48db5ffb2369885515cdf81df87ecee0de58d6880ca88fd5627a4e76edcbf0cf"
+    },
+    {
+      "case": {
+        "encounterId": 13,
+        "tickLimit": 1000,
+        "mathSeed": 20,
+        "libSeed": 21
+      },
+      "seconds": 0.5401211000280455,
+      "digest": "eca0fd871d1c9b4defd4c71bbd170098ca442c7555f861163f9b6a183059fa97"
+    },
+    {
+      "case": {
+        "encounterId": 14,
+        "tickLimit": 1000,
+        "mathSeed": 21,
+        "libSeed": 22
+      },
+      "seconds": 0.8268076000385918,
+      "digest": "7ac34c4c857d44802665abdd5114eef014e6653c7dd552484eaf6c4c525f4ce6"
+    },
+    {
+      "case": {
+        "encounterId": 15,
+        "tickLimit": 1000,
+        "mathSeed": 22,
+        "libSeed": 23
+      },
+      "seconds": 0.6517872999538668,
+      "digest": "381a4efba54f9caffca86f9e462290eb1234b860f4b99275fde2f8ffeb1a449e"
+    },
+    {
+      "case": {
+        "encounterId": 16,
+        "tickLimit": 1000,
+        "mathSeed": 23,
+        "libSeed": 24
+      },
+      "seconds": 0.14881149999564514,
+      "digest": "2bcb54fef99e91f3d3fefaa9ce0f2c83c085a2a4f6bd95f0361c7c1939a258e6"
+    },
+    {
+      "case": {
+        "encounterId": 17,
+        "tickLimit": 1000,
+        "mathSeed": 24,
+        "libSeed": 25
+      },
+      "seconds": 0.37839680002070963,
+      "digest": "af571c09b4f9eaf59e6fabd2499bd940652e8bcce59167ecc178e37c08ec2ba4"
+    },
+    {
+      "case": {
+        "encounterId": 18,
+        "tickLimit": 1000,
+        "mathSeed": 25,
+        "libSeed": 26
+      },
+      "seconds": 0.7329322000150569,
+      "digest": "0a04666e48598ef8d269a7051b05462c4473d8eab8e28e9745c6a1b569e13923"
+    },
+    {
+      "case": {
+        "encounterId": 19,
+        "tickLimit": 1000,
+        "mathSeed": 26,
+        "libSeed": 27
+      },
+      "seconds": 1.0564012000104412,
+      "digest": "d149b079ad6d436c5d6b1197177d00f96560b0fe3d93fcd0a4700e850a490d1d"
+    },
+    {
+      "case": {
+        "encounterId": 19,
+        "tickLimit": 7000,
+        "mathSeed": 7,
+        "libSeed": 8
+      },
+      "seconds": 4.088614799955394,
+      "digest": "bd7e1494612ae843bb5df7552dabc219f4c4f249f77335fb937f3aad74609268"
+    },
+    {
+      "case": {
+        "encounterId": 19,
+        "tickLimit": 7000,
+        "mathSeed": 907303519,
+        "libSeed": 267534053
+      },
+      "seconds": 3.9509789000148885,
+      "digest": "ebf4b3a776f720a8cb02df6aaba4b76b189b0964a3d98fe85f0628f8c92b5a85"
+    }
+  ],
+  "regression": {}
+}
