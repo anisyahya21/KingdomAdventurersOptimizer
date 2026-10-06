@@ -12,3 +12,7 @@ Desktop finishing manifests are authoritative and remain pinned to older builds.
 * **cpp / latest fixed-policy smoke**: `fixed-formation-20261006`, `coordination/native-preparation/cpp/standalone-optimizer/optimizer.exe`, SHA256 `2bd4fe930e5f5e643c5d772a28c81009c7b7e8035ad7a5c3b1e000b1deb500a9`.
 
 Third-party source/dependencies preserve their supplied notices. No license ownership is inferred for recovered game mechanics data. Private publication is intended for authorized developer review.
+
+Optimizer-only cleanup follows the two desktop entry graphs and Python runtime/check imports. Standalone frontend package.json and tsconfig.json are packaging changes; required original JSON/icon dependencies were restored. Shipped desktop-dist assets and native executables were not regenerated. No optimizer algorithm changed.
+
+Optimizer-only cleanup follows the two desktop entry graphs and Python runtime/check imports. Standalone frontend package.json and tsconfig.json are packaging changes; required original JSON/icon dependencies were restored. Shipped desktop-dist assets and native executables were not regenerated. No optimizer algorithm changed.

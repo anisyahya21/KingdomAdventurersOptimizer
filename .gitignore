@@ -31,3 +31,4 @@ outputs/
 !project/KA-Website/tools/recovery/native/*/target/
 !project/KA-Website/tools/recovery/native/*/target/release/
 !project/KA-Website/tools/recovery/native/*/target/release/*.dll
+!project/KA-Website/artifacts/kingdom-adventures/public/browser-combat.zip

@@ -16,3 +16,7 @@ This is the current optimizer debugging workspace, separated from the website re
 | `runtime/` | New local application state and libraries, ignored by Git |
 
 The host selects an engine, freezes asset identity and config, launches native work, and imports durable records into its own SQLite namespace. Search and simulation are separate layers. Do not assume the latest source was compiled into a pinned desktop executable.
+
+Only desktop entry import dependencies are included; ordinary website pages/router/scripts are removed. Battle builder/preparation/replay still require shared jobs, monster, equipment, skill and image data. See DEPENDENCIES.md for exact reasons and conservative dynamic asset families.
+
+Only desktop entry import dependencies are included; ordinary website pages/router/scripts are removed. Battle builder/preparation/replay still require shared jobs, monster, equipment, skill and image data. See DEPENDENCIES.md for exact reasons and conservative dynamic asset families.

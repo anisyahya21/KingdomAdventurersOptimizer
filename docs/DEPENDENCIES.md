@@ -1,0 +1,11 @@
+# Why these dependencies remain
+
+The source allowlist follows `src/desktop.tsx` and `src/synthetic-legal-desktop.tsx` through literal import/export/dynamic-import, aliases and JSON imports. Only the optimizer and synthetic-to-legal TSX pages remain. The ordinary website router, main entry, eggs, equipment-exchange, item-sources and other feature pages are outside that graph and removed.
+
+Jobs, monsters, equipment and skills remain because battle preparation and the optimizer builder use their identities, stat profiles, admission rules and sprite data. `artifacts/api-server/data/ka_shared.json` is a **shared data fixture**, not an included web server; existing imports consume its job/equipment/skill values. The aggregate fixture retains additional fields to preserve its identity and compatibility. No website API server source is included.
+
+Replay uses `generated-battle-replay`, battle animation/human atlas/monster sprite tables, arena/UI/effect sprites and combat text. Runtime IDs generate image names, so battle-assets and icon families referenced by shared helpers are retained conservatively. A shared icon helper contains egg/facility/furniture exports; their small icon families remain to avoid silently breaking a supported imported helper. Their feature pages and routes are removed. Legacy character sprite files unreferenced by the battle atlas are excluded.
+
+Python runtime imports, lazy local imports, named source hash dependencies, and relevant combat/optimizer regression helpers remain. Native engine sources, ABI headers, kernels, compiled engine assets, small current-policy fixtures and immutable desktop pins are protected. `RE-evidence/20260922-search-contract/stat-bounds.json` is required both by Python and Rust compile-time `include_str!`/`include_bytes!`.
+
+The reusable pruning script is `docs/prune_optimizer.py`; its original staging job records the exact graph and removal reasons in cleanup-dependency-report.json. It is intended for a staging checkout with a sibling original project, not as an ordinary developer launch command. The published UI package has only dependency-graph packages and desktop build/typecheck scripts, without website workspace API dependency or prebuild packaging scripts.

@@ -1,4 +1,4 @@
-# Kingdom Adventurers Optimizer â€” developer handoff
+# Kingdom Adventurers Optimizer — developer handoff
 
 Current source and runnable Windows snapshots for the Python, Rust, Go and C++ optimizer paths. **This repository is for reproducing and fixing existing problems. It is not a finished release.** Strategy libraries and user databases are deliberately excluded.
 

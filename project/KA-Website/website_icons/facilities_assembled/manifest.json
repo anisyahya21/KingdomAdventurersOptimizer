@@ -1,0 +1,1026 @@
+{
+  "version": 2,
+  "source": "Original OPT/SEB and native table bindings; 20260911 placement recovery",
+  "scope": "Furniture uses full OPT reconstruction and SEB layer 0/frame 0, then alpha-bounds trim; screenshot-matched facing for the supplied indoor examples. Static catalog illustrations; Town Hall direction 0, Port direction 1. Resource piles show full stock; item/treasure/egg storage is empty. Farms use a representative 2x2 patch with perimeter fences, mature crops and trees (frame 2); Ranch is an empty pasture. Mystic Ore southern wall alpha is multiplied by 0.3 for website visibility. Patch size and alpha adjustment are presentation choices, not recovered constraints. No game/runtime equivalence claim.",
+  "icons": [
+    {
+      "id": 7,
+      "name": "Port",
+      "sourceName": "Port",
+      "filename": "facility_007.png",
+      "width": 193,
+      "height": 181,
+      "sources": [
+        "building/gate_00.png",
+        "building/gate_01.png",
+        "building/gate_02.png",
+        "building/gate_03.png"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Port",
+      "sourceName": "Port",
+      "filename": "facility_010.png",
+      "width": 193,
+      "height": 181,
+      "sources": [
+        "building/gate_00.png",
+        "building/gate_01.png",
+        "building/gate_02.png",
+        "building/gate_03.png"
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Town Hall",
+      "sourceName": "Town Hall",
+      "filename": "facility_017.png",
+      "width": 198,
+      "height": 233,
+      "sources": [
+        "building/flag_00.png",
+        "building/town_hall_base_00.png",
+        "building/town_hall_tower_00.png",
+        "chip/chip_94.png",
+        "chip/souko_00.png",
+        "wall/fence_05.png"
+      ]
+    },
+    {
+      "id": 23,
+      "name": "Fence",
+      "sourceName": "Fence",
+      "filename": "facility_023.png",
+      "width": 54,
+      "height": 25,
+      "sources": [
+        "wall/barrier_03.png"
+      ]
+    },
+    {
+      "id": 24,
+      "name": "Wood Wall",
+      "sourceName": "Wood Wall",
+      "filename": "facility_024.png",
+      "width": 54,
+      "height": 33,
+      "sources": [
+        "wall/barrier_02.png"
+      ]
+    },
+    {
+      "id": 25,
+      "name": "Defensive Wall",
+      "sourceName": "Defensive Wall",
+      "filename": "facility_025.png",
+      "width": 54,
+      "height": 47,
+      "sources": [
+        "wall/barrier_00.png"
+      ]
+    },
+    {
+      "id": 26,
+      "name": "Castle Wall",
+      "sourceName": "Castle Wall",
+      "filename": "facility_026.png",
+      "width": 54,
+      "height": 50,
+      "sources": [
+        "wall/barrier_01.png"
+      ]
+    },
+    {
+      "id": 28,
+      "name": "Gate",
+      "sourceName": "Gate",
+      "filename": "facility_028.png",
+      "width": 35,
+      "height": 60,
+      "sources": [
+        "wall/barrier_entrance_wall_00.png"
+      ]
+    },
+    {
+      "id": 33,
+      "name": "Grass Storehouse",
+      "sourceName": "Grass Storehouse",
+      "filename": "facility_033.png",
+      "width": 54,
+      "height": 50,
+      "sources": [
+        "chip/grass_warehouse_floor_00.png",
+        "material/warehouse_01.png",
+        "wall/grass_warehouse_wall_00.png"
+      ]
+    },
+    {
+      "id": 34,
+      "name": "Food Storehouse",
+      "sourceName": "Food Storehouse",
+      "filename": "facility_034.png",
+      "width": 54,
+      "height": 54,
+      "sources": [
+        "chip/food_warehouse_floor_00.png",
+        "material/warehouse_03.png",
+        "wall/food_warehouse_wall_00.png"
+      ]
+    },
+    {
+      "id": 35,
+      "name": "Wood Storehouse",
+      "sourceName": "Wood Storehouse",
+      "filename": "facility_035.png",
+      "width": 54,
+      "height": 51,
+      "sources": [
+        "chip/warehouse_floor_00.png",
+        "material/warehouse_02.png",
+        "wall/warehouse_wall_00.png"
+      ]
+    },
+    {
+      "id": 36,
+      "name": "Ore Storehouse",
+      "sourceName": "Ore Storehouse",
+      "filename": "facility_036.png",
+      "width": 54,
+      "height": 51,
+      "sources": [
+        "chip/iron_warehouse_floor_00.png",
+        "material/warehouse_04.png",
+        "wall/iron_warehouse_wall_00.png"
+      ]
+    },
+    {
+      "id": 37,
+      "name": "Mystic Ore Storehouse",
+      "sourceName": "Mystic Ore Storehouse",
+      "filename": "facility_037.png",
+      "width": 54,
+      "height": 50,
+      "sources": [
+        "chip/magic_warehouse_floor_00.png",
+        "material/warehouse_05.png",
+        "wall/magic_warehouse_wall_00.png"
+      ]
+    },
+    {
+      "id": 38,
+      "name": "Item Storehouse",
+      "sourceName": "Item Storehouse",
+      "filename": "facility_038.png",
+      "width": 54,
+      "height": 50,
+      "sources": [
+        "chip/item_warehouse_floor_00.png",
+        "wall/item_warehouse_wall_00.png"
+      ]
+    },
+    {
+      "id": 39,
+      "name": "Energy Storehouse",
+      "sourceName": "Energy Storehouse",
+      "filename": "facility_039.png",
+      "width": 54,
+      "height": 51,
+      "sources": [
+        "chip/stamina_warehouse_floor_00.png",
+        "material/warehouse_07.png",
+        "wall/stamina_warehouse_wall_00.png"
+      ]
+    },
+    {
+      "id": 40,
+      "name": "Treasure Storehouse",
+      "sourceName": "Treasure Storehouse",
+      "filename": "facility_040.png",
+      "width": 54,
+      "height": 50,
+      "sources": [
+        "chip/treasure_house_floor_00.png",
+        "wall/treasure_house_wall_00.png"
+      ]
+    },
+    {
+      "id": 42,
+      "name": "Field",
+      "sourceName": "Field",
+      "filename": "facility_042.png",
+      "width": 102,
+      "height": 76,
+      "sources": [
+        "chip/farm_floor_00.png",
+        "wall/farm_wall_00.png"
+      ]
+    },
+    {
+      "id": 43,
+      "name": "Plantation",
+      "sourceName": "Plantation",
+      "filename": "facility_043.png",
+      "width": 102,
+      "height": 89,
+      "sources": [
+        "chip/farm_floor_01.png",
+        "wall/farm_wall_00.png"
+      ]
+    },
+    {
+      "id": 44,
+      "name": "Ranch",
+      "sourceName": "Ranch",
+      "filename": "facility_044.png",
+      "width": 102,
+      "height": 66,
+      "sources": [
+        "chip/pasture_floor_00.png",
+        "wall/pasture_wall_00.png"
+      ]
+    },
+    {
+      "id": 73,
+      "name": "Temporary Shelter",
+      "sourceName": "Temporary Shelter",
+      "filename": "facility_073.png",
+      "width": 54,
+      "height": 54,
+      "sources": [
+        "furniture/bed_04.png"
+      ]
+    },
+    {
+      "id": 98,
+      "name": "Hard Bed",
+      "sourceName": "Hard Bed",
+      "filename": "facility_098.png",
+      "width": 54,
+      "height": 44,
+      "sources": [
+        "furniture/bed_00.png"
+      ]
+    },
+    {
+      "id": 99,
+      "name": "Bed",
+      "sourceName": "Bed",
+      "filename": "facility_099.png",
+      "width": 52,
+      "height": 44,
+      "sources": [
+        "furniture/bed_01.png"
+      ]
+    },
+    {
+      "id": 100,
+      "name": "Royal Bed",
+      "sourceName": "Royal Bed",
+      "filename": "facility_100.png",
+      "width": 53,
+      "height": 46,
+      "sources": [
+        "furniture/bed_02.png"
+      ]
+    },
+    {
+      "id": 101,
+      "name": "Double Bed",
+      "sourceName": "Double Bed",
+      "filename": "facility_101.png",
+      "width": 52,
+      "height": 48,
+      "sources": [
+        "furniture/bed_03.png"
+      ]
+    },
+    {
+      "id": 102,
+      "name": "Register",
+      "sourceName": "Register",
+      "filename": "facility_102.png",
+      "width": 40,
+      "height": 36,
+      "sources": [
+        "furniture/obj_06.png"
+      ]
+    },
+    {
+      "id": 103,
+      "name": "Store Shelves",
+      "sourceName": "Store Shelves",
+      "filename": "facility_103.png",
+      "width": 34,
+      "height": 30,
+      "sources": [
+        "furniture/store_shelf_01.png"
+      ]
+    },
+    {
+      "id": 104,
+      "name": "Skill Shelves",
+      "sourceName": "Skill Shelves",
+      "filename": "facility_104.png",
+      "width": 38,
+      "height": 33,
+      "sources": [
+        "furniture/store_shelf_00.png"
+      ]
+    },
+    {
+      "id": 105,
+      "name": "Furniture Shelves",
+      "sourceName": "Furniture Shelves",
+      "filename": "facility_105.png",
+      "width": 46,
+      "height": 32,
+      "sources": [
+        "furniture/obj_07.png"
+      ]
+    },
+    {
+      "id": 106,
+      "name": "Chair",
+      "sourceName": "Chair",
+      "filename": "facility_106.png",
+      "width": 22,
+      "height": 29,
+      "sources": [
+        "furniture/1chair_00.png"
+      ]
+    },
+    {
+      "id": 107,
+      "name": "Royal Room",
+      "sourceName": "Royal Room",
+      "filename": "facility_107.png",
+      "width": 90,
+      "height": 77,
+      "sources": [
+        "furniture/job_obj_05.png"
+      ]
+    },
+    {
+      "id": 108,
+      "name": "Research Lab",
+      "sourceName": "Research Lab",
+      "filename": "facility_108.png",
+      "width": 90,
+      "height": 74,
+      "sources": [
+        "furniture/job_obj_12.png"
+      ]
+    },
+    {
+      "id": 109,
+      "name": "Hospital",
+      "sourceName": "Hospital",
+      "filename": "facility_109.png",
+      "width": 90,
+      "height": 74,
+      "sources": [
+        "furniture/job_obj_13.png"
+      ]
+    },
+    {
+      "id": 110,
+      "name": "Accessory Workshop",
+      "sourceName": "Accessory Workshop",
+      "filename": "facility_110.png",
+      "width": 90,
+      "height": 70,
+      "sources": [
+        "furniture/job_obj_06.png"
+      ]
+    },
+    {
+      "id": 111,
+      "name": "Cooking Station",
+      "sourceName": "Cooking Station",
+      "filename": "facility_111.png",
+      "width": 90,
+      "height": 69,
+      "sources": [
+        "furniture/job_obj_07.png"
+      ]
+    },
+    {
+      "id": 112,
+      "name": "Recovery Station",
+      "sourceName": "Recovery Station",
+      "filename": "facility_112.png",
+      "width": 90,
+      "height": 73,
+      "sources": [
+        "furniture/job_obj_08.png"
+      ]
+    },
+    {
+      "id": 113,
+      "name": "Treasure Analysis Lab",
+      "sourceName": "Treasure Analysis Lab",
+      "filename": "facility_113.png",
+      "width": 90,
+      "height": 74,
+      "sources": [
+        "furniture/job_obj_09.png"
+      ]
+    },
+    {
+      "id": 114,
+      "name": "Furniture Workbench",
+      "sourceName": "Furniture Workbench",
+      "filename": "facility_114.png",
+      "width": 90,
+      "height": 65,
+      "sources": [
+        "furniture/job_obj_01.png"
+      ]
+    },
+    {
+      "id": 115,
+      "name": "Weapon Workbench",
+      "sourceName": "Weapon Workbench",
+      "filename": "facility_115.png",
+      "width": 90,
+      "height": 76,
+      "sources": [
+        "furniture/job_obj_02.png"
+      ]
+    },
+    {
+      "id": 116,
+      "name": "Armor Workbench",
+      "sourceName": "Armor Workbench",
+      "filename": "facility_116.png",
+      "width": 90,
+      "height": 76,
+      "sources": [
+        "furniture/job_obj_03.png"
+      ]
+    },
+    {
+      "id": 117,
+      "name": "Skill Workbench",
+      "sourceName": "Skill Workbench",
+      "filename": "facility_117.png",
+      "width": 90,
+      "height": 64,
+      "sources": [
+        "furniture/job_obj_04.png"
+      ]
+    },
+    {
+      "id": 118,
+      "name": "Item Workbench",
+      "sourceName": "Item Workbench",
+      "filename": "facility_118.png",
+      "width": 98,
+      "height": 70,
+      "sources": [
+        "furniture/job_obj_00.png"
+      ]
+    },
+    {
+      "id": 119,
+      "name": "Decorative Plant",
+      "sourceName": "Decorative Plant",
+      "filename": "facility_119.png",
+      "width": 24,
+      "height": 52,
+      "sources": [
+        "furniture/plant_00.png"
+      ]
+    },
+    {
+      "id": 120,
+      "name": "Tomato",
+      "sourceName": "Tomato",
+      "filename": "facility_120.png",
+      "width": 33,
+      "height": 42,
+      "sources": [
+        "furniture/plant_01.png"
+      ]
+    },
+    {
+      "id": 121,
+      "name": "Flowers",
+      "sourceName": "Flowers",
+      "filename": "facility_121.png",
+      "width": 27,
+      "height": 28,
+      "sources": [
+        "furniture/plant_02.png"
+      ]
+    },
+    {
+      "id": 122,
+      "name": "Pansy",
+      "sourceName": "Pansy",
+      "filename": "facility_122.png",
+      "width": 31,
+      "height": 31,
+      "sources": [
+        "furniture/plant_03.png"
+      ]
+    },
+    {
+      "id": 123,
+      "name": "Glittering Stone",
+      "sourceName": "Glittering Stone",
+      "filename": "facility_123.png",
+      "width": 25,
+      "height": 35,
+      "sources": [
+        "furniture/obj_04.png"
+      ]
+    },
+    {
+      "id": 124,
+      "name": "Dining Table",
+      "sourceName": "Dining Table",
+      "filename": "facility_124.png",
+      "width": 49,
+      "height": 35,
+      "sources": [
+        "furniture/obj_05.png"
+      ]
+    },
+    {
+      "id": 125,
+      "name": "Couch",
+      "sourceName": "Couch",
+      "filename": "facility_125.png",
+      "width": 34,
+      "height": 31,
+      "sources": [
+        "furniture/2chair_00.png"
+      ]
+    },
+    {
+      "id": 126,
+      "name": "Candle",
+      "sourceName": "Candle",
+      "filename": "facility_126.png",
+      "width": 31,
+      "height": 43,
+      "sources": [
+        "furniture/obj_02.png"
+      ]
+    },
+    {
+      "id": 127,
+      "name": "Tree Nursery",
+      "sourceName": "Tree Nursery",
+      "filename": "facility_127.png",
+      "width": 46,
+      "height": 35,
+      "sources": [
+        "furniture/top_obj_00.png"
+      ]
+    },
+    {
+      "id": 128,
+      "name": "Decorative Armor",
+      "sourceName": "Decorative Armor",
+      "filename": "facility_128.png",
+      "width": 33,
+      "height": 38,
+      "sources": [
+        "furniture/obj_03.png"
+      ]
+    },
+    {
+      "id": 129,
+      "name": "Red Carpet",
+      "sourceName": "Red Carpet",
+      "filename": "facility_129.png",
+      "width": 54,
+      "height": 29,
+      "sources": [
+        "furniture/carpet02.png"
+      ]
+    },
+    {
+      "id": 130,
+      "name": "Fluffy Carpet",
+      "sourceName": "Fluffy Carpet",
+      "filename": "facility_130.png",
+      "width": 54,
+      "height": 29,
+      "sources": [
+        "furniture/carpet00.png"
+      ]
+    },
+    {
+      "id": 131,
+      "name": "Black Mat",
+      "sourceName": "Black Mat",
+      "filename": "facility_131.png",
+      "width": 54,
+      "height": 29,
+      "sources": [
+        "furniture/carpet01.png"
+      ]
+    },
+    {
+      "id": 132,
+      "name": "Training Room",
+      "sourceName": "Training Room",
+      "filename": "facility_132.png",
+      "width": 44,
+      "height": 35,
+      "sources": [
+        "furniture/obj_41.png"
+      ]
+    },
+    {
+      "id": 133,
+      "name": "Shooting Range",
+      "sourceName": "Shooting Range",
+      "filename": "facility_133.png",
+      "width": 44,
+      "height": 35,
+      "sources": [
+        "furniture/obj_42.png"
+      ]
+    },
+    {
+      "id": 134,
+      "name": "Magic Training Ground",
+      "sourceName": "Magic Training Ground",
+      "filename": "facility_134.png",
+      "width": 24,
+      "height": 28,
+      "sources": [
+        "furniture/obj_43.png"
+      ]
+    },
+    {
+      "id": 135,
+      "name": "Rejuvenating Bath",
+      "sourceName": "Rejuvenating Bath",
+      "filename": "facility_135.png",
+      "width": 102,
+      "height": 59,
+      "sources": [
+        "furniture/obj_09.png"
+      ]
+    },
+    {
+      "id": 136,
+      "name": "Rainwater Barrel",
+      "sourceName": "Rainwater Barrel",
+      "filename": "facility_136.png",
+      "width": 25,
+      "height": 28,
+      "sources": [
+        "furniture/obj_01.png"
+      ]
+    },
+    {
+      "id": 137,
+      "name": "Fireplace",
+      "sourceName": "Fireplace",
+      "filename": "facility_137.png",
+      "width": 38,
+      "height": 84,
+      "sources": [
+        "furniture/sp_obj_00.png"
+      ]
+    },
+    {
+      "id": 138,
+      "name": "Tool Workshop",
+      "sourceName": "Tool Workshop",
+      "filename": "facility_138.png",
+      "width": 52,
+      "height": 57,
+      "sources": [
+        "furniture/w_obj_01.png"
+      ]
+    },
+    {
+      "id": 139,
+      "name": "Kitchen Shelves",
+      "sourceName": "Kitchen Shelves",
+      "filename": "facility_139.png",
+      "width": 39,
+      "height": 51,
+      "sources": [
+        "furniture/shelf_01.png"
+      ]
+    },
+    {
+      "id": 140,
+      "name": "Bathtub",
+      "sourceName": "Bathtub",
+      "filename": "facility_140.png",
+      "width": 54,
+      "height": 37,
+      "sources": [
+        "furniture/bath_00.png"
+      ]
+    },
+    {
+      "id": 141,
+      "name": "Chest of Drawers",
+      "sourceName": "Chest of Drawers",
+      "filename": "facility_141.png",
+      "width": 36,
+      "height": 46,
+      "sources": [
+        "furniture/shelf_04.png"
+      ]
+    },
+    {
+      "id": 142,
+      "name": "Stove",
+      "sourceName": "Stove",
+      "filename": "facility_142.png",
+      "width": 34,
+      "height": 37,
+      "sources": [
+        "furniture/kitchen_01.png"
+      ]
+    },
+    {
+      "id": 143,
+      "name": "Flower Vase",
+      "sourceName": "Flower Vase",
+      "filename": "facility_143.png",
+      "width": 30,
+      "height": 40,
+      "sources": [
+        "furniture/top_obj_01.png"
+      ]
+    },
+    {
+      "id": 144,
+      "name": "Animal Figurine",
+      "sourceName": "Animal Figurine",
+      "filename": "facility_144.png",
+      "width": 25,
+      "height": 46,
+      "sources": [
+        "furniture/w_obj_00.png"
+      ]
+    },
+    {
+      "id": 145,
+      "name": "Vanity Mirror",
+      "sourceName": "Vanity Mirror",
+      "filename": "facility_145.png",
+      "width": 37,
+      "height": 42,
+      "sources": [
+        "furniture/obj_00.png"
+      ]
+    },
+    {
+      "id": 146,
+      "name": "Cooking Counter",
+      "sourceName": "Cooking Counter",
+      "filename": "facility_146.png",
+      "width": 34,
+      "height": 30,
+      "sources": [
+        "furniture/kitchen_00.png"
+      ]
+    },
+    {
+      "id": 147,
+      "name": "Shelf",
+      "sourceName": "Shelf",
+      "filename": "facility_147.png",
+      "width": 38,
+      "height": 32,
+      "sources": [
+        "furniture/shelf_02.png"
+      ]
+    },
+    {
+      "id": 148,
+      "name": "Desk",
+      "sourceName": "Desk",
+      "filename": "facility_148.png",
+      "width": 45,
+      "height": 34,
+      "sources": [
+        "furniture/desk_00.png"
+      ]
+    },
+    {
+      "id": 149,
+      "name": "Window",
+      "sourceName": "Window",
+      "filename": "facility_149.png",
+      "width": 34,
+      "height": 47,
+      "sources": [
+        "furniture/w_window_00.png"
+      ]
+    },
+    {
+      "id": 150,
+      "name": "Bookshelf",
+      "sourceName": "Bookshelf",
+      "filename": "facility_150.png",
+      "width": 30,
+      "height": 45,
+      "sources": [
+        "furniture/shelf_00.png"
+      ]
+    },
+    {
+      "id": 151,
+      "name": "Dresser",
+      "sourceName": "Dresser",
+      "filename": "facility_151.png",
+      "width": 32,
+      "height": 46,
+      "sources": [
+        "furniture/shelf_03.png"
+      ]
+    },
+    {
+      "id": 152,
+      "name": "Ore Workbench",
+      "sourceName": "Ore Workbench",
+      "filename": "facility_152.png",
+      "width": 48,
+      "height": 40,
+      "sources": [
+        "furniture/room_obj_00.png"
+      ]
+    },
+    {
+      "id": 153,
+      "name": "Study Desk",
+      "sourceName": "Study Desk",
+      "filename": "facility_153.png",
+      "width": 45,
+      "height": 50,
+      "sources": [
+        "furniture/obj_68.png"
+      ]
+    },
+    {
+      "id": 154,
+      "name": "Friend Bed",
+      "sourceName": "Friend Bed",
+      "filename": "facility_154.png",
+      "width": 52,
+      "height": 48,
+      "sources": [
+        "furniture/bed_06.png"
+      ]
+    },
+    {
+      "id": 155,
+      "name": "Guest Bed",
+      "sourceName": "Guest Bed",
+      "filename": "facility_155.png",
+      "width": 52,
+      "height": 48,
+      "sources": [
+        "furniture/bed_05.png"
+      ]
+    },
+    {
+      "id": 157,
+      "name": "Monster Room",
+      "sourceName": "Monster Room",
+      "filename": "facility_157.png",
+      "width": 54,
+      "height": 45,
+      "sources": [
+        "furniture/obj_9.png"
+      ]
+    },
+    {
+      "id": 158,
+      "name": "Church",
+      "sourceName": "Church",
+      "filename": "facility_158.png",
+      "width": 90,
+      "height": 73,
+      "sources": [
+        "furniture/job_obj_10.png"
+      ]
+    },
+    {
+      "id": 182,
+      "name": "Ancestor Statue",
+      "sourceName": "Ancestor Statue",
+      "filename": "facility_182.png",
+      "width": 50,
+      "height": 50,
+      "sources": [
+        "furniture/obj_10.png"
+      ]
+    },
+    {
+      "id": 193,
+      "name": "Restaurant Shelves",
+      "sourceName": "Restaurant Shelves",
+      "filename": "facility_193.png",
+      "width": 40,
+      "height": 36,
+      "sources": [
+        "furniture/store_shelf_02.png"
+      ]
+    },
+    {
+      "id": 194,
+      "name": "Egg House",
+      "sourceName": "Egg House",
+      "filename": "facility_194.png",
+      "width": 54,
+      "height": 43,
+      "sources": [
+        "chip/egg_floor.png",
+        "wall/egg_wall.png"
+      ]
+    },
+    {
+      "id": 230,
+      "name": "Animal Cage",
+      "sourceName": "Animal Cage",
+      "filename": "facility_230.png",
+      "width": 54,
+      "height": 45,
+      "sources": [
+        "furniture/add_obj_01.png"
+      ]
+    },
+    {
+      "id": 231,
+      "name": "Art House",
+      "sourceName": "Art House",
+      "filename": "facility_231.png",
+      "width": 42,
+      "height": 32,
+      "sources": [
+        "furniture/add_obj_02.png"
+      ]
+    },
+    {
+      "id": 232,
+      "name": "Water Tank",
+      "sourceName": "Water Tank",
+      "filename": "facility_232.png",
+      "width": 50,
+      "height": 67,
+      "sources": [
+        "furniture/add_obj_03.png"
+      ]
+    },
+    {
+      "id": 233,
+      "name": "Bug Case",
+      "sourceName": "Bug Case",
+      "filename": "facility_233.png",
+      "width": 54,
+      "height": 49,
+      "sources": [
+        "furniture/add_obj_04.png"
+      ]
+    },
+    {
+      "id": 234,
+      "name": "Cash Register",
+      "sourceName": "Cash Register",
+      "filename": "facility_234.png",
+      "width": 40,
+      "height": 44,
+      "sources": [
+        "furniture/obj_06_auto.png"
+      ]
+    },
+    {
+      "id": 236,
+      "name": "Santa Room",
+      "sourceName": "Santa Room",
+      "filename": "facility_236.png",
+      "width": 90,
+      "height": 74,
+      "sources": [
+        "furniture/add_job_obj_03.png"
+      ]
+    },
+    {
+      "id": 237,
+      "name": "Decorative Sled",
+      "sourceName": "Decorative Sled",
+      "filename": "facility_237.png",
+      "width": 40,
+      "height": 34,
+      "sources": [
+        "furniture/add_obj_05.png"
+      ]
+    }
+  ]
+}

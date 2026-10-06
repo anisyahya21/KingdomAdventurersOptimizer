@@ -13,3 +13,12 @@ Executed in the copied package, using the existing Python 3.12 environment and i
 * all four engine fresh library initialization: PASS, exit 0.
 
 No new full visual GUI suite, long optimization, historical database reproduction, clean dependency install or native rebuild was performed. Existing algorithm failures were not repaired. The local test runtime is ignored and excluded from the upload.
+
+## Optimizer-only cleanup
+
+All local TypeScript source imports, JSON dependencies and Web Worker new-URL imports resolve after pruning. Standalone npm dependency installation passed. Initial build exposed a missing Worker dependency, which was restored; corrected build reached Vite transformation but exceeded the bounded 120-second timeout, so a complete fresh UI build remains unverified. Shipped desktop-dist bytes remain unchanged.
+
+Fresh Python desktop imports, all native pinned asset hashes and search-contract stat bounds passed. Native binaries, kernels and fixed-smoke fixture payloads are unchanged; prior valid four-engine smoke results were reused. New dependency node_modules and build output stay ignored.
+
+
+Final cleanup check: `npm run typecheck` passed (exit 0) in the standalone copied UI. Full frontend rebuild remains unverified after the bounded build timeout; shipped compiled assets were retained.

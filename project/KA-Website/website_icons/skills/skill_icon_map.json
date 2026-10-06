@@ -1,0 +1,1353 @@
+{
+  "categoryToIconIndex": {
+    "0": 1,
+    "1": 2,
+    "2": 3,
+    "3": 4,
+    "4": 5,
+    "5": 6,
+    "6": 8,
+    "7": 9,
+    "8": 10,
+    "9": 10
+  },
+  "categoryCounts": {
+    "0": 5,
+    "1": 5,
+    "2": 5,
+    "3": 12,
+    "4": 41,
+    "5": 46,
+    "9": 17
+  },
+  "skillsByName": {
+    "Normal Attack": {
+      "name": "Normal Attack",
+      "id": 0,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "Bow Attack": {
+      "name": "Bow Attack",
+      "id": 1,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "Gun Attack": {
+      "name": "Gun Attack",
+      "id": 2,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "Critical Hit": {
+      "name": "Critical Hit",
+      "id": 3,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Arrow Rain": {
+      "name": "Arrow Rain",
+      "id": 4,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "Fire Magic Ⅰ": {
+      "name": "Fire Magic Ⅰ",
+      "id": 5,
+      "category": 2,
+      "iconIndex": 3
+    },
+    "Fire Magic Ⅱ": {
+      "name": "Fire Magic Ⅱ",
+      "id": 6,
+      "category": 2,
+      "iconIndex": 3
+    },
+    "Fire Magic Ⅲ": {
+      "name": "Fire Magic Ⅲ",
+      "id": 7,
+      "category": 2,
+      "iconIndex": 3
+    },
+    "Fire Magic Ⅳ": {
+      "name": "Fire Magic Ⅳ",
+      "id": 8,
+      "category": 2,
+      "iconIndex": 3
+    },
+    "Fire Magic Ⅴ": {
+      "name": "Fire Magic Ⅴ",
+      "id": 9,
+      "category": 2,
+      "iconIndex": 3
+    },
+    "Ice Magic Ⅰ": {
+      "name": "Ice Magic Ⅰ",
+      "id": 10,
+      "category": 0,
+      "iconIndex": 1
+    },
+    "Ice Magic Ⅱ": {
+      "name": "Ice Magic Ⅱ",
+      "id": 11,
+      "category": 0,
+      "iconIndex": 1
+    },
+    "Ice Magic Ⅲ": {
+      "name": "Ice Magic Ⅲ",
+      "id": 12,
+      "category": 0,
+      "iconIndex": 1
+    },
+    "Ice Magic Ⅳ": {
+      "name": "Ice Magic Ⅳ",
+      "id": 13,
+      "category": 0,
+      "iconIndex": 1
+    },
+    "Ice Magic Ⅴ": {
+      "name": "Ice Magic Ⅴ",
+      "id": 14,
+      "category": 0,
+      "iconIndex": 1
+    },
+    "Lightning Magic Ⅰ": {
+      "name": "Lightning Magic Ⅰ",
+      "id": 15,
+      "category": 1,
+      "iconIndex": 2
+    },
+    "Lightning Magic Ⅱ": {
+      "name": "Lightning Magic Ⅱ",
+      "id": 16,
+      "category": 1,
+      "iconIndex": 2
+    },
+    "Lightning Magic Ⅲ": {
+      "name": "Lightning Magic Ⅲ",
+      "id": 17,
+      "category": 1,
+      "iconIndex": 2
+    },
+    "Lightning Magic Ⅳ": {
+      "name": "Lightning Magic Ⅳ",
+      "id": 18,
+      "category": 1,
+      "iconIndex": 2
+    },
+    "Lightning Magic Ⅴ": {
+      "name": "Lightning Magic Ⅴ",
+      "id": 19,
+      "category": 1,
+      "iconIndex": 2
+    },
+    "Half Reflect": {
+      "name": "Half Reflect",
+      "id": 20,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "Full Reflect": {
+      "name": "Full Reflect",
+      "id": 21,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "2-Hit Attack": {
+      "name": "2-Hit Attack",
+      "id": 22,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "3-Hit Attack": {
+      "name": "3-Hit Attack",
+      "id": 23,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "4-Hit Attack": {
+      "name": "4-Hit Attack",
+      "id": 24,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "5-Hit Attack": {
+      "name": "5-Hit Attack",
+      "id": 25,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "Counter": {
+      "name": "Counter",
+      "id": 26,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "Parry": {
+      "name": "Parry",
+      "id": 27,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "Perfect Dodge": {
+      "name": "Perfect Dodge",
+      "id": 28,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "Dodge UP": {
+      "name": "Dodge UP",
+      "id": 29,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "Critical UP": {
+      "name": "Critical UP",
+      "id": 30,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "Direct Attack Ⅰ": {
+      "name": "Direct Attack Ⅰ",
+      "id": 31,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "Direct Attack Ⅱ": {
+      "name": "Direct Attack Ⅱ",
+      "id": 32,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "Area Attack Ⅰ": {
+      "name": "Area Attack Ⅰ",
+      "id": 33,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "Area Attack Ⅱ": {
+      "name": "Area Attack Ⅱ",
+      "id": 34,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "Area Attack Ⅲ": {
+      "name": "Area Attack Ⅲ",
+      "id": 35,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "Myriad Arrows": {
+      "name": "Myriad Arrows",
+      "id": 36,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "Heal Maddy": {
+      "name": "Heal Maddy",
+      "id": 37,
+      "category": 3,
+      "iconIndex": 4
+    },
+    "Heal M": {
+      "name": "Heal M",
+      "id": 38,
+      "category": 3,
+      "iconIndex": 4
+    },
+    "Heal L": {
+      "name": "Heal L",
+      "id": 39,
+      "category": 3,
+      "iconIndex": 4
+    },
+    "Revive 50%": {
+      "name": "Revive 50%",
+      "id": 40,
+      "category": 3,
+      "iconIndex": 4
+    },
+    "Revive 100%": {
+      "name": "Revive 100%",
+      "id": 41,
+      "category": 3,
+      "iconIndex": 4
+    },
+    "Agriculturist": {
+      "name": "Agriculturist",
+      "id": 42,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Construction Chief": {
+      "name": "Construction Chief",
+      "id": 43,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Thief": {
+      "name": "Thief",
+      "id": 44,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Culinarian": {
+      "name": "Culinarian",
+      "id": 45,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Transport Corps": {
+      "name": "Transport Corps",
+      "id": 46,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Research": {
+      "name": "Research",
+      "id": 47,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Research Ⅱ": {
+      "name": "Research Ⅱ",
+      "id": 48,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Research Ⅲ": {
+      "name": "Research Ⅲ",
+      "id": 49,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Research Ⅳ": {
+      "name": "Research Ⅳ",
+      "id": 50,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Research Ⅴ": {
+      "name": "Research Ⅴ",
+      "id": 51,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Ranch Know-How": {
+      "name": "Ranch Know-How",
+      "id": 52,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Treasure Analysis": {
+      "name": "Treasure Analysis",
+      "id": 53,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Craftsmanship": {
+      "name": "Craftsmanship",
+      "id": 54,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Craftsmanship Ⅱ": {
+      "name": "Craftsmanship Ⅱ",
+      "id": 55,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Craftsmanship Ⅲ": {
+      "name": "Craftsmanship Ⅲ",
+      "id": 56,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Craftsmanship Ⅳ": {
+      "name": "Craftsmanship Ⅳ",
+      "id": 57,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Craftsmanship Ⅴ": {
+      "name": "Craftsmanship Ⅴ",
+      "id": 58,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Instant Construction": {
+      "name": "Instant Construction",
+      "id": 59,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Instant Workshop": {
+      "name": "Instant Workshop",
+      "id": 60,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Insta-Move": {
+      "name": "Insta-Move",
+      "id": 61,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Instant Weeding": {
+      "name": "Instant Weeding",
+      "id": 62,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Instant Treasure Analysis": {
+      "name": "Instant Treasure Analysis",
+      "id": 63,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Move Speed UP": {
+      "name": "Move Speed UP",
+      "id": 64,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "All-Out Sprint": {
+      "name": "All-Out Sprint",
+      "id": 65,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Miner": {
+      "name": "Miner",
+      "id": 66,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Deployment Range Ⅰ": {
+      "name": "Deployment Range Ⅰ",
+      "id": 67,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Deployment Range Ⅱ": {
+      "name": "Deployment Range Ⅱ",
+      "id": 68,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "De-Fogger": {
+      "name": "De-Fogger",
+      "id": 69,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Experience UP Ⅰ": {
+      "name": "Experience UP Ⅰ",
+      "id": 70,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Experience UP Ⅱ": {
+      "name": "Experience UP Ⅱ",
+      "id": 71,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Experience UP Ⅲ": {
+      "name": "Experience UP Ⅲ",
+      "id": 72,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Deployment Discount Ⅰ": {
+      "name": "Deployment Discount Ⅰ",
+      "id": 73,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Deployment Discount Ⅱ": {
+      "name": "Deployment Discount Ⅱ",
+      "id": 74,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Auto Recovery HP": {
+      "name": "Auto Recovery HP",
+      "id": 75,
+      "category": 3,
+      "iconIndex": 4
+    },
+    "Auto Recovery MP": {
+      "name": "Auto Recovery MP",
+      "id": 76,
+      "category": 3,
+      "iconIndex": 4
+    },
+    "Auto Recovery Vigor": {
+      "name": "Auto Recovery Vigor",
+      "id": 77,
+      "category": 3,
+      "iconIndex": 4
+    },
+    "Facility Rec. UP HP": {
+      "name": "Facility Rec. UP HP",
+      "id": 78,
+      "category": 3,
+      "iconIndex": 4
+    },
+    "Facility Rec. UP Vigor": {
+      "name": "Facility Rec. UP Vigor",
+      "id": 79,
+      "category": 3,
+      "iconIndex": 4
+    },
+    "Facility Rec. UP MP": {
+      "name": "Facility Rec. UP MP",
+      "id": 80,
+      "category": 3,
+      "iconIndex": 4
+    },
+    "Stubborn": {
+      "name": "Stubborn",
+      "id": 81,
+      "category": 3,
+      "iconIndex": 4
+    },
+    "Sword Resistance": {
+      "name": "Sword Resistance",
+      "id": 82,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "Staff Resistance": {
+      "name": "Staff Resistance",
+      "id": 83,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "Axe Resistance": {
+      "name": "Axe Resistance",
+      "id": 84,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "Spear Resistance": {
+      "name": "Spear Resistance",
+      "id": 85,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "Hammer Resistance": {
+      "name": "Hammer Resistance",
+      "id": 86,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "Club Resistance": {
+      "name": "Club Resistance",
+      "id": 87,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "Gun Resistance": {
+      "name": "Gun Resistance",
+      "id": 88,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "Bow Resistance": {
+      "name": "Bow Resistance",
+      "id": 89,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "Book Resistance": {
+      "name": "Book Resistance",
+      "id": 90,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "Shield Resistance": {
+      "name": "Shield Resistance",
+      "id": 91,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "Stealth": {
+      "name": "Stealth",
+      "id": 92,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Instinct": {
+      "name": "Instinct",
+      "id": 93,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Strategic Retreat": {
+      "name": "Strategic Retreat",
+      "id": 94,
+      "category": 9,
+      "iconIndex": 10
+    },
+    "Battle Maniac": {
+      "name": "Battle Maniac",
+      "id": 95,
+      "category": 9,
+      "iconIndex": 10
+    },
+    "House-sitter": {
+      "name": "House-sitter",
+      "id": 96,
+      "category": 9,
+      "iconIndex": 10
+    },
+    "Round Trip": {
+      "name": "Round Trip",
+      "id": 97,
+      "category": 9,
+      "iconIndex": 10
+    },
+    "Rambler": {
+      "name": "Rambler",
+      "id": 98,
+      "category": 9,
+      "iconIndex": 10
+    },
+    "Naturalist": {
+      "name": "Naturalist",
+      "id": 99,
+      "category": 9,
+      "iconIndex": 10
+    },
+    "Traveler": {
+      "name": "Traveler",
+      "id": 100,
+      "category": 9,
+      "iconIndex": 10
+    },
+    "Aid Specialist": {
+      "name": "Aid Specialist",
+      "id": 101,
+      "category": 9,
+      "iconIndex": 10
+    },
+    "Domestic Production": {
+      "name": "Domestic Production",
+      "id": 102,
+      "category": 9,
+      "iconIndex": 10
+    },
+    "Countryside Fanatic": {
+      "name": "Countryside Fanatic",
+      "id": 103,
+      "category": 9,
+      "iconIndex": 10
+    },
+    "Well-Prepared": {
+      "name": "Well-Prepared",
+      "id": 104,
+      "category": 9,
+      "iconIndex": 10
+    },
+    "Leading the Charge": {
+      "name": "Leading the Charge",
+      "id": 105,
+      "category": 9,
+      "iconIndex": 10
+    },
+    "Daring Charge": {
+      "name": "Daring Charge",
+      "id": 106,
+      "category": 9,
+      "iconIndex": 10
+    },
+    "Backup": {
+      "name": "Backup",
+      "id": 107,
+      "category": 9,
+      "iconIndex": 10
+    },
+    "Critical UP+": {
+      "name": "Critical UP+",
+      "id": 108,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "6-Hit Attack": {
+      "name": "6-Hit Attack",
+      "id": 109,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "7-Hit Attack": {
+      "name": "7-Hit Attack",
+      "id": 110,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "Skilled Craftsman Ⅰ": {
+      "name": "Skilled Craftsman Ⅰ",
+      "id": 111,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Skilled Craftsman Ⅱ": {
+      "name": "Skilled Craftsman Ⅱ",
+      "id": 112,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Armor Breaker Ⅰ": {
+      "name": "Armor Breaker Ⅰ",
+      "id": 113,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "Armor Breaker Ⅱ": {
+      "name": "Armor Breaker Ⅱ",
+      "id": 114,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "Armor Breaker Ⅲ": {
+      "name": "Armor Breaker Ⅲ",
+      "id": 115,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "Armor Breaker Ⅳ": {
+      "name": "Armor Breaker Ⅳ",
+      "id": 116,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "Sandman Ⅰ": {
+      "name": "Sandman Ⅰ",
+      "id": 117,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "Sandman Ⅱ": {
+      "name": "Sandman Ⅱ",
+      "id": 118,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "Sandman Ⅲ": {
+      "name": "Sandman Ⅲ",
+      "id": 119,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "Guerilla Ⅰ": {
+      "name": "Guerilla Ⅰ",
+      "id": 124,
+      "category": 9,
+      "iconIndex": 10
+    },
+    "Guerilla Ⅱ": {
+      "name": "Guerilla Ⅱ",
+      "id": 125,
+      "category": 9,
+      "iconIndex": 10
+    },
+    "Guerilla Ⅲ": {
+      "name": "Guerilla Ⅲ",
+      "id": 126,
+      "category": 9,
+      "iconIndex": 10
+    },
+    "Art Ⅰ": {
+      "name": "Art Ⅰ",
+      "id": 127,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Art Ⅱ": {
+      "name": "Art Ⅱ",
+      "id": 128,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Art Ⅲ": {
+      "name": "Art Ⅲ",
+      "id": 129,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Art Ⅳ": {
+      "name": "Art Ⅳ",
+      "id": 130,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Art Ⅴ": {
+      "name": "Art Ⅴ",
+      "id": 131,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Capture": {
+      "name": "Capture",
+      "id": 132,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Chat Ⅰ": {
+      "name": "Chat Ⅰ",
+      "id": 133,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "Chat Ⅱ": {
+      "name": "Chat Ⅱ",
+      "id": 134,
+      "category": 5,
+      "iconIndex": 6
+    }
+  },
+  "skillsByNormalizedName": {
+    "normal attack": {
+      "name": "Normal Attack",
+      "id": 0,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "bow attack": {
+      "name": "Bow Attack",
+      "id": 1,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "gun attack": {
+      "name": "Gun Attack",
+      "id": 2,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "critical hit": {
+      "name": "Critical Hit",
+      "id": 3,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "arrow rain": {
+      "name": "Arrow Rain",
+      "id": 4,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "fire magic": {
+      "name": "Fire Magic Ⅴ",
+      "id": 9,
+      "category": 2,
+      "iconIndex": 3
+    },
+    "ice magic": {
+      "name": "Ice Magic Ⅴ",
+      "id": 14,
+      "category": 0,
+      "iconIndex": 1
+    },
+    "lightning magic": {
+      "name": "Lightning Magic Ⅴ",
+      "id": 19,
+      "category": 1,
+      "iconIndex": 2
+    },
+    "half reflect": {
+      "name": "Half Reflect",
+      "id": 20,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "full reflect": {
+      "name": "Full Reflect",
+      "id": 21,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "2 hit attack": {
+      "name": "2-Hit Attack",
+      "id": 22,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "3 hit attack": {
+      "name": "3-Hit Attack",
+      "id": 23,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "4 hit attack": {
+      "name": "4-Hit Attack",
+      "id": 24,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "5 hit attack": {
+      "name": "5-Hit Attack",
+      "id": 25,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "counter": {
+      "name": "Counter",
+      "id": 26,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "parry": {
+      "name": "Parry",
+      "id": 27,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "perfect dodge": {
+      "name": "Perfect Dodge",
+      "id": 28,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "dodge up": {
+      "name": "Dodge UP",
+      "id": 29,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "critical up": {
+      "name": "Critical UP+",
+      "id": 108,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "direct attack": {
+      "name": "Direct Attack Ⅱ",
+      "id": 32,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "area attack": {
+      "name": "Area Attack Ⅲ",
+      "id": 35,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "myriad arrows": {
+      "name": "Myriad Arrows",
+      "id": 36,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "heal maddy": {
+      "name": "Heal Maddy",
+      "id": 37,
+      "category": 3,
+      "iconIndex": 4
+    },
+    "heal m": {
+      "name": "Heal M",
+      "id": 38,
+      "category": 3,
+      "iconIndex": 4
+    },
+    "heal l": {
+      "name": "Heal L",
+      "id": 39,
+      "category": 3,
+      "iconIndex": 4
+    },
+    "revive 50": {
+      "name": "Revive 50%",
+      "id": 40,
+      "category": 3,
+      "iconIndex": 4
+    },
+    "revive 100": {
+      "name": "Revive 100%",
+      "id": 41,
+      "category": 3,
+      "iconIndex": 4
+    },
+    "agriculturist": {
+      "name": "Agriculturist",
+      "id": 42,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "construction chief": {
+      "name": "Construction Chief",
+      "id": 43,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "thief": {
+      "name": "Thief",
+      "id": 44,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "culinarian": {
+      "name": "Culinarian",
+      "id": 45,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "transport corps": {
+      "name": "Transport Corps",
+      "id": 46,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "research": {
+      "name": "Research Ⅴ",
+      "id": 51,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "ranch know how": {
+      "name": "Ranch Know-How",
+      "id": 52,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "treasure analysis": {
+      "name": "Treasure Analysis",
+      "id": 53,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "craftsmanship": {
+      "name": "Craftsmanship Ⅴ",
+      "id": 58,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "instant construction": {
+      "name": "Instant Construction",
+      "id": 59,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "instant workshop": {
+      "name": "Instant Workshop",
+      "id": 60,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "insta move": {
+      "name": "Insta-Move",
+      "id": 61,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "instant weeding": {
+      "name": "Instant Weeding",
+      "id": 62,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "instant treasure analysis": {
+      "name": "Instant Treasure Analysis",
+      "id": 63,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "move speed up": {
+      "name": "Move Speed UP",
+      "id": 64,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "all out sprint": {
+      "name": "All-Out Sprint",
+      "id": 65,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "miner": {
+      "name": "Miner",
+      "id": 66,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "deployment range": {
+      "name": "Deployment Range Ⅱ",
+      "id": 68,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "de fogger": {
+      "name": "De-Fogger",
+      "id": 69,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "experience up": {
+      "name": "Experience UP Ⅲ",
+      "id": 72,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "deployment discount": {
+      "name": "Deployment Discount Ⅱ",
+      "id": 74,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "auto recovery hp": {
+      "name": "Auto Recovery HP",
+      "id": 75,
+      "category": 3,
+      "iconIndex": 4
+    },
+    "auto recovery mp": {
+      "name": "Auto Recovery MP",
+      "id": 76,
+      "category": 3,
+      "iconIndex": 4
+    },
+    "auto recovery vigor": {
+      "name": "Auto Recovery Vigor",
+      "id": 77,
+      "category": 3,
+      "iconIndex": 4
+    },
+    "facility rec up hp": {
+      "name": "Facility Rec. UP HP",
+      "id": 78,
+      "category": 3,
+      "iconIndex": 4
+    },
+    "facility rec up vigor": {
+      "name": "Facility Rec. UP Vigor",
+      "id": 79,
+      "category": 3,
+      "iconIndex": 4
+    },
+    "facility rec up mp": {
+      "name": "Facility Rec. UP MP",
+      "id": 80,
+      "category": 3,
+      "iconIndex": 4
+    },
+    "stubborn": {
+      "name": "Stubborn",
+      "id": 81,
+      "category": 3,
+      "iconIndex": 4
+    },
+    "sword resistance": {
+      "name": "Sword Resistance",
+      "id": 82,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "staff resistance": {
+      "name": "Staff Resistance",
+      "id": 83,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "axe resistance": {
+      "name": "Axe Resistance",
+      "id": 84,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "spear resistance": {
+      "name": "Spear Resistance",
+      "id": 85,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "hammer resistance": {
+      "name": "Hammer Resistance",
+      "id": 86,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "club resistance": {
+      "name": "Club Resistance",
+      "id": 87,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "gun resistance": {
+      "name": "Gun Resistance",
+      "id": 88,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "bow resistance": {
+      "name": "Bow Resistance",
+      "id": 89,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "book resistance": {
+      "name": "Book Resistance",
+      "id": 90,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "shield resistance": {
+      "name": "Shield Resistance",
+      "id": 91,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "stealth": {
+      "name": "Stealth",
+      "id": 92,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "instinct": {
+      "name": "Instinct",
+      "id": 93,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "strategic retreat": {
+      "name": "Strategic Retreat",
+      "id": 94,
+      "category": 9,
+      "iconIndex": 10
+    },
+    "battle maniac": {
+      "name": "Battle Maniac",
+      "id": 95,
+      "category": 9,
+      "iconIndex": 10
+    },
+    "house sitter": {
+      "name": "House-sitter",
+      "id": 96,
+      "category": 9,
+      "iconIndex": 10
+    },
+    "round trip": {
+      "name": "Round Trip",
+      "id": 97,
+      "category": 9,
+      "iconIndex": 10
+    },
+    "rambler": {
+      "name": "Rambler",
+      "id": 98,
+      "category": 9,
+      "iconIndex": 10
+    },
+    "naturalist": {
+      "name": "Naturalist",
+      "id": 99,
+      "category": 9,
+      "iconIndex": 10
+    },
+    "traveler": {
+      "name": "Traveler",
+      "id": 100,
+      "category": 9,
+      "iconIndex": 10
+    },
+    "aid specialist": {
+      "name": "Aid Specialist",
+      "id": 101,
+      "category": 9,
+      "iconIndex": 10
+    },
+    "domestic production": {
+      "name": "Domestic Production",
+      "id": 102,
+      "category": 9,
+      "iconIndex": 10
+    },
+    "countryside fanatic": {
+      "name": "Countryside Fanatic",
+      "id": 103,
+      "category": 9,
+      "iconIndex": 10
+    },
+    "well prepared": {
+      "name": "Well-Prepared",
+      "id": 104,
+      "category": 9,
+      "iconIndex": 10
+    },
+    "leading the charge": {
+      "name": "Leading the Charge",
+      "id": 105,
+      "category": 9,
+      "iconIndex": 10
+    },
+    "daring charge": {
+      "name": "Daring Charge",
+      "id": 106,
+      "category": 9,
+      "iconIndex": 10
+    },
+    "backup": {
+      "name": "Backup",
+      "id": 107,
+      "category": 9,
+      "iconIndex": 10
+    },
+    "6 hit attack": {
+      "name": "6-Hit Attack",
+      "id": 109,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "7 hit attack": {
+      "name": "7-Hit Attack",
+      "id": 110,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "skilled craftsman": {
+      "name": "Skilled Craftsman Ⅱ",
+      "id": 112,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "armor breaker": {
+      "name": "Armor Breaker Ⅳ",
+      "id": 116,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "sandman": {
+      "name": "Sandman Ⅲ",
+      "id": 119,
+      "category": 4,
+      "iconIndex": 5
+    },
+    "guerilla": {
+      "name": "Guerilla Ⅲ",
+      "id": 126,
+      "category": 9,
+      "iconIndex": 10
+    },
+    "art": {
+      "name": "Art Ⅴ",
+      "id": 131,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "capture": {
+      "name": "Capture",
+      "id": 132,
+      "category": 5,
+      "iconIndex": 6
+    },
+    "chat": {
+      "name": "Chat Ⅱ",
+      "id": 134,
+      "category": 5,
+      "iconIndex": 6
+    }
+  }
+}
