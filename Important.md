@@ -234,3 +234,113 @@ Provide the repository link, this guide and a reproduction record containing:
 For a first bounded reproduction, use a fresh library and record saved-row counts before and after lifecycle actions. The README documents launchers and [run_fixed_smoke.py](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/run_fixed_smoke.py). Historical acceptance reports and known problems are investigation evidence, not proof that the current build reproduces or fixes a fault.
 
 For strategy-quality problems, inspect generation, parent retrieval and ranking. For incorrect battle results, inspect the simulator/backend. For missing results, inspect reservations, completion and commits. For broken controls or counters, inspect the UI, bridge/controller and publication paths.
+
+## Extended debugging navigation map
+
+This section helps a new debugger locate decisions and state transitions without reading the entire codebase. The functions below are investigation entry points, not claims that they cause a particular bug. First identify the running engine, search mode and executable revision.
+
+### 1. Start here for your symptom
+
+| Symptom or question | Functions to inspect |
+|---|---|
+| Why did it choose this previous strategy? | [_reference_candidate():1369](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_encounter_search.py#L1369) |
+| Why is it spending trials on this search purpose? | [_next_purpose():1268](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_encounter_search.py#L1268) |
+| Which owner/purpose gets work next? | [_next_task():1320](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_encounter_search.py#L1320) |
+| Candidates are generated but never tested | [_realize_pool():1825](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_encounter_search.py#L1825) |
+| Admitted work is not being dispatched | [_dispatch():2680](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_encounter_search.py#L2680) |
+| Search is idle despite remaining budget | [_mark_unspendable():1293](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_encounter_search.py#L1293) |
+| Does the coordinator consider itself to have work? | [_has_work():1234](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_encounter_search.py#L1234) |
+| Resume loses or repeats work | [load():517](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_encounter_search.py#L517) |
+| How is outstanding encounter work recovered? | [_recover():2644](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_encounter_search.py#L2644) |
+| Planning is slow or workers lack candidates | [submit_planning():7737](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_optimizer.py#L7737) |
+| Planning finished but its results are not used | [_harvest_planning():8237](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_optimizer.py#L8237) |
+| Speed counters are blank or misleading | [_throughput():7169](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_optimizer.py#L7169) |
+| Encounter speed disagrees with progress | [_encounter_throughput():7303](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_optimizer.py#L7303) |
+| A native engine will not prepare its run | [prepare_native_run():207](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_native_run_config.py#L207) |
+| A native engine will not launch | [_launch_native():1015](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_native_controller.py#L1015) |
+| Native results exist but do not appear in the library | [_import_native_lines():613](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_native_controller.py#L613) |
+| Native Start/Pause/Stop behaves incorrectly | [_apply():654](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_native_controller.py#L654) |
+
+### 2. Follow one candidate through its complete lifecycle
+
+Use a candidate ID from a reproducing run to follow the same strategy across these steps. The following is a conceptual tracing recipe, not a claim that a particular real candidate was traced here. Do not mix the original branching and encounter paths when interpreting results.
+
+| Step | Original branching path | What to record |
+|---|---|---|
+| Retrieve parent | [Store.scenario():3723](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_optimizer.py#L3723) | Parent ID and decoded scenario |
+| Generate child | [spawn_children():1790](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_optimizer.py#L1790) | Chosen parent, operation and changed fields |
+| Store candidate | [Store.add_child():4068](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_optimizer.py#L4068) | Child ID, duplicate/admission outcome and lineage |
+| Execute trial | [worker():4520](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_optimizer.py#L4520) | Candidate, phase, ordinal and seed pair |
+| Accept result | [Store.record():4202](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_optimizer.py#L4202) | Result and recording order |
+| Commit result | [Store.flush():4246](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_optimizer.py#L4246) | Committed rows versus pending batch |
+| Update learning | [observe_children():2774](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_optimizer.py#L2774) | Parent/child comparison and learning-state changes |
+| Select future parent | [weighted_parent():1695](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_optimizer.py#L1695) | Pool membership and selection evidence |
+
+For the encounter path, follow [_plan_round():1722](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_encounter_search.py#L1722) → [_propose():1965](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_encounter_search.py#L1965) → [_realize_pool():1825](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_encounter_search.py#L1825) → [_dispatch():2680](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_encounter_search.py#L2680) → [reserve():726](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_experiment_store.py#L726) / [complete():818](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_experiment_store.py#L818) → [_refresh_portfolio():3948](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_encounter_search.py#L3948). Reservation and completion are separate states; inspect the evaluator for the exact execution/recording order.
+
+### 3. Glossary of the main objects
+
+| Term | Meaning | Starting reference |
+|---|---|---|
+| Scenario | The build and battle configuration loaded for a strategy. | [Store.scenario():3723](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_optimizer.py#L3723) |
+| Candidate | An identified strategy being considered or tested. | [Store.add():3766](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_optimizer.py#L3766) |
+| Sample | A trial identified by candidate, seed pair and compatibility context. | [ea_sample schema:112](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_experiment_store.py#L112) |
+| Experiment | Trials answering a search question, with intent, reference and budget. | [ea_experiment schema:86](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_experiment_store.py#L86) |
+| Cohort | A group of candidates evaluated together by the encounter coordinator. | [_start_cohort():1920](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_encounter_search.py#L1920) |
+| Portfolio | Strategies represented using accumulated measured evidence. | [_refresh_portfolio():3948](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_encounter_search.py#L3948) |
+| Owner and purpose | Which search stream owns the work and what the work investigates. | [_next_task():1320](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_encounter_search.py#L1320) |
+| Policy and revision | Context used to establish which rules and evidence are applicable. | [ea_experiment schema:86](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_experiment_store.py#L86) |
+
+### 4. Why a candidate or plan can be rejected
+
+Generation alone does not prove that a candidate will be admitted or receive a trial. Trace the rejection reason and applicable mode rather than treating an empty queue as a simulator failure.
+
+- Legal mutation rules: [mutate():862](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/search_contract.py#L862).
+- Candidate identity/equivalence and insertion: [Store.add():3766](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_optimizer.py#L3766).
+- Encounter compatibility for portfolio reuse: [_portfolio_scenario_compatible():1522](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_encounter_search.py#L1522).
+- Stale/incompatible asynchronous planning context: [_planner_compatible():2200](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_encounter_search.py#L2200).
+- Planning result rejection explanations: [_planning_result_reason():2218](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_encounter_search.py#L2218).
+- Admission of returned planning results: [accept_planning_result():2248](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_encounter_search.py#L2248).
+- Unspendable owner/purpose budgets: [_mark_unspendable():1293](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_encounter_search.py#L1293).
+- Compatibility of experiment evidence: [_compatible_experiment_ids():3500](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_encounter_search.py#L3500).
+- Native asset identities: [validate_engine_assets():61](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_native_validation.py#L61).
+
+### 5. State and persistence ownership
+
+| State | What the debugger needs to establish |
+|---|---|
+| In-memory caches | What is loaded on demand, what invalidates it and what is rebuilt on reopen. |
+| Pending work | What is planned, reserved or running, and who owns cancellation/recovery. |
+| Buffered results | What has finished but has not yet been committed. |
+| SQLite records | What is durable and whether the corresponding result/evidence transaction completed. |
+| Native checkpoints and journals | Which executable/config created them and which path restores/imports them. |
+| UI snapshots | Whether displayed values are fresh and whether publication/transport is lagging. |
+
+Useful references: [Store.__init__():3461](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_optimizer.py#L3461), [Store.flush():4246](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_optimizer.py#L4246), [_recover():2644](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_encounter_search.py#L2644), [_import_native_lines():613](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_native_controller.py#L613), [_publish():5325](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_optimizer.py#L5325) and [status():1245](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_native_controller.py#L1245). A display problem, a stalled search and lost durable work require different investigations.
+
+### 6. Correctness rules and relevant checks
+
+A debugger should identify the enforcement code and matching verification script for each suspected regression:
+
+- Avoid duplicate candidate/trial work; distinguish reusable compatible evidence from a newly executed trial.
+- Preserve seeds and compatibility context when comparing strategies.
+- Distinguish unresolved/censored rewards from a measured zero reward.
+- Preserve parent/root ancestry when managing the active population.
+- Distinguish accepted/buffered results from committed results.
+- Match executable, kernel, policy and mechanics identities before using previous outcomes.
+
+Start with [Store.add():3766](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_optimizer.py#L3766), [reserve():726](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_experiment_store.py#L726), [complete():818](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_experiment_store.py#L818), [compact_result():78](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_evidence.py#L78), [lineage schema:213](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_learner.py#L213) and [verify_record_engine_identity():179](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/strategy_native_validation.py#L179).
+
+Relevant check scripts live in the recovery folder, including [check_optimizer_equivalence.py](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/check_optimizer_equivalence.py), [check_optimizer_out_of_order.py](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/check_optimizer_out_of_order.py), [check_optimizer_evidence.py](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/check_optimizer_evidence.py) and [check_strategy_packed_storage.py](https://github.com/anisyahya21/KingdomAdventurersOptimizer/blob/004a1c43a8048635083ca300e3a51d49b3610d8a/project/KA-Website/tools/recovery/check_strategy_packed_storage.py). Use the checks that actually exist and cover the active path; historical scripts may require excluded dependencies.
+
+### 7. Separate reading routes for each engine
+
+Use the common conceptual route **entry point → preparation → search → simulation → persistence → reporting**, but follow the implementation belonging to the selected engine. Python host functions do not necessarily make the native engine's internal search decisions.
+
+- [rust source](https://github.com/anisyahya21/KingdomAdventurersOptimizer/tree/004a1c43a8048635083ca300e3a51d49b3610d8a/project/coordination/native-preparation/rust/standalone-optimizer): begin with `src/main.rs`; then use `input.rs`/`prepare.rs`, `search.rs`/`engine.rs`, and `store.rs` to follow the relevant stage.
+- [go source](https://github.com/anisyahya21/KingdomAdventurersOptimizer/tree/004a1c43a8048635083ca300e3a51d49b3610d8a/project/coordination/native-preparation/go/standalone-optimizer): begin at the Go `main()` entry point and follow run setup, candidate generation, kernel calls, persistence and status reporting within this folder.
+- [cpp source](https://github.com/anisyahya21/KingdomAdventurersOptimizer/tree/004a1c43a8048635083ca300e3a51d49b3610d8a/project/coordination/native-preparation/cpp/standalone-optimizer): begin with `main.cpp`; use preparation/pipeline, execution, replay and monitor modules to follow the relevant stage.
+
+The existing architecture and provenance documents identify the shared kernel and actual desktop pins. A deeper engine-specific function map should be based on that engine's active source/build.
+
+The highest-value reading aids are the symptom map, a candidate traced through a reproducing run, and state ownership. They explain where to look and what evidence to collect instead of requiring a sequential read of thousands of lines.
