@@ -12,6 +12,11 @@ Each launcher creates a fresh local library under `runtime/libraries`. No origin
 
 ## Explicit latest fixed-policy smoke
 
+The original native learner's missing mechanism objectives are now restored in
+source. See [the correction and its limits](docs/MECHANISM_OBJECTIVES.md) and use
+`run_corrected_smoke.py` with a freshly built executable. Predictor guidance is
+disabled in that entry. Existing desktop binary pins remain unchanged.
+
 Run `python run_fixed_smoke.py python` for one Python policy check and native battle, or replace `python` with `rust`, `go`, `cpp` for short native searches. The native smoke timeout is 120 seconds and output is under `runtime/fixed-smoke`. A second run refuses an existing output directory; move it aside to retain evidence.
 
 Read [structure](docs/ARCHITECTURE.md), [build instructions](docs/BUILD.md), [binary/source provenance](docs/PROVENANCE.md), and [verification](docs/VERIFICATION.md). SHA256 inventory is in `docs/FILE_INVENTORY.json`.

@@ -1,0 +1,554 @@
+{
+  "actions": [
+    {
+      "op": "synthetic-dps-stat-target",
+      "unitIndex": 0,
+      "parameter": "13",
+      "target": 315,
+      "minimum": 6,
+      "maximum": 5766,
+      "learnerWeight": 0.06104402105177268,
+      "learnerComponents": [
+        {
+          "learnerStat": "stat:atk",
+          "learnerScale": "1.05",
+          "weight": 0.06104402105177268
+        }
+      ]
+    },
+    {
+      "op": "synthetic-dps-stat-target",
+      "unitIndex": 0,
+      "parameter": "13",
+      "target": 286,
+      "minimum": 6,
+      "maximum": 5766,
+      "learnerWeight": 0.06104402105177268,
+      "learnerComponents": [
+        {
+          "learnerStat": "stat:atk",
+          "learnerScale": "1.05",
+          "weight": 0.06104402105177268
+        }
+      ]
+    },
+    {
+      "op": "synthetic-dps-stat-target",
+      "unitIndex": 0,
+      "parameter": "13",
+      "target": 345,
+      "minimum": 6,
+      "maximum": 5766,
+      "learnerWeight": 0.021418954755007956,
+      "learnerComponents": [
+        {
+          "learnerStat": "stat:atk",
+          "learnerScale": "1.15",
+          "weight": 0.021418954755007956
+        }
+      ]
+    },
+    {
+      "op": "synthetic-dps-stat-target",
+      "unitIndex": 0,
+      "parameter": "13",
+      "target": 261,
+      "minimum": 6,
+      "maximum": 5766,
+      "learnerWeight": 0.021418954755007956,
+      "learnerComponents": [
+        {
+          "learnerStat": "stat:atk",
+          "learnerScale": "1.15",
+          "weight": 0.021418954755007956
+        }
+      ]
+    },
+    {
+      "op": "synthetic-dps-stat-target",
+      "unitIndex": 0,
+      "parameter": "13",
+      "target": 420,
+      "minimum": 6,
+      "maximum": 5766,
+      "learnerWeight": 0.021418954755007956,
+      "learnerComponents": [
+        {
+          "learnerStat": "stat:atk",
+          "learnerScale": "1.4",
+          "weight": 0.021418954755007956
+        }
+      ]
+    },
+    {
+      "op": "synthetic-dps-stat-target",
+      "unitIndex": 0,
+      "parameter": "13",
+      "target": 214,
+      "minimum": 6,
+      "maximum": 5766,
+      "learnerWeight": 0.021418954755007956,
+      "learnerComponents": [
+        {
+          "learnerStat": "stat:atk",
+          "learnerScale": "1.4",
+          "weight": 0.021418954755007956
+        }
+      ]
+    },
+    {
+      "op": "synthetic-dps-stat-target",
+      "unitIndex": 0,
+      "parameter": "13",
+      "target": 600,
+      "minimum": 6,
+      "maximum": 5766,
+      "learnerWeight": 0.018206111541756765,
+      "learnerComponents": [
+        {
+          "learnerStat": "stat:atk",
+          "learnerScale": "2.0",
+          "weight": 0.018206111541756765
+        }
+      ]
+    },
+    {
+      "op": "synthetic-dps-stat-target",
+      "unitIndex": 0,
+      "parameter": "13",
+      "target": 150,
+      "minimum": 6,
+      "maximum": 5766,
+      "learnerWeight": 0.06104402105177267,
+      "learnerComponents": [
+        {
+          "learnerStat": "stat:atk",
+          "learnerScale": "2.0",
+          "weight": 0.018206111541756765
+        },
+        {
+          "learnerStat": "stat:atk",
+          "learnerScale": "0.5",
+          "weight": 0.04283790951001591
+        }
+      ]
+    },
+    {
+      "op": "synthetic-dps-stat-target",
+      "unitIndex": 0,
+      "parameter": "13",
+      "target": 900,
+      "minimum": 6,
+      "maximum": 5766,
+      "learnerWeight": 0.021418954755007956,
+      "learnerComponents": [
+        {
+          "learnerStat": "stat:atk",
+          "learnerScale": "3.0",
+          "weight": 0.021418954755007956
+        }
+      ]
+    },
+    {
+      "op": "synthetic-dps-stat-target",
+      "unitIndex": 0,
+      "parameter": "13",
+      "target": 100,
+      "minimum": 6,
+      "maximum": 5766,
+      "learnerWeight": 0.021418954755007956,
+      "learnerComponents": [
+        {
+          "learnerStat": "stat:atk",
+          "learnerScale": "3.0",
+          "weight": 0.021418954755007956
+        }
+      ]
+    },
+    {
+      "op": "synthetic-dps-stat-target",
+      "unitIndex": 0,
+      "parameter": "13",
+      "target": 285,
+      "minimum": 6,
+      "maximum": 5766,
+      "learnerWeight": 0.04283790951001591,
+      "learnerComponents": [
+        {
+          "learnerStat": "stat:atk",
+          "learnerScale": "0.95",
+          "weight": 0.04283790951001591
+        }
+      ]
+    },
+    {
+      "op": "synthetic-dps-stat-target",
+      "unitIndex": 0,
+      "parameter": "13",
+      "target": 210,
+      "minimum": 6,
+      "maximum": 5766,
+      "learnerWeight": 0.04283790951001591,
+      "learnerComponents": [
+        {
+          "learnerStat": "stat:atk",
+          "learnerScale": "0.7",
+          "weight": 0.04283790951001591
+        }
+      ]
+    },
+    {
+      "op": "synthetic-dps-stat-target",
+      "unitIndex": 0,
+      "parameter": "13",
+      "target": 4645,
+      "minimum": 6,
+      "maximum": 5766,
+      "learnerWeight": 0.12851372853004775,
+      "learnerComponents": [
+        {
+          "learnerStat": "stat:atk",
+          "learnerScale": "jump",
+          "weight": 0.12851372853004775
+        }
+      ]
+    },
+    {
+      "op": "synthetic-dps-stat-target",
+      "unitIndex": 0,
+      "parameter": "15",
+      "target": 6,
+      "minimum": 5,
+      "maximum": 4780,
+      "learnerWeight": 0.2070514896373057,
+      "learnerComponents": [
+        {
+          "learnerStat": "stat:spd",
+          "learnerScale": "1.05",
+          "weight": 0.04731015220207254
+        },
+        {
+          "learnerStat": "stat:spd",
+          "learnerScale": "1.05",
+          "weight": 0.04731015220207254
+        },
+        {
+          "learnerStat": "stat:spd",
+          "learnerScale": "1.15",
+          "weight": 0.011131800518134716
+        },
+        {
+          "learnerStat": "stat:spd",
+          "learnerScale": "1.15",
+          "weight": 0.011131800518134716
+        },
+        {
+          "learnerStat": "stat:spd",
+          "learnerScale": "1.4",
+          "weight": 0.011131800518134716
+        },
+        {
+          "learnerStat": "stat:spd",
+          "learnerScale": "2.0",
+          "weight": 0.011131800518134716
+        },
+        {
+          "learnerStat": "stat:spd",
+          "learnerScale": "3.0",
+          "weight": 0.011131800518134716
+        },
+        {
+          "learnerStat": "stat:spd",
+          "learnerScale": "0.95",
+          "weight": 0.022263601036269433
+        },
+        {
+          "learnerStat": "stat:spd",
+          "learnerScale": "0.7",
+          "weight": 0.012244980569948187
+        },
+        {
+          "learnerStat": "stat:spd",
+          "learnerScale": "0.5",
+          "weight": 0.022263601036269433
+        }
+      ]
+    },
+    {
+      "op": "synthetic-dps-stat-target",
+      "unitIndex": 0,
+      "parameter": "15",
+      "target": 7,
+      "minimum": 5,
+      "maximum": 4780,
+      "learnerWeight": 0.011131800518134716,
+      "learnerComponents": [
+        {
+          "learnerStat": "stat:spd",
+          "learnerScale": "1.4",
+          "weight": 0.011131800518134716
+        }
+      ]
+    },
+    {
+      "op": "synthetic-dps-stat-target",
+      "unitIndex": 0,
+      "parameter": "15",
+      "target": 10,
+      "minimum": 5,
+      "maximum": 4780,
+      "learnerWeight": 0.011131800518134716,
+      "learnerComponents": [
+        {
+          "learnerStat": "stat:spd",
+          "learnerScale": "2.0",
+          "weight": 0.011131800518134716
+        }
+      ]
+    },
+    {
+      "op": "synthetic-dps-stat-target",
+      "unitIndex": 0,
+      "parameter": "15",
+      "target": 15,
+      "minimum": 5,
+      "maximum": 4780,
+      "learnerWeight": 0.011131800518134716,
+      "learnerComponents": [
+        {
+          "learnerStat": "stat:spd",
+          "learnerScale": "3.0",
+          "weight": 0.011131800518134716
+        }
+      ]
+    },
+    {
+      "op": "synthetic-dps-stat-target",
+      "unitIndex": 0,
+      "parameter": "15",
+      "target": 3707,
+      "minimum": 5,
+      "maximum": 4780,
+      "learnerWeight": 0.044527202072538866,
+      "learnerComponents": [
+        {
+          "learnerStat": "stat:spd",
+          "learnerScale": "jump",
+          "weight": 0.044527202072538866
+        }
+      ]
+    },
+    {
+      "op": "synthetic-dps-stat-target",
+      "unitIndex": 0,
+      "parameter": "16",
+      "target": 131,
+      "minimum": 5,
+      "maximum": 5204,
+      "learnerWeight": 0.009499136442141624,
+      "learnerComponents": [
+        {
+          "learnerStat": "stat:lck",
+          "learnerScale": "1.05",
+          "weight": 0.009499136442141624
+        }
+      ]
+    },
+    {
+      "op": "synthetic-dps-stat-target",
+      "unitIndex": 0,
+      "parameter": "16",
+      "target": 119,
+      "minimum": 5,
+      "maximum": 5204,
+      "learnerWeight": 0.02849740932642487,
+      "learnerComponents": [
+        {
+          "learnerStat": "stat:lck",
+          "learnerScale": "1.05",
+          "weight": 0.009499136442141624
+        },
+        {
+          "learnerStat": "stat:lck",
+          "learnerScale": "0.95",
+          "weight": 0.018998272884283247
+        }
+      ]
+    },
+    {
+      "op": "synthetic-dps-stat-target",
+      "unitIndex": 0,
+      "parameter": "16",
+      "target": 144,
+      "minimum": 5,
+      "maximum": 5204,
+      "learnerWeight": 0.009499136442141624,
+      "learnerComponents": [
+        {
+          "learnerStat": "stat:lck",
+          "learnerScale": "1.15",
+          "weight": 0.009499136442141624
+        }
+      ]
+    },
+    {
+      "op": "synthetic-dps-stat-target",
+      "unitIndex": 0,
+      "parameter": "16",
+      "target": 109,
+      "minimum": 5,
+      "maximum": 5204,
+      "learnerWeight": 0.009499136442141624,
+      "learnerComponents": [
+        {
+          "learnerStat": "stat:lck",
+          "learnerScale": "1.15",
+          "weight": 0.009499136442141624
+        }
+      ]
+    },
+    {
+      "op": "synthetic-dps-stat-target",
+      "unitIndex": 0,
+      "parameter": "16",
+      "target": 175,
+      "minimum": 5,
+      "maximum": 5204,
+      "learnerWeight": 0.009499136442141624,
+      "learnerComponents": [
+        {
+          "learnerStat": "stat:lck",
+          "learnerScale": "1.4",
+          "weight": 0.009499136442141624
+        }
+      ]
+    },
+    {
+      "op": "synthetic-dps-stat-target",
+      "unitIndex": 0,
+      "parameter": "16",
+      "target": 89,
+      "minimum": 5,
+      "maximum": 5204,
+      "learnerWeight": 0.009499136442141624,
+      "learnerComponents": [
+        {
+          "learnerStat": "stat:lck",
+          "learnerScale": "1.4",
+          "weight": 0.009499136442141624
+        }
+      ]
+    },
+    {
+      "op": "synthetic-dps-stat-target",
+      "unitIndex": 0,
+      "parameter": "16",
+      "target": 250,
+      "minimum": 5,
+      "maximum": 5204,
+      "learnerWeight": 0.009499136442141624,
+      "learnerComponents": [
+        {
+          "learnerStat": "stat:lck",
+          "learnerScale": "2.0",
+          "weight": 0.009499136442141624
+        }
+      ]
+    },
+    {
+      "op": "synthetic-dps-stat-target",
+      "unitIndex": 0,
+      "parameter": "16",
+      "target": 62,
+      "minimum": 5,
+      "maximum": 5204,
+      "learnerWeight": 0.02849740932642487,
+      "learnerComponents": [
+        {
+          "learnerStat": "stat:lck",
+          "learnerScale": "2.0",
+          "weight": 0.009499136442141624
+        },
+        {
+          "learnerStat": "stat:lck",
+          "learnerScale": "0.5",
+          "weight": 0.018998272884283247
+        }
+      ]
+    },
+    {
+      "op": "synthetic-dps-stat-target",
+      "unitIndex": 0,
+      "parameter": "16",
+      "target": 375,
+      "minimum": 5,
+      "maximum": 5204,
+      "learnerWeight": 0.009499136442141624,
+      "learnerComponents": [
+        {
+          "learnerStat": "stat:lck",
+          "learnerScale": "3.0",
+          "weight": 0.009499136442141624
+        }
+      ]
+    },
+    {
+      "op": "synthetic-dps-stat-target",
+      "unitIndex": 0,
+      "parameter": "16",
+      "target": 42,
+      "minimum": 5,
+      "maximum": 5204,
+      "learnerWeight": 0.009499136442141624,
+      "learnerComponents": [
+        {
+          "learnerStat": "stat:lck",
+          "learnerScale": "3.0",
+          "weight": 0.009499136442141624
+        }
+      ]
+    },
+    {
+      "op": "synthetic-dps-stat-target",
+      "unitIndex": 0,
+      "parameter": "16",
+      "target": 88,
+      "minimum": 5,
+      "maximum": 5204,
+      "learnerWeight": 0.018998272884283247,
+      "learnerComponents": [
+        {
+          "learnerStat": "stat:lck",
+          "learnerScale": "0.7",
+          "weight": 0.018998272884283247
+        }
+      ]
+    },
+    {
+      "op": "synthetic-dps-stat-target",
+      "unitIndex": 0,
+      "parameter": "16",
+      "target": 1158,
+      "minimum": 5,
+      "maximum": 5204,
+      "learnerWeight": 0.018998272884283247,
+      "learnerComponents": [
+        {
+          "learnerStat": "stat:lck",
+          "learnerScale": "jump",
+          "weight": 0.018998272884283247
+        }
+      ]
+    }
+  ],
+  "guidedChoices": [
+    {
+      "index": 15,
+      "prediction": 0.0
+    },
+    {
+      "index": 18,
+      "prediction": 0.5
+    }
+  ]
+}

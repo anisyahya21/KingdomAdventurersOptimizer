@@ -1,5 +1,14 @@
 # Verification
 
+## Mechanism-objective source correction (2026-10-09)
+
+The newer correction's scope and saved-fixture verification are described in
+[MECHANISM_OBJECTIVES.md](MECHANISM_OBJECTIVES.md). The results below describe
+the original package; they do not claim the historical desktop pins contain
+the new learner. No new full GUI or process-kill acceptance suite is claimed.
+
+## Original package verification
+
 Executed in the copied package, using the existing Python 3.12 environment and installed pywebview 6.2.1; this is not a clean-machine dependency installation.
 
 * Python: canonical fixed scenario admitted; a real native battle completed with verdict 1, 424 ticks, deterministic digest `51e884a485594c298aeac65aafab1d8504b32aa8c2e23b21cf0e0d7dd36cc9ad`. The result explicitly refuses an unproven inventory certificate.

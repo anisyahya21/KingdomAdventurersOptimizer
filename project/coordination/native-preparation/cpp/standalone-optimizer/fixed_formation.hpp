@@ -29,6 +29,7 @@ std::vector<Json> fixed_formation_mutation_specs();
 
 // Throws std::runtime_error when the raw scenario is not the one fixed search point for its encounter.
 void validate_fixed_formation_raw(const Json& raw);
+Json mutate_fixed_formation_stat(const Json& parent, const std::string& parameter, std::int64_t step);
 
 // Canonical identity of everything the policy lets the search vary plus the fight identity.
 std::string fixed_formation_identity(const Json& raw);

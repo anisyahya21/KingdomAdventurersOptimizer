@@ -1,5 +1,7 @@
 #include "pipeline.hpp"
 #include "fixed_formation.hpp"
+#include "effective_combat_features.hpp"
+#include "mechanism_objective.hpp"
 
 #include <algorithm>
 #include <atomic>
@@ -26,7 +28,6 @@
 #include <thread>
 #include <time.h>
 #include <unordered_set>
-#include <utility>
 #include <vector>
 #ifdef _WIN32
 #ifndef NOMINMAX
@@ -57,21 +58,16 @@ struct Candidate {
 struct Job { Candidate candidate; Json scenario; Json snapshot; std::int64_t seed; Json seeds; };
 struct Done { Job job; Json record; Json diagnostic; };
 struct ScoreStats { std::map<std::string, double> outcomesByTrial; std::map<std::string,std::string> basisByTrial; };
-struct ArmStats {
-    std::uint64_t tries=0, improvements=0;
-    std::uint64_t lastMatchedSamples=0, lastMissingChildPairs=0, lastMissingParentPairs=0;
-    std::string lastChildId, lastParentId;
-    std::optional<double> lastMeanPairedDelta;
-    bool lastJudgmentComplete=false;
-};
-struct PairedJudgment {
-    std::uint64_t matchedSamples=0, missingChildPairs=0, missingParentPairs=0;
-    long double deltaSum=0;
-    std::optional<double> meanDelta;
-    bool complete=false;
+struct ArmStats { std::uint64_t tries=0, improvements=0; };
+struct ForestNode { int left=-1,right=-1,feature=-1; double threshold=0.0,value=0.0; };
+struct ProspectiveForest {
+    std::vector<std::string> featureNames;
+    std::vector<std::vector<ForestNode>> trees;
+    std::string artifactSha256, sourceStateSha256;
+    double predict(const Json& normalizedFeatures) const;
 };
 struct EncounterWork {
-    std::uint64_t candidates=0, accepted=0, queued=0, active=0, pendingSave=0, completed=0, drainedJobs=0;
+    std::uint64_t candidates=0, accepted=0, queued=0, active=0, pendingSave=0, completed=0;
 };
 struct RuntimeFocus {
     bool all=true, pause=false, stop=false;
@@ -92,6 +88,61 @@ long double mean_score(const ScoreStats& s) {
 }
 
 std::string canonical(const Json& j) { return j.dump(-1, ' ', false, Json::error_handler_t::strict); }
+std::string feature_scalar(const Json& v) {
+    if(v.is_null()) return "None";
+    if(v.is_string()) return v.get<std::string>();
+    if(v.is_boolean()) return v.get<bool>()?"True":"False";
+    return v.dump();
+}
+std::map<std::string,double> prospective_features(const Json& normalized) {
+    const auto flat=flatten_effective_combat_features(normalized);
+    std::map<std::string,double> features;
+    for(auto it=flat.begin();it!=flat.end();++it) features.emplace(it.key(),it.value().get<double>());
+    return features;
+}
+ProspectiveForest load_prospective_forest(const std::string& path,const std::string& expectedSha,const std::string& expectedStateSha) {
+    std::ifstream in(path,std::ios::binary); if(!in) throw std::runtime_error("cannot open prospective predictor JSON");
+    const std::string bytes((std::istreambuf_iterator<char>(in)),{}); const auto actual=sha256_text(bytes);
+    if(actual!=expectedSha) throw std::runtime_error("prospective predictor artifact SHA-256 mismatch");
+    const auto j=Json::parse(bytes);
+    if(j.value("schema",std::string{})!="kaopt-portable-extra-trees-effective-combat-1"||
+       j.value("sourceStateSha256",std::string{})!=expectedStateSha||!j.contains("featureNames")||!j["featureNames"].is_array()||
+       !j.contains("forest")||!j["forest"].is_array()||j["forest"].empty())
+        throw std::runtime_error("prospective predictor schema/source checkpoint mismatch");
+    ProspectiveForest f; f.artifactSha256=actual; f.sourceStateSha256=expectedStateSha;
+    std::set<std::string> unique;
+    for(const auto& x:j["featureNames"]) { if(!x.is_string()||!unique.insert(x.get<std::string>()).second) throw std::runtime_error("prospective feature list malformed/duplicated"); f.featureNames.push_back(x.get<std::string>()); }
+    for(const auto& tree:j["forest"]) {
+        if(!tree.is_object()) throw std::runtime_error("prospective forest tree is malformed");
+        const auto& left=tree.at("left"); const auto& right=tree.at("right"); const auto& feature=tree.at("feature");
+        const auto& threshold=tree.at("threshold"); const auto& value=tree.at("value");
+        if(!left.is_array()||left.empty()||right.size()!=left.size()||feature.size()!=left.size()||threshold.size()!=left.size()||value.size()!=left.size())
+            throw std::runtime_error("prospective forest node arrays are inconsistent");
+        std::vector<ForestNode> nodes; nodes.reserve(left.size());
+        for(std::size_t i=0;i<left.size();++i) {
+            ForestNode q; q.left=left[i].get<int>(); q.right=right[i].get<int>(); q.feature=feature[i].get<int>();
+            q.threshold=threshold[i].get<double>(); q.value=value[i].get<double>();
+            if(!std::isfinite(q.threshold)||!std::isfinite(q.value)||q.left>=static_cast<int>(left.size())||q.right>=static_cast<int>(left.size())||q.feature>=static_cast<int>(f.featureNames.size()))
+                throw std::runtime_error("prospective forest node is outside its bounds");
+            nodes.push_back(q);
+        }
+        f.trees.push_back(std::move(nodes));
+    }
+    return f;
+}
+double ProspectiveForest::predict(const Json& normalizedFeatures) const {
+    const auto values=prospective_features(normalizedFeatures); long double sum=0.0L;
+    for(const auto& tree:trees) {
+        int i=0; std::size_t steps=0;
+        while(tree[i].left>=0&&tree[i].right>=0) {
+            const auto& node=tree[i]; const auto it=values.find(featureNames.at(static_cast<std::size_t>(node.feature)));
+            const double x=it==values.end()?0.0:static_cast<double>(static_cast<float>(it->second)); i=x<=node.threshold?node.left:node.right;
+            if(++steps>tree.size()) throw std::runtime_error("prospective forest has a cycle");
+        }
+        sum+=tree[i].value;
+    }
+    return static_cast<double>(sum/static_cast<long double>(trees.size()));
+}
 bool current_thread_cpu_ns(std::uint64_t& value) {
 #ifdef _WIN32
     FILETIME creation{}, exit{}, kernel{}, user{};
@@ -434,10 +485,7 @@ std::vector<std::int64_t> probe_values(const Json& request,const char* values_ke
     }
     return probe_default_ladder(scenario,unit_index,axis,points);
 }
-std::string identity(const Json& raw) {
-    if (fixed_formation_enabled()) return fixed_formation_identity(raw);
-    return sha256_text(canonical(raw));
-}
+std::string identity(const Json& raw) { return fixed_formation_enabled()?fixed_formation_identity(raw):sha256_text(canonical(raw)); }
 std::string encounter_key(const Json& raw) {
     if (!raw.is_object() || !raw.contains("encounterId") || !raw.at("encounterId").is_number_integer())
         throw std::runtime_error("raw scenario must contain an integer encounterId for per-encounter selection");
@@ -578,6 +626,53 @@ std::uint64_t timing_value(const Json& j, const char* key) {
     return 0;
 }
 
+void validate_synthetic_dps_prepared(const Json& raw,const Json& prepared) {
+    if(!fixed_formation_enabled()) return;
+    validate_fixed_formation_raw(raw);
+    // Controlled frozen values are also checked in the run-specific admission hook.
+    if(!prepared.is_object()||!prepared.contains("ownFormationOrder")||!prepared.at("ownFormationOrder").is_array()||prepared.at("ownFormationOrder").size()!=6||
+       !prepared.contains("ownUnits")||!prepared.at("ownUnits").is_array()||prepared.at("ownUnits").size()!=6)
+        throw std::runtime_error("prepared Synthetic-DPS formation/order is malformed");
+    std::set<std::size_t> preparedIndices;
+    for(const auto& index:prepared.at("ownFormationOrder")) {
+        if(!index.is_number_integer()) throw std::runtime_error("prepared Synthetic-DPS formation index is not an integer");
+        const auto value=index.get<std::int64_t>();
+        if(value<0||value>=6||!preparedIndices.insert(static_cast<std::size_t>(value)).second)
+            throw std::runtime_error("prepared Synthetic-DPS formation order is not a six-unit permutation");
+    }
+    for(std::size_t index=0;index<6;++index) {
+        const Json* found=nullptr;
+        for(const auto& unit:prepared.at("ownUnits")) if(unit.value("incomingIndex",std::size_t(999))==index) { found=&unit; break; }
+        if(!found) throw std::runtime_error("prepared Synthetic-DPS roster lost an incoming unit");
+        const auto& source=raw.at("ownUnits").at(index);
+        for(const char* key:{"name","weaponId","equipment","skills","invocationLevels","parameters"})
+            if(!source.contains(key)||!found->contains(key)||source.at(key)!=found->at(key))
+                throw std::runtime_error(std::string("prepared Synthetic-DPS unit changed fixed field ")+key);
+    }
+}
+
+void validate_controlled_dps_stat_child(const Json& parent,const Json& child,const Json& spec) {
+    if(spec.value("op",std::string{})!="synthetic-dps-stat-target"||spec.value("unitIndex",std::size_t(999))!=0)
+        throw std::runtime_error("controlled learner emitted a non-stat or non-DPS action");
+    const auto parameter=spec.at("parameter").get<std::string>();
+    if(parameter!="13"&&parameter!="15"&&parameter!="16")
+        throw std::runtime_error("controlled learner attempted to change an unfixed DPS stat");
+    Json expected=parent;
+    const auto& changed=child.at("ownUnits").at(0).at("parameters").at(parameter);
+    if(!changed.contains("rawValue")||!changed["rawValue"].is_number_integer())
+        throw std::runtime_error("controlled learner child has no integer DPS raw value");
+    if(changed["rawValue"]!=spec.at("target"))
+        throw std::runtime_error("controlled learner child raw value differs from selected target");
+    // Compare the whole scenario, retaining the complete parameter object. Only the selected
+    // rawValue may differ; rawMax, equipment extras, trainingLevel, skills, and every other field
+    // remain byte-structurally equal to the parent.
+    expected["ownUnits"][0]["parameters"][parameter]["rawValue"]=changed["rawValue"];
+    if(expected!=child)throw std::runtime_error("controlled learner child changed a field beyond the selected stat rawValue");
+    const auto value=changed["rawValue"].get<std::int64_t>();
+    if(value<spec.at("minimum").get<std::int64_t>()||value>spec.at("maximum").get<std::int64_t>())
+        throw std::runtime_error("controlled learner stat target is outside its verified wall");
+}
+
 void commit_json_file(const fs::path& temporary, const fs::path& target) {
 #ifdef _WIN32
     DWORD error=ERROR_SUCCESS;
@@ -610,12 +705,22 @@ void write_status(const fs::path& output, const Json& value) {
 Json mutate(const Json& parent, const Json& spec, std::uint64_t ordinal) {
     Json child = parent;
     const auto op=spec.value("op",std::string("integer-step"));
-    // Fixed-formation policy: the ONLY legal generated change is one Synthetic DPS raw stat, still
-    // inside the embedded walls. Every other operator is unreachable because the search is seeded
-    // with fixed-dps-stat arms only and admission refuses non-compliant scenarios.
-    if(op=="fixed-dps-stat") {
-        if(!spec.contains("parameter")||!spec["parameter"].is_string()) throw std::runtime_error("fixed-dps-stat requires a parameter id");
-        return mutate_fixed_formation_parameter(parent,spec["parameter"].get<std::string>(),ordinal);
+    if(op=="synthetic-dps-stat-target") {
+        if(!fixed_formation_enabled()||spec.value("unitIndex",999)!=0)throw std::runtime_error("controlled DPS target requires fixed profile");
+        const auto id=spec.at("parameter").get<std::string>();
+        if(id!="13"&&id!="15"&&id!="16")throw std::runtime_error("controlled DPS target may change only ATK/SPD/LCK");
+        const auto current=parent.at("ownUnits").at(0).at("parameters").at(id).at("rawValue").get<std::int64_t>();
+        const auto target=spec.at("target").get<std::int64_t>();
+        if(target==current)return parent;
+        return mutate_fixed_formation_stat(parent,id,target-current);
+    }
+    if(op=="synthetic-dps-stat-step") {
+        if(!fixed_formation_enabled()) throw std::runtime_error("Synthetic-DPS stat mutation requires the explicit fixed profile");
+        const auto unit=spec.at("unitIndex").get<std::size_t>();
+        const auto id=spec.at("parameter").get<std::string>();
+        const auto step=spec.at("step").get<std::int64_t>();
+        if(unit!=0) throw std::runtime_error("Synthetic-DPS mutation unit must be the fixed DPS at roster index zero");
+        return mutate_fixed_formation_stat(parent,id,step);
     }
     if(op=="swap") {
         const auto pointer=Json::json_pointer(spec.at("pointer").get<std::string>());
@@ -823,27 +928,28 @@ struct JoinOnExit {
     }
 };
 
-// Scoped activation of the fixed-formation policy for a single CLI proposal request.
-struct FixedFormationScope {
-    bool previous;
-    explicit FixedFormationScope(bool enabled) : previous(fixed_formation_enabled()) {
-        if (enabled) set_fixed_formation_enabled(true);
-    }
-    ~FixedFormationScope() { set_fixed_formation_enabled(previous); }
-    FixedFormationScope(const FixedFormationScope&) = delete;
-    FixedFormationScope& operator=(const FixedFormationScope&) = delete;
-};
-
 } // namespace
+
+Json predict_portable_forest(const std::string& modelPath,const std::string& modelSha256,
+                             const std::string& sourceStateSha256,const Json& featureRows) {
+    if(!featureRows.is_array()) throw std::runtime_error("portable forest parity input must be an array");
+    const auto forest=load_prospective_forest(modelPath,modelSha256,sourceStateSha256);
+    Json output=Json::array();
+    for(const auto& row:featureRows) {
+        if(!row.is_object()||!row.contains("features")) throw std::runtime_error("portable forest parity row lacks features");
+        output.push_back(Json{{"candidateId",row.value("candidateId",std::string{})},
+                              {"prediction",forest.predict(row.at("features"))}});
+    }
+    return Json{{"schema","kaopt-portable-forest-native-parity-1"},
+                {"modelSha256",forest.artifactSha256},{"sourceStateSha256",forest.sourceStateSha256},
+                {"rowCount",output.size()},{"predictions",std::move(output)}};
+}
 
 Json propose(const Json& raw,const Json& tables,const Json& request) {
     try {
         if(!request.is_object()) throw std::runtime_error("proposal request must be an object");
-        const bool fixedFormation=request.value("fixedFormation",false);
-        const FixedFormationScope fixedScope(fixedFormation);
         const std::string mode=request.value("mode",std::string("search"));
         if(mode!="search"&&mode!="tuning"&&mode!="skills"&&mode!="evaluate"&&mode!="probe") throw std::runtime_error("mode must be search, tuning, skills, evaluate or probe");
-        if(fixedFormation&&mode!="search"&&mode!="evaluate") throw std::runtime_error("fixed-formation policy supports only search or evaluate proposals");
         if(request.contains("count")&&(!request["count"].is_number_integer()||request["count"].is_boolean()||request["count"].get<std::int64_t>()<1||request["count"].get<std::int64_t>()>1000000000LL)) throw std::runtime_error("count must be a positive integer");
         if(mode=="search"&&request.contains("count")&&request["count"].get<std::int64_t>()>256) throw std::runtime_error("search proposal count must be at most 256");
         if(mode=="skills"&&(!request.contains("count")||request["count"].get<std::int64_t>()<128)) throw std::runtime_error("skill experiments require at least 128 paired seeds per arm");
@@ -1007,7 +1113,7 @@ Json propose(const Json& raw,const Json& tables,const Json& request) {
             count=specs.size();
             if(count==0) throw std::runtime_error("this intent has no human skills to remove");
         } else if(mode=="evaluate") { specs=Json::array(); count=0; }
-        else if(specs.empty()) specs=fixedFormation?fixed_formation_mutation_specs():native_mutations(Json::array({raw}),&proposalBounds);
+        else if(specs.empty()) specs=native_mutations(Json::array({raw}),&proposalBounds);
         Json parent=admit(raw,tables);
         Json parentPreparation=prepare(parent,tables,mode=="probe",&raw);
         if(has_error(parentPreparation)) throw std::runtime_error("parent failed canonical native preparation");
@@ -1321,6 +1427,15 @@ int run(const Json& config) {
         const fs::path tablesPath(required_string(config, "tables"));
         const std::string kernel = required_string(config, "kernelPath");
         const fs::path outDir(required_string(config, "outputDir"));
+        const std::string candidateProfile=config.value("candidateProfile",std::string{});
+        const bool syntheticDpsProfile=(candidateProfile=="synthetic-dps-fixed-formation-v1");
+        const bool mechanismLearnerRequested=config.value("objectiveMode",std::string("earned-only-v1"))=="mechanism-lanes-v3";
+        bool controlledDpsLearnerSearch=false;
+        if(config.contains("candidateProfile")&&!syntheticDpsProfile)
+            throw std::runtime_error("unsupported candidateProfile; this binary only implements synthetic-dps-fixed-formation-v1");
+        set_fixed_formation_enabled(syntheticDpsProfile);
+        if(syntheticDpsProfile&&config.value("fixedFormationPolicyHash",std::string{})!=fixed_formation_policy_hash())
+            throw std::runtime_error("fixedFormationPolicyHash does not match the embedded Synthetic-DPS policy");
         const auto workers = positive(config, "executors", 256);
         const auto generations = positive(config, "generations", 100000);
         auto seedCount = positive(config, "seedCount", 1000000);
@@ -1329,28 +1444,42 @@ int run(const Json& config) {
         if(!seedPairs.is_array()) throw std::runtime_error("seedPairs must be an array of ordered [mathSeed,libSeed] pairs");
         if(!seedPairs.empty()) {
             if(seedPairs.size()>1000000) throw std::runtime_error("seedPairs exceeds 1000000 pairs");
-            std::set<std::pair<std::int64_t,std::int64_t>> uniqueSeedPairs;
-            for(const auto& pair:seedPairs) {
-                if(!pair.is_array()||pair.size()!=2||!pair[0].is_number_integer()||pair[0].is_boolean()||
-                   !pair[1].is_number_integer()||pair[1].is_boolean()||pair[0].get<std::int64_t>()<0||
-                   pair[1].get<std::int64_t>()<0||pair[0].get<std::int64_t>()>2147483647LL||
-                   pair[1].get<std::int64_t>()>2147483647LL)
-                    throw std::runtime_error("each seedPairs entry must contain two nonnegative signed31 seeds");
-                if(!uniqueSeedPairs.emplace(pair[0].get<std::int64_t>(),pair[1].get<std::int64_t>()).second)
-                    throw std::runtime_error("seedPairs must be unique to avoid counting duplicate paired battles as independent evidence");
-            }
+            for(const auto& pair:seedPairs) if(!pair.is_array()||pair.size()!=2||!pair[0].is_number_integer()||!pair[1].is_number_integer()||pair[0].get<std::int64_t>()<0||pair[1].get<std::int64_t>()<0||pair[0].get<std::int64_t>()>2147483647LL||pair[1].get<std::int64_t>()>2147483647LL) throw std::runtime_error("each seedPairs entry must contain two nonnegative signed31 seeds");
             seedCount=seedPairs.size();
+            if(!config.contains("seedPointers")&&seedPairs.size()&&seedPairs[0].size()!=2) throw std::runtime_error("seedPairs requires two seed pointers");
         }
         if (seedPairs.empty() && (seedStart < 0 || seedStart > 2147483647LL || seedCount - 1 > static_cast<std::uint64_t>(2147483647LL - seedStart)))
             throw std::runtime_error("seed range must remain nonnegative signed 31-bit");
         Json provenance = config.value("provenance", Json::object());
         validate_provenance(provenance);
-        // Fixed-formation policy (latest user scope): activated before any admission or identity
-        // computation so the whole search runs under the pinned policy.
-        const bool fixedFormation=config.value("fixedFormation",false);
-        if(fixedFormation) set_fixed_formation_enabled(true);
         Json mutations = config.value("mutations", Json::array());
         if (!mutations.is_array()) throw std::runtime_error("mutations must be an array");
+        if(syntheticDpsProfile) {
+            if(!mutations.empty()) throw std::runtime_error("Synthetic-DPS profile owns its mutation list; external mutation overrides are refused");
+            const auto bounds=fixed_formation_searchable_parameters();
+            const auto controlled=config.value("syntheticDpsSearch",Json(nullptr));
+            if(controlled.is_null()) {
+                for(const auto& [parameter,wall]:bounds) for(const auto step:{-5LL,-1LL,1LL,5LL})
+                    mutations.push_back(Json{{"op","synthetic-dps-stat-step"},{"unitIndex",0},{"parameter",parameter},{"step",step},
+                        {"minimum",wall.first},{"maximum",wall.second}});
+            } else {
+                controlledDpsLearnerSearch=mechanismLearnerRequested;
+                const Json requiredFixed={{"10",2500},{"11",2500},{"14",2500},{"19",18}};
+                if(!controlled.is_object()||controlled.value("fixedParameters",Json(nullptr))!=requiredFixed||controlled.value("mutableParameters",Json(nullptr))!=Json::array({"13","15","16"}))
+                    throw std::runtime_error("controlled DPS search requires HP/MP/DEF2500 DEX18 and only ATK/SPD/LCK mutable");
+                if(controlledDpsLearnerSearch) {
+                    // The active mechanism learner materializes legal candidates from its scale
+                    // ladder after selecting a parent. This placeholder keeps the legacy
+                    // proposal plumbing nonempty until that per-parent candidate set is built.
+                    const auto wall=bounds.at("13");
+                    mutations.push_back(Json{{"op","synthetic-dps-stat-target"},{"unitIndex",0},{"parameter","13"},{"target",wall.first},{"minimum",wall.first},{"maximum",wall.second}});
+                } else for(const auto& parameter:controlled["mutableParameters"]) {
+                    const auto id=parameter.get<std::string>();const auto wall=bounds.at(id);const auto span=wall.second-wall.first;
+                    for(int q=0;q<=16;++q)mutations.push_back(Json{{"op","synthetic-dps-stat-target"},{"unitIndex",0},{"parameter",id},{"target",wall.first+span*q/16},{"minimum",wall.first},{"maximum",wall.second}});
+                    for(const auto divisor:{64LL,16LL,4LL})for(const auto sign:{-1LL,1LL})mutations.push_back(Json{{"op","synthetic-dps-stat-step"},{"unitIndex",0},{"parameter",id},{"step",sign*std::max(1LL,span/divisor)},{"minimum",wall.first},{"maximum",wall.second}});
+                }
+            }
+        }
         const std::string searchProfile=config.value("searchProfile",std::string("legacy"));
         if(searchProfile!="legacy"&&searchProfile!="adaptive-native") throw std::runtime_error("searchProfile must be legacy or adaptive-native");
         const std::string searchScheduling=config.value("searchScheduling",std::string("encounter-wave"));
@@ -1411,6 +1540,8 @@ int run(const Json& config) {
             } else if(op=="remove-skill-group") { if(!m.contains("slots")||!m["slots"].is_array()) throw std::runtime_error("remove-skill-group mutation requires slots");
             } else if(op=="set-axis") { if(!m.contains("axis")||!m["axis"].is_string()||!m.contains("value")) throw std::runtime_error("set-axis mutation requires axis and value");
             } else if(op=="stat-step") { if(!m.contains("unitIndex")||!m.contains("parameter")||!m.contains("step")||!m.contains("effectiveBounds")) throw std::runtime_error("stat-step mutation requires unitIndex, parameter, step and original effective bounds");
+            } else if(op=="synthetic-dps-stat-target") { if(!syntheticDpsProfile||!config.contains("syntheticDpsSearch")||!m.contains("target"))throw std::runtime_error("DPS target requires controlled profile");
+            } else if(op=="synthetic-dps-stat-step") { if(!syntheticDpsProfile||m.value("unitIndex",std::size_t(999))!=0||!m.contains("parameter")||!m.contains("step")) throw std::runtime_error("synthetic-dps-stat-step is allowed only for the explicit fixed Synthetic-DPS profile and unit 0");
             } else throw std::runtime_error("unsupported mutation op: "+op);
         }
         Json seedPointers = config.value("seedPointers", Json::array({"/mathSeed", "/libSeed"}));
@@ -1425,15 +1556,36 @@ int run(const Json& config) {
             return a==b || (a.size()<b.size() && b.compare(0,a.size(),a)==0 && b[a.size()]=='/') ||
                 (b.size()<a.size() && a.compare(0,b.size(),b)==0 && a[b.size()]=='/');
         };
-        if(!seedPairs.empty()) {
-            if(seedPointers.size()!=2) throw std::runtime_error("ordered seedPairs require exactly two seedPointers");
-            for(std::size_t i=0;i<seedPointers.size();++i) for(std::size_t j=i+1;j<seedPointers.size();++j)
-                if(overlaps(seedPointers[i].get<std::string>(),seedPointers[j].get<std::string>()))
-                    throw std::runtime_error("ordered seedPairs seedPointers must be distinct and non-overlapping; aliased pointers can collapse different pairs to the same trial identity");
-        }
         for(const auto& m:mutations)for(const auto& p:seedPointers)
             if((m.value("op",std::string("integer-step"))=="integer-step"||m.value("op",std::string("integer-step"))=="set-value")&&overlaps(m.at("pointer").get<std::string>(),p.get<std::string>()))
                 throw std::runtime_error("mutation overlaps a configured seed pointer");
+        const auto objectiveMode=config.value("objectiveMode",std::string("earned-only-v1"));
+        const bool mechanismLanes=objectiveMode=="mechanism-lanes-v3";
+        if(!mechanismLanes&&objectiveMode!="earned-only-v1")throw std::runtime_error("unsupported objectiveMode");
+        if(controlledDpsLearnerSearch&&(!mechanismLanes||!syntheticDpsProfile))
+            throw std::runtime_error("controlled original learner requires mechanism-lanes-v3 and the fixed Synthetic-DPS profile");
+        const auto commonLearnerPriorPath=config.value("commonLearnerPriorPath",std::string{});
+        const auto commonLearnerPriorSha256=config.value("commonLearnerPriorSha256",std::string{});
+        Json commonLearnerPrior=Json::object();
+        if(commonLearnerPriorPath.empty()!=commonLearnerPriorSha256.empty())
+            throw std::runtime_error("common learner prior path and SHA-256 must be supplied together");
+        if(!commonLearnerPriorPath.empty()) {
+            std::ifstream input(commonLearnerPriorPath,std::ios::binary);
+            if(!input)throw std::runtime_error("common learner prior cannot be opened");
+            std::string bytes((std::istreambuf_iterator<char>(input)),std::istreambuf_iterator<char>());
+            if(sha256_text(bytes)!=commonLearnerPriorSha256)throw std::runtime_error("common learner prior SHA-256 mismatch");
+            commonLearnerPrior=Json::parse(bytes);
+            if(commonLearnerPrior.value("schema",std::string{})!="ka-mechanism-learner-prior-1"||
+               commonLearnerPrior.value("objectiveMode",std::string{})!="mechanism-lanes-v3"||
+               !commonLearnerPrior.value("operatorStats",Json(nullptr)).is_object()||
+               !commonLearnerPrior.value("statScales",Json(nullptr)).is_object()||
+               !commonLearnerPrior.value("statAnchors",Json(nullptr)).is_object()||
+               !commonLearnerPrior.value("sourceIdentity",Json(nullptr)).is_object())
+                throw std::runtime_error("common learner prior schema or provenance is incomplete");
+            for(const char* field:{"historicalStateSha256","historicalFeaturesSha256","pilotRowsSha256","campaignAggregateSha256","campaignManifestSha256"})
+                if(!commonLearnerPrior["sourceIdentity"].contains(field)||!commonLearnerPrior["sourceIdentity"][field].is_string()||commonLearnerPrior["sourceIdentity"][field].get<std::string>().size()!=64)
+                    throw std::runtime_error(std::string("common learner prior source hash is missing or malformed: ")+field);
+        }
         const auto scorePointerText = config.value("scorePointer", std::string("/earned"));
         const Json::json_pointer scorePointer(scorePointerText);
         const bool comparisonOptIn = config.contains("comparison");
@@ -1482,21 +1634,40 @@ int run(const Json& config) {
             }
             return true;
         };
+        const auto mechanism_observation_eligible=[&](const Json& row) {
+            if(!strategyPurpose||!row.is_object()||!row.contains("result")||!row["result"].is_object()||
+               !row["result"].contains("report")||!row["result"]["report"].is_object())return false;
+            const auto& report=row["result"]["report"];
+            if(!report.contains("verdict")||!report["verdict"].is_number_integer()||
+               (report["verdict"]!=1&&report["verdict"]!=2))return false;
+            const auto forbidden=[](const Json& value) {
+                return value.is_object()&&(value.value("diagnostic",false)||value.value("verificationOnly",false)||
+                    value.value("verification_only",false)||value.value("verified",true)==false);
+            };
+            if(forbidden(row)||forbidden(row["result"])||forbidden(report))return false;
+            for(const char* field:{"rawScenario","candidateScenario"})if(row.contains(field)&&forbidden(row[field]))return false;
+            return true;
+        };
         const auto inputLoadStart = std::chrono::steady_clock::now();
         std::ifstream rawFile(rawPath, std::ios::binary), tablesFile(tablesPath, std::ios::binary);
         if (!rawFile || !tablesFile) throw std::runtime_error("cannot open input JSON file");
         Json raws = Json::parse(rawFile), tables = Json::parse(tablesFile);
+        if(config.contains("syntheticDpsSearch")) {
+            if(!raws.is_array())throw std::runtime_error("controlled search raw candidates must be an array");
+            const auto fixed=config["syntheticDpsSearch"].at("fixedParameters");
+            for(const auto& raw:raws)for(auto f=fixed.begin();f!=fixed.end();++f){
+                const auto& entry=raw.at("ownUnits").at(0).at("parameters").at(f.key());
+                if(entry.at("rawValue")!=f.value()||entry.value("extraValue",0)!=0||entry.value("extraMax",0)!=0||((f.key()=="10"||f.key()=="11")&&entry.at("rawMax")!=f.value()))
+                    throw std::runtime_error("controlled DPS fixed-stat mismatch at parameter "+f.key());
+            }
+        }
         const auto inputJsonLoadWallNs = static_cast<std::uint64_t>(std::chrono::duration_cast<std::chrono::nanoseconds>(
             std::chrono::steady_clock::now() - inputLoadStart).count());
         if (!raws.is_array() || raws.empty()) throw std::runtime_error("rawCandidates must be a nonempty JSON array");
         if (raws.size() > 100000) throw std::runtime_error("raw candidate input limit is 100000");
-        // Refuse to start at all under the fixed policy when any supplied candidate is not the fixed
-        // formation for its encounter; a historical equipped cast must never enter the search.
-        if(fixedFormation) for(const auto& raw:raws) validate_fixed_formation_raw(raw);
         const SearchBounds generatedBounds=load_search_bounds(config);
-        if(fixedFormation) {
-            mutations=fixed_formation_mutation_specs();
-        } else if(searchProfile=="adaptive-native") {
+        if(syntheticDpsProfile) for(const auto& raw:raws) validate_fixed_formation_raw(raw);
+        if(searchProfile=="adaptive-native"&&!syntheticDpsProfile) {
             const auto generated=native_mutations(raws,&generatedBounds);
             for(const auto& spec:generated) {
                 const auto sig=spec.dump();
@@ -1511,22 +1682,84 @@ int run(const Json& config) {
             {"selection",searchProfile=="adaptive-native"?"mean-elitism-with-uniform-exploration":"mean-earned-elitism"},{"unscoredParentPolicy","minimum-strategy-sha"},{"illegalMutationPolicy","skip-and-diagnose"},
             {"executionMode",executionMode},{"purpose",purpose},{"persistPreparedSnapshot",persistPreparedSnapshot},
             {"evidenceClassificationPolicy",strategyPurpose?"resolved-certified-loss-or-queued-at-victory-earned":"explicit-diagnostic-unscored"}};
+        runPolicy["candidateProfile"]=syntheticDpsProfile?Json(candidateProfile):Json(nullptr);
+        runPolicy["fixedFormationPolicyHash"]=syntheticDpsProfile?Json(fixed_formation_policy_hash()):Json(nullptr);
+        // Research-only additive parent prior. It is recorded in runPolicy for
+        // provenance but deliberately excluded from learningPolicy compatibility.
+        const bool historicalParentGuidance=config.value("historicalParentGuidance",false);
+        const Json historicalPriorScores=config.value("historicalParentPriorScores",Json::object());
+        const double historicalPriorMean=config.value("historicalParentPriorMean",0.0);
+        const double historicalPriorStd=config.value("historicalParentPriorStd",1.0);
+        const double historicalPriorStrength=config.value("historicalParentPriorStrength",0.10);
+        if(!historicalPriorScores.is_object()||!std::isfinite(historicalPriorMean)||
+           !std::isfinite(historicalPriorStd)||historicalPriorStd<=0||
+           !std::isfinite(historicalPriorStrength)||historicalPriorStrength<0||historicalPriorStrength>0.25)
+            throw std::runtime_error("historical parent prior calibration is invalid");
+        if(historicalParentGuidance) for(auto it=historicalPriorScores.begin();it!=historicalPriorScores.end();++it)
+            if(!it.value().is_number()||!std::isfinite(it.value().get<double>()))
+                throw std::runtime_error("historical parent prior score is not finite numeric data");
+        const std::string historicalSourceStateSha=config.value("historicalParentSourceStateSha256",std::string{});
+        if(historicalParentGuidance && (config.value("historicalParentModelSha256",std::string{}).size()!=64 ||
+           config.value("historicalParentPriorSha256",std::string{}).size()!=64 || historicalSourceStateSha.size()!=64 || historicalPriorScores.empty()))
+            throw std::runtime_error("historical parent guidance is missing its bound model, score-map, or source-state identity");
+        runPolicy["historicalParentGuidance"]={{"enabled",historicalParentGuidance},
+            {"modelSha256",config.value("historicalParentModelSha256",std::string{})},
+            {"scoreMapSha256",config.value("historicalParentPriorSha256",std::string{})},
+            {"sourceStateSha256",historicalSourceStateSha},
+            {"trainingMeanEarned",historicalPriorMean},{"trainingStdEarned",historicalPriorStd},
+            {"strengthOfNativeScoreStd",historicalPriorStrength},
+            {"priorClampTrainingStd",1.0},{"application",controlledDpsLearnerSearch?
+                "parent prior combined with the constrained original stat sampler; each treatment updates its own learner state":
+                "parent selection only; existing fifth-proposal exploration and mutation-arm UCB unchanged"}};
+        const bool prospectiveChildGuidance=config.value("prospectiveChildGuidance",false);
+        const bool prospectivePreflightOnly=config.value("prospectivePreflightOnly",false);
+        const std::uint64_t prospectiveScoringWorkers=prospectiveChildGuidance?
+            (config.contains("prospectiveScoringWorkers")?positive(config,"prospectiveScoringWorkers",16):1):1;
+        const std::uint64_t freshTrialBudget=config.contains("freshTrialBudget")?positive(config,"freshTrialBudget",1000000):0;
+        const std::string prospectiveModelPath=config.value("prospectiveModelPath",std::string{});
+        const std::string prospectiveModelSha=config.value("prospectiveModelSha256",std::string{});
+        const std::string prospectiveSourceStateSha=config.value("prospectiveSourceStateSha256",std::string{});
+        std::optional<ProspectiveForest> prospectiveForest;
+        Json experimentTreatment={{"kind",prospectiveChildGuidance?"historical-prospective-child-guidance":"native-control"},
+            {"enabled",prospectiveChildGuidance},{"modelSha256",prospectiveModelSha},
+            {"sourceStateSha256",prospectiveSourceStateSha},
+            {"selection","highest predicted native earned among prepared legal one-step children"}};
+        if(prospectiveChildGuidance) {
+            if(historicalParentGuidance) throw std::runtime_error("parent-prior guidance and prospective-child guidance cannot be combined in test-one");
+            if(prospectiveModelPath.empty()||prospectiveModelSha.size()!=64||prospectiveSourceStateSha.size()!=64)
+                throw std::runtime_error("prospective-child guidance requires bound model and source-state artifacts");
+            prospectiveForest=load_prospective_forest(prospectiveModelPath,prospectiveModelSha,prospectiveSourceStateSha);
+            experimentTreatment["featureSchema"]=prospectiveForest->featureNames.size();
+            experimentTreatment["sourceStateSha256"]=prospectiveForest->sourceStateSha256;
+            experimentTreatment["selection"]=controlledDpsLearnerSearch?
+                "highest model-predicted native earned over the same legal unique original-distribution ATK/SPD/LCK action set; ties use original learner mass then stable action order":
+                "highest model-predicted native earned over all legal unique one-step children of the selected parent; ties use native UCB then mutation-list order";
+        }
+        runPolicy["experimentTreatment"]=experimentTreatment;
+        runPolicy["prospectiveScoringWorkers"]=prospectiveScoringWorkers;
         runPolicy["statBoundsSource"]=generatedBounds.source;
         runPolicy["statBoundsSha256"]=generatedBounds.sourceHash;
         runPolicy["statBoundsAvailable"]=!generatedBounds.byParameter.empty();
         runPolicy["statBounds"]=stat_bounds_metadata(generatedBounds);
-        if(fixedFormation) {
-            runPolicy["fixedFormation"]=true;
-            runPolicy["fixedFormationPolicyHash"]=fixed_formation_policy_hash();
-            Json fixedStatBounds=Json::object();
-            for(const auto& entry:fixed_formation_searchable_parameters())
-                fixedStatBounds[entry.first]={{"minimum",entry.second.first},{"maximum",entry.second.second}};
-            runPolicy["fixedFormationStatBounds"]=fixedStatBounds;
-            runPolicy["selection"]="fixed-formation-mean-earned-elitism";
-        }
         if (comparisonOptIn) runPolicy["comparison"] = comparison;
+        if(mechanismLanes){runPolicy["objectiveMode"]=objectiveMode;runPolicy["objectiveVersion"]=3;}
+        if(config.contains("syntheticDpsSearch"))runPolicy["syntheticDpsSearch"]=config["syntheticDpsSearch"];
+        if(!commonLearnerPriorPath.empty())runPolicy["commonLearnerPrior"]={{"sha256",commonLearnerPriorSha256},
+            {"sourceIdentity",commonLearnerPrior.at("sourceIdentity")},
+            {"sourceOutcomeCounts",commonLearnerPrior.value("sourceOutcomeCounts",Json::object())},
+            {"eligibleParentChildPairs",commonLearnerPrior.value("eligibleParentChildPairs",Json(nullptr))}};
+        if(controlledDpsLearnerSearch) {
+            runPolicy["sampler"]="constrained-original-distribution";
+            runPolicy["mechanismLearner"]={{"mutableParameters",Json::array({"13","15","16"})},
+                {"fixedParameters",config["syntheticDpsSearch"]["fixedParameters"]},
+                {"scaleLadder",Json::array({1.05,1.15,1.4,2.0,3.0,0.95,0.7,0.5})},
+                {"duplicateTargetPolicy","merge action masses and retain each stat-scale component for outcome feedback"},
+                {"nativeChoice","weighted by normalized stat, scale, and direction probabilities"},
+                {"guidedChoice","highest portable-model prediction on the same unique legal action set; ties by learner mass"},
+                {"statScaleFeedback","preserve existing Python behavior: attempts/planned update; per-scale improved counter is not emitted"}};
+        }
         Json learningPolicy=runPolicy;
-        for(const char* key:{"seedPairs","seedStart","seedCount","generations","controlPath"}) learningPolicy.erase(key);
+        for(const char* key:{"seedPairs","seedStart","seedCount","generations","controlPath","historicalParentGuidance","experimentTreatment","prospectiveScoringWorkers"}) learningPolicy.erase(key);
         fs::create_directories(outDir);
         outputLock = std::make_unique<OutputLock>(outDir / ".pipeline.lock");
         write_status(outDir, Json{{"schema","kaopt-status-1"},{"state","running"},
@@ -1548,8 +1781,13 @@ int run(const Json& config) {
         std::unordered_set<std::string> learningCompleted;
         std::map<std::string, ScoreStats> scores;
         std::map<std::string, ScoreStats> freshScores;
+        Json mechanismAggregates=Json::object(),mechanismImprovements=Json::object();
+        Json mechanismOperatorStats=commonLearnerPrior.value("operatorStats",Json::object());
+        Json mechanismStatScales=commonLearnerPrior.value("statScales",Json::object());
+        Json mechanismStatAnchors=commonLearnerPrior.value("statAnchors",Json::object());
         std::vector<Candidate> resumedCandidates;
         std::unordered_set<std::string> resumedIds;
+        Json journalLearnerAttempts=Json::array();
         std::map<std::string, std::uint64_t> lastGenerationByEncounter;
         std::map<std::string,std::uint64_t> localCompletedByEncounter;
         std::set<std::string> importedCandidateIds;
@@ -1557,6 +1795,7 @@ int run(const Json& config) {
         std::map<std::string,ArmStats> importedMutationArms;
         Json importedSourceJournals=Json::array();
         Json importedPendingSeedPolicy=nullptr;
+        std::uint64_t experimentFreshTrialsCompleted=0;
         if (fs::exists(journalPath)) {
             std::ifstream in(journalPath, std::ios::binary);
             std::string line; std::uintmax_t goodBytes = 0;
@@ -1624,6 +1863,7 @@ int run(const Json& config) {
                     (!scored && (!r.contains("earned") || !r["earned"].is_null())) ||
                     (scored&&(!r.contains("observedEarned")||r["observedEarned"].get<double>()!=earned)))
                     throw std::runtime_error("journal Earned value does not match native result");
+                if(mechanismLanes&&mechanism_observation_eligible(r))mechanism::observe(mechanismAggregates,r);
                 if (scored) {
                     auto& stats=scores[r["strategyId"].get<std::string>()];
                     auto& trials = stats.outcomesByTrial;
@@ -1639,6 +1879,9 @@ int run(const Json& config) {
                         r.value("parentCandidateId", std::string()),
                         r.value("generation", std::uint64_t(0)),
                         r.value("mutation", std::string("resumed")),r.value("sourceBinding",Json::object())});
+                    if(controlledDpsLearnerSearch&&r.value("generation",std::uint64_t(0))>0&&r.contains("mutation")&&r["mutation"].is_string())
+                        journalLearnerAttempts.push_back(Json{{"strategyId",r["strategyId"]},{"encounter",encounter},
+                            {"operation",Json::parse(r["mutation"].get<std::string>())}});
                 }
                 goodBytes += line.size() + 1;
             }
@@ -1655,12 +1898,38 @@ int run(const Json& config) {
                 throw std::runtime_error("searchStatePath schema is not kaopt-search-state-1");
             Json stateProvenance=state.value("provenance",Json::object()), compatibleProvenance=provenance;
             for(const char* key:{"rawCandidatesSha256","candidateMetadataSha256","policySha256"}) { stateProvenance.erase(key); compatibleProvenance.erase(key); }
+            // This isolated research build is derived from the exact pinned r23
+            // executable. Permit that one explicitly declared build transition
+            // while still requiring all mechanics/kernel/table/ABI/policy fields
+            // and every source-journal hash/count to match exactly.
+            constexpr const char* pinnedR23ExecutableSha256="21889daeec64f7d1fd47d058d1760912c7822c2f06f79bedcca375e551231117";
+            constexpr const char* priorTestOneDerivedExecutableSha256="bddd680544a7b0f03119a29eac007e4f6fdb34543a49e584b4aa53106f2bdcfe";
+            constexpr const char* priorBatchChainExecutableSha256="6115bac5d0d7523f82754f1bd455a3f14a715a91349bb518fe784b1abd9940da";
+            const std::string declaredBaseExecutable=config.value("searchStateBaseExecutableSha256",std::string{});
+            if(declaredBaseExecutable!=pinnedR23ExecutableSha256)
+                throw std::runtime_error("derived research build lacks the pinned r23 source-executable identity bridge");
+            const std::string activeExecutable=provenance.value("actualExecutableSha256",std::string{});
+            if(config.value("searchStateDerivedExecutableSha256",std::string{})!=activeExecutable)
+                throw std::runtime_error("derived research executable SHA does not match the running binary");
+            auto normalizeExecutableIdentity=[&](Json& p) {
+                if(!p.contains("actualExecutableSha256")||!p["actualExecutableSha256"].is_string()) return false;
+                const auto sourceExecutable=p["actualExecutableSha256"].get<std::string>();
+                if(sourceExecutable!=pinnedR23ExecutableSha256&&sourceExecutable!=priorTestOneDerivedExecutableSha256&&sourceExecutable!=priorBatchChainExecutableSha256&&sourceExecutable!=activeExecutable) return false;
+                p["actualExecutableSha256"]=activeExecutable;
+                return true;
+            };
+            if(!normalizeExecutableIdentity(stateProvenance)||!normalizeExecutableIdentity(compatibleProvenance))
+                throw std::runtime_error("searchStatePath executable identity is outside the explicit r23-derived build bridge");
             if(stateProvenance!=compatibleProvenance) throw std::runtime_error("searchStatePath kernel, mechanics, tables, ABI, arena, or policy provenance is incompatible");
             if(state.value("learningPolicy",Json(nullptr))!=learningPolicy)
                 throw std::runtime_error("searchStatePath search operators, reward policy, scheduler, adaptive scope, or evidence policy is incompatible");
+            const Json experimentTreatment=runPolicy.value("experimentTreatment",Json::object());
+            if(state.contains("experimentTreatment")&&state["experimentTreatment"]!=experimentTreatment)
+                throw std::runtime_error("searchStatePath belongs to a different predictor-guidance treatment");
             if(!state.contains("sourceJournals")||!state["sourceJournals"].is_array())
                 throw std::runtime_error("searchStatePath is missing source journal integrity references");
             importedSourceJournals=state["sourceJournals"];
+            experimentFreshTrialsCompleted=state.value("experimentFreshTrialsCompleted",std::uint64_t(0));
             for(const auto& source:importedSourceJournals) {
                 if(!source.is_object()||!source.contains("path")||!source["path"].is_string()||!source.contains("sha256")||!source["sha256"].is_string())
                     throw std::runtime_error("searchStatePath contains an invalid source journal reference");
@@ -1668,6 +1937,8 @@ int run(const Json& config) {
                     throw std::runtime_error("searchStatePath source journal lacks provenance");
                 Json sourceProvenance=source["provenance"];
                 for(const char* key:{"rawCandidatesSha256","candidateMetadataSha256","policySha256"}) sourceProvenance.erase(key);
+                if(!normalizeExecutableIdentity(sourceProvenance))
+                    throw std::runtime_error("searchStatePath source-journal executable identity is outside the explicit r23-derived build bridge");
                 if(sourceProvenance!=compatibleProvenance)
                     throw std::runtime_error("searchStatePath source journal provenance is incompatible");
                 std::ifstream sourceFile(source["path"].get<std::string>(),std::ios::binary);
@@ -1683,6 +1954,23 @@ int run(const Json& config) {
                !state.contains("scoreOutcomes")||!state["scoreOutcomes"].is_array()||
                !state.contains("completedTrialSignatures")||!state["completedTrialSignatures"].is_array())
                 throw std::runtime_error("searchStatePath candidate, score, or dedup state is incomplete");
+            if(mechanismLanes) {
+                if(!state.contains("mechanismAggregates")||!state["mechanismAggregates"].is_object())throw std::runtime_error("mechanism objective state lacks measured aggregates; explicit migration required");
+                mechanismAggregates=state["mechanismAggregates"];
+                mechanismImprovements=state.value("mechanismImprovements",Json::object());
+                if(controlledDpsLearnerSearch) {
+                    if(!state.contains("mechanismLearnerState")||!state["mechanismLearnerState"].is_object()||
+                       state["mechanismLearnerState"].value("schema",std::string{})!="ka-mechanism-learner-state-1")
+                        throw std::runtime_error("controlled mechanism state lacks persisted operator/scale/anchor learning; explicit migration required");
+                    const auto priorHash=state["mechanismLearnerState"].value("commonLearnerPriorSha256",std::string{});
+                    if(priorHash!=commonLearnerPriorSha256)throw std::runtime_error("search state common learner prior differs from requested prior");
+                    mechanismOperatorStats=state["mechanismLearnerState"].value("operatorStats",Json::object());
+                    mechanismStatScales=state["mechanismLearnerState"].value("statScales",Json::object());
+                    mechanismStatAnchors=state["mechanismLearnerState"].value("statAnchors",Json::object());
+                    if(!mechanismOperatorStats.is_object()||!mechanismStatScales.is_object()||!mechanismStatAnchors.is_object())
+                        throw std::runtime_error("search state controlled learner maps are malformed");
+                }
+            }
             for(const auto& row:state["candidatePool"]) {
                 if(!row.is_object()||!row.contains("raw")||!row.contains("id")||!row["id"].is_string()||
                    !row.contains("generation")||!row["generation"].is_number_unsigned())
@@ -1720,29 +2008,7 @@ int run(const Json& config) {
                     if(!it.value().is_object()||!it.value().contains("tries")||!it.value().contains("improvements")||
                        !it.value()["tries"].is_number_unsigned()||!it.value()["improvements"].is_number_unsigned())
                         throw std::runtime_error("searchStatePath mutation-arm counters are malformed");
-                    ArmStats arm;
-                    if(it.value().value("judgmentModel",std::string{})=="matched-configured-seedpairs-v1") {
-                        for(const char* key:{"lastMatchedSamples","lastMissingChildPairs","lastMissingParentPairs","lastChildId","lastParentId","lastMeanPairedDelta","lastJudgmentComplete"})
-                            if(!it.value().contains(key)) throw std::runtime_error("searchStatePath paired mutation-arm metadata is incomplete");
-                        if(!it.value()["lastMatchedSamples"].is_number_unsigned()||!it.value()["lastMissingChildPairs"].is_number_unsigned()||
-                           !it.value()["lastMissingParentPairs"].is_number_unsigned()||!it.value()["lastChildId"].is_string()||
-                           !it.value()["lastParentId"].is_string()||!it.value()["lastJudgmentComplete"].is_boolean()||
-                           (!it.value()["lastMeanPairedDelta"].is_null()&&!it.value()["lastMeanPairedDelta"].is_number()))
-                            throw std::runtime_error("searchStatePath paired mutation-arm metadata is malformed");
-                        arm.tries=it.value()["tries"].get<std::uint64_t>();
-                        arm.improvements=it.value()["improvements"].get<std::uint64_t>();
-                        arm.lastMatchedSamples=it.value()["lastMatchedSamples"].get<std::uint64_t>();
-                        arm.lastMissingChildPairs=it.value()["lastMissingChildPairs"].get<std::uint64_t>();
-                        arm.lastMissingParentPairs=it.value()["lastMissingParentPairs"].get<std::uint64_t>();
-                        arm.lastChildId=it.value()["lastChildId"].get<std::string>();
-                        arm.lastParentId=it.value()["lastParentId"].get<std::string>();
-                        arm.lastJudgmentComplete=it.value()["lastJudgmentComplete"].get<bool>();
-                        if(!it.value()["lastMeanPairedDelta"].is_null())
-                            arm.lastMeanPairedDelta=it.value()["lastMeanPairedDelta"].get<double>();
-                    }
-                    // Older state files contain only unmatched aggregate means; keep the file readable
-                    // but do not let that unpaired history steer the new matched-seed policy.
-                    importedMutationArms[it.key()]=std::move(arm);
+                    importedMutationArms[it.key()]={it.value()["tries"].get<std::uint64_t>(),it.value()["improvements"].get<std::uint64_t>()};
                 }
             importedPendingSeedPolicy=state.value("pendingSeedPolicy",Json(nullptr));
             if(!importedPendingSeedPolicy.is_null()) {
@@ -1759,6 +2025,12 @@ int run(const Json& config) {
             }
             importedSearchState=true;
         }
+        // A same-output resume replays the journal as its durable source of
+        // truth. Count each generated child once (strategyId, not each seed
+        // row), reconstructing planned attempts that were checkpointed before
+        // a crash. Imported external states already contain those counters.
+        if(controlledDpsLearnerSearch&&!importedSearchState)
+            mechanism::replay_planned_attempts(mechanismOperatorStats,mechanismStatScales,journalLearnerAttempts);
         std::vector<Candidate> candidates;
         candidates.reserve(raws.size());
         std::unordered_set<std::string> seen;
@@ -1804,15 +2076,13 @@ int run(const Json& config) {
         std::uint64_t localCompletedCount=0;
         for(const auto& [encounter,count]:localCompletedByEncounter) { workByEncounter[encounter].completed=count; localCompletedCount+=count; }
         std::atomic<std::uint64_t> acceptedTrials{0}, queuedTrials{0}, activeTrials{0}, pendingSaveTrials{0}, durableCompletedTrials{localCompletedCount};
-        std::atomic<std::uint64_t> durableCompletedThisRun{0}, drainedJobsThisRun{0};
+        std::atomic<std::uint64_t> durableCompletedThisRun{0};
         std::atomic<std::uint64_t> actualActiveWorkers{0}, maxActiveWorkers{0};
         std::atomic<std::uint64_t> workerThreadCpuNs{0}, workerThreadCpuSamples{0}, workerThreadCpuUnavailable{0};
         std::atomic<std::uint64_t> statusSaved{completed.size()}, statusFreshSaved{0}, statusRestoredRecords{completed.size()};
         std::atomic<std::uint64_t> statusDuplicates{0}, statusCandidateCount{candidates.size()};
         std::atomic<std::uint64_t> invalidTrials{0}, executionErrors{0}, successfulTrials{0}, scoredTrials{0};
         std::atomic<std::uint64_t> admissionWallNs{0}, preparationWallNs{0};
-        std::atomic<std::uint64_t> workerAdmissionWallNs{0}, workerPreparationWallNs{0};
-        std::atomic<std::uint64_t> workerAdmissionSamples{0}, workerPreparationSamples{0};
         std::atomic<std::uint64_t> executeCalls{0}, executeCallWallNs{0};
         std::atomic<std::uint64_t> workerTimingSamples{0};
         std::atomic<std::uint64_t> importSetupWallNs{0}, nativeRunWallNs{0}, reportCollectionWallNs{0}, totalExecuteWallNs{0};
@@ -1823,16 +2093,12 @@ int run(const Json& config) {
             Json t{{"measurementClock","steady_clock nanoseconds"},
                 {"startupWallNs",startupWallNs},{"inputJsonLoadWallNs",inputJsonLoadWallNs},
                 {"serialAdmissionWallNs",admissionWallNs.load()},{"serialPreparationWallNs",preparationWallNs.load()},
-                {"serialAdmissionPreparationScope","driver-side generated-stat feasibility checks only; trial validation/preparation runs in workers"},
                 {"workerExecuteCallCount",executeCalls.load()},{"workerExecuteCallWallNs",executeCallWallNs.load()},
                 {"workerExecuteCallAggregation","sum of worker-summed elapsed WALL intervals; includes preemption/waits and overlaps across the driver and other workers; NOT CPU busy time"},
                 {"workerCpuBusyTime","not equivalent to engine-only busy time; see workerThreadCpuNs"},
                 {"workerThreadCpuNs",workerThreadCpuSamples.load()?Json(workerThreadCpuNs.load()):Json(nullptr)},
                 {"workerThreadCpuSamples",workerThreadCpuSamples.load()},
-                {"workerThreadCpuScope","per-worker thread CPU deltas around admission, preparation and execute(); excludes record assembly"},
-                {"workerAdmissionWallNs",workerAdmissionWallNs.load()},{"workerPreparationWallNs",workerPreparationWallNs.load()},
-                {"workerAdmissionSamples",workerAdmissionSamples.load()},{"workerPreparationSamples",workerPreparationSamples.load()},
-                {"workerPreparationAggregation","sum of per-worker elapsed wall intervals; intervals may overlap and are not CPU busy time"},
+                {"workerThreadCpuScope","per-worker thread CPU deltas around execute(); excludes driver and JSON preparation"},
                 {"executeTimingSuccessfulSamples",workerTimingSamples.load()},
                 {"importSetupWallNs",importSetupWallNs.load()},{"nativeRunWallNs",nativeRunWallNs.load()},
                 {"reportCollectionWallNs",reportCollectionWallNs.load()},{"totalExecuteWallNs",totalExecuteWallNs.load()},
@@ -1858,9 +2124,8 @@ int run(const Json& config) {
                 std::lock_guard<std::mutex> lock(workMutex);
                 for(const auto& [id,w]:workByEncounter) {
                     byEncounter[id]=Json{{"candidateCount",w.candidates},{"acceptedTrials",w.accepted},
-                        {"acceptedJobs",w.accepted},
                         {"queuedTrials",w.queued},{"activeTrials",w.active},{"pendingSaveTrials",w.pendingSave},
-                        {"durableCompletedTrials",w.completed},{"drainedJobs",w.drainedJobs}};
+                        {"durableCompletedTrials",w.completed}};
                     candidatesNow+=w.candidates;
                 }
             }
@@ -1880,23 +2145,16 @@ int run(const Json& config) {
                 {"configuredWorkerSlots",workers},{"actualActiveWorkers",actualActiveWorkers.load(std::memory_order_relaxed)},
                 {"maxObservedActiveWorkers",maxActiveWorkers.load(std::memory_order_relaxed)},
                 {"acceptedTrials",acceptedTrials.load(std::memory_order_relaxed)},
-                {"acceptedJobs",acceptedTrials.load(std::memory_order_relaxed)},
                 {"queuedTrials",queuedTrials.load(std::memory_order_relaxed)},
                 {"activeTrials",activeTrials.load(std::memory_order_relaxed)},
                 {"pendingSaveTrials",pendingSaveTrials.load(std::memory_order_relaxed)},
                 {"durableCompletedTrials",durableCompletedTrials.load(std::memory_order_relaxed)},
                 {"durableCompletedThisRun",durableCompletedThisRun.load(std::memory_order_relaxed)},
-                {"drainedJobsThisRun",drainedJobsThisRun.load(std::memory_order_relaxed)},
                 {"inflightTrials",queuedTrials.load()+activeTrials.load()+pendingSaveTrials.load()},
                 {"perEncounterWork",std::move(byEncounter)},
                 {"workerThreadCpuNs",cpuNs},{"workerThreadCpuSamples",workerThreadCpuSamples.load()},
                 {"workerThreadCpuUnavailableSamples",workerThreadCpuUnavailable.load()},
-                {"workerThreadCpuScope","sum of per-worker thread CPU deltas around admission, preparation and execute(); excludes record assembly and is not engine-only CPU"},
-                {"workerAdmissionWallNs",workerAdmissionWallNs.load(std::memory_order_relaxed)},
-                {"workerPreparationWallNs",workerPreparationWallNs.load(std::memory_order_relaxed)},
-                {"workerAdmissionSamples",workerAdmissionSamples.load(std::memory_order_relaxed)},
-                {"workerPreparationSamples",workerPreparationSamples.load(std::memory_order_relaxed)},
-                {"workerPreparationAggregation","sum of per-worker elapsed wall intervals; intervals may overlap and are not CPU busy time"},
+                {"workerThreadCpuScope","sum of per-worker thread CPU deltas around execute(); excludes driver and JSON preparation; not engine-only CPU"},
                 {"throughputTrialsPerSecond",elapsed?Json(static_cast<double>(durableCompletedThisRun.load())*1.0e9/static_cast<double>(elapsed)):Json(nullptr)},
                 {"etaSeconds",nullptr},{"etaReason","remaining candidate and generation totals are dynamic; ETA not estimated"}};
         };
@@ -1972,13 +2230,6 @@ int run(const Json& config) {
         StopJoinThread monitorGuard{monitorStop,monitor};
         std::vector<std::thread> pool; pool.reserve(static_cast<std::size_t>(workers));
         DurableJournal journal(journalPath), errorsJournal(errorsPath);
-        const auto make_candidate_rejection = [&](const char* stage,const Candidate& candidate,
-                                                   const Json& scenario,std::int64_t seed,const Json& detail) {
-            return Json{{"schema","kaopt-diagnostic-1"},{"kind","candidate-rejected"},{"stage",stage},
-                {"candidateId",identity(scenario)},{"strategyId",candidate.id},{"candidateScenario",candidate.raw},
-                {"rawScenario",scenario},{"parentCandidateId",candidate.parent},{"generation",candidate.generation},
-                {"seed",seed},{"provenance",provenance},{"searchPolicy",runPolicy},{"detail",detail}};
-        };
         JoinOnExit joinGuard{queue, pool};
         for (std::uint64_t w = 0; w < workers; ++w) {
             pool.emplace_back([&] {
@@ -1993,55 +2244,17 @@ int run(const Json& config) {
                     auto prior=maxActiveWorkers.load(std::memory_order_relaxed);
                     while(active>prior&&!maxActiveWorkers.compare_exchange_weak(prior,active,std::memory_order_relaxed)) {}
                 })) {
-                    Json result=nullptr, record=nullptr, diagnostic=nullptr;
+                    Json result;
                     std::uint64_t cpuStart=0,cpuEnd=0;
                     const bool cpuStartValid=current_thread_cpu_ns(cpuStart);
-                    const auto capture_worker_cpu = [&] {
-                        if(cpuStartValid&&current_thread_cpu_ns(cpuEnd)&&cpuEnd>=cpuStart) {
-                            workerThreadCpuNs.fetch_add(cpuEnd-cpuStart,std::memory_order_relaxed);
-                            workerThreadCpuSamples.fetch_add(1,std::memory_order_relaxed);
-                        } else workerThreadCpuUnavailable.fetch_add(1,std::memory_order_relaxed);
-                    };
-                    std::string rejectionStage;
-                    Json rejectionDetail=nullptr, admitted, snapshot;
-                    const auto admissionStart=stageTimingTelemetry?std::chrono::steady_clock::now():std::chrono::steady_clock::time_point{};
-                    try { admitted=admit(job.scenario,tables); }
-                    catch(const std::exception& e) { rejectionStage="admission-exception"; rejectionDetail=Json{{"error",e.what()}}; }
-                    catch(...) { rejectionStage="admission-exception"; rejectionDetail=Json{{"error","unknown exception"}}; }
-                    if(stageTimingTelemetry) {
-                        workerAdmissionWallNs.fetch_add(static_cast<std::uint64_t>(std::chrono::duration_cast<std::chrono::nanoseconds>(
-                            std::chrono::steady_clock::now()-admissionStart).count()),std::memory_order_relaxed);
-                        workerAdmissionSamples.fetch_add(1,std::memory_order_relaxed);
-                    }
-                    if(rejectionStage.empty()&&has_error(admitted)) {
-                        rejectionStage="admission-rejected";
-                        rejectionDetail=admitted;
-                    }
-                    if(rejectionStage.empty()) {
-                        const auto preparationStart=stageTimingTelemetry?std::chrono::steady_clock::now():std::chrono::steady_clock::time_point{};
-                        try { snapshot=prepare(admitted,tables,false,&job.scenario); }
-                        catch(const std::exception& e) { rejectionStage="preparation-exception"; rejectionDetail=Json{{"error",e.what()}}; }
-                        catch(...) { rejectionStage="preparation-exception"; rejectionDetail=Json{{"error","unknown exception"}}; }
-                        if(stageTimingTelemetry) {
-                            workerPreparationWallNs.fetch_add(static_cast<std::uint64_t>(std::chrono::duration_cast<std::chrono::nanoseconds>(
-                                std::chrono::steady_clock::now()-preparationStart).count()),std::memory_order_relaxed);
-                            workerPreparationSamples.fetch_add(1,std::memory_order_relaxed);
-                        }
-                        if(rejectionStage.empty()&&has_error(snapshot)) {
-                            rejectionStage="preparation-rejected";
-                            rejectionDetail=snapshot;
-                        }
-                    }
-                    if(!rejectionStage.empty()) {
-                        diagnostic=make_candidate_rejection(rejectionStage.c_str(),job.candidate,job.scenario,job.seed,rejectionDetail);
-                        capture_worker_cpu();
-                    } else {
-                    job.snapshot=std::move(snapshot);
                     const auto executeStart = stageTimingTelemetry ? std::chrono::steady_clock::now() : std::chrono::steady_clock::time_point{};
                     try { result = execute(job.snapshot, kernel, stageTimingTelemetry); }
                     catch (const std::exception& e) { result = Json{{"error", e.what()}}; }
                     catch (...) { result = Json{{"error", "unknown native execution exception"}}; }
-                    capture_worker_cpu();
+                    if(cpuStartValid&&current_thread_cpu_ns(cpuEnd)&&cpuEnd>=cpuStart) {
+                        workerThreadCpuNs.fetch_add(cpuEnd-cpuStart,std::memory_order_relaxed);
+                        workerThreadCpuSamples.fetch_add(1,std::memory_order_relaxed);
+                    } else workerThreadCpuUnavailable.fetch_add(1,std::memory_order_relaxed);
                     if (stageTimingTelemetry) {
                         executeCalls.fetch_add(1, std::memory_order_relaxed);
                         executeCallWallNs.fetch_add(static_cast<std::uint64_t>(std::chrono::duration_cast<std::chrono::nanoseconds>(
@@ -2054,6 +2267,8 @@ int run(const Json& config) {
                         std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now() - preparedHashStart).count()),
                         std::memory_order_relaxed);
                     const auto recordAssemblyStart = stageTimingTelemetry ? std::chrono::steady_clock::now() : std::chrono::steady_clock::time_point{};
+                    Json record = nullptr;
+                    Json diagnostic = nullptr;
                     double earned = 0; bool hasMetric = false; std::string earnedBasis="unresolved";
                     if (has_error(result) || !read_metric(result, earned, hasMetric, earnedBasis)) {
                         ++executionErrors;
@@ -2117,7 +2332,6 @@ int run(const Json& config) {
                     if (stageTimingTelemetry) workerRecordAssemblyWallNs.fetch_add(static_cast<std::uint64_t>(
                         std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now() - recordAssemblyStart).count()),
                         std::memory_order_relaxed);
-                    }
                     {
                         const auto encounter=encounter_key(job.scenario);
                         { std::lock_guard<std::mutex> lock(workMutex); auto& work=workByEncounter[encounter];
@@ -2132,6 +2346,7 @@ int run(const Json& config) {
             });
         }
         const std::uint64_t restoredRecords=completed.size();
+        experimentFreshTrialsCompleted=mechanism::resume_trial_budget(importedSearchState,restoredRecords,experimentFreshTrialsCompleted);
         std::uint64_t duplicateSkips=0;
         std::uint64_t drained = 0, saved = completed.size();
         const auto export_leaders=[&] {
@@ -2158,8 +2373,6 @@ int run(const Json& config) {
           std::string diagnosticPayload;
           std::vector<Json> batchRecords;
           std::vector<std::string> drainedEncounters;
-          std::vector<std::string> savedEncounters;
-          std::uint64_t rejectedCandidates=0;
           for (std::uint64_t i = 0; i < amount; ++i) {
             Done d;
             {
@@ -2168,24 +2381,19 @@ int run(const Json& config) {
                 d = std::move(finished.front()); finished.pop();
             }
             drainedEncounters.push_back(encounter_key(d.job.scenario));
-            if (!d.diagnostic.is_null()) {
-                if(d.diagnostic.value("kind",std::string{})=="candidate-rejected") ++rejectedCandidates;
-                diagnosticPayload += d.diagnostic.dump(-1, ' ', false) + "\n";
-            }
+            if (!d.diagnostic.is_null()) diagnosticPayload += d.diagnostic.dump(-1, ' ', false) + "\n";
             if (!d.record.is_null()) {
                 const auto serializationStart = stageTimingTelemetry ? std::chrono::steady_clock::now() : std::chrono::steady_clock::time_point{};
                 payload += d.record.dump(-1, ' ', false) + "\n";
                 if (stageTimingTelemetry) resultSerializationWallNs.fetch_add(static_cast<std::uint64_t>(
                     std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now() - serializationStart).count()),
                     std::memory_order_relaxed);
-                savedEncounters.push_back(encounter_key(d.job.scenario));
                 batchRecords.push_back(std::move(d.record));
             }
             ++drained;
           }
           const auto oldSaved = saved;
           if (!diagnosticPayload.empty()) errorsJournal.append(diagnosticPayload);
-          invalidTrials.fetch_add(rejectedCandidates,std::memory_order_relaxed);
           if (!payload.empty()) {
               std::size_t at = 0;
               while (at < payload.size()) {
@@ -2223,6 +2431,7 @@ int run(const Json& config) {
           for (const auto& record : batchRecords) {
               completed.insert(record["dedupKey"].get<std::string>());
               learningCompleted.insert(record["candidateId"].get<std::string>());
+              if(mechanismLanes&&mechanism_observation_eligible(record))mechanism::observe(mechanismAggregates,record);
               if (record["scoreEligible"].get<bool>()) {
                   const std::string id = record["strategyId"].get<std::string>();
                   if (!scores[id].outcomesByTrial.emplace(record["candidateId"].get<std::string>(),
@@ -2238,20 +2447,10 @@ int run(const Json& config) {
               std::lock_guard<std::mutex> lock(workMutex);
               auto& work=workByEncounter[encounter];
               if(work.pendingSave) --work.pendingSave;
-              ++work.drainedJobs;
+              ++work.completed;
           }
-          for(const auto& encounter:savedEncounters) {
-              std::lock_guard<std::mutex> lock(workMutex);
-              ++workByEncounter[encounter].completed;
-          }
-          // Every drained Done record was previously counted as pending-save by
-          // its worker. Release the aggregate in-flight count alongside the
-          // per-encounter counters so Pause can observe a fully drained batch.
-          pendingSaveTrials.fetch_sub(static_cast<std::uint64_t>(drainedEncounters.size()),
-                                      std::memory_order_relaxed);
-          drainedJobsThisRun.fetch_add(drainedEncounters.size(),std::memory_order_relaxed);
-          durableCompletedTrials.fetch_add(savedEncounters.size(),std::memory_order_relaxed);
-          durableCompletedThisRun.fetch_add(savedEncounters.size(),std::memory_order_relaxed);
+          durableCompletedTrials.fetch_add(drainedEncounters.size(),std::memory_order_relaxed);
+          durableCompletedThisRun.fetch_add(drainedEncounters.size(),std::memory_order_relaxed);
           statusSaved.store(saved,std::memory_order_relaxed);
           statusFreshSaved.store(saved-restoredRecords,std::memory_order_relaxed);
           if (saved / 128 > oldSaved / 128) {
@@ -2265,8 +2464,7 @@ int run(const Json& config) {
           }
           Json status{{"schema","kaopt-status-1"},{"state","running"},
               {"stage","search"},{"savedRecords",saved},{"invalidCandidates",invalidTrials.load()},
-              {"freshSavedRecords",saved-restoredRecords},{"restoredRecords",restoredRecords},{"duplicateSkips",duplicateSkips},
-              {"completedTrials",durableCompletedTrials.load()},{"drainedJobsThisRun",drainedJobsThisRun.load()},
+              {"freshSavedRecords",saved-restoredRecords},{"restoredRecords",restoredRecords},{"duplicateSkips",duplicateSkips},{"completedTrials",drained},
               {"executionErrors",executionErrors.load()},{"scoredOutcomes",scoredTrials.load()},{"persistPreparedSnapshot",persistPreparedSnapshot},
               {"startupMs",startupMs},
               {"elapsedMs",std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now()-wallStart).count()},
@@ -2276,14 +2474,24 @@ int run(const Json& config) {
           write_status(outDir, status);
           export_leaders();
         };
-        // The driver bounds all accepted queue/worker/save work to at most 2*workers.
+        // Small deterministic batches bound queued snapshots and result memory.
+        const auto reject_trial = [&](const char* stage, const Candidate& c, const Json& scenario,
+                                      std::int64_t seed, const Json& detail) {
+            ++invalidTrials;
+            Json d{{"schema","kaopt-diagnostic-1"},{"kind","candidate-rejected"},{"stage",stage},
+                {"candidateId",identity(scenario)},{"strategyId",c.id},{"candidateScenario",c.raw},
+                {"rawScenario",scenario},{"parentCandidateId",c.parent},{"generation",c.generation},
+                {"seed",seed},{"provenance",provenance},{"searchPolicy",runPolicy},{"detail",detail}};
+            errorsJournal.append(d.dump(-1, ' ', false) + "\n");
+        };
         const std::uint64_t batchLimit = std::max<std::uint64_t>(1, workers * 2);
         const auto service_control = [&](std::uint64_t& batchCount) {
             auto flush=[&] { if(batchCount) { drain(batchCount); batchCount=0; } };
-            if(pauseRequested.load(std::memory_order_relaxed)||stopRequested.load(std::memory_order_relaxed)) {
+            while(pauseRequested.load(std::memory_order_relaxed)&&!stopRequested.load(std::memory_order_relaxed)) {
                 flush();
-                return false;
+                std::this_thread::sleep_for(std::chrono::milliseconds(50));
             }
+            if(stopRequested.load(std::memory_order_relaxed)) { flush(); return false; }
             return true;
         };
         const auto enqueue_trial = [&](const Candidate& c,std::uint64_t si,std::uint64_t& batchCount) {
@@ -2302,11 +2510,32 @@ int run(const Json& config) {
             }
             const std::string key = identity(trial.raw) + ":" + canonical(provenance);
             if (completed.contains(key)||learningCompleted.count(identity(trial.raw))) { ++duplicateSkips; statusDuplicates.fetch_add(1,std::memory_order_relaxed); return true; }
+            Json admitted;
+            const auto admitStart = stageTimingTelemetry ? std::chrono::steady_clock::now() : std::chrono::steady_clock::time_point{};
+            try { admitted = admit(trial.raw, tables); }
+            catch (const std::exception& e) { if(stageTimingTelemetry) admissionWallNs.fetch_add(static_cast<std::uint64_t>(std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now()-admitStart).count()),std::memory_order_relaxed); reject_trial("admission-exception", c, trial.raw, seed, Json{{"error",e.what()}}); return true; }
+            catch (...) { if(stageTimingTelemetry) admissionWallNs.fetch_add(static_cast<std::uint64_t>(std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now()-admitStart).count()),std::memory_order_relaxed); reject_trial("admission-exception", c, trial.raw, seed, Json{{"error","unknown exception"}}); return true; }
+            if (stageTimingTelemetry) admissionWallNs.fetch_add(static_cast<std::uint64_t>(
+                std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now() - admitStart).count()),std::memory_order_relaxed);
+            if (has_error(admitted)) { reject_trial("admission-rejected", c, trial.raw, seed, admitted); return true; }
+            Json snapshot;
+            const auto prepareStart = stageTimingTelemetry ? std::chrono::steady_clock::now() : std::chrono::steady_clock::time_point{};
+            try { snapshot = prepare(admitted, tables, false,&trial.raw); }
+            catch (const std::exception& e) { if(stageTimingTelemetry) preparationWallNs.fetch_add(static_cast<std::uint64_t>(std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now()-prepareStart).count()),std::memory_order_relaxed); reject_trial("preparation-exception", c, trial.raw, seed, Json{{"error",e.what()}}); return true; }
+            catch (...) { if(stageTimingTelemetry) preparationWallNs.fetch_add(static_cast<std::uint64_t>(std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now()-prepareStart).count()),std::memory_order_relaxed); reject_trial("preparation-exception", c, trial.raw, seed, Json{{"error","unknown exception"}}); return true; }
+            if (stageTimingTelemetry) preparationWallNs.fetch_add(static_cast<std::uint64_t>(
+                std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now() - prepareStart).count()),std::memory_order_relaxed);
+            if (has_error(snapshot)) { reject_trial("preparation-rejected", c, trial.raw, seed, snapshot); return true; }
+            try { validate_synthetic_dps_prepared(trial.raw,snapshot); }
+            catch(const std::exception& e) { reject_trial("fixed-profile-post-prepare",c,trial.raw,seed,Json{{"error",e.what()}}); return true; }
+            if(!service_control(batchCount)) return false;
+            if(!is_focused(encounter_key(trial.raw))) return true;
             const std::string encounter=encounter_key(trial.raw);
-            queue.push(Job{c, std::move(trial.raw), Json(nullptr), seed, actualSeeds},[&](const Job& accepted) {
+            queue.push(Job{c, std::move(trial.raw), std::move(snapshot), seed, actualSeeds},[&](const Job& accepted) {
                 const auto id=encounter_key(accepted.scenario);
                 { std::lock_guard<std::mutex> lock(workMutex); auto& work=workByEncounter[id]; ++work.accepted; ++work.queued; }
                 acceptedTrials.fetch_add(1,std::memory_order_relaxed); queuedTrials.fetch_add(1,std::memory_order_relaxed);
+                ++experimentFreshTrialsCompleted;
             });
             (void)encounter;
             ++batchCount;
@@ -2355,10 +2584,10 @@ int run(const Json& config) {
         const auto evaluate_candidate = [&](const Candidate& c) {
             return evaluate_cohort(std::vector<Candidate>{c});
         };
-        const auto& selectionScores=importedSearchState?freshScores:scores;
         const std::size_t initialCount = candidates.size();
         std::set<std::string> currentPendingCandidateIds;
         std::set<std::string> initialIds;
+        if(!prospectivePreflightOnly) {
         if(searchScheduling=="encounter-wave") {
             std::vector<Candidate> initial;
             if(importedSearchState) {
@@ -2380,21 +2609,16 @@ int run(const Json& config) {
                     if(!best) for(const auto& candidate:candidates) if(encounter_key(candidate.raw)==encounter&&(!best||candidate.id<best->id)) best=&candidate;
                     if(best&&initialIds.insert(best->id).second) initial.push_back(*best);
                 }
-                // A pending child can only be judged against its actual parent on the same
-                // current seed bank. Rehydrate that parent into this cohort even when it is
-                // no longer the encounter's historical mean leader or a current raw input.
-                std::set<std::string> pendingParents, pendingEncounters;
-                for(const auto& candidate:candidates) if(importedPendingCandidateIds.count(candidate.id)) {
-                    pendingEncounters.insert(encounter_key(candidate.raw));
-                    if(!candidate.parent.empty()) pendingParents.insert(candidate.parent);
-                }
-                for(const auto& candidate:candidates) if(pendingParents.count(candidate.id)&&
-                    (is_focused(encounter_key(candidate.raw))||pendingEncounters.count(encounter_key(candidate.raw)))) {
-                    if(initialIds.insert(candidate.id).second) initial.push_back(candidate);
-                }
             } else for(std::size_t i=0;i<initialCount;++i)
                 if(is_focused(encounter_key(candidates[i].raw))&&initialIds.insert(candidates[i].id).second) initial.push_back(candidates[i]);
-            if(importedSearchState) for(const auto& candidate:initial) {
+            // Imported checkpoints may contain many candidates already scored on
+            // this exact configured seed bank. Restore those observations into
+            // the fresh-only selector population so uniform exploration can
+            // choose among every measured candidate. Historical scores for any
+            // other seed remain available to the historical score map, but are
+            // deliberately not copied into freshScores.
+            if(importedSearchState) for(const auto& candidate:candidates) {
+                if(!is_focused(encounter_key(candidate.raw))) continue;
                 const auto prior=scores.find(candidate.id);
                 if(prior==scores.end()) continue;
                 for(std::uint64_t si=0;si<seedCount;++si) {
@@ -2424,109 +2648,68 @@ int run(const Json& config) {
                 }
             }
         }
+        }
+        const auto& selectionScores=importedSearchState?freshScores:scores;
+        const auto childImproved=[&](const std::string& childId,const std::string& parentId) {
+            if(!mechanismLanes)return mean_score(selectionScores.at(childId))>mean_score(selectionScores.at(parentId));
+            const Candidate* child=nullptr;const Candidate* parent=nullptr;
+            for(const auto& c:candidates){if(c.id==childId)child=&c;if(c.id==parentId)parent=&c;}
+            if(!child||!parent)return false;
+            const auto childRecord=mechanism::record(childId,child->raw,mechanismAggregates.value(childId,Json::object()));
+            const auto parentRecord=mechanism::record(parentId,parent->raw,mechanismAggregates.value(parentId,Json::object()));
+            const auto better=mechanism::improved_lanes(parentRecord,childRecord);
+            if(!mechanismImprovements.contains(childId))mechanismImprovements[childId]=better;
+            return !better.empty();
+        };
+        const auto recordMechanismLearnerFeedback=[&](const Candidate& child) {
+            if(!controlledDpsLearnerSearch||mechanismImprovements.contains(child.id))return;
+            const Candidate* measuredChild=nullptr;
+            const Candidate* parent=nullptr;
+            for(const auto& candidate:candidates){if(candidate.id==child.id)measuredChild=&candidate;if(candidate.id==child.parent)parent=&candidate;}
+            if(!measuredChild||!parent)return;
+            const auto childRecord=mechanism::record(child.id,child.raw,mechanismAggregates.value(child.id,Json::object()));
+            const auto parentRecord=mechanism::record(parent->id,parent->raw,mechanismAggregates.value(parent->id,Json::object()));
+            const auto spec=Json::parse(child.operation);
+            const auto encounter=std::to_string(child.raw.at("encounterId").get<std::int64_t>());
+            mechanism::apply_learner_feedback(mechanismOperatorStats,mechanismStatAnchors,mechanismImprovements,
+                encounter,child.id,childRecord,parentRecord,spec);
+        };
+        // Resume can find durable result rows whose process stopped before the
+        // generation-end feedback/export. Replaying the complete initial cohort
+        // restores all remaining trials; this reducer is then safe to replay
+        // because mechanismImprovements is keyed by child identity.
+        const auto hasFullTrialBank=[&](const Candidate& candidate) {
+            for(std::uint64_t si=0;si<seedCount;++si) {
+                Json scenario=candidate.raw;
+                if(seedPairs.empty()) for(const auto& pointer:seedPointers)
+                    scenario[Json::json_pointer(pointer.get<std::string>())]=seedStart+static_cast<std::int64_t>(si);
+                else for(std::size_t pi=0;pi<seedPointers.size();++pi)
+                    scenario[Json::json_pointer(seedPointers[pi].get<std::string>())]=seedPairs[static_cast<std::size_t>(si)][pi];
+                if(!learningCompleted.count(identity(scenario)))return false;
+            }
+            return true;
+        };
+        if(controlledDpsLearnerSearch) {
+            for(const auto& candidate:candidates) {
+                const bool eligibleForRecovery=!importedSearchState||importedPendingCandidateIds.count(candidate.id);
+                if(eligibleForRecovery&&candidate.generation>0&&candidate.operation!="seed"&&
+                   candidate.operation!="resumed"&&hasFullTrialBank(candidate))
+                    recordMechanismLearnerFeedback(candidate);
+            }
+        }
+
         const auto arm_key = [&](const std::string& encounter,const Json& spec) {
             const auto signature=spec.dump();
             return adaptiveScope=="global"?signature:(encounter+"|"+signature);
         };
         std::map<std::string,ArmStats> mutationArms;
         if(importedSearchState) mutationArms=importedMutationArms;
-        // Exact raw-intent keys avoid relying on a candidate SHA alone for cache identity.
-        // Cap retained trial IDs so unusually large seed banks/candidate pools fall back to
-        // direct exact computation without imposing a search-size limit.
-        std::map<std::string,std::vector<std::string>> trialIdBankCache;
-        std::uint64_t cachedTrialIdCount=0;
-        constexpr std::uint64_t maxCachedTrialIds=262144;
-        const auto compute_trial_id_for_seed = [&](const Json& raw,std::uint64_t seedIndex) {
-            if(seedIndex>=seedCount) throw std::runtime_error("seed index is outside the configured bank");
-            Json scenario=raw;
-            Json values=Json::array();
-            if(seedPairs.empty()) {
-                const auto seed=seedStart+static_cast<std::int64_t>(seedIndex);
-                for(std::size_t pi=0;pi<seedPointers.size();++pi) values.push_back(seed);
-            } else values=seedPairs.at(static_cast<std::size_t>(seedIndex));
-            for(std::size_t pi=0;pi<seedPointers.size();++pi) {
-                Json& value=scenario[Json::json_pointer(seedPointers[pi].get<std::string>())];
-                if(!value.is_number_integer()) throw std::runtime_error("seed pointer must target an existing integer field");
-                value=values.at(pi);
-            }
-            return identity(scenario);
-        };
-        const auto cached_trial_bank_for_raw = [&](const Json& raw)->const std::vector<std::string>* {
-            const auto rawIntentKey=canonical(raw);
-            const auto cached=trialIdBankCache.find(rawIntentKey);
-            if(cached!=trialIdBankCache.end()) return &cached->second;
-            if(seedCount<=maxCachedTrialIds-cachedTrialIdCount) {
-                std::vector<std::string> bank;
-                bank.reserve(static_cast<std::size_t>(seedCount));
-                for(std::uint64_t si=0;si<seedCount;++si) bank.push_back(compute_trial_id_for_seed(raw,si));
-                cachedTrialIdCount+=seedCount;
-                const auto inserted=trialIdBankCache.emplace(rawIntentKey,std::move(bank)).first;
-                return &inserted->second;
-            }
-            return nullptr;
-        };
-        const auto has_complete_seed_bank = [&](const Json& raw,const ScoreStats& stats) {
-            (void)raw;
-            return stats.outcomesByTrial.size()==seedCount;
-        };
-        const auto compare_seed_bank = [&](const Candidate& child,const Candidate& parent) {
-            PairedJudgment judgment;
-            const auto childStats=selectionScores.find(child.id);
-            const auto parentStats=selectionScores.find(parent.id);
-            const auto* childTrialBank=cached_trial_bank_for_raw(child.raw);
-            const auto* parentTrialBank=cached_trial_bank_for_raw(parent.raw);
-            for(std::uint64_t si=0;si<seedCount;++si) {
-                const auto childTrial=childTrialBank?childTrialBank->at(static_cast<std::size_t>(si)):
-                    compute_trial_id_for_seed(child.raw,si);
-                const auto parentTrial=parentTrialBank?parentTrialBank->at(static_cast<std::size_t>(si)):
-                    compute_trial_id_for_seed(parent.raw,si);
-                const auto ci=childStats==selectionScores.end()?std::map<std::string,double>::const_iterator{}:
-                    childStats->second.outcomesByTrial.find(childTrial);
-                const auto pi=parentStats==selectionScores.end()?std::map<std::string,double>::const_iterator{}:
-                    parentStats->second.outcomesByTrial.find(parentTrial);
-                const bool hasChild=childStats!=selectionScores.end()&&ci!=childStats->second.outcomesByTrial.end();
-                const bool hasParent=parentStats!=selectionScores.end()&&pi!=parentStats->second.outcomesByTrial.end();
-                if(!hasChild) ++judgment.missingChildPairs;
-                if(!hasParent) ++judgment.missingParentPairs;
-                if(hasChild&&hasParent) {
-                    judgment.deltaSum+=static_cast<long double>(ci->second)-static_cast<long double>(pi->second);
-                    ++judgment.matchedSamples;
-                }
-            }
-            judgment.complete=judgment.matchedSamples==seedCount&&judgment.missingChildPairs==0&&judgment.missingParentPairs==0;
-            if(judgment.matchedSamples)
-                judgment.meanDelta=static_cast<double>(judgment.deltaSum/static_cast<long double>(judgment.matchedSamples));
-            return judgment;
-        };
-        const auto record_arm_judgment = [&](const Candidate& child,const Candidate& parent,const Json& spec) {
-            if(searchProfile!="adaptive-native") return;
-            const auto encounter=encounter_key(child.raw);
-            auto& arm=mutationArms[arm_key(encounter,spec)];
-            const auto judgment=compare_seed_bank(child,parent);
-            const bool alreadyCounted=arm.lastChildId==child.id&&arm.lastJudgmentComplete;
-            arm.lastChildId=child.id;
-            arm.lastParentId=parent.id;
-            arm.lastMatchedSamples=judgment.matchedSamples;
-            arm.lastMissingChildPairs=judgment.missingChildPairs;
-            arm.lastMissingParentPairs=judgment.missingParentPairs;
-            arm.lastMeanPairedDelta=judgment.meanDelta;
-            arm.lastJudgmentComplete=judgment.complete;
-            if(judgment.complete&&!alreadyCounted) {
-                ++arm.tries;
-                if(judgment.meanDelta&&*judgment.meanDelta>0) ++arm.improvements;
-            }
-        };
-        if(!importedSearchState&&searchProfile=="adaptive-native") for(const auto& candidate:candidates) {
+        else if(searchProfile=="adaptive-native"&&!controlledDpsLearnerSearch) for(const auto& candidate:candidates) {
             if(candidate.generation==0||candidate.operation=="seed"||candidate.operation=="resumed") continue;
-            const auto parent=std::find_if(candidates.begin(),candidates.end(),[&](const Candidate& item){return item.id==candidate.parent;});
-            if(parent==candidates.end()) continue;
-            try { record_arm_judgment(candidate,*parent,Json::parse(candidate.operation)); } catch(...) {}
-        }
-        if(importedSearchState&&searchProfile=="adaptive-native") for(const auto& candidate:candidates) {
-            if(!importedPendingCandidateIds.count(candidate.id)||candidate.generation==0) continue;
-            const auto parent=std::find_if(candidates.begin(),candidates.end(),[&](const Candidate& item){return item.id==candidate.parent;});
-            if(parent==candidates.end()) continue;
-            try { record_arm_judgment(candidate,*parent,Json::parse(candidate.operation)); } catch(...) {}
+            const auto encounter=encounter_key(candidate.raw);
+            auto& arm=mutationArms[adaptiveScope=="global"?candidate.operation:(encounter+"|"+candidate.operation)]; ++arm.tries;
+            const auto child=scores.find(candidate.id), parent=scores.find(candidate.parent);
+            if(child!=scores.end()&&parent!=scores.end()&&!child->second.outcomesByTrial.empty()&&!parent->second.outcomesByTrial.empty()&&childImproved(candidate.id,candidate.parent)) ++arm.improvements;
         }
 
         const auto export_search_state = [&]() {
@@ -2544,12 +2727,7 @@ int run(const Json& config) {
             std::sort(orderedSignatures.begin(),orderedSignatures.end());
             for(const auto& signature:orderedSignatures) completedSignatures.push_back(signature);
             Json arms=Json::object();
-            for(const auto& [key,arm]:mutationArms) arms[key]=Json{{"tries",arm.tries},{"improvements",arm.improvements},
-                {"judgmentModel","matched-configured-seedpairs-v1"},{"lastMatchedSamples",arm.lastMatchedSamples},
-                {"lastMissingChildPairs",arm.lastMissingChildPairs},{"lastMissingParentPairs",arm.lastMissingParentPairs},
-                {"lastChildId",arm.lastChildId},{"lastParentId",arm.lastParentId},
-                {"lastMeanPairedDelta",arm.lastMeanPairedDelta?Json(*arm.lastMeanPairedDelta):Json(nullptr)},
-                {"lastJudgmentComplete",arm.lastJudgmentComplete}};
+            for(const auto& [key,arm]:mutationArms) arms[key]=Json{{"tries",arm.tries},{"improvements",arm.improvements}};
             Json pendingIds=Json::array();
             {
                 std::set<std::string> pending;
@@ -2584,6 +2762,10 @@ int run(const Json& config) {
             Json pendingSeedPairs=nullptr;
             if(!pendingIds.empty()) pendingSeedPolicy=Json{{"seedPairs",seedPairs},{"seedStart",seedStart},
                 {"seedCount",seedCount},{"seedPointers",seedPointers}};
+            Json mechanismLearnerState=nullptr;
+            if(controlledDpsLearnerSearch)mechanismLearnerState={{"schema","ka-mechanism-learner-state-1"},
+                {"sampler","constrained-original-distribution"},{"commonLearnerPriorSha256",commonLearnerPriorSha256},
+                {"operatorStats",mechanismOperatorStats},{"statScales",mechanismStatScales},{"statAnchors",mechanismStatAnchors}};
             if(!pendingIds.empty()) {
                 pendingSeedPairs=seedPairs;
                 if(seedPairs.empty()) {
@@ -2595,9 +2777,13 @@ int run(const Json& config) {
                 }
             }
             Json state{{"schema","kaopt-search-state-1"},{"provenance",provenance},{"learningPolicy",learningPolicy},
+                {"experimentTreatment",runPolicy.value("experimentTreatment",Json::object())},
+                {"objectiveMode",objectiveMode},{"mechanismAggregates",mechanismAggregates},{"mechanismImprovements",mechanismImprovements},
+                {"mechanismLearnerState",mechanismLearnerState},
                 {"candidatePool",candidatePool},{"scoreOutcomes",scoreOutcomes},
                 {"completedTrialSignatures",completedSignatures},{"lastGenerationByEncounter",lastGenerationByEncounter},
                 {"mutationArms",arms},{"sourceJournals",sourceJournals},
+                {"experimentFreshTrialsCompleted",experimentFreshTrialsCompleted},
                 {"pendingCandidateIds",pendingIds},{"pendingSeedPolicy",pendingSeedPolicy},
                 {"pendingSeedPairs",pendingSeedPairs},
                 {"updatedUnixMs",std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count()}};
@@ -2607,23 +2793,30 @@ int run(const Json& config) {
             { std::ofstream output(temp,std::ios::binary|std::ios::trunc); if(!output) throw std::runtime_error("cannot create search state temporary file"); output<<state.dump(2)<<'\n'; output.flush(); if(!output) throw std::runtime_error("cannot flush search state temporary file"); }
             commit_json_file(temp,statePath);
         };
+        if(freshTrialBudget&&!prospectivePreflightOnly) export_search_state();
         // Independent survivor pools ensure one encounter cannot starve another.
         std::set<std::string> encounterIds;
         for (const auto& candidate : candidates) encounterIds.insert(encounter_key(candidate.raw));
         const std::uint64_t waveOrdinalBase=seedPairs.empty()?static_cast<std::uint64_t>(seedStart):
             std::stoull(sha256_text(canonical(seedPairs)).substr(0,16),nullptr,16);
-        for (std::uint64_t generationOffset = 1; generationOffset <= generations && !mutations.empty() &&
-             !stopRequested.load() && !pauseRequested.load(); ++generationOffset) {
+        std::uint64_t parentSelections=0,guidanceAppliedParentSelections=0,guidanceNudgedParentSelections=0,armJudgmentUpdates=0;
+        std::uint64_t prospectiveChildrenScored=0,prospectiveOperatorChanges=0,prospectiveScoringElapsedWallNs=0;
+        bool prospectivePreflightWritten=false;
+        for (std::uint64_t generationOffset = 1; generationOffset <= generations && !mutations.empty()&&!stopRequested.load(); ++generationOffset) {
+            if(freshTrialBudget&&experimentFreshTrialsCompleted>=freshTrialBudget) break;
             std::vector<Candidate> generationChildren;
             for (const auto& encounter : encounterIds) {
-                if(stopRequested.load()||pauseRequested.load()) break;
+                if(stopRequested.load()) break;
                 if(!is_focused(encounter)) continue;
                 if(!importedSearchState&&lastGenerationByEncounter[encounter]>=generationOffset) continue;
                 if(importedSearchState&&lastGenerationByEncounter[encounter]==std::numeric_limits<std::uint64_t>::max()) continue;
                 const std::uint64_t gen=importedSearchState?lastGenerationByEncounter[encounter]+1:generationOffset;
                 const auto proposalOrdinal=waveOrdinalBase+gen-1;
                 const Candidate* parent = nullptr;
+                const Candidate* nativeBestParent = nullptr;
                 long double bestMean = -std::numeric_limits<long double>::infinity();
+                long double nativeBestMean = -std::numeric_limits<long double>::infinity();
+                std::vector<std::pair<const Candidate*,long double>> scoredParents;
                 std::vector<const Candidate*> population;
                 for (const auto& candidate : candidates) {
                     if (encounter_key(candidate.raw) != encounter) continue;
@@ -2632,24 +2825,98 @@ int run(const Json& config) {
                         if(!importedSearchState) population.push_back(&candidate);
                         continue;
                     }
-                    if(!has_complete_seed_bank(candidate.raw,it->second)) continue;
                     population.push_back(&candidate);
                     const long double mean = mean_score(it->second);
-                    if (!parent || mean > bestMean || (mean == bestMean && candidate.id < parent->id)) {
-                        parent = &candidate; bestMean = mean;
+                    scoredParents.emplace_back(&candidate,mean);
+                }
+                // The historical model acts only as a small, clamped prior over
+                // the optimizer's already scored parents. Its influence is
+                // calibrated to at most 0.10 native-score standard deviations;
+                // raw observed means and all native feedback remain untouched.
+                long double parentMean=0.0L,parentVariance=0.0L;
+                if(!scoredParents.empty()) {
+                    for(const auto& [candidate,mean]:scoredParents) parentMean+=mean;
+                    parentMean/=static_cast<long double>(scoredParents.size());
+                    for(const auto& [candidate,mean]:scoredParents) { const auto d=mean-parentMean; parentVariance+=d*d; }
+                    parentVariance/=static_cast<long double>(scoredParents.size());
+                    const long double nativeScoreStd=std::sqrt(parentVariance);
+                    for(const auto& [candidate,mean]:scoredParents) {
+                        if(!nativeBestParent||mean>nativeBestMean||(mean==nativeBestMean&&candidate->id<nativeBestParent->id)) {
+                            nativeBestParent=candidate; nativeBestMean=mean;
+                        }
+                        long double adjusted=mean;
+                        if(historicalParentGuidance&&nativeScoreStd>0) {
+                            const auto priorIt=historicalPriorScores.find(candidate->id);
+                            if(priorIt!=historicalPriorScores.end()) {
+                                const long double z=(priorIt.value().get<double>()-historicalPriorMean)/historicalPriorStd;
+                                const long double boundedZ=std::max(-1.0L,std::min(1.0L,z));
+                                adjusted+=static_cast<long double>(historicalPriorStrength)*nativeScoreStd*boundedZ;
+                            }
+                        }
+                        if(!parent||adjusted>bestMean||(adjusted==bestMean&&candidate->id<parent->id)) {
+                            parent=candidate; bestMean=adjusted;
+                        }
                     }
                 }
                 bool unscoredParent=parent==nullptr;
                     if(!parent)for(const auto& candidate:candidates)if(encounter_key(candidate.raw)==encounter&&(!parent||candidate.id<parent->id))parent=&candidate;
                 if(!parent)throw std::runtime_error("encounter has no source candidate for exploration");
+                ++parentSelections;
                 const bool exploreParent=searchProfile=="adaptive-native"&&(proposalOrdinal%5==4)&&!population.empty();
+                if(historicalParentGuidance&&!exploreParent&&nativeBestParent) {
+                    ++guidanceAppliedParentSelections;
+                    if(parent!=nativeBestParent) ++guidanceNudgedParentSelections;
+                }
                 if(exploreParent) {
                     const auto drawSeed=std::stoull(sha256_text(canonical(Json{{"ordinal",proposalOrdinal},{"encounter",encounter},{"seedPairs",seedPairs}})).substr(0,16),nullptr,16);
                     std::mt19937_64 explorationRng(drawSeed);
                     parent=population[static_cast<std::size_t>(explorationRng()%population.size())];
                 }
+                if(mechanismLanes) {
+                    Json laneRecords=Json::array(),lineage=Json::object();
+                    std::map<std::string,const Candidate*> byId;for(const auto& c:candidates)byId[c.id]=&c;
+                    for(const auto& c:candidates)if(encounter_key(c.raw)==encounter) {
+                        laneRecords.push_back(mechanism::record(c.id,c.raw,mechanismAggregates.value(c.id,Json::object())));
+                        const Candidate* ancestor=&c;std::set<std::string> visited;
+                        while(!ancestor->parent.empty()&&byId.count(ancestor->parent)&&visited.insert(ancestor->id).second)ancestor=byId.at(ancestor->parent);
+                        lineage[c.id]={{"root",ancestor->id},{"region",mechanism::region(c.raw)},{"improved",mechanismImprovements.contains(c.id)&&!mechanismImprovements[c.id].empty()}};
+                    }
+                    const auto draw=std::stoull(sha256_text(canonical(Json{{"ordinal",proposalOrdinal},{"encounter",encounter},{"seedPairs",seedPairs}})).substr(0,16),nullptr,16);
+                    const double unitDraw=static_cast<double>(draw>>11)*(1.0/9007199254740992.0);
+                    const auto choice=mechanism::choose_active(laneRecords,lineage,gen-1,1,unitDraw);
+                    const auto picked=choice["candidate"].get<std::string>();
+                    parent=nullptr;for(const auto& c:candidates)if(c.id==picked){parent=&c;break;}
+                    if(!parent)throw std::runtime_error("mechanism parent missing");
+                    unscoredParent=!scores.count(parent->id)||scores.at(parent->id).outcomesByTrial.empty();
+                }
+                std::string learnerDrawKey;
                 std::size_t selectedSpec=static_cast<std::size_t>((gen-1)%mutations.size());
-                if(searchProfile=="adaptive-native") {
+                if(controlledDpsLearnerSearch) {
+                    learnerDrawKey=canonical(Json{{"seedPairs",seedPairs},{"seedStart",seedStart},{"seedCount",seedCount},
+                        {"proposalOrdinal",proposalOrdinal},{"parentCandidateId",parent->id}});
+                    const auto actionBounds=fixed_formation_searchable_parameters();
+                    auto proposedActions=mechanism::controlled_actions(parent->raw,std::to_string(parent->raw.at("encounterId").get<std::int64_t>()),
+                        mechanismOperatorStats,mechanismStatScales,mechanismStatAnchors,actionBounds,learnerDrawKey);
+                    Json legalActions=Json::array();
+                    for(const auto& action:proposedActions)try {
+                        Json test=mutate(parent->raw,action,gen-1);const auto testId=identity(test);
+                        if(testId==parent->id||seen.count(testId))continue;
+                        if(!seedPairs.empty()) {
+                            Json seeded=test;
+                            for(std::size_t pi=0;pi<seedPointers.size();++pi)seeded[Json::json_pointer(seedPointers[pi].get<std::string>())]=seedPairs.front()[pi];
+                            if(learningCompleted.count(identity(seeded)))continue;
+                        }
+                        auto preparedTest=prepare(admit(test,tables),tables,false,&test);
+                        if(has_error(preparedTest))continue;
+                        validate_synthetic_dps_prepared(test,preparedTest);
+                        validate_controlled_dps_stat_child(parent->raw,test,action);
+                        legalActions.push_back(action);
+                    } catch(...) { /* illegal or previously tested actions are excluded consistently for both methods */ }
+                    mutations=std::move(legalActions);
+                    if(mutations.empty()){lastGenerationByEncounter[encounter]=gen;continue;}
+                    selectedSpec=mechanism::weighted_action_index(mutations,mechanism::stable_draw(learnerDrawKey+"|sample"));
+                }
+                if(searchProfile=="adaptive-native"&&!controlledDpsLearnerSearch) {
                     long double bestArm=-std::numeric_limits<long double>::infinity();
                     const auto total=std::max<std::uint64_t>(1,proposalOrdinal+1);
                     const auto tieStart=static_cast<std::size_t>(proposalOrdinal%mutations.size());
@@ -2666,41 +2933,160 @@ int run(const Json& config) {
                     for(std::size_t offset=0;offset<mutations.size();++offset) {
                         const auto index=(selectedSpec+offset)%mutations.size();
                         try { const auto test=mutate(parent->raw,mutations[index],gen-1); if(identity(test)==parent->id||seen.count(identity(test))) continue;
-                            if(mutations[index].value("op",std::string{})=="stat-step") {
-                                Json admittedTest;
-                                const auto admissionStart=stageTimingTelemetry?std::chrono::steady_clock::now():std::chrono::steady_clock::time_point{};
-                                try { admittedTest=admit(test,tables); }
-                                catch(...) {
-                                    if(stageTimingTelemetry) admissionWallNs.fetch_add(static_cast<std::uint64_t>(std::chrono::duration_cast<std::chrono::nanoseconds>(
-                                        std::chrono::steady_clock::now()-admissionStart).count()),std::memory_order_relaxed);
-                                    throw;
-                                }
-                                if(stageTimingTelemetry) admissionWallNs.fetch_add(static_cast<std::uint64_t>(std::chrono::duration_cast<std::chrono::nanoseconds>(
-                                    std::chrono::steady_clock::now()-admissionStart).count()),std::memory_order_relaxed);
-                                if(has_error(admittedTest)) continue;
-                                Json preparedTest;
-                                const auto preparationStart=stageTimingTelemetry?std::chrono::steady_clock::now():std::chrono::steady_clock::time_point{};
-                                try { preparedTest=prepare(admittedTest,tables,false,&test); }
-                                catch(...) {
-                                    if(stageTimingTelemetry) preparationWallNs.fetch_add(static_cast<std::uint64_t>(std::chrono::duration_cast<std::chrono::nanoseconds>(
-                                        std::chrono::steady_clock::now()-preparationStart).count()),std::memory_order_relaxed);
-                                    throw;
-                                }
-                                if(stageTimingTelemetry) preparationWallNs.fetch_add(static_cast<std::uint64_t>(std::chrono::duration_cast<std::chrono::nanoseconds>(
-                                    std::chrono::steady_clock::now()-preparationStart).count()),std::memory_order_relaxed);
-                                if(has_error(preparedTest)) continue;
-                                enforce_generated_stat_bound(mutations[index],preparedTest);
-                            }
+                            if(mutations[index].value("op",std::string{})=="stat-step"||mutations[index].value("op",std::string{})=="synthetic-dps-stat-step"||mutations[index].value("op",std::string{})=="synthetic-dps-stat-target") { auto preparedTest=prepare(admit(test,tables),tables,false,&test); if(has_error(preparedTest)) continue; if(mutations[index].value("op",std::string{})=="stat-step") enforce_generated_stat_bound(mutations[index],preparedTest); validate_synthetic_dps_prepared(test,preparedTest); }
                             selectedSpec=index;feasible=true;break; }
                         catch(...) {}
                     }
                     if(!feasible) { lastGenerationByEncounter[encounter]=gen; continue; }
                 }
-                const Json& spec=mutations[selectedSpec];
+                const std::size_t nativeSelectedSpec=selectedSpec;
+                std::size_t prospectiveEvaluated=0;
+                std::size_t prospectiveHistoricalBattleCollisions=0;
+                double prospectiveChosenPrediction=std::numeric_limits<double>::quiet_NaN();
+                std::vector<std::pair<double,std::size_t>> prospectiveRanking;
+                if(prospectiveChildGuidance) {
+                    const auto prospectiveScoringStart=std::chrono::steady_clock::now();
+                    double bestPrediction=-std::numeric_limits<double>::infinity();
+                    long double bestUcb=-std::numeric_limits<long double>::infinity();
+                    std::size_t bestIndex=selectedSpec;
+                    const auto total=std::max<std::uint64_t>(1,proposalOrdinal+1);
+                    struct ProspectiveEvaluation { bool legal=false; bool historicalCollision=false; double prediction=0.0; };
+                    std::vector<ProspectiveEvaluation> evaluations(mutations.size());
+                    std::vector<long double> ucbByIndex(mutations.size());
+                    // Resolve map insertions and all arm reads on this thread before
+                    // independent candidate work runs concurrently.
+                    for(std::size_t index=0;index<mutations.size();++index) {
+                        if(controlledDpsLearnerSearch)ucbByIndex[index]=mechanism::number(mutations[index],"learnerWeight");
+                        else {const auto key=arm_key(encounter,mutations[index]); const auto& arm=mutationArms[key];
+                            ucbByIndex[index]=arm.tries==0?std::numeric_limits<long double>::infinity():
+                                static_cast<long double>(arm.improvements)/arm.tries+std::sqrt(2.0L*std::log(static_cast<long double>(total+1))/arm.tries);}
+                    }
+                    const auto evaluateIndex=[&](std::size_t index) {
+                        auto& evaluation=evaluations[index];
+                        try {
+                            Json test=mutate(parent->raw,mutations[index],gen-1); const auto id=identity(test);
+                            if(id==parent->id||seen.count(id)) return;
+                            if(!seedPairs.empty()) {
+                                Json seeded=test;
+                                for(std::size_t pi=0;pi<seedPointers.size();++pi)
+                                    seeded[Json::json_pointer(seedPointers[pi].get<std::string>())]=seedPairs.front()[pi];
+                                if(learningCompleted.count(identity(seeded))) { evaluation.historicalCollision=true; return; }
+                            }
+                            auto preparedTest=prepare(admit(test,tables),tables,false,&test);
+                            if(has_error(preparedTest)) return;
+                            if(mutations[index].value("op",std::string{})=="stat-step") enforce_generated_stat_bound(mutations[index],preparedTest);
+                            validate_synthetic_dps_prepared(test,preparedTest);
+                            const auto normalized=effective_combat_features(test,preparedTest,tables);
+                            const double prediction=prospectiveForest->predict(normalized);
+                            if(!std::isfinite(prediction)) return;
+                            evaluation.prediction=prediction; evaluation.legal=true;
+                        } catch(...) { /* illegal children are excluded before ranking */ }
+                    };
+                    const auto scoringWorkers=std::min<std::size_t>(static_cast<std::size_t>(prospectiveScoringWorkers),mutations.size());
+                    if(scoringWorkers<=1) {
+                        for(std::size_t index=0;index<mutations.size();++index) evaluateIndex(index);
+                    } else {
+                        std::atomic<std::size_t> nextIndex{0};
+                        std::vector<std::thread> scoringPool; scoringPool.reserve(scoringWorkers);
+                        for(std::size_t worker=0;worker<scoringWorkers;++worker) scoringPool.emplace_back([&] {
+                            for(;;) {
+                                const auto index=nextIndex.fetch_add(1,std::memory_order_relaxed);
+                                if(index>=mutations.size()) break;
+                                evaluateIndex(index);
+                            }
+                        });
+                        for(auto& worker:scoringPool) worker.join();
+                    }
+                    // Stable, single-threaded reduction preserves action order for equal
+                    // prediction and learner-weight ties and makes ranking byte-reproducible.
+                    for(std::size_t index=0;index<evaluations.size();++index) {
+                        const auto& evaluation=evaluations[index];
+                        if(evaluation.historicalCollision) ++prospectiveHistoricalBattleCollisions;
+                        if(!evaluation.legal) continue;
+                        const auto prediction=evaluation.prediction; const auto ucb=ucbByIndex[index];
+                        prospectiveRanking.emplace_back(prediction,index); ++prospectiveEvaluated;
+                        if(prediction>bestPrediction||(prediction==bestPrediction&&(ucb>bestUcb||(ucb==bestUcb&&index<bestIndex)))) {
+                            bestPrediction=prediction; bestUcb=ucb; bestIndex=index;
+                        }
+                    }
+                    if(controlledDpsLearnerSearch&&!prospectiveRanking.empty()) {
+                        Json predictions=Json::array();for(const auto& evaluation:evaluations)predictions.push_back(evaluation.legal?Json(evaluation.prediction):Json(nullptr));
+                        const auto choice=mechanism::guided_action_choice(mutations,predictions,mechanism::stable_draw(learnerDrawKey+"|sample"));
+                        bestIndex=choice.at("index").get<std::size_t>();bestPrediction=choice.at("prediction").get<double>();
+                        bestUcb=mechanism::number(mutations[bestIndex],"learnerWeight");
+                    }
+                    prospectiveScoringElapsedWallNs+=static_cast<std::uint64_t>(std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now()-prospectiveScoringStart).count());
+                    prospectiveChildrenScored+=prospectiveEvaluated;
+                    if(!prospectiveRanking.empty()) {
+                        if(bestIndex!=nativeSelectedSpec) ++prospectiveOperatorChanges;
+                        selectedSpec=bestIndex;
+                        prospectiveChosenPrediction=bestPrediction;
+                    }
+                }
+                if(prospectivePreflightOnly&&!prospectivePreflightWritten) {
+                    const Json nativeSpec=mutations[nativeSelectedSpec];
+                    const Json guidedSpec=mutations[selectedSpec];
+                    Json nativeRaw=mutate(parent->raw,nativeSpec,gen-1), guidedRaw=mutate(parent->raw,guidedSpec,gen-1);
+                    Json ranked=Json::array();
+                    std::sort(prospectiveRanking.begin(),prospectiveRanking.end(),[&](const auto& a,const auto& b){
+                        if(a.first!=b.first)return a.first>b.first;
+                        const auto aw=controlledDpsLearnerSearch?mechanism::number(mutations[a.second],"learnerWeight"):0.0;
+                        const auto bw=controlledDpsLearnerSearch?mechanism::number(mutations[b.second],"learnerWeight"):0.0;
+                        return aw!=bw?aw>bw:a.second<b.second;
+                    });
+                    for(const auto& item:prospectiveRanking) {
+                        Json candidateRaw=mutate(parent->raw,mutations[item.second],gen-1);
+                        ranked.push_back(Json{{"prediction",item.first},{"mutation",mutations[item.second]},
+                            {"childId",identity(candidateRaw)},{"rawScenario",candidateRaw}});
+                    }
+                    Json check{{"schema","ka-native-prospective-guidance-preflight-1"},{"parentCandidateId",parent->id},
+                        {"encounterId",encounter},{"generation",gen},{"historicalActiveScoreCount",scores.size()},
+                        {"freshActiveScoreCount",freshScores.size()},{"nativeSelectionRule",controlledDpsLearnerSearch?"constrained-original-distribution":"mutation-arm-ucb"},
+                        {"nativeSelectionMutation",nativeSpec},{"nativeSelectionChildId",identity(nativeRaw)},
+                        {"guidedMutation",guidedSpec},{"guidedChildId",identity(guidedRaw)},
+                        {"nativeVsGuidedChildChanged",identity(nativeRaw)!=identity(guidedRaw)},
+                        {"guidedChildPrediction",std::isfinite(prospectiveChosenPrediction)?Json(prospectiveChosenPrediction):Json(nullptr)},
+                        {"prospectiveScoringWorkers",prospectiveScoringWorkers},{"prospectiveScoringElapsedWallNs",prospectiveScoringElapsedWallNs},
+                        {"legalUniqueChildrenScored",prospectiveEvaluated},{"historicalFixedSeedCollisionCount",prospectiveHistoricalBattleCollisions},{"rankedLegalChildren",ranked},
+                        {"modelSha256",prospectiveForest?prospectiveForest->artifactSha256:std::string{}},
+                        {"sourceStateSha256",prospectiveForest?prospectiveForest->sourceStateSha256:std::string{}},
+                        {"fixedSeedPair",seedPairs.empty()?Json(nullptr):seedPairs.front()},
+                        {"battlesLaunched",0}};
+                    const auto path=config.value("prospectivePreflightOutputPath",std::string{});
+                    if(path.empty()) throw std::runtime_error("prospectivePreflightOnly requires prospectivePreflightOutputPath");
+                    const fs::path target(path),tmp=target.string()+".tmp"; fs::create_directories(target.parent_path());
+                    {std::ofstream o(tmp,std::ios::binary|std::ios::trunc);o<<check.dump(2)<<'\n';o.flush();if(!o)throw std::runtime_error("prospective preflight write failed");}
+                    commit_json_file(tmp,target); prospectivePreflightWritten=true; break;
+                }
+                Json selectedAction=mutations[selectedSpec];
+                if(controlledDpsLearnerSearch)selectedAction=mechanism::action_component(selectedAction,
+                    mechanism::stable_draw(learnerDrawKey+"|component|"+selectedAction.at("parameter").get<std::string>()+"|"+
+                        std::to_string(selectedAction.at("target").get<std::int64_t>())));
+                const Json& spec=selectedAction;
+                if(controlledDpsLearnerSearch) {
+                    const auto learnerEncounter=std::to_string(parent->raw.at("encounterId").get<std::int64_t>());
+                    auto& opStats=mechanismOperatorStats[learnerEncounter];if(!opStats.is_object())opStats=Json::object();
+                    auto bump=[&](Json& stats,const std::string& key,const char* field){auto& entry=stats[key];if(!entry.is_object())entry=Json::object();auto& value=entry[field];if(!value.is_number_integer())value=0;value=value.get<std::int64_t>()+1;};
+                    bump(opStats,"set-stat","attempts");bump(opStats,spec.at("learnerStat").get<std::string>(),"attempts");
+                    auto& perEncounter=mechanismStatScales[learnerEncounter];if(!perEncounter.is_object())perEncounter=Json::object();
+                    auto& perStat=perEncounter[spec.at("parameter").get<std::string>()];if(!perStat.is_object())perStat=Json::object();
+                    bump(perStat,spec.at("learnerScale").get<std::string>(),"planned");bump(perStat,spec.at("learnerScale").get<std::string>(),"attempts");
+                }
                 Json raw;
                 try{raw=mutate(parent->raw,spec,gen-1);}catch(const std::exception& e){++invalidTrials;lastGenerationByEncounter[encounter]=gen;errorsJournal.append(Json{{"schema","kaopt-diagnostic-1"},{"stage","mutation"},{"parentCandidateId",parent->id},{"rawScenario",parent->raw},{"attemptedMutation",spec},{"encounterId",encounter},{"generation",gen},{"reason",e.what()},{"provenance",provenance}}.dump()+"\n");continue;}
+                if(controlledDpsLearnerSearch)validate_controlled_dps_stat_child(parent->raw,raw,spec);
                 if (encounter_key(raw) != encounter) throw std::runtime_error("mutation changed encounter membership");
-                Candidate child{std::move(raw), "", parent->id, gen, searchProfile=="adaptive-native"?spec.dump():(unscoredParent?"mutation-of-unscored-parent":"mutation-of-encounter-highest-mean-earned"),parent->sourceBinding};
+                Json childBinding=parent->sourceBinding;
+                if(prospectiveChildGuidance) childBinding["prospectiveGuidance"]={{"modelSha256",prospectiveForest->artifactSha256},
+                    {"sourceStateSha256",prospectiveForest->sourceStateSha256},{"predictedMeanEarned",std::isfinite(prospectiveChosenPrediction)?Json(prospectiveChosenPrediction):Json(nullptr)},
+                    {"guidanceApplied",std::isfinite(prospectiveChosenPrediction)},
+                    {"legalUniqueChildrenScored",prospectiveEvaluated},{"historicalFixedSeedCollisionsSkipped",prospectiveHistoricalBattleCollisions},
+                    {"nativeSelectionCounterfactualMutation",mutations[nativeSelectedSpec]},
+                    {"selectedMutation",spec},{"ranking",controlledDpsLearnerSearch?
+                        "highest predicted native earned over the constrained original-distribution ATK/SPD/LCK action set; ties use learner mass":
+                        "highest predicted native earned over all legal unique one-step children"},
+                    {"predictionTargetBasis","historical native earned means; mixed bases remain as in checkpoint; not a certified award claim"}};
+                Candidate child{std::move(raw), "", parent->id, gen, (searchProfile=="adaptive-native"||controlledDpsLearnerSearch)?spec.dump():(unscoredParent?"mutation-of-unscored-parent":"mutation-of-encounter-highest-mean-earned"),std::move(childBinding)};
                 const std::string parentId=parent->id;
                 child.id = identity(child.raw);
                 lastGenerationByEncounter[encounter] = gen;
@@ -2711,24 +3097,27 @@ int run(const Json& config) {
                 statusCandidateCount.fetch_add(1,std::memory_order_relaxed);
                 currentPendingCandidateIds.insert(child.id);
                 if(searchScheduling=="legacy-sequential") {
+                    if(controlledDpsLearnerSearch&&freshTrialBudget&&!prospectivePreflightOnly) export_search_state();
                     if(!evaluate_candidate(candidates.back())) break;
                     currentPendingCandidateIds.erase(child.id);
-                    if(searchProfile=="adaptive-native") {
-                        const auto parentIt=std::find_if(candidates.begin(),candidates.end(),[&](const Candidate& item){return item.id==parentId;});
-                        if(parentIt!=candidates.end()) record_arm_judgment(candidates.back(),*parentIt,spec);
-                    }
+                    if(controlledDpsLearnerSearch)recordMechanismLearnerFeedback(child);
+                    if(searchProfile=="adaptive-native"&&!controlledDpsLearnerSearch) { auto& arm=mutationArms[arm_key(encounter,spec)]; ++arm.tries; const auto ci=selectionScores.find(child.id),pi=selectionScores.find(parentId); if(ci!=selectionScores.end()&&pi!=selectionScores.end()&&!ci->second.outcomesByTrial.empty()&&!pi->second.outcomesByTrial.empty()) { ++armJudgmentUpdates; if(childImproved(child.id,child.parent)) ++arm.improvements; } }
                 } else generationChildren.push_back(child);
             }
-            if(searchScheduling=="encounter-wave"&&!generationChildren.empty()&&
-               !stopRequested.load()&&!pauseRequested.load()) {
+            if(prospectivePreflightWritten) break;
+            if(searchScheduling=="encounter-wave"&&!generationChildren.empty()&&!stopRequested.load()) {
+                if(controlledDpsLearnerSearch&&freshTrialBudget&&!prospectivePreflightOnly) export_search_state();
                 const bool generationComplete=evaluate_cohort(generationChildren);
                 if(generationComplete) for(const auto& child:generationChildren) currentPendingCandidateIds.erase(child.id);
-                if(searchProfile=="adaptive-native") for(const auto& child:generationChildren) {
-                    const auto parentIt=std::find_if(candidates.begin(),candidates.end(),[&](const Candidate& item){return item.id==child.parent;});
-                    if(parentIt==candidates.end()) continue;
-                    try { record_arm_judgment(child,*parentIt,Json::parse(child.operation)); } catch(...) {}
+                if(generationComplete&&controlledDpsLearnerSearch) for(const auto& child:generationChildren)recordMechanismLearnerFeedback(child);
+                if(searchProfile=="adaptive-native"&&!controlledDpsLearnerSearch) for(const auto& child:generationChildren) {
+                    const auto encounter=encounter_key(child.raw); const auto spec=Json::parse(child.operation);
+                    auto& arm=mutationArms[arm_key(encounter,spec)]; ++arm.tries;
+                    const auto ci=selectionScores.find(child.id),pi=selectionScores.find(child.parent);
+                    if(ci!=selectionScores.end()&&pi!=selectionScores.end()&&!ci->second.outcomesByTrial.empty()&&!pi->second.outcomesByTrial.empty()) { ++armJudgmentUpdates; if(childImproved(child.id,child.parent)) ++arm.improvements; }
                 }
             }
+            if(freshTrialBudget&&!prospectivePreflightOnly) export_search_state();
         }
         { Json pending=Json::array(); for(const auto& id:currentPendingCandidateIds) pending.push_back(id);
           Json cp{{"schema","kaopt-checkpoint-1"},{"journalRecords",completed.size()},
@@ -2749,14 +3138,24 @@ int run(const Json& config) {
         std::cerr << "kaopt summary: saved=" << saved << " invalid=" << invalidTrials.load()
                   << " execution_errors=" << executionErrors.load() << " successful=" << successfulTrials.load()
                   << " scored=" << scoredTrials.load() << '\n';
-        const bool clean = executionErrors.load() == 0 && saved>0;
-        const std::string stopReason=stopRequested.load()?"control-stop":(pauseRequested.load()?"control-pause":(!currentPendingCandidateIds.empty()?"focus-deferred":"completed"));
-        Json finalStatus{{"schema","kaopt-status-1"},{"state",stopRequested.load()?"stopped":(pauseRequested.load()?"paused":(clean?"complete":"completed-with-errors"))},
+        const bool clean = prospectivePreflightWritten || (executionErrors.load() == 0 && saved>0);
+        const std::string stopReason=stopRequested.load()?"control-stop":(!currentPendingCandidateIds.empty()?"focus-deferred":"completed");
+        Json finalStatus{{"schema","kaopt-status-1"},{"state",stopRequested.load()?"stopped":(clean?"complete":"completed-with-errors")},
             {"stage","finished"},{"savedRecords",saved},{"invalidCandidates",invalidTrials.load()},
-            {"freshSavedRecords",saved-restoredRecords},{"restoredRecords",restoredRecords},{"duplicateSkips",duplicateSkips},
-            {"completedTrials",durableCompletedTrials.load()},{"drainedJobsThisRun",drainedJobsThisRun.load()},
+            {"freshSavedRecords",saved-restoredRecords},{"restoredRecords",restoredRecords},{"duplicateSkips",duplicateSkips},{"completedTrials",drained},
             {"executionErrors",executionErrors.load()},{"successfulOutcomes",successfulTrials.load()},{"persistPreparedSnapshot",persistPreparedSnapshot},
             {"scoredOutcomes",scoredTrials.load()},{"candidateCount",candidates.size()},
+            {"parentSelections",parentSelections},{"historicalGuidanceEnabled",historicalParentGuidance},
+            {"historicalGuidanceApplications",guidanceAppliedParentSelections},
+            {"historicalGuidanceNudgedParentSelections",guidanceNudgedParentSelections},
+            {"nativeArmJudgmentUpdates",armJudgmentUpdates},
+            {"prospectiveChildGuidanceEnabled",prospectiveChildGuidance},
+            {"prospectiveChildrenScored",prospectiveChildrenScored},
+            {"prospectiveOperatorChanges",prospectiveOperatorChanges},
+            {"prospectiveScoringWorkers",prospectiveScoringWorkers},
+            {"prospectiveScoringElapsedWallNs",prospectiveScoringElapsedWallNs},
+            {"prospectivePreflightCompleted",prospectivePreflightWritten},
+            {"freshTrialBudget",freshTrialBudget},
             {"lastGenerationByEncounter",lastGenerationByEncounter},
             {"startupMs",startupMs},{"totalElapsedMs",std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now()-wallStart).count()},
             {"elapsedWallNs",static_cast<std::uint64_t>(std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now()-wallStart).count())},
@@ -2766,7 +3165,7 @@ int run(const Json& config) {
         const Json work=make_work_telemetry(); for(auto it=work.begin();it!=work.end();++it) finalStatus[it.key()]=it.value();
         if (stageTimingTelemetry) finalStatus["timingTelemetry"] = make_timing_telemetry();
         write_status(outDir, finalStatus);
-        return (clean||stopRequested.load()||pauseRequested.load()) ? 0 : 3;
+        return (clean||stopRequested.load()) ? 0 : 3;
     } catch (const std::exception& e) {
         std::cerr << "kaopt pipeline: " << e.what() << '\n';
         try {

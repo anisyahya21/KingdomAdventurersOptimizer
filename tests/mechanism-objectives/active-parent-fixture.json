@@ -1,0 +1,93 @@
+{
+  "records": [
+    {
+      "candidate": "rootA",
+      "encounterId": 0,
+      "defeatCount": 0,
+      "n": 1,
+      "wins": 0,
+      "earnedMax": null,
+      "earnedCount": 0,
+      "potentialMax": null,
+      "winInterval": [
+        0,
+        1
+      ],
+      "meanResources": null,
+      "progress": {},
+      "progressRuns": 0
+    },
+    {
+      "candidate": "childA1",
+      "encounterId": 0,
+      "defeatCount": 0,
+      "n": 1,
+      "wins": 0,
+      "earnedMax": null,
+      "earnedCount": 0,
+      "potentialMax": null,
+      "winInterval": [
+        0,
+        1
+      ],
+      "meanResources": null,
+      "progress": {},
+      "progressRuns": 0
+    },
+    {
+      "candidate": "childA2",
+      "encounterId": 0,
+      "defeatCount": 0,
+      "n": 1,
+      "wins": 0,
+      "earnedMax": null,
+      "earnedCount": 0,
+      "potentialMax": null,
+      "winInterval": [
+        0,
+        1
+      ],
+      "meanResources": null,
+      "progress": {},
+      "progressRuns": 0
+    },
+    {
+      "candidate": "rootB",
+      "encounterId": 0,
+      "defeatCount": 0,
+      "n": 1,
+      "wins": 0,
+      "earnedMax": null,
+      "earnedCount": 0,
+      "potentialMax": null,
+      "winInterval": [
+        0,
+        1
+      ],
+      "meanResources": null,
+      "progress": {},
+      "progressRuns": 0
+    }
+  ],
+  "lineage": {
+    "rootA": {
+      "root": "rootA",
+      "improved": false
+    },
+    "childA1": {
+      "root": "rootA",
+      "improved": true
+    },
+    "childA2": {
+      "root": "rootA",
+      "improved": false
+    },
+    "rootB": {
+      "root": "rootB",
+      "improved": false
+    }
+  },
+  "proposal": 4,
+  "attempt": 1,
+  "draw": 0.61
+}

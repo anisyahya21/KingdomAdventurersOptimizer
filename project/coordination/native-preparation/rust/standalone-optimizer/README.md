@@ -1,5 +1,17 @@
 # Rust standalone optimizer
 
+## Mechanism objective restoration source
+
+The working source in `src/` now contains the isolated R16 mechanism-objective restoration. This source package does not overwrite or re-label the archived R8/R9 executable builds above. Build it as a new verification artifact before any use. Predictor guidance is not enabled by this change.
+
+To opt into restored objective accounting and search routing, a run config must set `"objectiveMode": "mechanism-lanes-v3"`. Configs without this field retain the compatibility default `earned-only-v1`. A common learner prior is optional; when used, provide both `commonLearnerPriorPath` and its verified `commonLearnerPriorSha256`, and only for a fresh run without checkpoint or journal data. Do not rehydrate missing historical mechanism aggregates from old checkpoints.
+
+The unrestricted search is the default when `syntheticDpsSearch` is omitted. The controlled synthetic-DPS profile is an explicit, separate mode requiring fixed parameters `{ "10": 2500, "11": 2500, "14": 2500, "19": 18 }` and mutable parameters `["13", "15", "16"]`; its bounds and formation restrictions must not be described as limits on unrestricted runs. Both modes require `objectiveMode: mechanism-lanes-v3`.
+
+The existing top-level `fixedFormation` option remains supported. It preserves the pinned six-member roster validation and the original fixed-formation mutation policy. When combined with `syntheticDpsSearch`, both guards apply and generated children are further restricted to the configured three mutable stats.
+
+The restored source is packaged for compile and fixture verification only. No battles were run or executable adopted as part of packaging.
+
 Independent Rust candidate admission, numeric preparation, formation, search, resident execution coordination and durable result saving. The existing canonical native Rust battle engine is reused for combat and initial AI state transitions; that shared component is part of the comparison boundary. No Python process or prepared binary template is used at runtime.
 
 Status: R8 is validated for the supplied diagnostic scope. Chat 1 measured exact preparation and native parity across all 20 encounters, plus exact parity for all 12 mutation-smoke trials and unchanged journal on restart. The bounded byte diagnostic also matched all 17,272,024 bytes before and after battle. These diagnostic results remain import-disabled; performance comparisons and production strategy eligibility are separate work.

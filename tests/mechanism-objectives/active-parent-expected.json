@@ -1,0 +1,24 @@
+{
+  "candidate": "childA2",
+  "source": "exploration",
+  "choicePool": [
+    "rootA",
+    "childA1",
+    "childA2",
+    "rootB"
+  ],
+  "weights": [
+    0.9,
+    0.9,
+    0.9,
+    0.8333333333333333
+  ],
+  "productivity": {
+    "rootA": {
+      "rate": 0.4
+    },
+    "rootB": {
+      "rate": 0.3333333333333333
+    }
+  }
+}

@@ -108,9 +108,9 @@ std::unordered_map<std::int64_t, Json> index_rows(const Json& rows, const char* 
 }
 } // namespace
 
+// Canonical admission boundary: under the fixed-formation policy every candidate (input, resume
+// import, generated child or evaluated job) is checked here, so no incompatible scenario can pass.
 Json admit(const Json& source, const Json& tables) {
-    // Canonical admission boundary: under the fixed-formation policy every candidate (input, resume
-    // import, generated child or evaluated job) is checked here, so no incompatible scenario can pass.
     if (fixed_formation_enabled()) validate_fixed_formation_raw(source);
     require(source.is_object(), "scenario must be an object");
     require(tables.is_object() && tables.contains("weapon-skill-profiles"), "tables requires weapon-skill-profiles group");

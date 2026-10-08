@@ -1,5 +1,21 @@
 # Provenance
 
+## 2026-10-09 source correction
+
+Canonical native sources now include the mechanism-objective restoration described
+in [MECHANISM_OBJECTIVES.md](MECHANISM_OBJECTIVES.md). C++ is based on the tested
+R23-derived batch-chain source, Go on the tested 09d624-derived source, and Rust
+on the tested R16-derived source, with the published fixed-formation boundaries
+preserved during integration. This update changes search algorithms; the
+"no algorithm changed" statements below refer only to the original October 6
+packaging/cleanup. Predictor guidance is disabled in the corrected smoke entry;
+no private learner prior or model is shipped by this correction.
+
+Historical desktop binaries and their manifest hashes below remain unchanged.
+Rebuilding corrected source does not silently replace those pins.
+
+## Original 2026-10-06 package
+
 Copied from the current local project on 2026-10-06. The package preserves source byte-for-byte except path relocation in selected configuration manifests and a portable C++ build launcher; root entry points are new. No optimizer algorithm was changed. Inventory hashes identify this handoff independently of historical source hashes.
 
 Desktop finishing manifests are authoritative and remain pinned to older builds. Fixed-policy binaries are separate. Rebuilding the latest source does not recreate the older desktop pin. Historical acceptance JSON is retained as evidence and may contain original machine paths; it is not executable configuration.

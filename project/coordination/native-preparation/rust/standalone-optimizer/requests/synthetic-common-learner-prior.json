@@ -1,0 +1,24 @@
+{
+  "schema": "ka-mechanism-learner-prior-1",
+  "objectiveMode": "mechanism-lanes-v3",
+  "fixtureKind": "synthetic-unit-test-only",
+  "operatorStats": {
+    "7": {
+      "set-stat": {
+        "unproductive": 2,
+        "improved": 2,
+        "attempts": 4
+      }
+    }
+  },
+  "statScales": {},
+  "statAnchors": {
+    "7": {
+      "13": 99
+    }
+  },
+  "sourceIdentity": {
+    "fixture": "synthetic-only",
+    "historicalTrainingData": false
+  }
+}

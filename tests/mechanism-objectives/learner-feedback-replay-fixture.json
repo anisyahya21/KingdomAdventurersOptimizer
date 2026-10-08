@@ -1,0 +1,321 @@
+{
+  "budgetCases": [
+    {
+      "durableJournalRows": 37,
+      "importedCompleted": 0,
+      "importedState": false
+    },
+    {
+      "durableJournalRows": 0,
+      "importedCompleted": 193,
+      "importedState": true
+    }
+  ],
+  "children": [
+    {
+      "candidateId": "child-improved",
+      "childRecord": {
+        "candidate": "child-improved",
+        "defeatCount": 0,
+        "earnedCount": 0,
+        "earnedMax": 0,
+        "encounterId": 0,
+        "meanResources": null,
+        "n": 1,
+        "potentialMax": 40,
+        "progress": {
+          "commandsReleasedAfterDeathTargetingBoss": 0,
+          "commandsTargetingBossReleased": 0,
+          "maxSimultaneousCommandsTargetingBoss": 0,
+          "maxSimultaneousStoredCommands": 0,
+          "postDeathPrizes": 2,
+          "storedCommandsTargetingBossAtDeath": 0,
+          "storedTargetHoldersPeak": 0
+        },
+        "progressRuns": 1,
+        "winInterval": [
+          0,
+          1
+        ],
+        "wins": 0
+      },
+      "encounter": "0",
+      "fullyMeasured": true,
+      "operation": {
+        "learnerScale": "1.05",
+        "learnerStat": "stat:atk",
+        "op": "synthetic-dps-stat-target",
+        "parameter": "13",
+        "target": 180
+      },
+      "parentRecord": {
+        "candidate": "parent-improved",
+        "defeatCount": 0,
+        "earnedCount": 0,
+        "earnedMax": 0,
+        "encounterId": 0,
+        "meanResources": null,
+        "n": 1,
+        "potentialMax": 20,
+        "progress": {
+          "commandsReleasedAfterDeathTargetingBoss": 0,
+          "commandsTargetingBossReleased": 0,
+          "maxSimultaneousCommandsTargetingBoss": 0,
+          "maxSimultaneousStoredCommands": 0,
+          "postDeathPrizes": 1,
+          "storedCommandsTargetingBossAtDeath": 0,
+          "storedTargetHoldersPeak": 0
+        },
+        "progressRuns": 1,
+        "winInterval": [
+          0,
+          1
+        ],
+        "wins": 0
+      }
+    },
+    {
+      "candidateId": "child-unproductive",
+      "childRecord": {
+        "candidate": "child-unproductive",
+        "defeatCount": 0,
+        "earnedCount": 0,
+        "earnedMax": 0,
+        "encounterId": 0,
+        "meanResources": null,
+        "n": 1,
+        "potentialMax": 20,
+        "progress": {
+          "commandsReleasedAfterDeathTargetingBoss": 0,
+          "commandsTargetingBossReleased": 0,
+          "maxSimultaneousCommandsTargetingBoss": 0,
+          "maxSimultaneousStoredCommands": 0,
+          "postDeathPrizes": 1,
+          "storedCommandsTargetingBossAtDeath": 0,
+          "storedTargetHoldersPeak": 0
+        },
+        "progressRuns": 1,
+        "winInterval": [
+          0,
+          1
+        ],
+        "wins": 0
+      },
+      "encounter": "0",
+      "fullyMeasured": true,
+      "operation": {
+        "learnerScale": "1.15",
+        "learnerStat": "stat:speed",
+        "op": "synthetic-dps-stat-target",
+        "parameter": "15",
+        "target": 150
+      },
+      "parentRecord": {
+        "candidate": "parent-unproductive",
+        "defeatCount": 0,
+        "earnedCount": 0,
+        "earnedMax": 0,
+        "encounterId": 0,
+        "meanResources": null,
+        "n": 1,
+        "potentialMax": 25,
+        "progress": {
+          "commandsReleasedAfterDeathTargetingBoss": 0,
+          "commandsTargetingBossReleased": 0,
+          "maxSimultaneousCommandsTargetingBoss": 0,
+          "maxSimultaneousStoredCommands": 0,
+          "postDeathPrizes": 1,
+          "storedCommandsTargetingBossAtDeath": 0,
+          "storedTargetHoldersPeak": 0
+        },
+        "progressRuns": 1,
+        "winInterval": [
+          0,
+          1
+        ],
+        "wins": 0
+      }
+    },
+    {
+      "candidateId": "child-no-evidence",
+      "childRecord": {
+        "candidate": "child-no-evidence",
+        "defeatCount": 0,
+        "earnedCount": 0,
+        "earnedMax": 0,
+        "encounterId": 0,
+        "meanResources": null,
+        "n": 1,
+        "potentialMax": null,
+        "progress": {},
+        "progressRuns": 0,
+        "winInterval": [
+          0,
+          1
+        ],
+        "wins": 0
+      },
+      "encounter": "0",
+      "fullyMeasured": true,
+      "operation": {
+        "learnerScale": "1.2",
+        "learnerStat": "stat:lck",
+        "op": "synthetic-dps-stat-target",
+        "parameter": "16",
+        "target": 120
+      },
+      "parentRecord": {
+        "candidate": "parent-no-evidence",
+        "defeatCount": 0,
+        "earnedCount": 0,
+        "earnedMax": 0,
+        "encounterId": 0,
+        "meanResources": null,
+        "n": 1,
+        "potentialMax": null,
+        "progress": {},
+        "progressRuns": 0,
+        "winInterval": [
+          0,
+          1
+        ],
+        "wins": 0
+      }
+    },
+    {
+      "candidateId": "child-incomplete",
+      "childRecord": {
+        "candidate": "child-incomplete",
+        "defeatCount": 0,
+        "earnedCount": 0,
+        "earnedMax": 0,
+        "encounterId": 0,
+        "meanResources": null,
+        "n": 1,
+        "potentialMax": 50,
+        "progress": {
+          "commandsReleasedAfterDeathTargetingBoss": 0,
+          "commandsTargetingBossReleased": 0,
+          "maxSimultaneousCommandsTargetingBoss": 0,
+          "maxSimultaneousStoredCommands": 0,
+          "postDeathPrizes": 2,
+          "storedCommandsTargetingBossAtDeath": 0,
+          "storedTargetHoldersPeak": 0
+        },
+        "progressRuns": 1,
+        "winInterval": [
+          0,
+          1
+        ],
+        "wins": 0
+      },
+      "encounter": "0",
+      "fullyMeasured": false,
+      "operation": {
+        "learnerScale": "1.2",
+        "learnerStat": "stat:lck",
+        "op": "synthetic-dps-stat-target",
+        "parameter": "16",
+        "target": 160
+      },
+      "parentRecord": {
+        "candidate": "parent-incomplete",
+        "defeatCount": 0,
+        "earnedCount": 0,
+        "earnedMax": 0,
+        "encounterId": 0,
+        "meanResources": null,
+        "n": 1,
+        "potentialMax": 20,
+        "progress": {
+          "commandsReleasedAfterDeathTargetingBoss": 0,
+          "commandsTargetingBossReleased": 0,
+          "maxSimultaneousCommandsTargetingBoss": 0,
+          "maxSimultaneousStoredCommands": 0,
+          "postDeathPrizes": 1,
+          "storedCommandsTargetingBossAtDeath": 0,
+          "storedTargetHoldersPeak": 0
+        },
+        "progressRuns": 1,
+        "winInterval": [
+          0,
+          1
+        ],
+        "wins": 0
+      }
+    }
+  ],
+  "journalAttempts": [
+    {
+      "encounter": "0",
+      "operation": {
+        "learnerScale": "1.05",
+        "learnerStat": "stat:atk",
+        "op": "synthetic-dps-stat-target",
+        "parameter": "13",
+        "target": 180
+      },
+      "strategyId": "child-improved"
+    },
+    {
+      "encounter": "0",
+      "operation": {
+        "learnerScale": "1.05",
+        "learnerStat": "stat:atk",
+        "op": "synthetic-dps-stat-target",
+        "parameter": "13",
+        "target": 180
+      },
+      "strategyId": "child-improved"
+    },
+    {
+      "encounter": "0",
+      "operation": {
+        "learnerScale": "1.15",
+        "learnerStat": "stat:speed",
+        "op": "synthetic-dps-stat-target",
+        "parameter": "15",
+        "target": 150
+      },
+      "strategyId": "child-unproductive"
+    },
+    {
+      "encounter": "0",
+      "operation": {
+        "learnerScale": "1.2",
+        "learnerStat": "stat:lck",
+        "op": "synthetic-dps-stat-target",
+        "parameter": "16",
+        "target": 160
+      },
+      "strategyId": "child-incomplete"
+    }
+  ],
+  "schema": "ka-mechanism-feedback-replay-fixture-1",
+  "state": {
+    "mechanismImprovements": {},
+    "mechanismLearnerState": {
+      "operatorStats": {
+        "0": {
+          "set-stat": {
+            "attempts": 4,
+            "improved": 1,
+            "unproductive": 2
+          }
+        }
+      },
+      "statAnchors": {
+        "0": {
+          "13": 100
+        }
+      },
+      "statScales": {}
+    },
+    "pendingCandidateIds": [
+      "child-improved",
+      "child-unproductive",
+      "child-no-evidence",
+      "child-incomplete"
+    ]
+  }
+}

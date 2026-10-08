@@ -10,4 +10,9 @@ These are a debugging handoff, not promises of correctness. Historical evidence 
 
 ## Useful reproduction record
 
+The earned-only native search omission is addressed by the corrected source's
+explicit `mechanism-lanes-v3` path. See [MECHANISM_OBJECTIVES.md](MECHANISM_OBJECTIVES.md).
+The shipped historical desktop pins still lack that correction. Full unrestricted
+Python scheduler parity and end-to-end GUI recovery remain open.
+
 Launch one engine with a new library; record engine revision, mode, encounter selection, worker count, saved row count and exact error. Start, wait for a few saved rows, Pause, Resume, Stop, close and reopen. Copy the new runtime logs/config/checkpoint and the minimal database needed for the failure into a private bug report. Avoid an unbounded campaign while investigating.

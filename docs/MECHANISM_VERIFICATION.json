@@ -1,0 +1,52 @@
+{
+  "schema": "ka-native-objective-publication-verification-1",
+  "date": "2026-10-09",
+  "scope": "corrected constrained original learner; predictor guidance off; historical desktop pins unchanged",
+  "cpp": {
+    "offlineFixtures": "pass",
+    "sourceBuild": "pass",
+    "smokeSavedRows": 2,
+    "invalidTrials": 0,
+    "executionErrors": 0,
+    "executableSha256": "5b85a18d5dfb6bb13e78b2335d9bf704fcb1f1c62c48837a4e5616123f6de2d7"
+  },
+  "go": {
+    "sourceBuild": "pass",
+    "oracleCases": 2,
+    "feedbackReplayRows": 8,
+    "resumeVerified": true,
+    "smokeSavedRows": 2,
+    "smokeDiagnostic": true,
+    "executableSha256": "09ee2989418f6699b4e6a2f0559e6a39a822eb1c5ef22a5658bd12e84e9b8c1b"
+  },
+  "rust": {
+    "cargoCheck": "pass",
+    "focusedTestsPassed": 4,
+    "objectiveParity": "pass",
+    "smokeSavedRows": 2,
+    "rejectedTrials": 0,
+    "sourceSha256": {
+      "main.rs": "c06c15dc49bd8618b7ad06f6fd9217531df365edb9e00c7c92a728864ccda365",
+      "objective.rs": "a60753bd6e20cfd5682f1634d9c35b86824a67556bd1dc426d5013f6e55727f6",
+      "search.rs": "d9fc02cde449088b3e4f75f054c6ae9a65b02608112f94707fca418b3ca5ac85",
+      "store.rs": "32d7c8acde895043dcc77addff7ee65600d0ea3c3d57dd824e3f272aaa8edd56",
+      "engine.rs": "71b8f0f6ed27c7882ad1ec02ab5f4ceeb5486e596bf047f1c01271414be0d4ae",
+      "input.rs": "9f24e74728e3824dbc8b2cd6b96caeab56e388cc8247910dd0e47eeb69c6c17b",
+      "prepare.rs": "ff3e96df9cd13bbe6daa25d3ccde743fd326055930d11fe66e1252bae7f8ff2f",
+      "tuning.rs": "8722c0d1adaf00aadd39872a7571c1fbf50c34761a505f41694adcee088a2807",
+      "fixed_formation.rs": "c897e30052d5c1da41181f32b70b1e9e52176cd0a354687827b5803f26618a14"
+    }
+  },
+  "limits": [
+    "No new full GUI suite or end-to-end process-kill acceptance.",
+    "No full unrestricted Python scheduler parity.",
+    "Historical binaries are not repinned.",
+    "No trained predictor weights or historical learner prior shipped."
+  ],
+  "reproduce": [
+    "python verify_cpp_objectives.py --exe FRESH_CPP_EXE",
+    "go-optimizer-corrected.exe --objective-oracle tests/mechanism-objectives/objective-v3-oracle.json",
+    "cargo test --locked objective_runtime_tests",
+    "python run_corrected_smoke.py ENGINE --exe FRESH_EXE"
+  ]
+}

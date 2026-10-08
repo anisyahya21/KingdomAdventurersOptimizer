@@ -46,7 +46,10 @@ struct Sample {
 }
 
 fn is_scalar(value: &Value) -> bool {
-    matches!(value, Value::Null | Value::Bool(_) | Value::Number(_) | Value::String(_))
+    matches!(
+        value,
+        Value::Null | Value::Bool(_) | Value::Number(_) | Value::String(_)
+    )
 }
 
 fn is_frozen_layout_pointer(parent: &Value, pointer: &str) -> bool {
@@ -62,11 +65,23 @@ fn is_frozen_layout_pointer(parent: &Value, pointer: &str) -> bool {
         return true;
     }
     if segments.first().map(String::as_str) == Some("ownUnits") {
-        return matches!(segments.get(2).map(String::as_str), Some(
-            "name" | "human" | "monsterId" | "cell" | "grid" | "formationValue"
-                | "leaderIdentity" | "visitor" | "humanFlags" | "ownerPlayer" | "friend"
-                | "onVehicle"
-        ));
+        return matches!(
+            segments.get(2).map(String::as_str),
+            Some(
+                "name"
+                    | "human"
+                    | "monsterId"
+                    | "cell"
+                    | "grid"
+                    | "formationValue"
+                    | "leaderIdentity"
+                    | "visitor"
+                    | "humanFlags"
+                    | "ownerPlayer"
+                    | "friend"
+                    | "onVehicle"
+            )
+        );
     }
     false
 }
@@ -75,19 +90,26 @@ fn is_frozen_layout_pointer(parent: &Value, pointer: &str) -> bool {
 // canonical skillsByName table. 6-Hit Attack (109), derived weapon attacks and
 // unreviewed catalog rows are deliberately excluded.
 const APPROVED_SEARCH_SKILLS: &[i64] = &[
-    22, 23, 24, 25, 110, 26, 30, 108, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,
-    15, 16, 17, 18, 19, 21, 20, 39, 38, 37, 36, 27, 28, 41, 40, 33, 34,
-    35, 114, 115, 116, 31, 32, 29, 4, 117, 118, 119, 107, 106, 105,
+    22, 23, 24, 25, 110, 26, 30, 108, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 21,
+    20, 39, 38, 37, 36, 27, 28, 41, 40, 33, 34, 35, 114, 115, 116, 31, 32, 29, 4, 117, 118, 119,
+    107, 106, 105,
 ];
 
 fn skill_row<'a>(catalog_rows: &'a [Value], skill_id: i64) -> Option<&'a Value> {
-    catalog_rows.iter().find(|row| row.get("id").and_then(Value::as_i64) == Some(skill_id))
+    catalog_rows
+        .iter()
+        .find(|row| row.get("id").and_then(Value::as_i64) == Some(skill_id))
 }
 
 fn is_formation_skill(skill_id: i64, catalog_rows: Option<&[Value]>) -> bool {
-    skill_id == 105 || skill_id == 106 || skill_id == 107
-        || catalog_rows.and_then(|rows| skill_row(rows, skill_id))
-            .and_then(|row| row.get("type")).and_then(Value::as_i64) == Some(60)
+    skill_id == 105
+        || skill_id == 106
+        || skill_id == 107
+        || catalog_rows
+            .and_then(|rows| skill_row(rows, skill_id))
+            .and_then(|row| row.get("type"))
+            .and_then(Value::as_i64)
+            == Some(60)
 }
 
 /// Search state with reproducible xorshift64* draws and online mean selection.
@@ -127,8 +149,10 @@ impl Search {
             .filter(|value| *value != 0)
             .ok_or("search-state checkpoint has invalid rng")?;
         let mut search = Self::new(rng);
-        for (name, field) in [("operatorTrials", &mut search.operator_trials),
-                              ("operatorWins", &mut search.operator_wins)] {
+        for (name, field) in [
+            ("operatorTrials", &mut search.operator_trials),
+            ("operatorWins", &mut search.operator_wins),
+        ] {
             let rows = state[name]
                 .as_object()
                 .ok_or_else(|| format!("search-state checkpoint lacks {name}"))?;
@@ -143,13 +167,28 @@ impl Search {
             .as_array()
             .ok_or("search-state checkpoint lacks samples")?;
         for row in samples {
-            let candidate = row.get("candidate").cloned().ok_or("sample lacks candidate")?;
-            let earned = row["earnedSum"].as_f64().filter(|v| v.is_finite() && *v >= 0.0)
+            let candidate = row
+                .get("candidate")
+                .cloned()
+                .ok_or("sample lacks candidate")?;
+            let earned = row["earnedSum"]
+                .as_f64()
+                .filter(|v| v.is_finite() && *v >= 0.0)
                 .ok_or("sample has invalid earnedSum")?;
-            let count = row["count"].as_u64().filter(|v| *v > 0)
+            let count = row["count"]
+                .as_u64()
+                .filter(|v| *v > 0)
                 .ok_or("sample has invalid count")?;
-            let key = serde_json::to_string(&candidate).map_err(|e| format!("serialize sample: {e}"))?;
-            search.samples.insert(key, Sample { candidate, earned, count });
+            let key =
+                serde_json::to_string(&candidate).map_err(|e| format!("serialize sample: {e}"))?;
+            search.samples.insert(
+                key,
+                Sample {
+                    candidate,
+                    earned,
+                    count,
+                },
+            );
         }
         search.reselect_best();
         Ok(search)
@@ -157,11 +196,17 @@ impl Search {
 
     /// Compact, JSON-safe resumable state for the generation checkpoint.
     pub fn snapshot(&self) -> Value {
-        let samples = self.samples.values().map(|sample| serde_json::json!({
-            "candidate": sample.candidate.clone(),
-            "earnedSum": sample.earned,
-            "count": sample.count
-        })).collect::<Vec<_>>();
+        let samples = self
+            .samples
+            .values()
+            .map(|sample| {
+                serde_json::json!({
+                    "candidate": sample.candidate.clone(),
+                    "earnedSum": sample.earned,
+                    "count": sample.count
+                })
+            })
+            .collect::<Vec<_>>();
         serde_json::json!({
             "schema": "ka-rust-search-state-v1",
             "rng": self.rng,
@@ -172,10 +217,16 @@ impl Search {
     }
 
     fn reselect_best(&mut self) {
-        self.best_key = self.samples.iter().max_by(|(key_a, a), (key_b, b)| {
-            (a.earned / a.count as f64).partial_cmp(&(b.earned / b.count as f64))
-                .unwrap_or(std::cmp::Ordering::Equal).then_with(|| key_b.cmp(key_a))
-        }).map(|(key, _)| key.clone());
+        self.best_key = self
+            .samples
+            .iter()
+            .max_by(|(key_a, a), (key_b, b)| {
+                (a.earned / a.count as f64)
+                    .partial_cmp(&(b.earned / b.count as f64))
+                    .unwrap_or(std::cmp::Ordering::Equal)
+                    .then_with(|| key_b.cmp(key_a))
+            })
+            .map(|(key, _)| key.clone());
     }
 
     /// Record whether this mutation family improved its parent's measured mean.
@@ -193,9 +244,10 @@ impl Search {
     /// deterministic RNG and learned operator history. The durable battle ledger
     /// remains the complete historical evidence source.
     pub fn retain_candidates(&mut self, parents: &[Value]) {
-        let retained = parents.iter().filter_map(|candidate| {
-            serde_json::to_string(candidate).ok()
-        }).collect::<HashSet<_>>();
+        let retained = parents
+            .iter()
+            .filter_map(|candidate| serde_json::to_string(candidate).ok())
+            .collect::<HashSet<_>>();
         self.samples.retain(|key, _| retained.contains(key));
         self.reselect_best();
     }
@@ -224,7 +276,8 @@ impl Search {
                     if seen.insert(key) {
                         return Ok((candidate, operator));
                     }
-                    last_error = "supported mutations repeated candidates already in this search".into();
+                    last_error =
+                        "supported mutations repeated candidates already in this search".into();
                 }
                 Err(error) => last_error = error,
             }
@@ -246,7 +299,9 @@ impl Search {
             match self.mutate_with_catalog(parent, catalog) {
                 Ok((candidate, operator)) => {
                     if let Err(error) = crate::prepare::prepare(&candidate, catalog) {
-                        last_error = format!("{operator}: canonical preparation rejected candidate: {error}");
+                        last_error = format!(
+                            "{operator}: canonical preparation rejected candidate: {error}"
+                        );
                         continue;
                     }
                     let key = serde_json::to_string(&candidate)
@@ -254,7 +309,8 @@ impl Search {
                     if seen.insert(key) {
                         return Ok((candidate, operator));
                     }
-                    last_error = "supported mutations repeated candidates already in this search".into();
+                    last_error =
+                        "supported mutations repeated candidates already in this search".into();
                 }
                 Err(error) => last_error = error,
             }
@@ -262,21 +318,23 @@ impl Search {
         Err(last_error)
     }
 
-    /// Fixed-formation search path: generates only Synthetic DPS raw-stat children inside the walls
-    /// and re-validates each against the policy before returning it.
+    /// Original fixed-formation search path, retained alongside the explicit
+    /// synthetic-DPS control profile and its narrower learned-stat routing.
     pub fn mutate_fixed_unique(
         &mut self,
         parent: &Value,
         seen: &mut HashSet<String>,
         attempts: usize,
     ) -> Result<(Value, String), String> {
-        let mut last_error = String::from("fixed-formation mutation repeated an existing candidate");
+        let mut last_error =
+            String::from("fixed-formation mutation repeated an existing candidate");
         for _ in 0..attempts.clamp(1, 64) {
             let mut rng = || self.next_u64();
             match crate::fixed_formation::mutate(parent, &mut rng) {
                 Ok((candidate, operator)) => {
                     if let Err(error) = crate::fixed_formation::validate(&candidate) {
-                        last_error = format!("{operator}: fixed-formation revalidation failed: {error}");
+                        last_error =
+                            format!("{operator}: fixed-formation revalidation failed: {error}");
                         continue;
                     }
                     let key = serde_json::to_string(&candidate)
@@ -284,7 +342,9 @@ impl Search {
                     if seen.insert(key) {
                         return Ok((candidate, operator));
                     }
-                    last_error = "fixed-formation mutation repeated candidates already in this search".into();
+                    last_error =
+                        "fixed-formation mutation repeated candidates already in this search"
+                            .into();
                 }
                 Err(error) => last_error = error,
             }
@@ -297,18 +357,27 @@ impl Search {
     /// "values":[1,2]}]}. Skill removal shape: {"kind":"remove-skills",
     /// "units":[0,1]}. Each pointer must resolve to an existing scalar.
     /// Canonical preparation remains responsible for full legality.
-    pub fn proposed_descendants(parent: &Value, request: &Value) -> Result<Vec<(Value, String)>, String> {
+    pub fn proposed_descendants(
+        parent: &Value,
+        request: &Value,
+    ) -> Result<Vec<(Value, String)>, String> {
         if let Some(kind) = request.get("kind").and_then(Value::as_str) {
             if kind != "remove-skills" {
                 return Err(format!("unsupported proposal request kind: {kind}"));
             }
-            let units = parent["ownUnits"].as_array().ok_or("scenario.ownUnits must be an array")?;
+            let units = parent["ownUnits"]
+                .as_array()
+                .ok_or("scenario.ownUnits must be an array")?;
             let selected = if let Some(indices) = request.get("units") {
-                let indices = indices.as_array().ok_or("remove-skills units must be an array")?;
+                let indices = indices
+                    .as_array()
+                    .ok_or("remove-skills units must be an array")?;
                 let mut parsed = Vec::with_capacity(indices.len());
                 let mut unique = HashSet::new();
                 for value in indices {
-                    let index = value.as_u64().and_then(|v| usize::try_from(v).ok())
+                    let index = value
+                        .as_u64()
+                        .and_then(|v| usize::try_from(v).ok())
                         .ok_or("remove-skills unit indices must be nonnegative integers")?;
                     if index >= units.len() {
                         return Err(format!("remove-skills unit index out of range: {index}"));
@@ -329,48 +398,69 @@ impl Search {
                 if !unit.get("human").and_then(Value::as_bool).unwrap_or(false) {
                     continue;
                 }
-                let skills = unit.get("skills").and_then(Value::as_array)
+                let skills = unit
+                    .get("skills")
+                    .and_then(Value::as_array)
                     .ok_or_else(|| format!("ownUnits[{unit_index}].skills must be an array"))?;
-                let levels = unit.get("invocationLevels").and_then(Value::as_array)
-                    .ok_or_else(|| format!("ownUnits[{unit_index}].invocationLevels must be an array"))?;
+                let levels = unit
+                    .get("invocationLevels")
+                    .and_then(Value::as_array)
+                    .ok_or_else(|| {
+                        format!("ownUnits[{unit_index}].invocationLevels must be an array")
+                    })?;
                 if skills.len() != levels.len() {
-                    return Err(format!("ownUnits[{unit_index}] skills/invocationLevels length mismatch"));
+                    return Err(format!(
+                        "ownUnits[{unit_index}] skills/invocationLevels length mismatch"
+                    ));
                 }
                 for (skill_index, skill) in skills.iter().enumerate() {
                     let skill_id = skill.as_i64().ok_or_else(|| {
                         format!("ownUnits[{unit_index}].skills[{skill_index}] must be an integer")
                     })?;
-                    if parent.get("prePlacement").is_some()
-                        && is_formation_skill(skill_id, None)
-                    {
+                    if parent.get("prePlacement").is_some() && is_formation_skill(skill_id, None) {
                         continue;
                     }
-                    skill_groups.entry(skill_id).or_default().push((unit_index, skill_index));
+                    skill_groups
+                        .entry(skill_id)
+                        .or_default()
+                        .push((unit_index, skill_index));
                     let mut child = parent.clone();
-                    let child_skills = child["ownUnits"][unit_index]["skills"].as_array_mut()
+                    let child_skills = child["ownUnits"][unit_index]["skills"]
+                        .as_array_mut()
                         .ok_or("skills must be an array")?;
                     child_skills.remove(skill_index);
-                    let child_levels = child["ownUnits"][unit_index]["invocationLevels"].as_array_mut()
+                    let child_levels = child["ownUnits"][unit_index]["invocationLevels"]
+                        .as_array_mut()
                         .ok_or("invocationLevels must be an array")?;
                     child_levels.remove(skill_index);
                     if output.len() >= 4096 {
                         return Err("remove-skills request exceeds 4096 descendants".into());
                     }
-                    output.push((child, format!("explicit:remove-skill:{unit_index}:{skill_index}:{skill_id}")));
+                    output.push((
+                        child,
+                        format!("explicit:remove-skill:{unit_index}:{skill_index}:{skill_id}"),
+                    ));
                 }
             }
-            for (skill_id, slots) in skill_groups.into_iter().filter(|(_, slots)| slots.len() >= 2) {
+            for (skill_id, slots) in skill_groups
+                .into_iter()
+                .filter(|(_, slots)| slots.len() >= 2)
+            {
                 let mut child = parent.clone();
                 let mut removals = slots;
                 removals.sort_unstable_by(|a, b| b.cmp(a));
                 for (unit_index, skill_index) in removals {
-                    let skills = child["ownUnits"][unit_index]["skills"].as_array_mut()
+                    let skills = child["ownUnits"][unit_index]["skills"]
+                        .as_array_mut()
                         .ok_or("skills must be an array")?;
                     if skills.get(skill_index).and_then(Value::as_i64) != Some(skill_id) {
-                        return Err("skill-removal group no longer matches the source intent".into());
+                        return Err(
+                            "skill-removal group no longer matches the source intent".into()
+                        );
                     }
                     skills.remove(skill_index);
-                    let levels = child["ownUnits"][unit_index]["invocationLevels"].as_array_mut()
+                    let levels = child["ownUnits"][unit_index]["invocationLevels"]
+                        .as_array_mut()
                         .ok_or("invocationLevels must be an array")?;
                     if skill_index >= levels.len() {
                         return Err("skill-removal invocation level index is missing".into());
@@ -384,30 +474,43 @@ impl Search {
             }
             return Ok(output);
         }
-        let knobs = request["knobs"].as_array().ok_or("proposal request requires a knobs array")?;
+        let knobs = request["knobs"]
+            .as_array()
+            .ok_or("proposal request requires a knobs array")?;
         let mut output = Vec::new();
         for knob in knobs {
-            let pointer = knob["pointer"].as_str().filter(|p| p.starts_with('/') && p.len() > 1)
+            let pointer = knob["pointer"]
+                .as_str()
+                .filter(|p| p.starts_with('/') && p.len() > 1)
                 .ok_or("proposal knob requires a non-root JSON pointer")?;
             if is_frozen_layout_pointer(parent, pointer) {
                 return Err(format!("proposal pointer changes frozen roster/layout under captured prePlacement: {pointer}"));
             }
-            let values = knob["values"].as_array().filter(|v| !v.is_empty() && v.len() <= 4096)
+            let values = knob["values"]
+                .as_array()
+                .filter(|v| !v.is_empty() && v.len() <= 4096)
                 .ok_or("proposal values must be a nonempty array of at most 4096 values")?;
-            let current = parent.pointer(pointer).ok_or_else(|| format!("proposal pointer does not exist: {pointer}"))?;
+            let current = parent
+                .pointer(pointer)
+                .ok_or_else(|| format!("proposal pointer does not exist: {pointer}"))?;
             if !is_scalar(current) {
-                return Err(format!("proposal pointer must target an existing scalar: {pointer}"));
+                return Err(format!(
+                    "proposal pointer must target an existing scalar: {pointer}"
+                ));
             }
             for value in values {
                 if !is_scalar(value) {
                     return Err(format!("proposal value must be scalar: {pointer}"));
                 }
-                if value == current { continue; }
+                if value == current {
+                    continue;
+                }
                 if output.len() >= 4096 {
                     return Err("proposal request exceeds 4096 descendants".into());
                 }
                 let mut child = parent.clone();
-                let target = child.pointer_mut(pointer)
+                let target = child
+                    .pointer_mut(pointer)
                     .ok_or_else(|| format!("proposal pointer does not exist: {pointer}"))?;
                 *target = value.clone();
                 output.push((child, format!("explicit:{pointer}")));
@@ -433,7 +536,8 @@ impl Search {
     /// scenario: preparation must validate skill IDs, equipment, formation and all
     /// other constraints. Unknown/unsupported scenario shapes fail without edits.
     pub fn mutate(&mut self, parent: &Value) -> Result<Value, String> {
-        self.mutate_with_operator(parent).map(|(candidate, _)| candidate)
+        self.mutate_with_operator(parent)
+            .map(|(candidate, _)| candidate)
     }
 
     /// As `mutate`, with the selected mutation family returned for learning.
@@ -443,11 +547,19 @@ impl Search {
 
     /// Catalog-backed variant. Add/replace proposals use only the fixed original
     /// approved-skill set and catalog facts; canonical prepare remains admission.
-    pub fn mutate_with_catalog(&mut self, parent: &Value, catalog: &Value) -> Result<(Value, String), String> {
+    pub fn mutate_with_catalog(
+        &mut self,
+        parent: &Value,
+        catalog: &Value,
+    ) -> Result<(Value, String), String> {
         self.mutate_internal(parent, Some(catalog))
     }
 
-    fn mutate_internal(&mut self, parent: &Value, catalog: Option<&Value>) -> Result<(Value, String), String> {
+    fn mutate_internal(
+        &mut self,
+        parent: &Value,
+        catalog: Option<&Value>,
+    ) -> Result<(Value, String), String> {
         let mut child = parent.clone();
         let obj = child
             .as_object_mut()
@@ -463,10 +575,17 @@ impl Search {
             return Err("scenario.ownUnits exceeds canonical 32-unit admission bound".into());
         }
         let catalog_skills = if let Some(catalog) = catalog {
-            Some(catalog.get("profiles").and_then(|v| v.get("skills"))
-                .and_then(Value::as_array)
-                .ok_or("catalog.profiles.skills must be an array")?.as_slice())
-        } else { None };
+            Some(
+                catalog
+                    .get("profiles")
+                    .and_then(|v| v.get("skills"))
+                    .and_then(Value::as_array)
+                    .ok_or("catalog.profiles.skills must be an array")?
+                    .as_slice(),
+            )
+        } else {
+            None
+        };
         let freeze_captured_layout = parent.get("prePlacement").is_some();
 
         // All options preserve source values and remain inside locally known
@@ -500,12 +619,17 @@ impl Search {
                 }
             }
             if unit.get("human").and_then(Value::as_bool) == Some(true) {
-                let skill_ids = skills.iter().map(|value| value.as_i64()
-                    .ok_or("human skill IDs must be integers"))
+                let skill_ids = skills
+                    .iter()
+                    .map(|value| value.as_i64().ok_or("human skill IDs must be integers"))
                     .collect::<Result<Vec<_>, _>>()?;
-                let forms = skill_ids.iter().filter(|id| is_formation_skill(**id, catalog_skills)).count();
+                let forms = skill_ids
+                    .iter()
+                    .filter(|id| is_formation_skill(**id, catalog_skills))
+                    .count();
                 for si in 0..skill_ids.len() {
-                    if !freeze_captured_layout || !is_formation_skill(skill_ids[si], catalog_skills) {
+                    if !freeze_captured_layout || !is_formation_skill(skill_ids[si], catalog_skills)
+                    {
                         changes.push(Change::SkillRemove(ui, si));
                     }
                     if !is_formation_skill(skill_ids[si], catalog_skills) {
@@ -516,52 +640,90 @@ impl Search {
                         }
                     }
                     for to in 0..skill_ids.len() {
-                        if si != to { changes.push(Change::SkillMove(ui, si, to)); }
+                        if si != to {
+                            changes.push(Change::SkillMove(ui, si, to));
+                        }
                     }
                 }
 
                 if let Some(rows) = catalog_skills {
-                    let equipment = catalog.and_then(|value| value.get("profiles"))
+                    let equipment = catalog
+                        .and_then(|value| value.get("profiles"))
                         .and_then(|value| value.get("equipment"))
-                        .and_then(Value::as_array).ok_or("catalog.profiles.equipment must be an array")?;
-                    let weapon_id = unit.get("weaponId").and_then(Value::as_i64)
+                        .and_then(Value::as_array)
+                        .ok_or("catalog.profiles.equipment must be an array")?;
+                    let weapon_id = unit
+                        .get("weaponId")
+                        .and_then(Value::as_i64)
                         .ok_or("human weaponId must be an integer")?;
-                    let weapon_type = equipment.iter()
+                    let weapon_type = equipment
+                        .iter()
                         .find(|row| row.get("id").and_then(Value::as_i64) == Some(weapon_id))
-                        .and_then(|row| row.get("type")).and_then(Value::as_i64)
+                        .and_then(|row| row.get("type"))
+                        .and_then(Value::as_i64)
                         .ok_or("human weaponId is absent from catalog equipment")?;
-                    let team_seven_hit = units.iter()
+                    let team_seven_hit = units
+                        .iter()
                         .filter(|entry| entry.get("human").and_then(Value::as_bool) == Some(true))
                         .filter_map(|entry| entry.get("skills").and_then(Value::as_array))
-                        .flatten().filter(|skill| skill.as_i64() == Some(110)).count();
+                        .flatten()
+                        .filter(|skill| skill.as_i64() == Some(110))
+                        .count();
                     for skill_id in APPROVED_SEARCH_SKILLS.iter().copied() {
-                        let Some(row) = skill_row(rows, skill_id) else { continue };
-                        let required_type = row.get("requiredEquipType").and_then(Value::as_i64).unwrap_or(-1);
-                        if required_type != -1 && weapon_type != required_type { continue; }
+                        let Some(row) = skill_row(rows, skill_id) else {
+                            continue;
+                        };
+                        let required_type = row
+                            .get("requiredEquipType")
+                            .and_then(Value::as_i64)
+                            .unwrap_or(-1);
+                        if required_type != -1 && weapon_type != required_type {
+                            continue;
+                        }
                         let formation = is_formation_skill(skill_id, Some(rows));
                         let has_id = skill_ids.contains(&skill_id);
                         let can_add_seven = skill_id != 110 || team_seven_hit < 2;
-                        if !has_id && can_add_seven && skill_ids.len() < 9
+                        if !has_id
+                            && can_add_seven
+                            && skill_ids.len() < 9
                             && (!freeze_captured_layout || !formation)
                             && (!formation || forms == 0)
                         {
                             for position in 0..=skill_ids.len() {
                                 let triggers: &[u64] = if formation { &[1] } else { &[0, 1, 2] };
                                 for trigger in triggers {
-                                    changes.push(Change::SkillAdd(ui, position, skill_id, *trigger));
+                                    changes
+                                        .push(Change::SkillAdd(ui, position, skill_id, *trigger));
                                 }
                             }
                         }
                         for si in 0..skill_ids.len() {
                             if skill_ids[si] == skill_id
-                                || skill_ids.iter().enumerate().any(|(index, existing)| index != si && *existing == skill_id)
-                            { continue; }
-                            let removed_form = if is_formation_skill(skill_ids[si], catalog_skills) { 1 } else { 0 };
+                                || skill_ids
+                                    .iter()
+                                    .enumerate()
+                                    .any(|(index, existing)| index != si && *existing == skill_id)
+                            {
+                                continue;
+                            }
+                            let removed_form = if is_formation_skill(skill_ids[si], catalog_skills)
+                            {
+                                1
+                            } else {
+                                0
+                            };
                             let remaining_forms = forms.saturating_sub(removed_form);
-                            if freeze_captured_layout && formation { continue; }
-                            if formation && remaining_forms > 0 { continue; }
+                            if freeze_captured_layout && formation {
+                                continue;
+                            }
+                            if formation && remaining_forms > 0 {
+                                continue;
+                            }
                             let removed_seven = if skill_ids[si] == 110 { 1 } else { 0 };
-                            if skill_id == 110 && team_seven_hit.saturating_sub(removed_seven) >= 2 { continue; }
+                            if skill_id == 110 && team_seven_hit.saturating_sub(removed_seven) >= 2
+                            {
+                                continue;
+                            }
                             let triggers: &[u64] = if formation { &[1] } else { &[0, 1, 2] };
                             for trigger in triggers {
                                 changes.push(Change::SkillReplace(ui, si, skill_id, *trigger));
@@ -572,10 +734,16 @@ impl Search {
             }
             if let Some(equipment) = unit.get("equipment").and_then(Value::as_array) {
                 for (ei, slot) in equipment.iter().enumerate() {
-                    let level = slot.get("level").and_then(Value::as_u64)
+                    let level = slot
+                        .get("level")
+                        .and_then(Value::as_u64)
                         .ok_or("equipment slot level must be an unsigned integer")?;
-                    if level > 1 { changes.push(Change::EquipmentLevel(ui, ei, level - 1)); }
-                    if level < i64::MAX as u64 { changes.push(Change::EquipmentLevel(ui, ei, level + 1)); }
+                    if level > 1 {
+                        changes.push(Change::EquipmentLevel(ui, ei, level - 1));
+                    }
+                    if level < i64::MAX as u64 {
+                        changes.push(Change::EquipmentLevel(ui, ei, level + 1));
+                    }
                 }
             }
         }
@@ -630,32 +798,59 @@ impl Search {
         if changes.is_empty() {
             return Err("scenario has no supported mutation options".into());
         }
-        let operator_names = ["invocation-level", "equipment-level", "add-skill", "remove-skill",
-            "replace-skill", "move-skill", "set-trigger", "input-tick", "input-phase", "herb-policy"];
+        let operator_names = [
+            "invocation-level",
+            "equipment-level",
+            "add-skill",
+            "remove-skill",
+            "replace-skill",
+            "move-skill",
+            "set-trigger",
+            "input-tick",
+            "input-phase",
+            "herb-policy",
+        ];
         let mut family_totals = [0usize; 10];
         for change in &changes {
-            let index = operator_names.iter().position(|name| *name == change.operator()).unwrap();
+            let index = operator_names
+                .iter()
+                .position(|name| *name == change.operator())
+                .unwrap();
             family_totals[index] += 1;
         }
         let mut total_weight = 0.0;
-        let weights = operator_names.iter().enumerate().map(|(index, name)| {
-            // Every available mutation family competes on learned merit; the
-            // number of concrete positions does not grant a larger family share.
-            let weight = if family_totals[index] == 0 { 0.0 } else { self.operator_weight(name) };
-            total_weight += weight;
-            weight
-        }).collect::<Vec<_>>();
+        let weights = operator_names
+            .iter()
+            .enumerate()
+            .map(|(index, name)| {
+                // Every available mutation family competes on learned merit; the
+                // number of concrete positions does not grant a larger family share.
+                let weight = if family_totals[index] == 0 {
+                    0.0
+                } else {
+                    self.operator_weight(name)
+                };
+                total_weight += weight;
+                weight
+            })
+            .collect::<Vec<_>>();
         let mut draw = (self.next_u64() as f64 / u64::MAX as f64) * total_weight;
         let mut selected_family = 0usize;
         for (index, weight) in weights.iter().enumerate() {
             if *weight > 0.0 {
-                if draw < *weight { selected_family = index; break; }
+                if draw < *weight {
+                    selected_family = index;
+                    break;
+                }
                 draw -= *weight;
                 selected_family = index;
             }
         }
         let family = operator_names[selected_family];
-        let family_changes = changes.iter().filter(|change| change.operator() == family).collect::<Vec<_>>();
+        let family_changes = changes
+            .iter()
+            .filter(|change| change.operator() == family)
+            .collect::<Vec<_>>();
         let change = family_changes[self.pick(family_changes.len())].clone();
         match change {
             Change::Invocation(ui, si, next) => {
@@ -665,24 +860,46 @@ impl Search {
                 child["ownUnits"][ui]["equipment"][ei]["level"] = Value::from(level);
             }
             Change::SkillAdd(ui, position, skill, trigger) => {
-                child["ownUnits"][ui]["skills"].as_array_mut().ok_or("skills must be an array")?
+                child["ownUnits"][ui]["skills"]
+                    .as_array_mut()
+                    .ok_or("skills must be an array")?
                     .insert(position, Value::from(skill));
-                child["ownUnits"][ui]["invocationLevels"].as_array_mut().ok_or("invocationLevels must be an array")?
+                child["ownUnits"][ui]["invocationLevels"]
+                    .as_array_mut()
+                    .ok_or("invocationLevels must be an array")?
                     .insert(position, Value::from(trigger));
             }
             Change::SkillRemove(ui, position) => {
-                child["ownUnits"][ui]["skills"].as_array_mut().ok_or("skills must be an array")?.remove(position);
-                child["ownUnits"][ui]["invocationLevels"].as_array_mut().ok_or("invocationLevels must be an array")?.remove(position);
+                child["ownUnits"][ui]["skills"]
+                    .as_array_mut()
+                    .ok_or("skills must be an array")?
+                    .remove(position);
+                child["ownUnits"][ui]["invocationLevels"]
+                    .as_array_mut()
+                    .ok_or("invocationLevels must be an array")?
+                    .remove(position);
             }
             Change::SkillReplace(ui, position, skill, trigger) => {
                 child["ownUnits"][ui]["skills"][position] = Value::from(skill);
                 child["ownUnits"][ui]["invocationLevels"][position] = Value::from(trigger);
             }
             Change::SkillMove(ui, from, to) => {
-                let skill = child["ownUnits"][ui]["skills"].as_array_mut().ok_or("skills must be an array")?.remove(from);
-                child["ownUnits"][ui]["skills"].as_array_mut().ok_or("skills must be an array")?.insert(to, skill);
-                let trigger = child["ownUnits"][ui]["invocationLevels"].as_array_mut().ok_or("invocationLevels must be an array")?.remove(from);
-                child["ownUnits"][ui]["invocationLevels"].as_array_mut().ok_or("invocationLevels must be an array")?.insert(to, trigger);
+                let skill = child["ownUnits"][ui]["skills"]
+                    .as_array_mut()
+                    .ok_or("skills must be an array")?
+                    .remove(from);
+                child["ownUnits"][ui]["skills"]
+                    .as_array_mut()
+                    .ok_or("skills must be an array")?
+                    .insert(to, skill);
+                let trigger = child["ownUnits"][ui]["invocationLevels"]
+                    .as_array_mut()
+                    .ok_or("invocationLevels must be an array")?
+                    .remove(from);
+                child["ownUnits"][ui]["invocationLevels"]
+                    .as_array_mut()
+                    .ok_or("invocationLevels must be an array")?
+                    .insert(to, trigger);
             }
             Change::SetTrigger(ui, position, trigger) => {
                 child["ownUnits"][ui]["invocationLevels"][position] = Value::from(trigger);
@@ -767,24 +984,25 @@ impl SearchPools {
             if unique.len() != 1 {
                 return Err("legacy search state requires exactly one encounter".into());
             }
-            let search = match checkpoint {
-                Some(state) if state["schema"].as_str() == Some("ka-rust-search-state-v1") => {
-                    Search::restore(state)?
-                }
-                Some(state) => {
-                    let id = unique[0].to_string();
-                    if state["schema"].as_str() != Some("ka-rust-search-pools-v1") {
-                        return Err("incompatible search-state checkpoint schema".into());
+            let search =
+                match checkpoint {
+                    Some(state) if state["schema"].as_str() == Some("ka-rust-search-state-v1") => {
+                        Search::restore(state)?
                     }
-                    let saved = state["byEncounter"]
-                        .as_object()
-                        .ok_or("search-pool checkpoint lacks byEncounter")?;
-                    Search::restore(saved.get(&id).ok_or_else(|| {
-                        format!("search-pool checkpoint lacks encounter {id}")
-                    })?)?
-                }
-                None => Search::new(seed),
-            };
+                    Some(state) => {
+                        let id = unique[0].to_string();
+                        if state["schema"].as_str() != Some("ka-rust-search-pools-v1") {
+                            return Err("incompatible search-state checkpoint schema".into());
+                        }
+                        let saved = state["byEncounter"]
+                            .as_object()
+                            .ok_or("search-pool checkpoint lacks byEncounter")?;
+                        Search::restore(saved.get(&id).ok_or_else(|| {
+                            format!("search-pool checkpoint lacks encounter {id}")
+                        })?)?
+                    }
+                    None => Search::new(seed),
+                };
             return Ok(Self {
                 legacy_single: Some(search),
                 by_encounter: BTreeMap::new(),
@@ -809,7 +1027,9 @@ impl SearchPools {
             }
             Some(state) if state["schema"].as_str() == Some("ka-rust-search-state-v1") => {
                 if unique.len() != 1 {
-                    return Err("a legacy single-encounter search state cannot seed a mixed run".into());
+                    return Err(
+                        "a legacy single-encounter search state cannot seed a mixed run".into(),
+                    );
                 }
                 by_encounter.insert(unique[0], Search::restore(state)?);
             }
@@ -861,7 +1081,8 @@ impl SearchPools {
         operator: &str,
         improved: bool,
     ) -> Result<(), String> {
-        self.get_mut(encounter)?.observe_operator(operator, improved);
+        self.get_mut(encounter)?
+            .observe_operator(operator, improved);
         Ok(())
     }
 
@@ -870,7 +1091,10 @@ impl SearchPools {
     pub fn retain_candidates(&mut self, candidates: &[(i64, Value)]) -> Result<(), String> {
         let mut grouped: BTreeMap<i64, Vec<Value>> = BTreeMap::new();
         for (encounter, candidate) in candidates {
-            grouped.entry(*encounter).or_default().push(candidate.clone());
+            grouped
+                .entry(*encounter)
+                .or_default()
+                .push(candidate.clone());
         }
         if let Some(search) = self.legacy_single.as_mut() {
             let candidates = grouped
