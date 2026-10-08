@@ -11,6 +11,8 @@ import (
 	"fmt"
 	"math"
 	"sort"
+	"strconv"
+	"strings"
 	"sync"
 )
 
@@ -127,41 +129,56 @@ type SearchConfig struct {
 	Budget          uint64  `json:"budget"`
 	Exploration     float64 `json:"exploration"`
 	PopulationLimit int     `json:"populationLimit,omitempty"`
-	// FixedFormation activates the fixed-formation policy: one pinned six-unit formation whose
-	// ONLY search variable is the Synthetic DPS's raw stats. Admission and mutation both enforce it.
-	FixedFormation  bool    `json:"fixedFormation,omitempty"`
+	// FixedFormation separately enforces the published fixed roster/equipment profile.
+	FixedFormation     bool   `json:"fixedFormation,omitempty"`
+	ObjectiveMode      string `json:"objectiveMode,omitempty"`
+	ObjectiveVersion   int    `json:"objectiveVersion,omitempty"`
+	LearnerMode        string `json:"learnerMode,omitempty"`
+	ConstraintProfile  string `json:"constraintProfile,omitempty"`
+	LearnerPriorSHA256 string `json:"learnerPriorSha256,omitempty"`
 }
 
 type SearchCandidate struct {
-	ID             string          `json:"id"`
-	EncounterID    int64           `json:"encounterId"`
-	Raw            json.RawMessage `json:"raw"`
-	Count          uint64          `json:"count"`
-	Mean           float64         `json:"mean"`
-	Best           float64         `json:"best"`
-	HasScore       bool            `json:"hasScore"`
-	Seed           bool            `json:"seed"`
-	SeedDispatched bool            `json:"seedDispatched"`
-	Unusable       bool            `json:"unusable"`
-	ParentID       string          `json:"parentId"`
-	Generation     uint64          `json:"generation"`
+	ID                 string                      `json:"id"`
+	EncounterID        int64                       `json:"encounterId"`
+	DefeatCount        int64                       `json:"defeatCount"`
+	Raw                json.RawMessage             `json:"raw"`
+	Count              uint64                      `json:"count"`
+	Mean               float64                     `json:"mean"`
+	Best               float64                     `json:"best"`
+	HasScore           bool                        `json:"hasScore"`
+	Seed               bool                        `json:"seed"`
+	SeedDispatched     bool                        `json:"seedDispatched"`
+	Unusable           bool                        `json:"unusable"`
+	ParentID           string                      `json:"parentId"`
+	RootID             string                      `json:"rootId,omitempty"`
+	ImprovedLanes      []string                    `json:"improvedLanes,omitempty"`
+	ImprovementCounted bool                        `json:"improvementCounted,omitempty"`
+	Generation         uint64                      `json:"generation"`
+	Order              uint64                      `json:"order,omitempty"`
+	Mechanics          *MechanicsCandidateEvidence `json:"mechanics,omitempty"`
 }
 
 type SearchLineage struct {
-	CandidateID  string `json:"candidateId"`
-	ParentID     string `json:"parentId"`
-	Generation   uint64 `json:"generation"`
-	Origin       string `json:"origin"`
-	Mutation     string `json:"mutation,omitempty"`
-	DeferredFrom string `json:"deferredFrom,omitempty"`
+	CandidateID       string `json:"candidateId"`
+	ParentID          string `json:"parentId"`
+	Generation        uint64 `json:"generation"`
+	Origin            string `json:"origin"`
+	Mutation          string `json:"mutation,omitempty"`
+	MutationParameter int64  `json:"mutationParameter,omitempty"`
+	MutationScale     string `json:"mutationScale,omitempty"`
+	MutationTarget    int64  `json:"mutationTarget,omitempty"`
+	ParentSource      string `json:"parentSource,omitempty"`
+	DeferredFrom      string `json:"deferredFrom,omitempty"`
 }
 
 type queuedFeedback struct {
-	Identity string  `json:"identity"`
-	Earned   float64 `json:"earned"`
-	Accepted bool    `json:"accepted"`
-	Scored   bool    `json:"scored"`
-	Rejected bool    `json:"rejected"`
+	Identity  string                `json:"identity"`
+	Earned    float64               `json:"earned"`
+	Accepted  bool                  `json:"accepted"`
+	Scored    bool                  `json:"scored"`
+	Rejected  bool                  `json:"rejected"`
+	Mechanics *MechanicsObservation `json:"mechanics,omitempty"`
 }
 
 // deferredEvaluation preserves an exact planned intent and its lineage when
@@ -180,29 +197,40 @@ type MutationStat struct {
 }
 
 type searchSnapshot struct {
-	Schema             string                            `json:"schema"`
-	PolicyHash         string                            `json:"policyHash"`
-	CatalogSHA256      string                            `json:"catalogSha256,omitempty"`
-	Config             SearchConfig                      `json:"config"`
-	RNGState           uint64                            `json:"rngState"`
-	NextSequence       uint64                            `json:"nextSequence"`
-	NextFeedback       uint64                            `json:"nextFeedback"`
-	Candidates         map[string]*SearchCandidate       `json:"candidates"`
-	InFlight           map[string]uint64                 `json:"inFlight"`
-	EvaluationStrategy map[string]string                 `json:"evaluationStrategy"`
-	EvaluationLineage  map[string]SearchLineage          `json:"evaluationLineage"`
-	Pending            map[uint64]queuedFeedback         `json:"pending"`
-	MutationStats      map[int64]map[string]MutationStat `json:"mutationStats"`
-	Deferred           []deferredEvaluation              `json:"deferred,omitempty"`
-	Rejected           uint64                            `json:"rejected"`
+	Schema               string                                          `json:"schema"`
+	PolicyHash           string                                          `json:"policyHash"`
+	CatalogSHA256        string                                          `json:"catalogSha256,omitempty"`
+	Config               SearchConfig                                    `json:"config"`
+	RNGState             uint64                                          `json:"rngState"`
+	NextSequence         uint64                                          `json:"nextSequence"`
+	BranchingProposals   uint64                                          `json:"branchingProposals,omitempty"`
+	NextCandidateOrder   uint64                                          `json:"nextCandidateOrder,omitempty"`
+	NextFeedback         uint64                                          `json:"nextFeedback"`
+	Candidates           map[string]*SearchCandidate                     `json:"candidates"`
+	InFlight             map[string]uint64                               `json:"inFlight"`
+	EvaluationStrategy   map[string]string                               `json:"evaluationStrategy"`
+	EvaluationLineage    map[string]SearchLineage                        `json:"evaluationLineage"`
+	Pending              map[uint64]queuedFeedback                       `json:"pending"`
+	MutationStats        map[int64]map[string]MutationStat               `json:"mutationStats"`
+	ConstraintReferences map[int64]string                                `json:"constraintReferences,omitempty"`
+	LearnerPriorSHA256   string                                          `json:"learnerPriorSha256,omitempty"`
+	LearnerPriorLoaded   bool                                            `json:"learnerPriorLoaded,omitempty"`
+	RootChildren         map[string]uint64                               `json:"rootChildren,omitempty"`
+	RootImprovedChildren map[string]uint64                               `json:"rootImprovedChildren,omitempty"`
+	LearnerOperators     map[int64]map[string]LearnerOperatorStat        `json:"learnerOperators,omitempty"`
+	LearnerScales        map[int64]map[int64]map[string]LearnerScaleStat `json:"learnerScales,omitempty"`
+	StatAnchors          map[int64]map[int64]int64                       `json:"statAnchors,omitempty"`
+	Deferred             []deferredEvaluation                            `json:"deferred,omitempty"`
+	Rejected             uint64                                          `json:"rejected"`
 }
 
 type Search struct {
-	state           searchSnapshot
-	preparer        *Preparer
-	focusEncounters map[int64]struct{} // ephemeral dispatch filter; never serialized into learned state
-	byEncounter     map[int64]map[string]*SearchCandidate
-	encounterIDs    []int64
+	state            searchSnapshot
+	preparer         *Preparer
+	focusEncounters  map[int64]struct{} // ephemeral dispatch filter; never serialized into learned state
+	byEncounter      map[int64]map[string]*SearchCandidate
+	encounterIDs     []int64
+	lastParentSource string
 }
 
 func (s *Search) rebuildIndexes() {
@@ -257,14 +285,28 @@ func NewSearch(candidates []json.RawMessage, config SearchConfig) (*Search, erro
 	if len(candidates) == 0 {
 		return nil, errors.New("at least one starting scenario is required")
 	}
+	config = normalizeSearchConfig(config)
+	if (config.ObjectiveMode != ObjectiveModeEarnedOnly || config.ObjectiveVersion != 1) &&
+		(config.ObjectiveMode != ObjectiveModeMechanicLanes || config.ObjectiveVersion != MechanicsObjectiveVersion) {
+		return nil, errors.New("unsupported search objective mode/version")
+	}
+	if config.LearnerMode != LearnerModeLegacy && config.LearnerMode != LearnerModeBranching {
+		return nil, errors.New("unsupported learner mode")
+	}
+	if config.LearnerMode == LearnerModeBranching && (config.ObjectiveMode != ObjectiveModeMechanicLanes || config.ConstraintProfile != ConstraintProfileFixedDPS) {
+		return nil, errors.New("branching learner requires mechanism-lanes-v3 and fixed-dps-3stats-v1")
+	}
+	if config.ConstraintProfile == ConstraintProfileFixedDPS && config.LearnerMode != LearnerModeBranching {
+		return nil, errors.New("fixed-dps-3stats-v1 requires the controlled branching learner")
+	}
+	if config.LearnerPriorSHA256 != "" && config.LearnerMode != LearnerModeBranching {
+		return nil, errors.New("mechanism learner prior requires branching mode")
+	}
+	if config.ConstraintProfile != "" && config.ConstraintProfile != ConstraintProfileFixedDPS {
+		return nil, errors.New("unsupported constraint profile")
+	}
 	if config.Seed > math.MaxInt32 {
 		return nil, errors.New("search seed must be nonnegative signed31-bit")
-	}
-	if config.Exploration == 0 {
-		config.Exploration = 0.7
-	}
-	if config.PopulationLimit == 0 {
-		config.PopulationLimit = 1024
 	}
 	if config.PopulationLimit < 16 || config.PopulationLimit > 100000 {
 		return nil, errors.New("population limit must be in 16..100000")
@@ -272,10 +314,7 @@ func NewSearch(candidates []json.RawMessage, config SearchConfig) (*Search, erro
 	if math.IsNaN(config.Exploration) || math.IsInf(config.Exploration, 0) || config.Exploration < 0 {
 		return nil, errors.New("invalid exploration coefficient")
 	}
-	if config.Seed == 0 {
-		config.Seed = 0x13579bdf
-	}
-	s := &Search{state: searchSnapshot{Schema: SearchSchema, Config: config, RNGState: config.Seed, Candidates: map[string]*SearchCandidate{}, InFlight: map[string]uint64{}, EvaluationStrategy: map[string]string{}, EvaluationLineage: map[string]SearchLineage{}, Pending: map[uint64]queuedFeedback{}, MutationStats: map[int64]map[string]MutationStat{}}}
+	s := &Search{state: searchSnapshot{Schema: SearchSchema, Config: config, LearnerPriorSHA256: config.LearnerPriorSHA256, RNGState: config.Seed, Candidates: map[string]*SearchCandidate{}, InFlight: map[string]uint64{}, EvaluationStrategy: map[string]string{}, EvaluationLineage: map[string]SearchLineage{}, Pending: map[uint64]queuedFeedback{}, MutationStats: map[int64]map[string]MutationStat{}, ConstraintReferences: map[int64]string{}, RootChildren: map[string]uint64{}, RootImprovedChildren: map[string]uint64{}, LearnerOperators: map[int64]map[string]LearnerOperatorStat{}, LearnerScales: map[int64]map[int64]map[string]LearnerScaleStat{}, StatAnchors: map[int64]map[int64]int64{}}}
 	s.state.PolicyHash = searchPolicyHash("", config.FixedFormation)
 	for _, raw := range candidates {
 		admitted, err := AdmitRawScenario(raw)
@@ -288,17 +327,56 @@ func NewSearch(candidates []json.RawMessage, config SearchConfig) (*Search, erro
 			}
 		}
 		b := append(json.RawMessage(nil), admitted.Raw...)
+		if config.ConstraintProfile == ConstraintProfileFixedDPS {
+			signature, validateErr := validateControlledScenario(b)
+			if validateErr != nil {
+				return nil, fmt.Errorf("starting candidate fixed profile: %w", validateErr)
+			}
+			if expected, exists := s.state.ConstraintReferences[admitted.EncounterID]; exists && expected != signature {
+				return nil, fmt.Errorf("starting candidates for encounter %d violate fixed-profile invariants", admitted.EncounterID)
+			}
+			s.state.ConstraintReferences[admitted.EncounterID] = signature
+		}
 		id := strategyIdentity(b)
 		if _, ok := s.state.Candidates[id]; ok {
 			continue
 		}
-		s.state.Candidates[id] = &SearchCandidate{ID: id, EncounterID: admitted.EncounterID, Raw: b, Seed: true}
+		s.state.Candidates[id] = &SearchCandidate{ID: id, EncounterID: admitted.EncounterID, DefeatCount: admitted.DefeatCount, Raw: b, Seed: true, RootID: id, Order: s.state.NextCandidateOrder}
+		s.state.NextCandidateOrder++
+		if config.ObjectiveMode == ObjectiveModeMechanicLanes {
+			s.state.RootChildren[id]++ // Python productivity counts every lineage row, including its root.
+		}
 	}
 	if len(s.state.Candidates) == 0 {
 		return nil, errors.New("no unique starting candidates")
 	}
 	s.rebuildIndexes()
 	return s, nil
+}
+
+func normalizeSearchConfig(config SearchConfig) SearchConfig {
+	if config.Exploration == 0 {
+		config.Exploration = 0.7
+	}
+	if config.PopulationLimit == 0 {
+		config.PopulationLimit = 1024
+	}
+	if config.Seed == 0 {
+		config.Seed = 0x13579bdf
+	}
+	if config.ObjectiveMode == "" {
+		config.ObjectiveMode = ObjectiveModeEarnedOnly
+	}
+	if config.ObjectiveMode == ObjectiveModeEarnedOnly && config.ObjectiveVersion == 0 {
+		config.ObjectiveVersion = 1
+	}
+	if config.ObjectiveMode == ObjectiveModeMechanicLanes && config.ObjectiveVersion == 0 {
+		config.ObjectiveVersion = MechanicsObjectiveVersion
+	}
+	if config.LearnerMode == "" {
+		config.LearnerMode = LearnerModeLegacy
+	}
+	return config
 }
 
 // NewSearchWithTables enables catalog-backed mutations over the same explicit
@@ -325,16 +403,25 @@ func searchPolicyHash(catalogHash string, fixedFormation bool) string {
 	if fixedFormation {
 		mutation = "fixed-formation: pinned six-unit roster, Synthetic DPS raw stats only, no equipment"
 		fixed = FixedFormationPolicyHash()
+		policy, _ := json.Marshal(struct {
+			Schema      string
+			Mutation    string
+			Selection   string
+			SeedPolicy  string
+			Catalog     string
+			StatBounds  string
+			FixedPolicy string
+		}{SearchSchema, mutation, "sorted encounter round-robin; mean + UCB within encounter; ordered feedback", "splitmix64 nonnegative31bit pair", catalogHash, digest(canonicalJSON(nativeSearchBoundsJSON)), fixed})
+		return digest(policy)
 	}
 	policy, _ := json.Marshal(struct {
-		Schema      string
-		Mutation    string
-		Selection   string
-		SeedPolicy  string
-		Catalog     string
-		StatBounds  string
-		FixedPolicy string
-	}{SearchSchema, mutation, "sorted encounter round-robin; mean + UCB within encounter; ordered feedback", "splitmix64 nonnegative31bit pair", catalogHash, digest(canonicalJSON(nativeSearchBoundsJSON)), fixed})
+		Schema     string
+		Mutation   string
+		Selection  string
+		SeedPolicy string
+		Catalog    string
+		StatBounds string
+	}{SearchSchema, mutation, "sorted encounter round-robin; mean + UCB within encounter; ordered feedback", "splitmix64 nonnegative31bit pair", catalogHash, digest(canonicalJSON(nativeSearchBoundsJSON))})
 	return digest(policy)
 }
 
@@ -351,17 +438,10 @@ func (s *Search) RequireConfig(config SearchConfig) error {
 	if s == nil {
 		return errors.New("nil search")
 	}
-	if config.Exploration == 0 {
-		config.Exploration = 0.7
-	}
-	if config.PopulationLimit == 0 {
-		config.PopulationLimit = 1024
-	}
-	if config.Seed == 0 {
-		config.Seed = 0x13579bdf
-	}
-	if config != s.state.Config {
-		return errors.New("search seed, exploration setting, or budget policy mismatch")
+	config = normalizeSearchConfig(config)
+	stateConfig := normalizeSearchConfig(s.state.Config)
+	if config != stateConfig {
+		return errors.New("search seed, exploration, budget, or objective policy mismatch")
 	}
 	return nil
 }
@@ -382,9 +462,10 @@ func (s *Search) MergeSeeds(candidates []json.RawMessage) error {
 		return errors.New("seed merge requires at least one candidate")
 	}
 	type stagedSeed struct {
-		id        string
-		encounter int64
-		raw       json.RawMessage
+		id          string
+		encounter   int64
+		defeatCount int64
+		raw         json.RawMessage
 	}
 	staged := make([]stagedSeed, 0, len(candidates))
 	stagedByID := make(map[string]json.RawMessage, len(candidates))
@@ -418,15 +499,19 @@ func (s *Search) MergeSeeds(candidates []json.RawMessage) error {
 		}
 		copyRaw := append(json.RawMessage(nil), admitted.Raw...)
 		stagedByID[id] = copyRaw
-		staged = append(staged, stagedSeed{id: id, encounter: admitted.EncounterID, raw: copyRaw})
+		staged = append(staged, stagedSeed{id: id, encounter: admitted.EncounterID, defeatCount: admitted.DefeatCount, raw: copyRaw})
 	}
 	for _, seed := range staged {
 		candidate := &SearchCandidate{
-			ID: seed.id, EncounterID: seed.encounter,
-			Raw: append(json.RawMessage(nil), seed.raw...), Seed: true,
+			ID: seed.id, EncounterID: seed.encounter, DefeatCount: seed.defeatCount,
+			Raw: append(json.RawMessage(nil), seed.raw...), Seed: true, RootID: seed.id, Order: s.state.NextCandidateOrder,
 		}
+		s.state.NextCandidateOrder++
 		s.state.Candidates[seed.id] = candidate
 		s.indexCandidate(candidate)
+		if s.state.Config.ObjectiveMode == ObjectiveModeMechanicLanes {
+			s.state.RootChildren[seed.id]++
+		}
 	}
 	pruned := make(map[int64]bool)
 	for _, seed := range staged {
@@ -570,6 +655,9 @@ func restoreSearch(raw json.RawMessage, allowCatalog bool) (*Search, error) {
 	if st.Schema != SearchSchema || st.PolicyHash == "" || st.RNGState == 0 || st.Candidates == nil || st.InFlight == nil || st.EvaluationStrategy == nil || st.EvaluationLineage == nil || st.Pending == nil || st.MutationStats == nil {
 		return nil, errors.New("unsupported or incomplete search state")
 	}
+	if st.Config.LearnerPriorSHA256 != st.LearnerPriorSHA256 || st.LearnerPriorSHA256 != "" && !st.LearnerPriorLoaded {
+		return nil, errors.New("portable learner prior checkpoint identity/load state mismatch")
+	}
 	if st.NextFeedback > st.NextSequence || st.Config.Budget != 0 && st.Config.Budget < st.NextSequence {
 		return nil, errors.New("inconsistent search sequence/budget")
 	}
@@ -581,8 +669,14 @@ func restoreSearch(raw json.RawMessage, allowCatalog bool) (*Search, error) {
 			return nil, errors.New("invalid candidate in search state")
 		}
 		var rawScenario RawScenario
-		if err := json.Unmarshal(c.Raw, &rawScenario); err != nil || rawScenario.EncounterID != c.EncounterID {
+		if err := json.Unmarshal(c.Raw, &rawScenario); err != nil || rawScenario.EncounterID != c.EncounterID ||
+			(c.DefeatCount != 0 && rawScenario.DefeatCount != c.DefeatCount) ||
+			(st.Config.ObjectiveMode == ObjectiveModeMechanicLanes && rawScenario.DefeatCount != c.DefeatCount) {
 			return nil, errors.New("candidate encounter identity mismatch in search state")
+		}
+		c.DefeatCount = rawScenario.DefeatCount
+		if st.Config.ObjectiveMode == ObjectiveModeMechanicLanes && c.Count > 0 && c.Mechanics == nil {
+			return nil, errors.New("mechanics objective state lacks measured objective evidence; rehydrate from source records first")
 		}
 	}
 	for id, seq := range st.InFlight {
@@ -608,6 +702,16 @@ func restoreSearch(raw json.RawMessage, allowCatalog bool) (*Search, error) {
 		}
 	}
 	s := &Search{state: st}
+	if st.Config.ObjectiveMode == ObjectiveModeMechanicLanes && len(st.RootChildren) == 0 {
+		st.RootChildren = map[string]uint64{}
+		for _, candidate := range st.Candidates {
+			root := candidate.RootID
+			if root == "" {
+				root = candidate.ID
+			}
+			st.RootChildren[root]++
+		}
+	}
 	s.rebuildIndexes()
 	return s, nil
 }
@@ -620,11 +724,84 @@ func (s *Search) Snapshot() (json.RawMessage, error) {
 	return b, e
 }
 
+type portableMechanismLearnerPrior struct {
+	Schema        string `json:"schema"`
+	ObjectiveMode string `json:"objectiveMode"`
+	OperatorStats map[string]map[string]struct {
+		Attempts uint64 `json:"attempts"`
+		Improved uint64 `json:"improved"`
+	} `json:"operatorStats"`
+	StatAnchors map[string]map[string]int64 `json:"statAnchors"`
+}
+
+// ImportMechanismLearnerPrior applies retrospective learner state only to a
+// fresh search. It never imports historical candidates or battles.
+func (s *Search) ImportMechanismLearnerPrior(data []byte) error {
+	if s == nil || s.state.Config.LearnerMode != LearnerModeBranching || s.state.Config.ObjectiveMode != ObjectiveModeMechanicLanes {
+		return errors.New("portable prior requires a branching mechanism-lanes search")
+	}
+	if s.state.NextSequence != 0 || len(s.state.InFlight) != 0 || len(s.state.Candidates) == 0 {
+		return errors.New("portable learner prior may be imported only before the first proposal")
+	}
+	if s.state.LearnerPriorSHA256 == "" || digest(data) != s.state.LearnerPriorSHA256 {
+		return errors.New("portable learner prior SHA256 mismatch")
+	}
+	var prior portableMechanismLearnerPrior
+	if err := json.Unmarshal(data, &prior); err != nil {
+		return err
+	}
+	if prior.Schema != "ka-mechanism-learner-prior-1" || prior.ObjectiveMode != ObjectiveModeMechanicLanes {
+		return errors.New("unsupported portable mechanism learner prior")
+	}
+	for encounterText, operators := range prior.OperatorStats {
+		encounter, err := strconv.ParseInt(encounterText, 10, 64)
+		if err != nil {
+			return errors.New("invalid encounter key in learner prior")
+		}
+		for operation, source := range operators {
+			if operation != "set-stat" && operation != "stat:atk" && operation != "stat:spd" && operation != "stat:lck" {
+				return fmt.Errorf("unsupported learner prior operator %q", operation)
+			}
+			if s.state.LearnerOperators[encounter] == nil {
+				s.state.LearnerOperators[encounter] = map[string]LearnerOperatorStat{}
+			}
+			s.state.LearnerOperators[encounter][operation] = LearnerOperatorStat{Attempts: source.Attempts, Improved: source.Improved}
+		}
+	}
+	for encounterText, anchors := range prior.StatAnchors {
+		encounter, err := strconv.ParseInt(encounterText, 10, 64)
+		if err != nil {
+			return errors.New("invalid anchor encounter key in learner prior")
+		}
+		for parameterText, target := range anchors {
+			parameter, err := strconv.ParseInt(parameterText, 10, 64)
+			if err != nil {
+				return errors.New("invalid stat parameter in learner prior")
+			}
+			if parameter != 13 && parameter != 15 && parameter != 16 {
+				return fmt.Errorf("learner prior anchor parameter %d is outside controlled axes", parameter)
+			}
+			if err := ValidateNativeSearchStatTarget(parameter, target); err != nil {
+				return fmt.Errorf("learner prior anchor: %w", err)
+			}
+			if s.state.StatAnchors[encounter] == nil {
+				s.state.StatAnchors[encounter] = map[int64]int64{}
+			}
+			s.state.StatAnchors[encounter][parameter] = target
+		}
+	}
+	s.state.LearnerPriorLoaded = true
+	return nil
+}
+
 // Next returns one raw scenario, the stable strategy identity used for feedback,
 // and an error after the configured evaluation budget is exhausted.
 func (s *Search) Next() (json.RawMessage, string, error) {
 	if s == nil {
 		return nil, "", errors.New("nil search")
+	}
+	if s.state.Config.LearnerPriorSHA256 != "" && !s.state.LearnerPriorLoaded {
+		return nil, "", errors.New("configured portable learner prior has not been imported")
 	}
 	if s.state.Config.Budget != 0 && s.state.NextSequence >= s.state.Config.Budget {
 		return nil, "", errors.New("search budget exhausted")
@@ -669,7 +846,9 @@ func (s *Search) Next() (json.RawMessage, string, error) {
 			var child json.RawMessage
 			var mutation string
 			var mutateErr error
-			if s.state.Config.FixedFormation {
+			if s.state.Config.LearnerMode == LearnerModeBranching && s.state.Config.ConstraintProfile == ConstraintProfileFixedDPS {
+				child, mutation, mutateErr = s.mutateControlledStat(parent)
+			} else if s.state.Config.FixedFormation {
 				child, mutateErr = mutateFixedFormation(parent.Raw, s.rand)
 				mutation = "set-dps-stat"
 			} else if s.preparer != nil {
@@ -681,7 +860,18 @@ func (s *Search) Next() (json.RawMessage, string, error) {
 				s.state.Rejected++
 				return nil, "", mutateErr
 			}
-			lineage = SearchLineage{ParentID: parent.ID, Generation: parent.Generation + 1, Origin: "mutation", Mutation: mutation}
+			lineage = SearchLineage{ParentID: parent.ID, Generation: parent.Generation + 1, Origin: "mutation", Mutation: mutation, ParentSource: s.lastParentSource}
+			if strings.HasPrefix(mutation, "set-stat:") {
+				parts := strings.Split(mutation, ":")
+				if len(parts) >= 3 {
+					lineage.Mutation = "set-stat"
+					lineage.MutationParameter, _ = strconv.ParseInt(parts[1], 10, 64)
+					lineage.MutationScale = parts[2]
+				}
+				if len(parts) == 4 {
+					lineage.MutationTarget, _ = strconv.ParseInt(parts[3], 10, 64)
+				}
+			}
 			admitted, admitErr := AdmitRawScenario(child)
 			if admitErr != nil {
 				s.state.Rejected++
@@ -691,6 +881,16 @@ func (s *Search) Next() (json.RawMessage, string, error) {
 				if err := ValidateFixedFormation(admitted.Raw); err != nil {
 					s.state.Rejected++
 					return nil, "", fmt.Errorf("mutated scenario violates the fixed formation: %w", err)
+				}
+			}
+			if s.state.Config.ConstraintProfile == ConstraintProfileFixedDPS {
+				signature, validateErr := validateControlledScenario(admitted.Raw)
+				if validateErr != nil || signature != s.state.ConstraintReferences[admitted.EncounterID] {
+					s.state.Rejected++
+					if validateErr != nil {
+						return nil, "", fmt.Errorf("mutated candidate violates fixed profile: %w", validateErr)
+					}
+					return nil, "", errors.New("mutated candidate changed fixed-profile fields")
 				}
 			}
 			// Each descendant gets a deterministic battle seed pair while every
@@ -711,9 +911,22 @@ func (s *Search) Next() (json.RawMessage, string, error) {
 					return nil, "", errors.New("strategy identity collision")
 				}
 			} else {
-				candidate := &SearchCandidate{ID: identity, EncounterID: admitted.EncounterID, Raw: append(json.RawMessage(nil), b...), ParentID: parent.ID, Generation: lineage.Generation}
+				rootID := parent.RootID
+				if rootID == "" {
+					rootID = parent.ID
+				}
+				candidate := &SearchCandidate{ID: identity, EncounterID: admitted.EncounterID, DefeatCount: admitted.DefeatCount, Raw: append(json.RawMessage(nil), b...), ParentID: parent.ID, RootID: rootID, Generation: lineage.Generation, Order: s.state.NextCandidateOrder}
+				s.state.NextCandidateOrder++
 				s.state.Candidates[identity] = candidate
 				s.indexCandidate(candidate)
+				s.state.RootChildren[rootID]++
+			}
+			if lineage.Mutation == "set-stat" {
+				s.bumpLearnerOperator(admitted.EncounterID, lineage.Mutation, false)
+				if lineage.MutationParameter != 0 {
+					s.bumpLearnerOperator(admitted.EncounterID, controlledStatOperator(lineage.MutationParameter), false)
+					s.bumpLearnerScale(admitted.EncounterID, lineage.MutationParameter, lineage.MutationScale, false)
+				}
 			}
 		}
 	}
@@ -824,6 +1037,9 @@ func (s *Search) selectParent() *SearchCandidate {
 		sort.Slice(seeds, func(i, j int) bool { return seeds[i].ID < seeds[j].ID })
 		return seeds[0]
 	}
+	if s.state.Config.LearnerMode == LearnerModeBranching {
+		return s.selectMechanicsParent(targetEncounter)
+	}
 	if len(list) == 0 {
 		for _, c := range pool {
 			if c.Seed && !c.Unusable {
@@ -861,6 +1077,270 @@ func (s *Search) selectParent() *SearchCandidate {
 	return best
 }
 
+var mechanicsParentSources = []string{"earned", "potential", "setup", "efficiency", "region", "exploration", "mean"}
+
+func (s *Search) selectMechanicsParent(encounterID int64) *SearchCandidate {
+	pool := make([]*SearchCandidate, 0, len(s.byEncounter[encounterID]))
+	for _, candidate := range s.byEncounter[encounterID] {
+		if !candidate.Unusable {
+			pool = append(pool, candidate)
+		}
+	}
+	sort.Slice(pool, func(i, j int) bool {
+		if pool[i].Order != pool[j].Order {
+			return pool[i].Order < pool[j].Order
+		}
+		return pool[i].ID < pool[j].ID
+	})
+	if len(pool) == 0 {
+		return nil
+	}
+	source := mechanicsParentSources[(int(s.state.BranchingProposals)+1)%len(mechanicsParentSources)] // attempt starts at one
+	s.state.BranchingProposals++
+	choices := []*SearchCandidate{}
+	fallback := ""
+	switch source {
+	case "earned", "potential", "setup", "efficiency":
+		// Python concatenates the top four per defeat-count group; the active encounter
+		// roster is kept sorted so exact objective ties remain deterministic.
+		groups := map[int64][]MechanicsLaneRecord{}
+		for _, candidate := range pool {
+			if candidate.Mechanics == nil {
+				continue
+			}
+			groups[candidate.DefeatCount] = append(groups[candidate.DefeatCount], candidate.Mechanics.LaneRecord(candidate.ID, candidate.EncounterID, candidate.DefeatCount))
+		}
+		defeats := make([]int64, 0, len(groups))
+		for defeat := range groups {
+			defeats = append(defeats, defeat)
+		}
+		sort.Slice(defeats, func(i, j int) bool { return defeats[i] < defeats[j] })
+		for _, defeat := range defeats {
+			ranked, err := RankMechanicsRecords(groups[defeat], MechanicsLanePool)
+			if err != nil {
+				continue
+			}
+			ids := ranked.LaneRankings[source]
+			for _, id := range ids {
+				if candidate := s.state.Candidates[id]; candidate != nil {
+					choices = append(choices, candidate)
+				}
+			}
+		}
+	case "region":
+		seen := map[string]bool{}
+		byID := append([]*SearchCandidate(nil), pool...)
+		sort.Slice(byID, func(i, j int) bool { return byID[i].ID < byID[j].ID })
+		for _, candidate := range byID {
+			region, err := strategyRegion(candidate.Raw)
+			if err == nil && !seen[region] {
+				choices = append(choices, candidate)
+				seen[region] = true
+			}
+		}
+	case "exploration":
+		choices = append(choices, pool...)
+	case "mean":
+		// Go has no source-equivalent >=64-sample validation bank. Never substitute
+		// search observations for validation evidence; report the population fallback.
+		fallback = "mean:fallback-population(no-validation-bank)"
+		choices = append(choices, pool...)
+	}
+	if len(choices) == 0 {
+		fallback = source + ":fallback-population(empty-source)"
+		choices = append(choices, pool...)
+	}
+	sourceLabel := source
+	if fallback != "" {
+		sourceLabel = fallback
+	}
+	s.lastParentSource = sourceLabel
+	weights := make([]float64, len(choices))
+	var total float64
+	for i, candidate := range choices {
+		root := candidate.RootID
+		if root == "" {
+			root = candidate.ID
+		}
+		children, improved := float64(s.state.RootChildren[root]), float64(s.state.RootImprovedChildren[root])
+		weights[i] = .5 + (improved+1)/(children+2)
+		total += weights[i]
+	}
+	draw := float64(s.rand()>>11) / (1 << 53) * total
+	for i, weight := range weights {
+		draw -= weight
+		if draw < 0 {
+			return choices[i]
+		}
+	}
+	return choices[len(choices)-1]
+}
+
+func (s *Search) bumpLearnerOperator(encounter int64, operation string, improved bool) {
+	if s.state.LearnerOperators[encounter] == nil {
+		s.state.LearnerOperators[encounter] = map[string]LearnerOperatorStat{}
+	}
+	stat := s.state.LearnerOperators[encounter][operation]
+	if improved {
+		stat.Improved++
+	} else {
+		stat.Attempts++
+	}
+	s.state.LearnerOperators[encounter][operation] = stat
+}
+
+func (s *Search) bumpLearnerScale(encounter, parameter int64, scale string, improved bool) {
+	if s.state.LearnerScales[encounter] == nil {
+		s.state.LearnerScales[encounter] = map[int64]map[string]LearnerScaleStat{}
+	}
+	if s.state.LearnerScales[encounter][parameter] == nil {
+		s.state.LearnerScales[encounter][parameter] = map[string]LearnerScaleStat{}
+	}
+	stat := s.state.LearnerScales[encounter][parameter][scale]
+	if improved {
+		stat.Improved++
+	} else {
+		stat.Attempts++
+	}
+	s.state.LearnerScales[encounter][parameter][scale] = stat
+}
+
+func (s *Search) planLearnerScale(encounter, parameter int64, scale string) {
+	if s.state.LearnerScales[encounter] == nil {
+		s.state.LearnerScales[encounter] = map[int64]map[string]LearnerScaleStat{}
+	}
+	if s.state.LearnerScales[encounter][parameter] == nil {
+		s.state.LearnerScales[encounter][parameter] = map[string]LearnerScaleStat{}
+	}
+	stat := s.state.LearnerScales[encounter][parameter][scale]
+	stat.Planned++
+	s.state.LearnerScales[encounter][parameter][scale] = stat
+}
+
+func rawParameterValue(raw json.RawMessage, parameter int64) (int64, bool) {
+	var scenario RawScenario
+	if json.Unmarshal(raw, &scenario) != nil || len(scenario.OwnUnits) == 0 {
+		return 0, false
+	}
+	var values map[string]map[string]int64
+	if json.Unmarshal(scenario.OwnUnits[0].Parameters, &values) != nil {
+		return 0, false
+	}
+	entry, ok := values[strconv.FormatInt(parameter, 10)]
+	return entry["rawValue"], ok && entry != nil
+}
+
+func (s *Search) mutateControlledStat(parent *SearchCandidate) (json.RawMessage, string, error) {
+	if s.preparer == nil {
+		return nil, "", errors.New("controlled learner requires canonical preparer")
+	}
+	parameters := append([]int64(nil), controlledMutableParameters...)
+	labels := make([]string, len(parameters))
+	weights := make(map[string]float64, len(parameters))
+	for i, parameter := range parameters {
+		labels[i] = controlledStatOperator(parameter)
+		stat := s.state.LearnerOperators[parent.EncounterID][labels[i]]
+		weights[labels[i]] = learnerOperatorWeights(map[string]learnerCounter{labels[i]: {Attempts: stat.Attempts, Improved: stat.Improved}}, []string{labels[i]})[labels[i]]
+	}
+	selectedLabel := weightedStringChoice(labels, weights, float64(s.rand()>>11)/(1<<53))
+	parameter := int64(0)
+	for i, label := range labels {
+		if label == selectedLabel {
+			parameter = parameters[i]
+			break
+		}
+	}
+	if parameter == 0 {
+		return nil, "", errors.New("controlled stat selector returned unknown axis")
+	}
+	current, ok := controlledEffectiveStat(parent.Raw, s.preparer, parameter)
+	if !ok {
+		return nil, "", fmt.Errorf("controlled stat %d is unavailable", parameter)
+	}
+	encounter := parent.EncounterID
+	var stats map[int64]map[string]LearnerScaleStat
+	if s.state.LearnerScales[encounter] != nil {
+		stats = s.state.LearnerScales[encounter]
+	}
+	scale, err := chooseLearnerScale(func() uint64 { return s.rand() }, stats, parameter)
+	if err != nil {
+		return nil, "", err
+	}
+	scaleName := learnerScaleKey(scale)
+	if scale == 0 {
+		scaleName = "jump"
+	}
+	s.planLearnerScale(encounter, parameter, scaleName)
+	bounds, err := loadNativeSearchStatBounds()
+	if err != nil {
+		return nil, "", err
+	}
+	bound := bounds[parameter]
+	base := current
+	if anchor := s.state.StatAnchors[encounter][parameter]; anchor != 0 {
+		base = anchor
+	}
+	floatDraw := func() float64 { return float64(s.rand()>>11) / (1 << 53) }
+	intDraw := func(low, high int64) int64 {
+		if high <= low {
+			return low
+		}
+		return low + int64(s.rand()%uint64(high-low+1))
+	}
+	target := learnerStatTarget(floatDraw, intDraw, base, bound.Minimum, bound.Maximum, scale)
+	unitFields := map[string]json.RawMessage{}
+	var top map[string]json.RawMessage
+	if err := json.Unmarshal(parent.Raw, &top); err != nil {
+		return nil, "", err
+	}
+	var units []json.RawMessage
+	if err := json.Unmarshal(top["ownUnits"], &units); err != nil || len(units) == 0 {
+		return nil, "", errors.New("controlled DPS unit missing")
+	}
+	if err := json.Unmarshal(units[0], &unitFields); err != nil {
+		return nil, "", err
+	}
+	if err := setNativeEffectiveStat(unitFields, s.preparer, parameter, target); err != nil {
+		return nil, "", err
+	}
+	units[0], _ = json.Marshal(unitFields)
+	top["ownUnits"], _ = json.Marshal(units)
+	encoded, err := json.Marshal(top)
+	if err != nil {
+		return nil, "", err
+	}
+	return encoded, fmt.Sprintf("set-stat:%d:%s:%d", parameter, scaleName, target), nil
+}
+
+func controlledStatOperator(parameter int64) string {
+	switch parameter {
+	case 13:
+		return "stat:atk"
+	case 15:
+		return "stat:spd"
+	case 16:
+		return "stat:lck"
+	default:
+		return ""
+	}
+}
+
+func controlledEffectiveStat(raw json.RawMessage, preparer *Preparer, parameter int64) (int64, bool) {
+	var scenario RawScenario
+	if json.Unmarshal(raw, &scenario) != nil || len(scenario.OwnUnits) == 0 || preparer == nil {
+		return 0, false
+	}
+	unit, err := preparer.makeOwn(scenario.OwnUnits[0])
+	if err != nil {
+		return 0, false
+	}
+	value, err := preparer.effective(unit, parameter, false)
+	if err != nil {
+		return 0, false
+	}
+	return value, true
+}
+
 // Observe associates a completed battle with its strategy. Out-of-order results
 // wait in Pending and only affect selection after every earlier dispatch lands.
 func (s *Search) Observe(identity string, earned float64) error {
@@ -875,6 +1355,26 @@ func (s *Search) Observe(identity string, earned float64) error {
 		return errors.New("unknown or already observed identity")
 	}
 	return s.recordFeedback(queuedFeedback{Identity: identity, Earned: earned, Accepted: true, Scored: true})
+}
+
+// ObserveMechanics adds current-run measurements to versioned candidate evidence.
+// Historical checkpoint telemetry is never inferred or backfilled.
+func (s *Search) ObserveMechanics(identity string, earned *float64, observation MechanicsObservation) error {
+	if s == nil || s.state.Config.ObjectiveMode != ObjectiveModeMechanicLanes {
+		return errors.New("mechanics evidence requires mechanism-lanes-v3")
+	}
+	if earned != nil && (math.IsNaN(*earned) || math.IsInf(*earned, 0)) {
+		return errors.New("earned must be finite")
+	}
+	if _, ok := s.state.InFlight[identity]; !ok {
+		return errors.New("unknown or already observed identity")
+	}
+	feedback := queuedFeedback{Identity: identity, Accepted: true, Mechanics: &observation}
+	if earned != nil {
+		feedback.Earned = *earned
+		feedback.Scored = true
+	}
+	return s.recordFeedback(feedback)
 }
 
 // Reject consumes an evaluation sequence without changing any strategy score.
@@ -928,7 +1428,7 @@ func (s *Search) NeedsResult(identity string) bool {
 func (s *Search) recordFeedback(feedback queuedFeedback) error {
 	seq := s.state.InFlight[feedback.Identity]
 	if old, ok := s.state.Pending[seq]; ok {
-		if old == feedback {
+		if jsonSemanticallyEqual(old, feedback) {
 			return nil
 		}
 		return errors.New("conflicting result for dispatch")
@@ -940,9 +1440,46 @@ func (s *Search) recordFeedback(feedback queuedFeedback) error {
 			break
 		}
 		pruneEncounterID := int64(-1)
+		strategy := s.state.EvaluationStrategy[p.Identity]
+		candidate := s.state.Candidates[strategy]
+		if p.Mechanics != nil && candidate != nil {
+			if candidate.Mechanics == nil {
+				candidate.Mechanics = &MechanicsCandidateEvidence{}
+			}
+			candidate.Mechanics.Observe(*p.Mechanics)
+			pruneEncounterID = candidate.EncounterID
+			if s.state.Config.LearnerMode == LearnerModeBranching && !candidate.Seed && !candidate.ImprovementCounted {
+				parent := s.state.Candidates[candidate.ParentID]
+				if parent != nil && parent.Mechanics != nil && candidate.Mechanics.N > 0 {
+					parentRecord := parent.Mechanics.LaneRecord(parent.ID, parent.EncounterID, parent.DefeatCount)
+					childRecord := candidate.Mechanics.LaneRecord(candidate.ID, candidate.EncounterID, candidate.DefeatCount)
+					candidate.ImprovedLanes = mechanicsImprovedLanes(parentRecord, childRecord)
+					if len(candidate.ImprovedLanes) != 0 {
+						candidate.ImprovementCounted = true
+						rootID := candidate.RootID
+						if rootID == "" {
+							rootID = candidate.ID
+						}
+						s.state.RootImprovedChildren[rootID]++
+						lineage := s.state.EvaluationLineage[p.Identity]
+						if lineage.Mutation != "" {
+							s.bumpLearnerOperator(candidate.EncounterID, lineage.Mutation, true)
+						}
+						if lineage.MutationParameter != 0 {
+							if s.state.StatAnchors[candidate.EncounterID] == nil {
+								s.state.StatAnchors[candidate.EncounterID] = map[int64]int64{}
+							}
+							if lineage.MutationTarget != 0 {
+								s.state.StatAnchors[candidate.EncounterID][lineage.MutationParameter] = lineage.MutationTarget
+							}
+							// Python currently bumps per-scale attempts but never per-scale improvements.
+						}
+					}
+				}
+			}
+		}
 		if p.Scored {
-			strategy := s.state.EvaluationStrategy[p.Identity]
-			c := s.state.Candidates[strategy]
+			c := candidate
 			if c == nil {
 				return errors.New("feedback candidate missing")
 			}
@@ -1068,6 +1605,44 @@ func (s *Search) pruneEncounter(encounterID int64) {
 		for _, c := range []*SearchCandidate{bestMean, bestEarned, bestSeed} {
 			if c != nil {
 				protected[c.ID] = true
+			}
+		}
+		if s.state.Config.LearnerMode == LearnerModeBranching {
+			// Keep every source that the active selector can still draw: four
+			// leaders per defeat group for each lane, region representatives, and
+			// one durable representative per root lineage.
+			groups := map[int64][]MechanicsLaneRecord{}
+			for _, c := range members {
+				if c.Mechanics != nil {
+					groups[c.DefeatCount] = append(groups[c.DefeatCount], c.Mechanics.LaneRecord(c.ID, c.EncounterID, c.DefeatCount))
+				}
+				root := c.RootID
+				if root == "" {
+					root = c.ID
+				}
+				if c.ID == root {
+					protected[c.ID] = true
+				}
+			}
+			for _, records := range groups {
+				ranked, err := RankMechanicsRecords(records, MechanicsLanePool)
+				if err == nil {
+					for _, ids := range ranked.LaneRankings {
+						for _, id := range ids {
+							protected[id] = true
+						}
+					}
+				}
+			}
+			byID := append([]*SearchCandidate(nil), members...)
+			sort.Slice(byID, func(i, j int) bool { return byID[i].ID < byID[j].ID })
+			regions := map[string]bool{}
+			for _, c := range byID {
+				region, err := strategyRegion(c.Raw)
+				if err == nil && !regions[region] {
+					protected[c.ID] = true
+					regions[region] = true
+				}
 			}
 		}
 		for _, c := range members {

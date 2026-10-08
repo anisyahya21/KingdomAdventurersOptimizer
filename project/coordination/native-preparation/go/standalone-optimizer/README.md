@@ -2,7 +2,7 @@
 
 Independent Go raw admission, catalog/stat/encounter preparation, initial snapshot construction, deterministic adaptive search, and durable result coordination. Native simulation calls the shared canonical **Rust** `ka_kernel_encounter_v3` DLL directly through Windows syscall. No Python/Rust executable is invoked by the runtime. `build.py` is an offline compile helper, not runtime preparation.
 
-Only Chat 1 executes tests or battles. Build with the workspace Python: `python build.py`. The SDK is `../toolchain/go`; compilation uses a local cache. `build-manifest.json` records source and executable identities. A successful compile is not parity approval.
+Only Chat 1 executes tests or battles. Build with Python 3 and Go 1.27+: `python build.py` uses `go` from `PATH`; alternatively pass `--go PATH_TO_GO` or set `GO_EXE`. It refuses automatic toolchain downloads and writes the corrected executable and a relative-path manifest under the ignored `.build-cache/` directory. The historical packaged `go-optimizer.exe` and tracked `build-manifest.json` are unchanged and do not contain this corrected source. A successful compile is not parity approval.
 
 Workload JSON:
 
@@ -15,8 +15,17 @@ Workload JSON:
 Coordinator commands:
 
 ```powershell
-./go-optimizer.exe --mode prepare --input workload.json --output fresh-preparation
-./go-optimizer.exe --input workload.json --output fresh-search --budget 128 --batch 64 --executors 5 --seed 1
+./.build-cache/go-optimizer-corrected.exe --mode prepare --input workload.json --output fresh-preparation
+./.build-cache/go-optimizer-corrected.exe --input workload.json --output fresh-search --budget 128 --batch 64 --executors 5 --seed 1
+```
+
+The default remains backward-compatible `earned-only-v1` with the legacy learner and `search-contract` policy. Mechanism lanes are opt-in: add `--objective-mode mechanism-lanes-v3 --learner-mode branching --constraint-profile fixed-dps-3stats-v1`; add `--policy fixed-formation` when the workload must also satisfy the published fixed-roster/equipment policy. The fixed DPS profile holds HP (10), MP (11), DEF (14), DEX (19), VIT (12), and INT (18) at its declared values; only ATK (13), SPD (15), and LCK (16) may vary. It does not load a model or predictor. An optional `--learner-prior PATH` imports only a hash-bound prior into a fresh branching search; no private prior or candidate history is included here.
+
+The mechanism objective includes an offline oracle and synthetic feedback/resume replay. These modes do not load the battle kernel or start battles:
+
+```powershell
+./.build-cache/go-optimizer-corrected.exe --objective-oracle testdata/objective-v3-oracle.json
+./.build-cache/go-optimizer-corrected.exe --objective-replay testdata/feedback-replay-fixture.json
 ```
 
 For a long user-facing run, `launch.ps1 -Input workload.json -Output fresh-search` starts the hidden optimizer and lightweight progress window. `-Headless` is available for coordinator-owned short checks. The launcher and monitor are scripts only; builders never execute them.

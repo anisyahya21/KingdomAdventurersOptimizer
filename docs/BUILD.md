@@ -1,5 +1,10 @@
 # Build and development
 
+For the mechanism-objective correction, build these canonical sources and pass
+the newly built executable explicitly to `run_corrected_smoke.py`. The portable
+C++ build writes `.build-cache/optimizer-corrected.exe`, leaving the packaged
+binary unchanged. See [MECHANISM_OBJECTIVES.md](MECHANISM_OBJECTIVES.md).
+
 Windows x64 is the included binary target. Install Python 3.12+, Microsoft Edge WebView2 Runtime, Rust stable MSVC, Go, Node.js/npm and Visual Studio C++ Build Tools as needed. Run Python dependency installation from the root: `python -m pip install -r requirements.txt`. The host uses stdlib plus pywebview; WebView2 is an OS dependency.
 
 * Rust standalone: `cd project/coordination/native-preparation/rust/standalone-optimizer` then `cargo build --release`. Its `shared-kernel/Cargo.toml` points at the included canonical kernel source.

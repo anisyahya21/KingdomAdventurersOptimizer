@@ -2,7 +2,7 @@
 #define NOMINMAX
 #include <windows.h>
 #include "native_abi.hpp"
-#include "../full_battle_abi/ka_battle_report.hpp"
+#include "full_battle_abi/ka_battle_report.hpp"
 #include "preparation.hpp"
 #include "encounter_report.hpp"
 #include "replay.hpp"

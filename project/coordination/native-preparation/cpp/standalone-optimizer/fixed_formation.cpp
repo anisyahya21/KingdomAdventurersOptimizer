@@ -235,6 +235,29 @@ void validate_fixed_formation_raw(const Json& raw) {
         check_fixed_unit(units[index], policy["fodder"], "fixed fodder " + std::to_string(index));
 }
 
+Json mutate_fixed_formation_stat(const Json& parent, const std::string& parameter, std::int64_t step) {
+    if (!fixed_formation_enabled()) throw std::runtime_error("Synthetic-DPS mutation requested while fixed profile is disabled");
+    if (step == 0)
+        throw std::runtime_error("Synthetic-DPS mutation step must be one of -5, -1, 1, 5");
+    const auto walls = fixed_formation_searchable_parameters();
+    const auto found = walls.find(parameter);
+    if (found == walls.end()) throw std::runtime_error("Synthetic-DPS mutation parameter is not searchable");
+    validate_fixed_formation_raw(parent);
+    Json child = parent;
+    auto& entry = child.at("ownUnits").at(0).at("parameters").at(parameter);
+    const bool maxBounded = parameter == "10" || parameter == "11";
+    const auto current = maxBounded ? entry.at("rawMax").get<std::int64_t>() : entry.at("rawValue").get<std::int64_t>();
+    const auto next = current + step;
+    if (next < found->second.first || next > found->second.second)
+        throw std::runtime_error("Synthetic-DPS mutation crosses canonical stat wall");
+    if (entry.value("extraValue", std::int64_t(0)) != 0 || entry.value("extraMax", std::int64_t(0)) != 0)
+        throw std::runtime_error("Synthetic-DPS searched stat unexpectedly has equipment contribution");
+    entry["rawValue"] = next;
+    if (maxBounded) entry["rawMax"] = next;
+    validate_fixed_formation_raw(child);
+    return child;
+}
+
 std::string fixed_formation_identity(const Json& raw) {
     if (!raw.is_object() || !raw.contains("ownUnits") || !raw["ownUnits"].is_array() ||
         raw["ownUnits"].size() != 6)

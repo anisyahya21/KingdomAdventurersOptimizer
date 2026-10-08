@@ -40,6 +40,7 @@ type RawUnit struct {
 	Parameters     json.RawMessage `json:"parameters"`
 	Skills         []int64         `json:"skills"`
 	Invocation     []int64         `json:"invocationLevels"`
+	Grid           json.RawMessage `json:"grid"`
 	WeaponID       *int64          `json:"weaponId"`
 	Equipment      json.RawMessage `json:"equipment"`
 	Visitor        bool            `json:"visitor"`

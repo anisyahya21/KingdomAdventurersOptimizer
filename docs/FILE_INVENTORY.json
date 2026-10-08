@@ -10,6 +10,11 @@
     "sha256": "52febad1e5fba9dbabdd5d3101bc5d226f6d7f27dab99b34430f41e8283dc9f9"
   },
   {
+    "path": "Important.md",
+    "bytes": 59267,
+    "sha256": "2e6fc4c05c7f13cb6734dbcb154cc9a029f84b920fee5ded4aaaa19b9ed62eae"
+  },
+  {
     "path": "Launch-cpp.cmd",
     "bytes": 71,
     "sha256": "20ddf43a050e438039bfec85095658b88a4c6aa5ae09153f1d5bb5f3eff9ea6b"
@@ -31,8 +36,8 @@
   },
   {
     "path": "README.md",
-    "bytes": 1872,
-    "sha256": "a13934c5d39bb0a1f426d8942ef20b29f2000e8e8eff7b570369559a900aae8f"
+    "bytes": 2190,
+    "sha256": "f2975f5e179a9b4466f28d60a360b0ea7e9168df28af72bfce1b0cc879c48d4f"
   },
   {
     "path": "docs/ARCHITECTURE.md",
@@ -41,8 +46,8 @@
   },
   {
     "path": "docs/BUILD.md",
-    "bytes": 2247,
-    "sha256": "63e81fc1e1850862127043beb6b3534ea549d78757088eff080a24427abbd6fd"
+    "bytes": 2564,
+    "sha256": "91c7604666772cf31b78c43a283b63045f2c0031a6ae0504628f2a51f60141ad"
   },
   {
     "path": "docs/DEPENDENCIES.md",
@@ -51,18 +56,28 @@
   },
   {
     "path": "docs/KNOWN_PROBLEMS.md",
-    "bytes": 2505,
-    "sha256": "c828c6a8e913bbb0efd86daae13a7e8ab66f3a775ba368deb60b95e748dfb9fe"
+    "bytes": 2828,
+    "sha256": "29fecd33e5c1aae85a0918e5d2060d8499ebf86eac952bae3d12bf2d01448e4b"
+  },
+  {
+    "path": "docs/MECHANISM_OBJECTIVES.md",
+    "bytes": 3769,
+    "sha256": "40d7747b24419372b482addbcf711b85528202af122d6a257127e9e9540202e6"
+  },
+  {
+    "path": "docs/MECHANISM_VERIFICATION.json",
+    "bytes": 2284,
+    "sha256": "6481760294a125ee7ecf76f808cb2cbfdf39f50d8f8c20f88160b36da2a021e8"
   },
   {
     "path": "docs/PROVENANCE.md",
-    "bytes": 2937,
-    "sha256": "92d3bf733351d124e357f2e8cf0caffe9c78a36895e5cada5eb796da4a00bd8a"
+    "bytes": 3785,
+    "sha256": "61a097c95184f58de23302d13adb92df02cdfecd42d4bfc77a22ee50092c3131"
   },
   {
     "path": "docs/VERIFICATION.md",
-    "bytes": 2096,
-    "sha256": "488385b42d92dc067c4964394e7b18de4ce1e87e32ecd98ce300fd43a3cfb083"
+    "bytes": 2505,
+    "sha256": "ec3168e422c4c5b366de60b6348aebaa25aee8254af8da74dfe4a428d8182ff1"
   },
   {
     "path": "docs/prune_optimizer.py",
@@ -8875,6 +8890,11 @@
     "sha256": "f6aca9c29e8c59b69bcc654a657faf94f7a31a11a0103a9c6799bfb908e2e4b5"
   },
   {
+    "path": "project/coordination/native-preparation/cpp/full_battle_abi/ka_battle_report.hpp",
+    "bytes": 14762,
+    "sha256": "19b1cb3a632152457f45659b76b471bbbd06f8c0e683d9645dfaf5014f3fea95"
+  },
+  {
     "path": "project/coordination/native-preparation/cpp/include/nlohmann/json.hpp",
     "bytes": 953436,
     "sha256": "aaf127c04cb31c406e5b04a63f1ae89369fccde6d8fa7cdda1ed4f32dfc5de63"
@@ -8896,8 +8916,8 @@
   },
   {
     "path": "project/coordination/native-preparation/cpp/standalone-optimizer/admission.cpp",
-    "bytes": 15414,
-    "sha256": "0d76909bf45ac520c5f4d4022b83e9b76a61fe0c605ae65d331fb1d0e14f3bed"
+    "bytes": 15406,
+    "sha256": "a04820607eb1940c88278e0fbe1e8a7a13811674bab1ea80e41f2091214ad156"
   },
   {
     "path": "project/coordination/native-preparation/cpp/standalone-optimizer/admission.hpp",
@@ -8916,8 +8936,8 @@
   },
   {
     "path": "project/coordination/native-preparation/cpp/standalone-optimizer/build.cmd",
-    "bytes": 493,
-    "sha256": "477ef51731a574012febc5a77c23bb3e87df01853b072eec6ca623533c42493b"
+    "bytes": 593,
+    "sha256": "f18563cdbe2465624cf0e910e6a4ffe4fa536c014bba3a6f8a185ffa95d236d0"
   },
   {
     "path": "project/coordination/native-preparation/cpp/standalone-optimizer/comparison-adapter.md",
@@ -8930,24 +8950,34 @@
     "sha256": "a1642a9507b26155c0afd0fc0d7eabc3c5444cd6830bc60afb76d1f028426a6c"
   },
   {
+    "path": "project/coordination/native-preparation/cpp/standalone-optimizer/effective_combat_features.cpp",
+    "bytes": 8615,
+    "sha256": "d594ca5631a0ef29bfac5f3a9a45eff7a128d0e623612028df013c6007d3808b"
+  },
+  {
+    "path": "project/coordination/native-preparation/cpp/standalone-optimizer/effective_combat_features.hpp",
+    "bytes": 344,
+    "sha256": "3dd93c1d224b7df9b70dfdcd935eac130d8d13fdcb83e91b92bd4680b0194910"
+  },
+  {
     "path": "project/coordination/native-preparation/cpp/standalone-optimizer/encounter_report.hpp",
     "bytes": 6564,
     "sha256": "ccfc007cb36c226d999387ba13003c9b98bb74c6d4bcd29fef6de7f3eef1ecc8"
   },
   {
     "path": "project/coordination/native-preparation/cpp/standalone-optimizer/execution.cpp",
-    "bytes": 28203,
-    "sha256": "9de7e702cd8cc035f0440530864f21b880f390571f74c491db93fbb44b101a7b"
+    "bytes": 28199,
+    "sha256": "a5207efa15cfdfd3b97714724247cd0397db313d95419c4930f55dc70d6c67b6"
   },
   {
     "path": "project/coordination/native-preparation/cpp/standalone-optimizer/fixed_formation.cpp",
-    "bytes": 16696,
-    "sha256": "0476370fafa4bbe1c8566da23008b3aea664de6ccef5cc439c4598138de68da9"
+    "bytes": 18135,
+    "sha256": "3e714566d9c6276a4b982a43908bd246744ac2f0204322fa530d607452bd4e71"
   },
   {
     "path": "project/coordination/native-preparation/cpp/standalone-optimizer/fixed_formation.hpp",
-    "bytes": 1941,
-    "sha256": "ec46a997bbcee0b306683f067f55e0e1119fd0d5e7963407ee5b508f4ac85b81"
+    "bytes": 2044,
+    "sha256": "87e6e8d8a5ddfc0a828deb79bc9ac5af521a59b3c9bb3f3a9a7da7116e0b8e9b"
   },
   {
     "path": "project/coordination/native-preparation/cpp/standalone-optimizer/fixed_formation_policy.inc",
@@ -8966,13 +8996,18 @@
   },
   {
     "path": "project/coordination/native-preparation/cpp/standalone-optimizer/main.cpp",
-    "bytes": 8444,
-    "sha256": "63424934ebd81610705a98934d854661df3cba69dbdb851058ef6cd2a3e9ccd7"
+    "bytes": 19754,
+    "sha256": "b125871a58e385c731128c327fdbed2b44ee233128e7d2dde038d8d1cbadb76d"
   },
   {
     "path": "project/coordination/native-preparation/cpp/standalone-optimizer/make-config.ps1",
     "bytes": 4068,
     "sha256": "a150e1acdd16f5e751d4fed73c272f5db1d886e236dca7ecdc3dbc83064d6c54"
+  },
+  {
+    "path": "project/coordination/native-preparation/cpp/standalone-optimizer/mechanism_objective.hpp",
+    "bytes": 30208,
+    "sha256": "6c9d7d21211f060f420ae98da91b8833e849f7025276be106937de76e2439998"
   },
   {
     "path": "project/coordination/native-preparation/cpp/standalone-optimizer/monitor.cpp",
@@ -8986,8 +9021,8 @@
   },
   {
     "path": "project/coordination/native-preparation/cpp/standalone-optimizer/native_abi.hpp",
-    "bytes": 4484,
-    "sha256": "4ea5a1307f9842c6154c3ef4319435e8c64e8410736e5e95e460bd683c6034f8"
+    "bytes": 4293,
+    "sha256": "fbee623ce60a1c5f66b9c8cc6941daa4343f94477a93dc2763493d5180426dcf"
   },
   {
     "path": "project/coordination/native-preparation/cpp/standalone-optimizer/normalization.cpp",
@@ -9011,13 +9046,13 @@
   },
   {
     "path": "project/coordination/native-preparation/cpp/standalone-optimizer/pipeline.cpp",
-    "bytes": 205989,
-    "sha256": "91436759f999dbd15e88dac025bf66b460f4a478e8b136987676f5b292cfaae4"
+    "bytes": 245587,
+    "sha256": "55a6c57c45170c65da298689138242635710e5ad92134456ec4f0742a1117d5d"
   },
   {
     "path": "project/coordination/native-preparation/cpp/standalone-optimizer/pipeline.hpp",
-    "bytes": 1066,
-    "sha256": "61ca33a62213262e77ed9e69061809d59f5ccbcb761c9eae5b6213457bbef74f"
+    "bytes": 1338,
+    "sha256": "077d8726403a191b054ab7fe0d844edd412027457b73cd8595c5d5452407a53a"
   },
   {
     "path": "project/coordination/native-preparation/cpp/standalone-optimizer/preparation-notes.md",
@@ -9166,8 +9201,8 @@
   },
   {
     "path": "project/coordination/native-preparation/go/standalone-optimizer/README.md",
-    "bytes": 3948,
-    "sha256": "d9ab5c24e661ba6df88b78c0d9ee82bdc21b2b1bb4ef0d56886428aaa26a146f"
+    "bytes": 5307,
+    "sha256": "3ed8ba6105218b6fb00c649c7e934585be546af308ba5a32880c72a9c72123df"
   },
   {
     "path": "project/coordination/native-preparation/go/standalone-optimizer/baseline.go",
@@ -9181,8 +9216,8 @@
   },
   {
     "path": "project/coordination/native-preparation/go/standalone-optimizer/build.py",
-    "bytes": 2777,
-    "sha256": "8624092ee5d1eecf3aacdb2508e2f689d7671853ea7decc492f40299b502e528"
+    "bytes": 3289,
+    "sha256": "2176c091358bcf285998a24e14a9fe04f3940d17a7a4d8f7757af6f1746e3200"
   },
   {
     "path": "project/coordination/native-preparation/go/standalone-optimizer/comparison-seed-bank-example.json",
@@ -9226,8 +9261,8 @@
   },
   {
     "path": "project/coordination/native-preparation/go/standalone-optimizer/main.go",
-    "bytes": 32584,
-    "sha256": "8ceba145a7af076a76836b4036243dacbcd5656bdb686080f8fb6fde44c08d50"
+    "bytes": 35305,
+    "sha256": "70affdc040d6aa02aab9958b70afda2ee2602fc120e49176b0f5d0eb1f14715b"
   },
   {
     "path": "project/coordination/native-preparation/go/standalone-optimizer/monitor.ps1",
@@ -9255,14 +9290,19 @@
     "sha256": "014fb01017bdee67576c1157d82a1c20c8a56be0d5c870ec92d6ad7baed1370a"
   },
   {
+    "path": "project/coordination/native-preparation/go/standalone-optimizer/objective.go",
+    "bytes": 44239,
+    "sha256": "9ce374ce9bd40fe73e67e46fc64f31731829126ed49114c558e2da7700470dea"
+  },
+  {
     "path": "project/coordination/native-preparation/go/standalone-optimizer/placement.go",
     "bytes": 6276,
     "sha256": "04ed84acc569903d923647c8e7d96e69444f81be3173919f8a70b0c7dc1420d8"
   },
   {
     "path": "project/coordination/native-preparation/go/standalone-optimizer/prepare.go",
-    "bytes": 16281,
-    "sha256": "2902209b235d1c83e1dd8c177195855cf15fdcc20edb3e9447c5af2debb955ed"
+    "bytes": 16327,
+    "sha256": "b9bc3bef3efa71a4c86a4fb3a418ac0caab1f94cca5d25e04f053b5b891c08c7"
   },
   {
     "path": "project/coordination/native-preparation/go/standalone-optimizer/preparer.go",
@@ -9416,8 +9456,8 @@
   },
   {
     "path": "project/coordination/native-preparation/go/standalone-optimizer/search.go",
-    "bytes": 67190,
-    "sha256": "83b4d5da15b25b28a1f3d41f89e4935347debc30bbbf39f4d9ee5e7b52b3b9bc"
+    "bytes": 92224,
+    "sha256": "06b6bddc317b3c6db6d6b9a59dbad33f69848658adb8e218d085d9e36b0ad2ee"
   },
   {
     "path": "project/coordination/native-preparation/go/standalone-optimizer/snapshot.go",
@@ -9440,6 +9480,16 @@
     "sha256": "d5f205512df84d6d4c7419fda91cc541429ae2e7aab7aa2e97da89a7fc1164fd"
   },
   {
+    "path": "project/coordination/native-preparation/go/standalone-optimizer/testdata/feedback-replay-fixture.json",
+    "bytes": 744170,
+    "sha256": "18014ef36c69cd109689541fba84fba428984c0dd50f40f7f6359c3148f341f7"
+  },
+  {
+    "path": "project/coordination/native-preparation/go/standalone-optimizer/testdata/objective-v3-oracle.json",
+    "bytes": 48635,
+    "sha256": "6366ece36320588e1747bdd4c0c310b5c530263ace1fab484f7f4f1eb81e539c"
+  },
+  {
     "path": "project/coordination/native-preparation/rust/standalone-optimizer/Cargo.lock",
     "bytes": 2763,
     "sha256": "ce3522120778a57949a3775cac66e8e652b3f800f906a56d0be849daeb215af0"
@@ -9451,8 +9501,8 @@
   },
   {
     "path": "project/coordination/native-preparation/rust/standalone-optimizer/README.md",
-    "bytes": 5981,
-    "sha256": "89772f0019ce6591f4334601f93766e992daf1a7de7757b38dc5903d3a5ce254"
+    "bytes": 7662,
+    "sha256": "5d683cecdc5e6d2e463f59d2ce6e61689bc3b7be7175043ac311ec963f8f3d4f"
   },
   {
     "path": "project/coordination/native-preparation/rust/standalone-optimizer/build-catalog.ps1",
@@ -9565,6 +9615,11 @@
     "sha256": "a0267c8bf93b23f96007aece04a6f640b69c7e4914ab2ad24523d542d31ce3b0"
   },
   {
+    "path": "project/coordination/native-preparation/rust/standalone-optimizer/requests/synthetic-common-learner-prior.json",
+    "bytes": 472,
+    "sha256": "615e94c1edf00736d10eedd5c7c1e35d92d317036cafa36b44fc8e7ea86b706f"
+  },
+  {
     "path": "project/coordination/native-preparation/rust/standalone-optimizer/shared-kernel/Cargo.toml",
     "bytes": 236,
     "sha256": "cec025476cf3615e5958ea96ae6a92c0afd22af88f7b3a3fafaf556a1ba543fa"
@@ -9591,8 +9646,13 @@
   },
   {
     "path": "project/coordination/native-preparation/rust/standalone-optimizer/src/main.rs",
-    "bytes": 107321,
-    "sha256": "fe6567422faf9d6e9bf296db4d9bffa6dca1b4dc92aeed22027ed7a7db9faf96"
+    "bytes": 164727,
+    "sha256": "c06c15dc49bd8618b7ad06f6fd9217531df365edb9e00c7c92a728864ccda365"
+  },
+  {
+    "path": "project/coordination/native-preparation/rust/standalone-optimizer/src/objective.rs",
+    "bytes": 28207,
+    "sha256": "a60753bd6e20cfd5682f1634d9c35b86824a67556bd1dc426d5013f6e55727f6"
   },
   {
     "path": "project/coordination/native-preparation/rust/standalone-optimizer/src/prepare.rs",
@@ -9601,13 +9661,13 @@
   },
   {
     "path": "project/coordination/native-preparation/rust/standalone-optimizer/src/search.rs",
-    "bytes": 43327,
-    "sha256": "786fc46b6699d81ebcfe93847618b9c8167bd3fdcf29e97b5049381d304982ea"
+    "bytes": 48009,
+    "sha256": "d9fc02cde449088b3e4f75f054c6ae9a65b02608112f94707fca418b3ca5ac85"
   },
   {
     "path": "project/coordination/native-preparation/rust/standalone-optimizer/src/store.rs",
-    "bytes": 16631,
-    "sha256": "84808c1ecb795f53bfdea896f1b649d0071a871b474f6c74ea31de3f413925a0"
+    "bytes": 17271,
+    "sha256": "32d7c8acde895043dcc77addff7ee65600d0ea3c3d57dd824e3f272aaa8edd56"
   },
   {
     "path": "project/coordination/native-preparation/rust/standalone-optimizer/src/tuning.rs",
@@ -9750,8 +9810,53 @@
     "sha256": "7593ef02512fbab04d16d230c6cfa5df7ace3805a34531623744cd9a52fd7af4"
   },
   {
+    "path": "run_corrected_smoke.py",
+    "bytes": 4532,
+    "sha256": "ae1470ced744105aac6da30c39a7d69e5c82f960f1a6fa37ddaf7519e5ca46e5"
+  },
+  {
     "path": "run_fixed_smoke.py",
     "bytes": 2517,
     "sha256": "3ddfcd69da13b642cb197559e5b95f399da3162d5c9f7f4beec39b90ddef47a3"
+  },
+  {
+    "path": "tests/mechanism-objectives/active-parent-expected.json",
+    "bytes": 347,
+    "sha256": "ddff151a45fb81410e08ce2f57ea924e5741f4f40bc01441aca5dde695e05b5b"
+  },
+  {
+    "path": "tests/mechanism-objectives/active-parent-fixture.json",
+    "bytes": 1766,
+    "sha256": "dd922256093277fc2d1c9f5ea0818c499197314a4611e1b8191b8c7f620eec7a"
+  },
+  {
+    "path": "tests/mechanism-objectives/controlled-actions-expected.json",
+    "bytes": 13630,
+    "sha256": "25e8a1447bf8b5ade428ea8a9bb8c49507475ac2d1c79cd1efa07bda2d2ef6a4"
+  },
+  {
+    "path": "tests/mechanism-objectives/controlled-actions-fixture.json",
+    "bytes": 18325,
+    "sha256": "660b47eff4f0887ebe5866e27ef3a77c0a914cd34b5458492a88142d52b1f605"
+  },
+  {
+    "path": "tests/mechanism-objectives/learner-feedback-replay-fixture.json",
+    "bytes": 8450,
+    "sha256": "f27db10fc92959dd91aa25df0a7bbcc478f952ba90a3c47f313479a4cb39c467"
+  },
+  {
+    "path": "tests/mechanism-objectives/objective-v3-oracle.json",
+    "bytes": 48635,
+    "sha256": "6366ece36320588e1747bdd4c0c310b5c530263ace1fab484f7f4f1eb81e539c"
+  },
+  {
+    "path": "tests/mechanism-objectives/objective-v3-spec.md",
+    "bytes": 8113,
+    "sha256": "250f0aab420590c0144c3fb3aa18a745be63ccd4ada5e08ebda760b79cb75e3d"
+  },
+  {
+    "path": "verify_cpp_objectives.py",
+    "bytes": 5263,
+    "sha256": "7039fdc4100bc3974c4508016561678e4301f70b80ea0748c4f9756e275a4913"
   }
 ]

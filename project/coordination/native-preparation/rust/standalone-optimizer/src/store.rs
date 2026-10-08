@@ -131,6 +131,12 @@ impl Store {
         self.records.get(key)
     }
 
+    pub fn records(&self) -> impl Iterator<Item = (&str, &Value)> {
+        self.records
+            .iter()
+            .map(|(key, value)| (key.as_str(), value))
+    }
+
     /// Opt in to serial-writer timing. Calls made before enabling remain
     /// unmeasured, and the default append path performs no clock reads.
     pub fn enable_telemetry(&mut self) {

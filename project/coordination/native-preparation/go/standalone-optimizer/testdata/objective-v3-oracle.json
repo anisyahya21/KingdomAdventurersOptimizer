@@ -1,0 +1,1890 @@
+{
+  "schema": 1,
+  "objectiveVersion": 3,
+  "laneNames": [
+    "earned",
+    "potential",
+    "setup",
+    "efficiency"
+  ],
+  "pool": 4,
+  "cases": [
+    {
+      "id": "crafted-objective-edge-cases",
+      "records": [
+        {
+          "candidate": "win40-expensive",
+          "label": "win40-expensive",
+          "source": "fixture",
+          "encounterId": 0,
+          "defeatCount": 0,
+          "n": 10,
+          "wins": 8,
+          "losses": 2,
+          "censored": 0,
+          "winInterval": [
+            0.49015684672072335,
+            0.9433190520193067
+          ],
+          "winRate": 0.8,
+          "earnedMax": 40,
+          "earnedCount": 2,
+          "earnedMean": null,
+          "earnedSamples": 0,
+          "earnedSD": null,
+          "potentialMax": 40,
+          "meanResources": 3.0,
+          "progress": {},
+          "progressRuns": 0,
+          "earliestBossDeathTick": null,
+          "earliestPostDeathReleaseTick": null,
+          "mp": {},
+          "herb": {},
+          "mpRuns": 0
+        },
+        {
+          "candidate": "win40-cheap-a",
+          "label": "win40-cheap-a",
+          "source": "fixture",
+          "encounterId": 0,
+          "defeatCount": 0,
+          "n": 10,
+          "wins": 7,
+          "losses": 3,
+          "censored": 0,
+          "winInterval": [
+            0.39677321997956516,
+            0.892210712513788
+          ],
+          "winRate": 0.7,
+          "earnedMax": 40,
+          "earnedCount": 2,
+          "earnedMean": null,
+          "earnedSamples": 0,
+          "earnedSD": null,
+          "potentialMax": 40,
+          "meanResources": 0.0,
+          "progress": {},
+          "progressRuns": 0,
+          "earliestBossDeathTick": null,
+          "earliestPostDeathReleaseTick": null,
+          "mp": {},
+          "herb": {},
+          "mpRuns": 0
+        },
+        {
+          "candidate": "win40-cheap-b",
+          "label": "win40-cheap-b",
+          "source": "fixture",
+          "encounterId": 0,
+          "defeatCount": 0,
+          "n": 10,
+          "wins": 7,
+          "losses": 3,
+          "censored": 0,
+          "winInterval": [
+            0.39677321997956516,
+            0.892210712513788
+          ],
+          "winRate": 0.7,
+          "earnedMax": 40,
+          "earnedCount": 2,
+          "earnedMean": null,
+          "earnedSamples": 0,
+          "earnedSD": null,
+          "potentialMax": 40,
+          "meanResources": 0.0,
+          "progress": {},
+          "progressRuns": 0,
+          "earliestBossDeathTick": null,
+          "earliestPostDeathReleaseTick": null,
+          "mp": {},
+          "herb": {},
+          "mpRuns": 0
+        },
+        {
+          "candidate": "win20-free",
+          "label": "win20-free",
+          "source": "fixture",
+          "encounterId": 0,
+          "defeatCount": 0,
+          "n": 10,
+          "wins": 4,
+          "losses": 6,
+          "censored": 0,
+          "winInterval": [
+            0.16817758120350967,
+            0.6873304525498135
+          ],
+          "winRate": 0.4,
+          "earnedMax": 20,
+          "earnedCount": 1,
+          "earnedMean": null,
+          "earnedSamples": 0,
+          "earnedSD": null,
+          "potentialMax": 20,
+          "meanResources": 0.0,
+          "progress": {},
+          "progressRuns": 0,
+          "earliestBossDeathTick": null,
+          "earliestPostDeathReleaseTick": null,
+          "mp": {},
+          "herb": {},
+          "mpRuns": 0
+        },
+        {
+          "candidate": "potential-79-gap",
+          "label": "potential-79-gap",
+          "source": "fixture",
+          "encounterId": 0,
+          "defeatCount": 0,
+          "n": 10,
+          "wins": 3,
+          "losses": 7,
+          "censored": 0,
+          "winInterval": [
+            0.10778928748621183,
+            0.6032267800204347
+          ],
+          "winRate": 0.3,
+          "earnedMax": 20,
+          "earnedCount": 1,
+          "earnedMean": null,
+          "earnedSamples": 0,
+          "earnedSD": null,
+          "potentialMax": 99,
+          "meanResources": 2.0,
+          "progress": {},
+          "progressRuns": 0,
+          "earliestBossDeathTick": null,
+          "earliestPostDeathReleaseTick": null,
+          "mp": {},
+          "herb": {},
+          "mpRuns": 0
+        },
+        {
+          "candidate": "potential-9-gap",
+          "label": "potential-9-gap",
+          "source": "fixture",
+          "encounterId": 0,
+          "defeatCount": 0,
+          "n": 10,
+          "wins": 6,
+          "losses": 4,
+          "censored": 0,
+          "winInterval": [
+            0.3126695474501864,
+            0.8318224187964902
+          ],
+          "winRate": 0.6,
+          "earnedMax": 20,
+          "earnedCount": 1,
+          "earnedMean": null,
+          "earnedSamples": 0,
+          "earnedSD": null,
+          "potentialMax": 29,
+          "meanResources": 1.0,
+          "progress": {},
+          "progressRuns": 0,
+          "earliestBossDeathTick": null,
+          "earliestPostDeathReleaseTick": null,
+          "mp": {},
+          "herb": {},
+          "mpRuns": 0
+        },
+        {
+          "candidate": "setup-high",
+          "label": "setup-high",
+          "source": "fixture",
+          "encounterId": 0,
+          "defeatCount": 0,
+          "n": 10,
+          "wins": 1,
+          "losses": 9,
+          "censored": 0,
+          "winInterval": [
+            0.01787574951572113,
+            0.4041563854975721
+          ],
+          "winRate": 0.1,
+          "earnedMax": 3,
+          "earnedCount": 1,
+          "earnedMean": null,
+          "earnedSamples": 0,
+          "earnedSD": null,
+          "potentialMax": 19,
+          "meanResources": 4.0,
+          "progress": {
+            "postDeathPrizes": 4,
+            "commandsReleasedAfterDeathTargetingBoss": 3,
+            "storedCommandsTargetingBossAtDeath": 12,
+            "maxSimultaneousCommandsTargetingBoss": 8,
+            "commandsTargetingBossReleased": 17,
+            "storedTargetHoldersPeak": 7,
+            "maxSimultaneousStoredCommands": 21
+          },
+          "progressRuns": 2,
+          "earliestBossDeathTick": null,
+          "earliestPostDeathReleaseTick": null,
+          "mp": {},
+          "herb": {},
+          "mpRuns": 0
+        },
+        {
+          "candidate": "setup-low",
+          "label": "setup-low",
+          "source": "fixture",
+          "encounterId": 0,
+          "defeatCount": 0,
+          "n": 10,
+          "wins": 1,
+          "losses": 9,
+          "censored": 0,
+          "winInterval": [
+            0.01787574951572113,
+            0.4041563854975721
+          ],
+          "winRate": 0.1,
+          "earnedMax": 1,
+          "earnedCount": 1,
+          "earnedMean": null,
+          "earnedSamples": 0,
+          "earnedSD": null,
+          "potentialMax": 12,
+          "meanResources": 0.0,
+          "progress": {
+            "postDeathPrizes": 2,
+            "commandsReleasedAfterDeathTargetingBoss": 1,
+            "storedCommandsTargetingBossAtDeath": 5,
+            "maxSimultaneousCommandsTargetingBoss": 4,
+            "commandsTargetingBossReleased": 8,
+            "storedTargetHoldersPeak": 3,
+            "maxSimultaneousStoredCommands": 9
+          },
+          "progressRuns": 1,
+          "earliestBossDeathTick": null,
+          "earliestPostDeathReleaseTick": null,
+          "mp": {},
+          "herb": {},
+          "mpRuns": 0
+        },
+        {
+          "candidate": "missing-progress",
+          "label": "missing-progress",
+          "source": "fixture",
+          "encounterId": 0,
+          "defeatCount": 0,
+          "n": 10,
+          "wins": 0,
+          "losses": 10,
+          "censored": 0,
+          "winInterval": [
+            0.0,
+            0.2775401687666166
+          ],
+          "winRate": 0.0,
+          "earnedMax": 0,
+          "earnedCount": 0,
+          "earnedMean": null,
+          "earnedSamples": 0,
+          "earnedSD": null,
+          "potentialMax": 80,
+          "meanResources": 0.0,
+          "progress": {},
+          "progressRuns": 0,
+          "earliestBossDeathTick": null,
+          "earliestPostDeathReleaseTick": null,
+          "mp": {},
+          "herb": {},
+          "mpRuns": 0
+        },
+        {
+          "candidate": "unproven-zero",
+          "label": "unproven-zero",
+          "source": "fixture",
+          "encounterId": 0,
+          "defeatCount": 0,
+          "n": 10,
+          "wins": 1,
+          "losses": 9,
+          "censored": 0,
+          "winInterval": [
+            0.01787574951572113,
+            0.4041563854975721
+          ],
+          "winRate": 0.1,
+          "earnedMax": 0,
+          "earnedCount": 1,
+          "earnedMean": null,
+          "earnedSamples": 0,
+          "earnedSD": null,
+          "potentialMax": 0,
+          "meanResources": 1.0,
+          "progress": {},
+          "progressRuns": 0,
+          "earliestBossDeathTick": null,
+          "earliestPostDeathReleaseTick": null,
+          "mp": {},
+          "herb": {},
+          "mpRuns": 0
+        },
+        {
+          "candidate": "win30-a",
+          "label": "win30-a",
+          "source": "fixture",
+          "encounterId": 0,
+          "defeatCount": 0,
+          "n": 10,
+          "wins": 5,
+          "losses": 5,
+          "censored": 0,
+          "winInterval": [
+            0.23658959361548731,
+            0.7634104063845126
+          ],
+          "winRate": 0.5,
+          "earnedMax": 30,
+          "earnedCount": 2,
+          "earnedMean": null,
+          "earnedSamples": 0,
+          "earnedSD": null,
+          "potentialMax": 30,
+          "meanResources": 2.0,
+          "progress": {},
+          "progressRuns": 0,
+          "earliestBossDeathTick": null,
+          "earliestPostDeathReleaseTick": null,
+          "mp": {},
+          "herb": {},
+          "mpRuns": 0
+        },
+        {
+          "candidate": "win30-b",
+          "label": "win30-b",
+          "source": "fixture",
+          "encounterId": 0,
+          "defeatCount": 0,
+          "n": 10,
+          "wins": 5,
+          "losses": 5,
+          "censored": 0,
+          "winInterval": [
+            0.23658959361548731,
+            0.7634104063845126
+          ],
+          "winRate": 0.5,
+          "earnedMax": 30,
+          "earnedCount": 2,
+          "earnedMean": null,
+          "earnedSamples": 0,
+          "earnedSD": null,
+          "potentialMax": 30,
+          "meanResources": 2.0,
+          "progress": {},
+          "progressRuns": 0,
+          "earliestBossDeathTick": null,
+          "earliestPostDeathReleaseTick": null,
+          "mp": {},
+          "herb": {},
+          "mpRuns": 0
+        }
+      ],
+      "proposals": [
+        {
+          "ordinal": 0,
+          "population": [
+            "win40-expensive",
+            "win40-cheap-a",
+            "win40-cheap-b",
+            "win20-free",
+            "potential-79-gap",
+            "potential-9-gap",
+            "setup-high",
+            "setup-low",
+            "missing-progress",
+            "unproven-zero",
+            "win30-a",
+            "win30-b"
+          ],
+          "drawIndex": 2
+        },
+        {
+          "ordinal": 1,
+          "population": [
+            "win40-expensive",
+            "win40-cheap-a",
+            "win40-cheap-b",
+            "win20-free",
+            "potential-79-gap",
+            "potential-9-gap",
+            "setup-high",
+            "setup-low",
+            "missing-progress",
+            "unproven-zero",
+            "win30-a",
+            "win30-b"
+          ],
+          "drawIndex": 9
+        },
+        {
+          "ordinal": 2,
+          "population": [
+            "win40-expensive",
+            "win40-cheap-a",
+            "win40-cheap-b",
+            "win20-free",
+            "potential-79-gap",
+            "potential-9-gap",
+            "setup-high",
+            "setup-low",
+            "missing-progress",
+            "unproven-zero",
+            "win30-a",
+            "win30-b"
+          ],
+          "drawIndex": 16
+        },
+        {
+          "ordinal": 3,
+          "population": [
+            "win40-expensive",
+            "win40-cheap-a",
+            "win40-cheap-b",
+            "win20-free",
+            "potential-79-gap",
+            "potential-9-gap",
+            "setup-high",
+            "setup-low",
+            "missing-progress",
+            "unproven-zero",
+            "win30-a",
+            "win30-b"
+          ],
+          "drawIndex": 23
+        },
+        {
+          "ordinal": 4,
+          "population": [
+            "win40-expensive",
+            "win40-cheap-a",
+            "win40-cheap-b",
+            "win20-free",
+            "potential-79-gap",
+            "potential-9-gap",
+            "setup-high",
+            "setup-low",
+            "missing-progress",
+            "unproven-zero",
+            "win30-a",
+            "win30-b"
+          ],
+          "drawIndex": 30
+        },
+        {
+          "ordinal": 5,
+          "population": [
+            "win40-expensive",
+            "win40-cheap-a",
+            "win40-cheap-b",
+            "win20-free",
+            "potential-79-gap",
+            "potential-9-gap",
+            "setup-high",
+            "setup-low",
+            "missing-progress",
+            "unproven-zero",
+            "win30-a",
+            "win30-b"
+          ],
+          "drawIndex": 37
+        },
+        {
+          "ordinal": 6,
+          "population": [
+            "win40-expensive",
+            "win40-cheap-a",
+            "win40-cheap-b",
+            "win20-free",
+            "potential-79-gap",
+            "potential-9-gap",
+            "setup-high",
+            "setup-low",
+            "missing-progress",
+            "unproven-zero",
+            "win30-a",
+            "win30-b"
+          ],
+          "drawIndex": 44
+        },
+        {
+          "ordinal": 7,
+          "population": [
+            "win40-expensive",
+            "win40-cheap-a",
+            "win40-cheap-b",
+            "win20-free",
+            "potential-79-gap",
+            "potential-9-gap",
+            "setup-high",
+            "setup-low",
+            "missing-progress",
+            "unproven-zero",
+            "win30-a",
+            "win30-b"
+          ],
+          "drawIndex": 51
+        },
+        {
+          "ordinal": 8,
+          "population": [
+            "win40-expensive",
+            "win40-cheap-a",
+            "win40-cheap-b",
+            "win20-free",
+            "potential-79-gap",
+            "potential-9-gap",
+            "setup-high",
+            "setup-low",
+            "missing-progress",
+            "unproven-zero",
+            "win30-a",
+            "win30-b"
+          ],
+          "drawIndex": 58
+        },
+        {
+          "ordinal": 9,
+          "population": [
+            "win40-expensive",
+            "win40-cheap-a",
+            "win40-cheap-b",
+            "win20-free",
+            "potential-79-gap",
+            "potential-9-gap",
+            "setup-high",
+            "setup-low",
+            "missing-progress",
+            "unproven-zero",
+            "win30-a",
+            "win30-b"
+          ],
+          "drawIndex": 65
+        },
+        {
+          "ordinal": 10,
+          "population": [
+            "win40-expensive",
+            "win40-cheap-a",
+            "win40-cheap-b",
+            "win20-free",
+            "potential-79-gap",
+            "potential-9-gap",
+            "setup-high",
+            "setup-low",
+            "missing-progress",
+            "unproven-zero",
+            "win30-a",
+            "win30-b"
+          ],
+          "drawIndex": 72
+        },
+        {
+          "ordinal": 11,
+          "population": [
+            "win40-expensive",
+            "win40-cheap-a",
+            "win40-cheap-b",
+            "win20-free",
+            "potential-79-gap",
+            "potential-9-gap",
+            "setup-high",
+            "setup-low",
+            "missing-progress",
+            "unproven-zero",
+            "win30-a",
+            "win30-b"
+          ],
+          "drawIndex": 79
+        }
+      ],
+      "expected": {
+        "eligibility": {
+          "earned": [
+            "win40-expensive",
+            "win40-cheap-a",
+            "win40-cheap-b",
+            "win20-free",
+            "potential-79-gap",
+            "potential-9-gap",
+            "setup-high",
+            "setup-low",
+            "unproven-zero",
+            "win30-a",
+            "win30-b"
+          ],
+          "potential": [
+            "potential-79-gap",
+            "setup-high",
+            "setup-low",
+            "missing-progress"
+          ],
+          "setup": [
+            "setup-high",
+            "setup-low"
+          ],
+          "efficiency": [
+            "win40-expensive",
+            "win40-cheap-a",
+            "win40-cheap-b",
+            "win20-free",
+            "potential-79-gap",
+            "potential-9-gap",
+            "setup-high",
+            "setup-low",
+            "unproven-zero",
+            "win30-a",
+            "win30-b"
+          ]
+        },
+        "laneRankings": {
+          "earned": [
+            "win40-expensive",
+            "win40-cheap-a",
+            "win40-cheap-b",
+            "win30-a"
+          ],
+          "potential": [
+            "missing-progress",
+            "potential-79-gap",
+            "setup-high",
+            "setup-low"
+          ],
+          "setup": [
+            "setup-high",
+            "setup-low"
+          ],
+          "efficiency": [
+            "win40-cheap-a",
+            "win40-cheap-b"
+          ]
+        },
+        "selections": [
+          {
+            "ordinal": 0,
+            "drawIndex": 2,
+            "population": [
+              "win40-expensive",
+              "win40-cheap-a",
+              "win40-cheap-b",
+              "win20-free",
+              "potential-79-gap",
+              "potential-9-gap",
+              "setup-high",
+              "setup-low",
+              "missing-progress",
+              "unproven-zero",
+              "win30-a",
+              "win30-b"
+            ],
+            "choicePool": [
+              "win40-expensive",
+              "win40-cheap-a",
+              "win40-cheap-b",
+              "win30-a"
+            ],
+            "candidate": "win40-cheap-b",
+            "lane": "earned"
+          },
+          {
+            "ordinal": 1,
+            "drawIndex": 9,
+            "population": [
+              "win40-expensive",
+              "win40-cheap-a",
+              "win40-cheap-b",
+              "win20-free",
+              "potential-79-gap",
+              "potential-9-gap",
+              "setup-high",
+              "setup-low",
+              "missing-progress",
+              "unproven-zero",
+              "win30-a",
+              "win30-b"
+            ],
+            "choicePool": [
+              "missing-progress",
+              "potential-79-gap",
+              "setup-high",
+              "setup-low"
+            ],
+            "candidate": "potential-79-gap",
+            "lane": "potential"
+          },
+          {
+            "ordinal": 2,
+            "drawIndex": 16,
+            "population": [
+              "win40-expensive",
+              "win40-cheap-a",
+              "win40-cheap-b",
+              "win20-free",
+              "potential-79-gap",
+              "potential-9-gap",
+              "setup-high",
+              "setup-low",
+              "missing-progress",
+              "unproven-zero",
+              "win30-a",
+              "win30-b"
+            ],
+            "choicePool": [
+              "setup-high",
+              "setup-low"
+            ],
+            "candidate": "setup-high",
+            "lane": "setup"
+          },
+          {
+            "ordinal": 3,
+            "drawIndex": 23,
+            "population": [
+              "win40-expensive",
+              "win40-cheap-a",
+              "win40-cheap-b",
+              "win20-free",
+              "potential-79-gap",
+              "potential-9-gap",
+              "setup-high",
+              "setup-low",
+              "missing-progress",
+              "unproven-zero",
+              "win30-a",
+              "win30-b"
+            ],
+            "choicePool": [
+              "win40-cheap-a",
+              "win40-cheap-b"
+            ],
+            "candidate": "win40-cheap-b",
+            "lane": "efficiency"
+          },
+          {
+            "ordinal": 4,
+            "drawIndex": 30,
+            "population": [
+              "win40-expensive",
+              "win40-cheap-a",
+              "win40-cheap-b",
+              "win20-free",
+              "potential-79-gap",
+              "potential-9-gap",
+              "setup-high",
+              "setup-low",
+              "missing-progress",
+              "unproven-zero",
+              "win30-a",
+              "win30-b"
+            ],
+            "choicePool": [
+              "win40-expensive",
+              "win40-cheap-a",
+              "win40-cheap-b",
+              "win20-free",
+              "potential-79-gap",
+              "potential-9-gap",
+              "setup-high",
+              "setup-low",
+              "missing-progress",
+              "unproven-zero",
+              "win30-a",
+              "win30-b"
+            ],
+            "candidate": "setup-high",
+            "lane": "exploration"
+          },
+          {
+            "ordinal": 5,
+            "drawIndex": 37,
+            "population": [
+              "win40-expensive",
+              "win40-cheap-a",
+              "win40-cheap-b",
+              "win20-free",
+              "potential-79-gap",
+              "potential-9-gap",
+              "setup-high",
+              "setup-low",
+              "missing-progress",
+              "unproven-zero",
+              "win30-a",
+              "win30-b"
+            ],
+            "choicePool": [
+              "missing-progress",
+              "potential-79-gap",
+              "setup-high",
+              "setup-low"
+            ],
+            "candidate": "potential-79-gap",
+            "lane": "potential"
+          },
+          {
+            "ordinal": 6,
+            "drawIndex": 44,
+            "population": [
+              "win40-expensive",
+              "win40-cheap-a",
+              "win40-cheap-b",
+              "win20-free",
+              "potential-79-gap",
+              "potential-9-gap",
+              "setup-high",
+              "setup-low",
+              "missing-progress",
+              "unproven-zero",
+              "win30-a",
+              "win30-b"
+            ],
+            "choicePool": [
+              "setup-high",
+              "setup-low"
+            ],
+            "candidate": "setup-high",
+            "lane": "setup"
+          },
+          {
+            "ordinal": 7,
+            "drawIndex": 51,
+            "population": [
+              "win40-expensive",
+              "win40-cheap-a",
+              "win40-cheap-b",
+              "win20-free",
+              "potential-79-gap",
+              "potential-9-gap",
+              "setup-high",
+              "setup-low",
+              "missing-progress",
+              "unproven-zero",
+              "win30-a",
+              "win30-b"
+            ],
+            "choicePool": [
+              "win40-cheap-a",
+              "win40-cheap-b"
+            ],
+            "candidate": "win40-cheap-b",
+            "lane": "efficiency"
+          },
+          {
+            "ordinal": 8,
+            "drawIndex": 58,
+            "population": [
+              "win40-expensive",
+              "win40-cheap-a",
+              "win40-cheap-b",
+              "win20-free",
+              "potential-79-gap",
+              "potential-9-gap",
+              "setup-high",
+              "setup-low",
+              "missing-progress",
+              "unproven-zero",
+              "win30-a",
+              "win30-b"
+            ],
+            "choicePool": [
+              "win40-expensive",
+              "win40-cheap-a",
+              "win40-cheap-b",
+              "win30-a"
+            ],
+            "candidate": "win40-cheap-b",
+            "lane": "earned"
+          },
+          {
+            "ordinal": 9,
+            "drawIndex": 65,
+            "population": [
+              "win40-expensive",
+              "win40-cheap-a",
+              "win40-cheap-b",
+              "win20-free",
+              "potential-79-gap",
+              "potential-9-gap",
+              "setup-high",
+              "setup-low",
+              "missing-progress",
+              "unproven-zero",
+              "win30-a",
+              "win30-b"
+            ],
+            "choicePool": [
+              "win40-expensive",
+              "win40-cheap-a",
+              "win40-cheap-b",
+              "win20-free",
+              "potential-79-gap",
+              "potential-9-gap",
+              "setup-high",
+              "setup-low",
+              "missing-progress",
+              "unproven-zero",
+              "win30-a",
+              "win30-b"
+            ],
+            "candidate": "potential-9-gap",
+            "lane": "exploration"
+          },
+          {
+            "ordinal": 10,
+            "drawIndex": 72,
+            "population": [
+              "win40-expensive",
+              "win40-cheap-a",
+              "win40-cheap-b",
+              "win20-free",
+              "potential-79-gap",
+              "potential-9-gap",
+              "setup-high",
+              "setup-low",
+              "missing-progress",
+              "unproven-zero",
+              "win30-a",
+              "win30-b"
+            ],
+            "choicePool": [
+              "setup-high",
+              "setup-low"
+            ],
+            "candidate": "setup-high",
+            "lane": "setup"
+          },
+          {
+            "ordinal": 11,
+            "drawIndex": 79,
+            "population": [
+              "win40-expensive",
+              "win40-cheap-a",
+              "win40-cheap-b",
+              "win20-free",
+              "potential-79-gap",
+              "potential-9-gap",
+              "setup-high",
+              "setup-low",
+              "missing-progress",
+              "unproven-zero",
+              "win30-a",
+              "win30-b"
+            ],
+            "choicePool": [
+              "win40-cheap-a",
+              "win40-cheap-b"
+            ],
+            "candidate": "win40-cheap-b",
+            "lane": "efficiency"
+          }
+        ]
+      }
+    },
+    {
+      "id": "all-lanes-empty-population-fallback",
+      "records": [
+        {
+          "candidate": "empty-a",
+          "label": "empty-a",
+          "source": "fixture",
+          "encounterId": 0,
+          "defeatCount": 0,
+          "n": 2,
+          "wins": 0,
+          "losses": 2,
+          "censored": 0,
+          "winInterval": [
+            0.0,
+            0.6576280471103807
+          ],
+          "winRate": 0.0,
+          "earnedMax": null,
+          "earnedCount": 0,
+          "earnedMean": null,
+          "earnedSamples": 0,
+          "earnedSD": null,
+          "potentialMax": 3,
+          "meanResources": 0.0,
+          "progress": {},
+          "progressRuns": 0,
+          "earliestBossDeathTick": null,
+          "earliestPostDeathReleaseTick": null,
+          "mp": {},
+          "herb": {},
+          "mpRuns": 0
+        },
+        {
+          "candidate": "empty-b",
+          "label": "empty-b",
+          "source": "fixture",
+          "encounterId": 0,
+          "defeatCount": 0,
+          "n": 0,
+          "wins": 0,
+          "losses": 0,
+          "censored": 0,
+          "winInterval": [
+            0.0,
+            1.0
+          ],
+          "winRate": null,
+          "earnedMax": null,
+          "earnedCount": 0,
+          "earnedMean": null,
+          "earnedSamples": 0,
+          "earnedSD": null,
+          "potentialMax": null,
+          "meanResources": null,
+          "progress": {},
+          "progressRuns": 0,
+          "earliestBossDeathTick": null,
+          "earliestPostDeathReleaseTick": null,
+          "mp": {},
+          "herb": {},
+          "mpRuns": 0
+        }
+      ],
+      "proposals": [
+        {
+          "ordinal": 0,
+          "population": [
+            "empty-a",
+            "empty-b"
+          ],
+          "drawIndex": 1
+        },
+        {
+          "ordinal": 1,
+          "population": [
+            "empty-a",
+            "empty-b"
+          ],
+          "drawIndex": 2
+        },
+        {
+          "ordinal": 2,
+          "population": [
+            "empty-a",
+            "empty-b"
+          ],
+          "drawIndex": 3
+        },
+        {
+          "ordinal": 3,
+          "population": [
+            "empty-a",
+            "empty-b"
+          ],
+          "drawIndex": 4
+        },
+        {
+          "ordinal": 4,
+          "population": [
+            "empty-a",
+            "empty-b"
+          ],
+          "drawIndex": 5
+        }
+      ],
+      "expected": {
+        "eligibility": {
+          "earned": [],
+          "potential": [],
+          "setup": [],
+          "efficiency": []
+        },
+        "laneRankings": {
+          "earned": [],
+          "potential": [],
+          "setup": [],
+          "efficiency": []
+        },
+        "selections": [
+          {
+            "ordinal": 0,
+            "drawIndex": 1,
+            "population": [
+              "empty-a",
+              "empty-b"
+            ],
+            "choicePool": [
+              "empty-a",
+              "empty-b"
+            ],
+            "candidate": "empty-b",
+            "lane": "exploration"
+          },
+          {
+            "ordinal": 1,
+            "drawIndex": 2,
+            "population": [
+              "empty-a",
+              "empty-b"
+            ],
+            "choicePool": [
+              "empty-a",
+              "empty-b"
+            ],
+            "candidate": "empty-a",
+            "lane": "exploration"
+          },
+          {
+            "ordinal": 2,
+            "drawIndex": 3,
+            "population": [
+              "empty-a",
+              "empty-b"
+            ],
+            "choicePool": [
+              "empty-a",
+              "empty-b"
+            ],
+            "candidate": "empty-b",
+            "lane": "exploration"
+          },
+          {
+            "ordinal": 3,
+            "drawIndex": 4,
+            "population": [
+              "empty-a",
+              "empty-b"
+            ],
+            "choicePool": [
+              "empty-a",
+              "empty-b"
+            ],
+            "candidate": "empty-a",
+            "lane": "exploration"
+          },
+          {
+            "ordinal": 4,
+            "drawIndex": 5,
+            "population": [
+              "empty-a",
+              "empty-b"
+            ],
+            "choicePool": [
+              "empty-a",
+              "empty-b"
+            ],
+            "candidate": "empty-b",
+            "lane": "exploration"
+          }
+        ]
+      }
+    }
+  ],
+  "activeLearnerFixtures": {
+    "sourceRotation": {
+      "parentSources": [
+        "earned",
+        "potential",
+        "setup",
+        "efficiency",
+        "region",
+        "exploration",
+        "mean"
+      ],
+      "proposalNumbers": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "attemptNumbers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "expected": [
+        {
+          "proposalNumber": 0,
+          "attempt": 1,
+          "source": "potential"
+        },
+        {
+          "proposalNumber": 0,
+          "attempt": 2,
+          "source": "setup"
+        },
+        {
+          "proposalNumber": 0,
+          "attempt": 3,
+          "source": "efficiency"
+        },
+        {
+          "proposalNumber": 0,
+          "attempt": 4,
+          "source": "region"
+        },
+        {
+          "proposalNumber": 3,
+          "attempt": 1,
+          "source": "region"
+        },
+        {
+          "proposalNumber": 3,
+          "attempt": 2,
+          "source": "exploration"
+        },
+        {
+          "proposalNumber": 3,
+          "attempt": 3,
+          "source": "mean"
+        },
+        {
+          "proposalNumber": 3,
+          "attempt": 4,
+          "source": "earned"
+        }
+      ],
+      "reseedSources": [
+        "elite",
+        "historical",
+        "region",
+        "root"
+      ]
+    },
+    "weightedParents": [
+      {
+        "drawUnit": 0.0,
+        "pool": [
+          "a1",
+          "a2",
+          "b1"
+        ],
+        "lineage": {
+          "a1": {
+            "root": "root-a"
+          },
+          "a2": {
+            "root": "root-a"
+          },
+          "b1": {
+            "root": "root-b"
+          }
+        },
+        "productivity": {
+          "root-a": {
+            "rate": 0.5714285714285714
+          },
+          "root-b": {
+            "rate": 0.25
+          }
+        },
+        "weights": {
+          "a1": 1.0714285714285714,
+          "a2": 1.0714285714285714,
+          "b1": 0.75
+        },
+        "expectedCandidate": "a1",
+        "expectedRandomCalls": [
+          0.0
+        ]
+      },
+      {
+        "drawUnit": 0.25,
+        "pool": [
+          "a1",
+          "a2",
+          "b1"
+        ],
+        "lineage": {
+          "a1": {
+            "root": "root-a"
+          },
+          "a2": {
+            "root": "root-a"
+          },
+          "b1": {
+            "root": "root-b"
+          }
+        },
+        "productivity": {
+          "root-a": {
+            "rate": 0.5714285714285714
+          },
+          "root-b": {
+            "rate": 0.25
+          }
+        },
+        "weights": {
+          "a1": 1.0714285714285714,
+          "a2": 1.0714285714285714,
+          "b1": 0.75
+        },
+        "expectedCandidate": "a1",
+        "expectedRandomCalls": [
+          0.25
+        ]
+      },
+      {
+        "drawUnit": 0.6,
+        "pool": [
+          "a1",
+          "a2",
+          "b1"
+        ],
+        "lineage": {
+          "a1": {
+            "root": "root-a"
+          },
+          "a2": {
+            "root": "root-a"
+          },
+          "b1": {
+            "root": "root-b"
+          }
+        },
+        "productivity": {
+          "root-a": {
+            "rate": 0.5714285714285714
+          },
+          "root-b": {
+            "rate": 0.25
+          }
+        },
+        "weights": {
+          "a1": 1.0714285714285714,
+          "a2": 1.0714285714285714,
+          "b1": 0.75
+        },
+        "expectedCandidate": "a2",
+        "expectedRandomCalls": [
+          0.6
+        ]
+      },
+      {
+        "drawUnit": 0.999999,
+        "pool": [
+          "a1",
+          "a2",
+          "b1"
+        ],
+        "lineage": {
+          "a1": {
+            "root": "root-a"
+          },
+          "a2": {
+            "root": "root-a"
+          },
+          "b1": {
+            "root": "root-b"
+          }
+        },
+        "productivity": {
+          "root-a": {
+            "rate": 0.5714285714285714
+          },
+          "root-b": {
+            "rate": 0.25
+          }
+        },
+        "weights": {
+          "a1": 1.0714285714285714,
+          "a2": 1.0714285714285714,
+          "b1": 0.75
+        },
+        "expectedCandidate": "b1",
+        "expectedRandomCalls": [
+          0.999999
+        ]
+      }
+    ],
+    "improvedLanes": [
+      {
+        "id": "child-improves-lanes",
+        "parent": {
+          "candidate": "parent",
+          "label": "parent",
+          "source": "fixture",
+          "encounterId": 0,
+          "defeatCount": 0,
+          "n": 10,
+          "wins": 4,
+          "losses": 6,
+          "censored": 0,
+          "winInterval": [
+            0.16817758120350967,
+            0.6873304525498135
+          ],
+          "winRate": 0.4,
+          "earnedMax": 12,
+          "earnedCount": 2,
+          "earnedMean": null,
+          "earnedSamples": 0,
+          "earnedSD": null,
+          "potentialMax": 25,
+          "meanResources": 2.0,
+          "progress": {
+            "postDeathPrizes": 2,
+            "commandsReleasedAfterDeathTargetingBoss": 1,
+            "storedCommandsTargetingBossAtDeath": 5,
+            "maxSimultaneousCommandsTargetingBoss": 4,
+            "commandsTargetingBossReleased": 8,
+            "storedTargetHoldersPeak": 3,
+            "maxSimultaneousStoredCommands": 9
+          },
+          "progressRuns": 3,
+          "earliestBossDeathTick": null,
+          "earliestPostDeathReleaseTick": null,
+          "mp": {},
+          "herb": {},
+          "mpRuns": 0
+        },
+        "child": {
+          "candidate": "child",
+          "label": "child",
+          "source": "fixture",
+          "encounterId": 0,
+          "defeatCount": 0,
+          "n": 10,
+          "wins": 5,
+          "losses": 5,
+          "censored": 0,
+          "winInterval": [
+            0.23658959361548731,
+            0.7634104063845126
+          ],
+          "winRate": 0.5,
+          "earnedMax": 12,
+          "earnedCount": 2,
+          "earnedMean": null,
+          "earnedSamples": 0,
+          "earnedSD": null,
+          "potentialMax": 38,
+          "meanResources": 2.0,
+          "progress": {
+            "postDeathPrizes": 4,
+            "commandsReleasedAfterDeathTargetingBoss": 3,
+            "storedCommandsTargetingBossAtDeath": 12,
+            "maxSimultaneousCommandsTargetingBoss": 8,
+            "commandsTargetingBossReleased": 17,
+            "storedTargetHoldersPeak": 7,
+            "maxSimultaneousStoredCommands": 21
+          },
+          "progressRuns": 3,
+          "earliestBossDeathTick": null,
+          "earliestPostDeathReleaseTick": null,
+          "mp": {},
+          "herb": {},
+          "mpRuns": 0
+        },
+        "expectedBetterLanes": [
+          "earned",
+          "potential",
+          "setup",
+          "efficiency"
+        ]
+      },
+      {
+        "id": "qualifies-after-unmeasured-parent",
+        "parent": {
+          "candidate": "unmeasured-parent",
+          "label": "unmeasured-parent",
+          "source": "fixture",
+          "encounterId": 0,
+          "defeatCount": 0,
+          "n": 10,
+          "wins": 0,
+          "losses": 10,
+          "censored": 0,
+          "winInterval": [
+            0.0,
+            0.2775401687666166
+          ],
+          "winRate": 0.0,
+          "earnedMax": null,
+          "earnedCount": 0,
+          "earnedMean": null,
+          "earnedSamples": 0,
+          "earnedSD": null,
+          "potentialMax": null,
+          "meanResources": 0.0,
+          "progress": {},
+          "progressRuns": 0,
+          "earliestBossDeathTick": null,
+          "earliestPostDeathReleaseTick": null,
+          "mp": {},
+          "herb": {},
+          "mpRuns": 0
+        },
+        "child": {
+          "candidate": "child",
+          "label": "child",
+          "source": "fixture",
+          "encounterId": 0,
+          "defeatCount": 0,
+          "n": 10,
+          "wins": 5,
+          "losses": 5,
+          "censored": 0,
+          "winInterval": [
+            0.23658959361548731,
+            0.7634104063845126
+          ],
+          "winRate": 0.5,
+          "earnedMax": 12,
+          "earnedCount": 2,
+          "earnedMean": null,
+          "earnedSamples": 0,
+          "earnedSD": null,
+          "potentialMax": 38,
+          "meanResources": 2.0,
+          "progress": {
+            "postDeathPrizes": 4,
+            "commandsReleasedAfterDeathTargetingBoss": 3,
+            "storedCommandsTargetingBossAtDeath": 12,
+            "maxSimultaneousCommandsTargetingBoss": 8,
+            "commandsTargetingBossReleased": 17,
+            "storedTargetHoldersPeak": 7,
+            "maxSimultaneousStoredCommands": 21
+          },
+          "progressRuns": 3,
+          "earliestBossDeathTick": null,
+          "earliestPostDeathReleaseTick": null,
+          "mp": {},
+          "herb": {},
+          "mpRuns": 0
+        },
+        "expectedBetterLanes": [
+          "earned",
+          "potential",
+          "setup",
+          "efficiency"
+        ]
+      }
+    ],
+    "operatorWeights": [
+      {
+        "drawUnit": 0.0,
+        "stats": {
+          "set-stat": {
+            "attempts": 7,
+            "improved": 3
+          },
+          "set-skill": {
+            "attempts": 5,
+            "improved": 0
+          },
+          "weapon": {
+            "attempts": 1,
+            "improved": 1
+          }
+        },
+        "operations": [
+          "set-stat",
+          "set-skill",
+          "weapon",
+          "formation"
+        ],
+        "expectedWeights": {
+          "set-stat": 3.1818181818181817,
+          "set-skill": 1.0,
+          "weapon": 1.8,
+          "formation": 1.0
+        },
+        "expectedOperator": "set-stat",
+        "expectedRandomCalls": [
+          0.0
+        ]
+      },
+      {
+        "drawUnit": 0.5,
+        "stats": {
+          "set-stat": {
+            "attempts": 7,
+            "improved": 3
+          },
+          "set-skill": {
+            "attempts": 5,
+            "improved": 0
+          },
+          "weapon": {
+            "attempts": 1,
+            "improved": 1
+          }
+        },
+        "operations": [
+          "set-stat",
+          "set-skill",
+          "weapon",
+          "formation"
+        ],
+        "expectedWeights": {
+          "set-stat": 3.1818181818181817,
+          "set-skill": 1.0,
+          "weapon": 1.8,
+          "formation": 1.0
+        },
+        "expectedOperator": "set-skill",
+        "expectedRandomCalls": [
+          0.5
+        ]
+      },
+      {
+        "drawUnit": 0.999999,
+        "stats": {
+          "set-stat": {
+            "attempts": 7,
+            "improved": 3
+          },
+          "set-skill": {
+            "attempts": 5,
+            "improved": 0
+          },
+          "weapon": {
+            "attempts": 1,
+            "improved": 1
+          }
+        },
+        "operations": [
+          "set-stat",
+          "set-skill",
+          "weapon",
+          "formation"
+        ],
+        "expectedWeights": {
+          "set-stat": 3.1818181818181817,
+          "set-skill": 1.0,
+          "weapon": 1.8,
+          "formation": 1.0
+        },
+        "expectedOperator": "formation",
+        "expectedRandomCalls": [
+          0.999999
+        ]
+      }
+    ],
+    "scaleWeights": {
+      "stats": {
+        "1.05": {
+          "attempts": 4,
+          "improved": 2
+        },
+        "0.7": {
+          "attempts": 7,
+          "improved": 0
+        },
+        "jump": {
+          "attempts": 3,
+          "improved": 1
+        }
+      },
+      "scales": [
+        1.05,
+        1.15,
+        1.4,
+        2.0,
+        3.0,
+        0.95,
+        0.7,
+        0.5
+      ],
+      "expected": {
+        "1.05": 4.7,
+        "1.15": 1.0,
+        "1.4": 1.0,
+        "2.0": 1.0,
+        "3.0": 1.0,
+        "0.95": 1.0,
+        "0.7": 0.35,
+        "0.5": 1.0,
+        "jump": 3.0
+      }
+    },
+    "statTargets": [
+      {
+        "id": "fine-up-or-down",
+        "current": 100,
+        "minimum": 50,
+        "maximum": 200,
+        "anchor": 100,
+        "stats": {
+          "1.05": {
+            "attempts": 4,
+            "improved": 2
+          },
+          "0.7": {
+            "attempts": 7,
+            "improved": 0
+          },
+          "jump": {
+            "attempts": 3,
+            "improved": 1
+          }
+        },
+        "scales": [
+          1.05,
+          1.15,
+          1.4,
+          2.0,
+          3.0,
+          0.95,
+          0.7,
+          0.5
+        ],
+        "expectedScale": "1.05",
+        "expectedTarget": 105,
+        "randomDraws": [
+          0.0,
+          0.0
+        ],
+        "randintCalls": []
+      },
+      {
+        "id": "coarse-direction",
+        "current": 100,
+        "minimum": 50,
+        "maximum": 200,
+        "anchor": 100,
+        "stats": {
+          "1.05": {
+            "attempts": 4,
+            "improved": 2
+          },
+          "0.7": {
+            "attempts": 7,
+            "improved": 0
+          },
+          "jump": {
+            "attempts": 3,
+            "improved": 1
+          }
+        },
+        "scales": [
+          1.05,
+          1.15,
+          1.4,
+          2.0,
+          3.0,
+          0.95,
+          0.7,
+          0.5
+        ],
+        "expectedScale": "2.0",
+        "expectedTarget": 50,
+        "randomDraws": [
+          0.48,
+          0.9
+        ],
+        "randintCalls": []
+      },
+      {
+        "id": "jump-bounded",
+        "current": 100,
+        "minimum": 50,
+        "maximum": 200,
+        "anchor": 110,
+        "stats": {
+          "1.05": {
+            "attempts": 4,
+            "improved": 2
+          },
+          "0.7": {
+            "attempts": 7,
+            "improved": 0
+          },
+          "jump": {
+            "attempts": 3,
+            "improved": 1
+          }
+        },
+        "scales": [
+          1.05,
+          1.15,
+          1.4,
+          2.0,
+          3.0,
+          0.95,
+          0.7,
+          0.5
+        ],
+        "expectedScale": "jump",
+        "expectedTarget": 170,
+        "randomDraws": [
+          0.999999
+        ],
+        "randintCalls": [
+          {
+            "low": 50,
+            "high": 200,
+            "value": 170
+          }
+        ]
+      }
+    ],
+    "region": {
+      "scenario": {
+        "ownUnits": [
+          {
+            "human": true,
+            "name": "Synthetic DPS",
+            "skills": [
+              11,
+              7,
+              5
+            ],
+            "invocationLevels": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "weaponId": 0,
+            "grid": 2,
+            "parameters": {
+              "10": {
+                "rawValue": 2500
+              },
+              "11": {
+                "rawValue": 2500
+              },
+              "12": {
+                "rawValue": 2500
+              },
+              "18": {
+                "rawValue": 140
+              },
+              "19": {
+                "rawValue": 80
+              },
+              "20": {
+                "rawValue": 18
+              },
+              "21": {
+                "rawValue": 250
+              },
+              "22": {
+                "rawValue": 120
+              }
+            }
+          }
+        ]
+      },
+      "expected": "e4568701d51e75d2"
+    },
+    "schedulerConstraints": {
+      "branchFactor": 4,
+      "localShare": 0.35,
+      "freshRootCountFormula": "max(1,count//4)",
+      "localCountFormula": "int(count*LOCAL_SHARE)",
+      "reseedStatShare": 0.45,
+      "reseedRestartShare": 0.15,
+      "limitedToFullPythonScheduler": false
+    }
+  },
+  "productionSchedulerCaveat": "Source rotation, weighted_parent, lane improvement feedback, and learner weights are exercised. The full Python scheduler also includes fresh synthetic roots, local probes, candidate/bank staging, worker reservoir scheduling, region/mean/history policies, and conditional starvation reseeds. A fixed-roster/stat-axis native experiment is a constrained adaptation, not full scheduler parity."
+}

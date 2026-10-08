@@ -185,7 +185,62 @@ func run() error {
 	seedBank := flag.String("seed-bank", "", "baseline-bank mode: JSON array of [mathSeed, libSeed] pairs")
 	syncBatch := flag.Int("sync-batch", 1, "baseline-bank mode: records per durable journal File.Sync")
 	policy := flag.String("policy", "search-contract", "search policy: search-contract or fixed-formation")
+	objectiveOracle := flag.String("objective-oracle", "", "evaluate a neutral mechanics-objective fixture without running battles")
+	objectiveReplay := flag.String("objective-replay", "", "replay synthetic battle records through the live feedback and controlled scheduler without battles")
+	objectiveMode := flag.String("objective-mode", ObjectiveModeEarnedOnly, "search objective mode: earned-only-v1 or mechanism-lanes-v3")
+	learnerMode := flag.String("learner-mode", LearnerModeLegacy, "search learner mode: legacy or branching")
+	constraintProfile := flag.String("constraint-profile", "", "optional controlled profile: fixed-dps-3stats-v1")
+	learnerPrior := flag.String("learner-prior", "", "hash-bound portable mechanism learner prior for a fresh branching search")
 	flag.Parse()
+	if *objectiveOracle != "" {
+		data, err := os.ReadFile(*objectiveOracle)
+		if err != nil {
+			return err
+		}
+		var fixture MechanicsFixture
+		if err := json.Unmarshal(data, &fixture); err != nil {
+			return err
+		}
+		actual, err := RunMechanicsFixture(fixture)
+		if err != nil {
+			return err
+		}
+		if flag.NArg() > 1 {
+			return errors.New("--objective-oracle accepts at most one output path")
+		}
+		if flag.NArg() == 1 {
+			return writeJSON(flag.Arg(0), actual)
+		}
+		return json.NewEncoder(os.Stdout).Encode(actual)
+	}
+	if *objectiveReplay != "" {
+		data, err := os.ReadFile(*objectiveReplay)
+		if err != nil {
+			return err
+		}
+		var fixture MechanicsFeedbackReplayFixture
+		if err := json.Unmarshal(data, &fixture); err != nil {
+			return err
+		}
+		var prior []byte
+		if *learnerPrior != "" {
+			prior, err = os.ReadFile(*learnerPrior)
+			if err != nil {
+				return err
+			}
+		}
+		actual, err := RunMechanicsFeedbackReplay(fixture, prior)
+		if err != nil {
+			return err
+		}
+		if flag.NArg() > 1 {
+			return errors.New("--objective-replay accepts at most one output path")
+		}
+		if flag.NArg() == 1 {
+			return writeJSON(flag.Arg(0), actual)
+		}
+		return json.NewEncoder(os.Stdout).Encode(actual)
+	}
 	if *input == "" || *output == "" {
 		return errors.New("--input and --output required")
 	}
@@ -203,6 +258,14 @@ func run() error {
 	}
 	if *seedBank != "" || *syncBatch != 1 {
 		return errors.New("--seed-bank and nondefault --sync-batch require --mode baseline-bank")
+	}
+	var priorBytes []byte
+	if *learnerPrior != "" {
+		var priorErr error
+		priorBytes, priorErr = os.ReadFile(*learnerPrior)
+		if priorErr != nil {
+			return priorErr
+		}
 	}
 	if e := os.MkdirAll(*output, 0700); e != nil {
 		return e
@@ -246,7 +309,13 @@ func run() error {
 		return e
 	}
 	defer store.Close()
-	config := SearchConfig{Seed: *seed, Budget: 0, Exploration: *exploration, PopulationLimit: *population, FixedFormation: *policy == "fixed-formation"}
+	config := SearchConfig{Seed: *seed, Budget: 0, Exploration: *exploration, PopulationLimit: *population, FixedFormation: *policy == "fixed-formation", ObjectiveMode: *objectiveMode, LearnerMode: *learnerMode, ConstraintProfile: *constraintProfile}
+	if config.ObjectiveMode == ObjectiveModeMechanicLanes {
+		config.ObjectiveVersion = MechanicsObjectiveVersion
+	}
+	if len(priorBytes) != 0 {
+		config.LearnerPriorSHA256 = digest(priorBytes)
+	}
 	state := RunState{Schema: "ka-go-run-state-2", WorkloadSHA256: digest(data), Config: config, BatchSize: *batch, BuildRevision: buildRevision, DispatchBudget: *budget}
 	var search *Search
 	cp, e := store.LoadCheckpoint()
@@ -285,6 +354,9 @@ func run() error {
 			}
 		} else {
 			search, e = NewSearchWithTables(w.Candidates, config, w.Tables)
+			if e == nil && len(priorBytes) != 0 {
+				e = search.ImportMechanismLearnerPrior(priorBytes)
+			}
 		}
 		if e == nil {
 			state.DispatchStart, _, _, _ = search.Progress()
@@ -506,6 +578,9 @@ func run() error {
 		records[r.ID] = r
 	}
 	feedback := func(r BattleResult) error {
+		if config.ObjectiveMode == ObjectiveModeMechanicLanes {
+			return observeSearchBattleResult(search, r)
+		}
 		if r.EarnedValid && r.Earned != nil {
 			return search.Observe(r.ID, float64(*r.Earned))
 		}
