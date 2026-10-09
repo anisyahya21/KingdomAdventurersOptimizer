@@ -1,0 +1,135 @@
+{
+  "schema": "ka-matched-durable-evaluation/1",
+  "workers": 4,
+  "results": [
+    {
+      "language": "rust",
+      "encounter": 0,
+      "arms": [
+        {
+          "verify": "1",
+          "elapsedSeconds": 8.568901900012861,
+          "durableRows": 512,
+          "rowsPerSecond": 59.75094661770274
+        },
+        {
+          "verify": "0",
+          "elapsedSeconds": 3.7345074000040768,
+          "durableRows": 512,
+          "rowsPerSecond": 137.0997417221455
+        }
+      ],
+      "speedup": 2.294519994793291
+    },
+    {
+      "language": "rust",
+      "encounter": 14,
+      "arms": [
+        {
+          "verify": "1",
+          "elapsedSeconds": 14.207163399987621,
+          "durableRows": 512,
+          "rowsPerSecond": 36.03815804641524
+        },
+        {
+          "verify": "0",
+          "elapsedSeconds": 5.627778399997624,
+          "durableRows": 512,
+          "rowsPerSecond": 90.97728510422802
+        }
+      ],
+      "speedup": 2.5244710061777877
+    },
+    {
+      "language": "go",
+      "encounter": 0,
+      "arms": [
+        {
+          "verify": "1",
+          "elapsedSeconds": 7.564822599990293,
+          "durableRows": 512,
+          "rowsPerSecond": 67.68169289266042
+        },
+        {
+          "verify": "0",
+          "elapsedSeconds": 4.8886423999938415,
+          "durableRows": 512,
+          "rowsPerSecond": 104.73255315231177
+        }
+      ],
+      "speedup": 1.547428095783775
+    },
+    {
+      "language": "go",
+      "encounter": 14,
+      "arms": [
+        {
+          "verify": "1",
+          "elapsedSeconds": 15.24847169998975,
+          "durableRows": 512,
+          "rowsPerSecond": 33.57713547124491
+        },
+        {
+          "verify": "0",
+          "elapsedSeconds": 9.731043799998588,
+          "durableRows": 512,
+          "rowsPerSecond": 52.61511617079293
+        }
+      ],
+      "speedup": 1.566992402191424
+    }
+  ],
+  "ok": true,
+  "scope": "fixed candidates, no adaptive search; full process wall including setup and durable journal; sequential nonoverlapping arms",
+  "seedPairsFormula": "[100001+i*31, 200003+i*37], i=0..511",
+  "date": "2026-10-09",
+  "deliveryStatus": "Local prototype; source, harness and executables not included in this documentation change; desktop pins unchanged.",
+  "kernelSha256": "07ee7d36e3bd1acc9b431095d241eb6cab04a77ffedd0e011074a77fa1848e19",
+  "inputs": "project/coordination/native-preparation/shared/comparison-inputs/bank2-v3/inputs/",
+  "verification": {
+    "report.json": {
+      "ok": true
+    },
+    "wrapper-report.json": {
+      "ok": true
+    },
+    "pipeline-report-n512.json": {
+      "ok": true
+    },
+    "replay-report.json": {
+      "ok": true
+    },
+    "controller-report.json": {
+      "ok": true
+    },
+    "lifecycle-report.json": {
+      "ok": true
+    }
+  },
+  "sourceInventory": [
+    {
+      "path": "project/KA-Website/tools/recovery/native/ka_kernel/src/lib.rs",
+      "sha256": "82600f570e7e8dd118361471f3c54a4e9d9391f0939a4fa939d742818fced3f8"
+    },
+    {
+      "path": "project/KA-Website/tools/recovery/native/ka_kernel/src/state.rs",
+      "sha256": "d2db39a45ee671c5f9cefe7b2d28e33f7b21aa4de1c3c9ba0c13694f73868718"
+    },
+    {
+      "path": "project/coordination/native-preparation/rust/standalone-optimizer/src/engine.rs",
+      "sha256": "b9d42d3eabae2b893907a1f88f9de1fed542b5e703c3e009719869bc3ea11d78"
+    },
+    {
+      "path": "project/coordination/native-preparation/go/standalone-optimizer/native_windows.go",
+      "sha256": "5fdd875214fe8e344552a63ce7000adb536c73c8f5ad4d8f9157d39c7446bf8f"
+    },
+    {
+      "path": "project/coordination/native-preparation/go/standalone-optimizer/native_snapshot_windows.go",
+      "sha256": "1fe462d8fc2d84f475867f4525a1ac6a1f74d33d168a0bdbfe8b7fd56ac1ad57"
+    },
+    {
+      "path": "project/coordination/native-preparation/go/standalone-optimizer/native_types.go",
+      "sha256": "22e483b80823c15c4d00e10762e6b2eaefd609d9c7fa2b6d18fa3d217e95a085"
+    }
+  ]
+}
