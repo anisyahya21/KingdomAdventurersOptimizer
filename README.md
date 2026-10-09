@@ -2,6 +2,10 @@
 
 Current source and runnable Windows snapshots for the Python, Rust, Go and C++ optimizer paths. **This repository is for reproducing and fixing existing problems. It is not a finished release.** Strategy libraries and user databases are deliberately excluded.
 
+## Find your way around
+
+Start with the [repository map](docs/README.md). See the [changelog](CHANGELOG.md) for delivery status and the [worker overhead report](docs/performance/worker-state-checks.md) for measured local development results.
+
 ## Run the current desktop
 
 1. Install Python 3.12+ and Microsoft Edge WebView2 Runtime on Windows x64.
